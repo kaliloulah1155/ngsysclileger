@@ -142,30 +142,33 @@
 
 							<div class="col-sm-4">
 								<label for="bio">Hotel<span class='text'></span> :</label>
-								<input type="text" onkeypress="return testNum(event, this, 2);" name="POS_VAL_RUB_L1A" value="{POS_VAL_RUB_L1A}" placeholder="Hotel" class="form-control hotel">
+								<input type="text" onkeypress="return testNum(event, this, 2);" name="POS_VAL_RUB_L1A" value="{POS_VAL_RUB_L1A}" placeholder="Hotel" class="form-control hotel amount">
 							</div>
 
 							<div class="col-sm-4" style="margin-top: 13px">
 								<label for="bio">Nourriture<span class='text'></span> :</label>
-								<input type="text" onkeypress="return testNum(event, this, 2);" name="POS_VAL_RUB_L1B" value="{POS_VAL_RUB_L1B}" placeholder="Nourriture" class="form-control nourriture">
+								<input type="text" onkeypress="return testNum(event, this, 2);" name="POS_VAL_RUB_L1B" value="{POS_VAL_RUB_L1B}" placeholder="Nourriture" class="form-control nourriture amount">
 							</div>
 
 							<div class="col-sm-4" style="margin-top: 13px">
 								<label for="bio">Deplacement  Urbain<span class='text'></span> :</label>
-								<input type="text" onkeypress="return testNum(event, this, 2);" name="POS_VAL_RUB_L1C" value="{POS_VAL_RUB_L1C}" placeholder="Deplacement  Urbain" class="form-control deplacement_urb">
+								<input type="text" onkeypress="return testNum(event, this, 2);" name="POS_VAL_RUB_L1C" value="{POS_VAL_RUB_L1C}" placeholder="Deplacement  Urbain" class="form-control deplacement_urb amount">
 							</div>
 
 							<div class="col-sm-4" style="margin-top: 13px">
 								<label for="bio">Assurance<span class='text'></span> :</label>
-								<input type="text" onkeypress="return testNum(event, this, 2);"  name="POS_VAL_RUB_L1D" value="{POS_VAL_RUB_L1D}" placeholder="Assurance" class="form-control assurance">
+								<input type="text" onkeypress="return testNum(event, this, 2);"  name="POS_VAL_RUB_L1D" value="{POS_VAL_RUB_L1D}" placeholder="Assurance" class="form-control assurance amount">
 							</div>
 
 							<div class="col-sm-4" style="margin-top: 13px">
 								<label for="bio">Transport<span class='text'></span> :</label>
-								<input type="text" onkeypress="return testNum(event, this, 2);" name="POS_VAL_RUB_K9" value="{POS_VAL_RUB_K9}" placeholder="Transport" class="form-control transport">
+								<input type="text" onkeypress="return testNum(event, this, 2);" name="POS_VAL_RUB_L1E" value="{POS_VAL_RUB_L1E}" placeholder="Transport" class="form-control transport amount">
 							</div>
 
 						</div>
+
+						<input type="hidden" class="totalprice"  name="POS_VAL_RUB_K9" value="{POS_VAL_RUB_K9}" />
+						TOTAL : <span class="montant">0 F CFA</span>
 
 						<div class="row" style="margin-top: 1%">
 							<div class="col-sm-4">
@@ -234,6 +237,22 @@
 
 		<script>
 	  		$('#formigr').parsley();
+
+			   //-------number format 
+    Number.prototype.formatMoney=function(decPlaces,thouSeparator,decSeparator){
+      var n=this,
+        decPlaces=isNaN(decPlaces=Math.abs(decPlaces))?2 : decPlaces,
+        decSeparator=decSeparator ==undefined ? ".":decSeparator,
+        thouSeparator=thouSeparator ==undefined ? ".":thouSeparator,
+        sign=n<0 ? "_":"",
+        i=parseInt(n=Math.abs(+n ||0).toFixed(decPlaces))+"",
+        j=(j=i.length)>3 ? j%3 :0;
+
+        return sign+(j ? i.substr(0,j)+thouSeparator : "")
+        +i.substr(j).replace(/(\d{3})(?=\d)/g,"$1"+thouSeparator)
+        +(decPlaces ? decSeparator+Math.abs(n-i).toFixed(decPlaces).slice(2):"");
+    };
+    //------ fin number format
 
 	  		$(document).ready(function(){
 

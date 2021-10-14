@@ -108,7 +108,7 @@
 
 		<input type='hidden' class='appName' value="{NOM_APPLICATION}">
 
-			<input type="hidden" class="loadcode" name="POS_VAL_RUB_COD"  style="width: 50%;">
+			<input type="hidden" class="loadcode" name="POS_VAL_RUB_COD" value="{POS_VAL_RUB_COD}"  style="width: 50%;">
 		
 		<header class="header-const">
 			<div id="actions-container" class="ui-widget-content titre-boutons" style="padding-left: 3%; text-align: center; background: transparent; border: none">
@@ -212,7 +212,7 @@
 														
 														<table class="test tableligne" id="table_tache" style="width: 100%;text-align: center; margin-top: 2%;">
 															 <thead>
-																<tr>
+																<tr>    
 																	<td style="width: 100px;border:none;text-align: left;margin-right: 0;">
 																		<span style="width: 100%;font-size: 12px;font-weight: 1;">Libell&#233; :</span>
 																	</td>

@@ -32,7 +32,7 @@ $service=$_GET['service'] ;
  $hs="false";
  $ferie="false";
 
- 
+     
 
 $result = pg_query("SELECT * FROM public.tache_journalieres WHERE email='".$user_email."' AND date_enreg='".$dateEnreg."' ");
 $find = pg_num_rows($result);

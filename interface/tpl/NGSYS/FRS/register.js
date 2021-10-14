@@ -7,14 +7,16 @@ var url_besoins = "/"+
     appName+
     "/FRS/register.php";
 
-const reg_besoins=(code)=>{
+const reg_besoins=(code,besoins,pu)=>{
 
     return new Promise((resolve,reject)=>{
           $.ajax({
               url:url_besoins,
               type:"POST",
               data:{
-                code:code_key 
+                code:code_key ,
+                besoins:besoins,
+                pu:pu
               },
               success:function(data){
 
@@ -45,13 +47,17 @@ $(document).on('click','.btn_enreg',(e)=>{
     .get();
 
 
-    console.log(besoins,pu,code_key);
+  //  console.log(besoins,pu,code_key);
 
 
-    reg_besoins(code_key)
+    reg_besoins(code_key,besoins,pu)
     .then(data=>{
-        console.log(data);
+        console.log('cool' ,data);
     }).catch(err=>console.log(err));
 
     e.preventDefault();
-})
+});
+
+
+
+

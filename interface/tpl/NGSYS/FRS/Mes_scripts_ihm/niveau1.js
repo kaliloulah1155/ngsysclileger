@@ -26,6 +26,68 @@ let link_urlprof =
 
 
 
+	//DEBUT CALCUL MONTANT 
+
+	function total_price(a,b){
+		return parseInt(a)+parseInt(b);
+	}
+ 
+ var tab_prix1=0;
+ var tab_prix2=0;
+ var somme=0;
+
+$(document).on('keyup keydown','.amount',function(e) {
+    
+	var total1=0;
+	var amount1=0;
+	$('.amount').each(function(i,e){
+		if (isNaN(parseInt($(this).val()))) {
+ 			amount1=0;
+		}else{
+			var amount1=parseInt($(this).val())-0;
+			total1 +=amount1;
+		}
+	});
+    tab_prix1=[];
+	tab_prix1.push(total1);
+	somme=parseInt(total_price(tab_prix1,tab_prix2));
+	$('.totalprice').val(somme);
+
+	$('.montant').html(somme.formatMoney(0,'.',',')+" FCFA");
+
+ 	//console.log(' tab_prix1 : ',tab_prix1[0]);
+});
+
+var $dataRows =$('.tableL');
+var tr=$dataRows.parent().parent();
+$(document).on('keyup keydown','.pu',function(e) {
+   
+    var total2=0;
+	var amount2=0;
+	$('.pu').each(function(i,e){
+		if (isNaN(parseInt($(this).val()))) {
+ 			pu2=0;
+		}else{
+			var pu2=parseInt($(this).val())-0;
+			total2 +=pu2;
+		}
+	});
+    tab_prix2=[];
+	tab_prix2.push(total2);
+
+	somme=total_price(tab_prix1,tab_prix2);
+
+	$('.totalprice').val(somme);
+
+	$('.montant').html(somme.formatMoney(0,'.',',')+" FCFA");
+	//console.log(' tab_prix2 : ',tab_prix2[0]);
+});
+
+
+	/////////////////////
+
+
+
     //DEBUT DESTINATION
 	    const getdestination =()=>{
           return new Promise((resolve,reject)=>{
@@ -135,6 +197,35 @@ let link_urlprof =
 	// Script pour supprimer une ligne
     $(document).on('click','.Suprim',function(){
 		  let rowcount=$('.tableligne > .nvlligne').children().length;
+
+		  ///recalcul les pu
+		  var total2=0;
+		  var amount2=0;
+		  $('.pu').each(function(i,e){
+			  if (isNaN(parseInt($(this).val()))) {
+				   pu2=0;
+			  }else{
+				  var pu2=parseInt($(this).val())-0;
+				  total2 +=pu2;
+			  }
+		  });
+		  tab_prix2=[];
+		  tab_prix2.push(total2);
+
+		  var removep=parseInt(tr.find(".pu:last").val());
+
+		  console.log('remove price : '+removep);
+	  
+		  somme= parseInt(total_price(tab_prix1,tab_prix2))-parseInt(removep);
+
+		  $('.totalprice').val(somme);
+
+ 
+		  $('.montant').html(somme.formatMoney(0,'.',',')+" FCFA");
+		  
+
+		  /////////////
+
 		  if(rowcount==2){
 		  	$(this).hide();
 		 }else{$(this).show();}
