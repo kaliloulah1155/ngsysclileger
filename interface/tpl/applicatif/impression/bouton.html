@@ -1,0 +1,34 @@
+<HTML>
+<HEAD>
+	<LINK rel="STYLESHEET" type="text/css" href="../../../../include/style/style.css">
+
+<SCRIPT language="javascript">
+
+function imprimer()
+{
+	if (navigator.appName.indexOf("Netscape") == 0)
+	{
+		parent.frames['impression'].print();
+	}
+	else
+	{
+		parent.impression.focus();
+		print();
+	}
+}
+
+</SCRIPT>
+	
+</HEAD>
+
+<BODY>
+
+<FORM>
+
+<INPUT TYPE=BUTTON class="bouton" VALUE="Imprimer" onClick="javascript:imprimer()">
+<INPUT TYPE=BUTTON class="bouton" VALUE="Fermer" onClick="parent.close();">
+
+</FORM>
+
+</BODY>
+</HTML>

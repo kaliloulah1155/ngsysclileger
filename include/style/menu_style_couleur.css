@@ -1,0 +1,228 @@
+.menu{
+	border:none;
+	border:0px;
+	margin:0px;
+	padding:0px;
+	font-weight:bold;
+	}
+.menu ul{
+    /* hauteur des zones de la barre de menus*/
+	height: 12vh;
+	width: 100%;
+	list-style:none;
+	margin-top: -3%;
+	margin-left: 40%;
+	padding: 1.6% 0%;
+}
+.menu li{
+	float:left;
+	padding:0px;
+}
+.menu li a{
+	background:url('../../images/toolbar/base/transparent.png') bottom left;
+	color:#ffffff;
+	display:block;
+    top: auto;
+	font-weight:normal;
+	/* hauteur des lignes de la barre de menus*/
+	line-height: 40px;
+	margin:0px;
+	padding:0px 5px;
+	text-align:center;
+	text-decoration:none;
+    border-right:1px solid transparent;
+}
+.menu>ul>li>a:hover {
+    border-right:1px solid grey;
+}
+
+.menu li a:hover, 
+.menu ul li:hover a{
+	background:url('../../images/toolbar/base/haut_contour40.png') bottom left;
+	color:#000000;
+	text-decoration:none;
+    border-right:1px solid grey;
+}
+.menu li ul{
+	background:url('../../images/toolbar/base/fond.png') top left;
+    /* double avec une couleur de fond pour gerer contraste eleve */
+    background-color: #fff;
+    /* masque le menu s'il n'est en "hover" */
+	/*display:none;*/
+    top:-999px;
+	height:auto;
+	padding:0px;
+	margin:0px;
+	border:0px;
+	position:absolute;
+	width: 225px;
+	z-index:200;
+	}
+
+/* affiche le menu d�s que l'on passe la souris */
+.menu li:hover ul {
+	display:block;
+    top:auto;
+}
+.menu li:hover ul.masque {
+	/*display:none;*/
+    top:-999px;
+}
+
+.menu li li {
+	background:url('../../images/toolbar/base/sub_sep.png') center left no-repeat;
+	display:block;
+    top: auto;
+	float:none;
+	margin:0px;
+	padding:0px;
+	width:225px;
+}
+
+.menu li li.menusoustitre {
+	background: none;
+}
+
+.menu li:hover li a{
+	background:none;
+}
+.menu li ul a{
+	display:block;
+	top: auto;
+	height:35px;
+	font-size:12px;
+	font-style:normal;
+	margin:0px;
+	padding:0px 10px 0px 15px;
+	text-align:left;
+}
+
+.menu li ul a.menusoustitre{
+	font-weight: bold;
+	color: #000000;
+    background-color: lightGrey;
+    border-right:1px solid grey;
+    border-left:1px solid grey;
+}
+
+.menu li ul a.dernierelement {
+    background:url('../../images/toolbar/base/traitbas.png') bottom left no-repeat;
+}
+/* souris */
+.menu li ul a:hover, 
+.menu li ul li:hover a {
+	background:#f5aa56 url('../../images/toolbar/base/hover_sub.png') center left no-repeat;
+	border:0px;
+	text-decoration:none;
+}
+
+.menu li ul a.menusoustitre:hover, 
+.menu li ul li:hover a.menusoustitre{
+	background:url('../../images/toolbar/base/roll.png') top left;
+	color:#ffffff;
+}
+
+.menu p{
+	clear:left;
+}
+
+/* barre d'outils */
+#toolbar1 {
+    height: 12vh;
+}
+
+#toolbar1 td.iconemenu{
+    width:15px;
+    vertical-align: middle;
+}
+ 
+#toolbar1 td.libellemenu {
+   width:125px;
+   vertical-align: middle;
+}
+
+#toolbar1 span.libellemenu{
+	display: block;
+   font-weight: normal;
+   font-size:10px;
+   margin-right: 80px;
+   /* margin-top: 2px; */
+   margin-bottom: 0%;
+   color:white;
+}
+#toolbar1 a.libellemenu 
+{
+   font-weight: bold;
+   font-size:15px;
+   color:white;
+   text-decoration: none;
+}
+
+#toolbar1 td.menu_logo_version {
+
+    width: 275px;
+}
+ 	
+#toolbar1 .libelle-menu-entete {
+    font-weight: bold;
+    margin-right: 20px;
+}
+#toolbar1 #libelle-menu-deconnexion {
+}
+
+#toolbar1 #span_recherche {
+    white-space: nowrap;
+}
+
+#toolbar1 #champ_recherche {
+    width: 204px;
+}
+
+#toolbar1 #btn_champ_recherche {
+    padding:2px 2px; 
+    border:none; 
+    font-weight:bold;
+    vertical-align: bottom;
+}
+
+#toolbar1 .cartevisite_libelle {  
+	font-size: 1em; 
+	font-weight: higher; 
+	color: white;
+}
+
+#toolbar1 td.cartevisite  {
+	display: inline-block;
+	width: 30px;
+    
+}
+#toolbar1 table.cartevisite {
+    margin-top: 15px;
+	margin-left: 145px;
+    height : 13vh;
+}
+
+/* etape 1 : suppression du libell� deconnexion
+            reduction du champ de recherche */
+@media screen and (max-width: 1024px) {
+    
+    #toolbar1  #champ_recherche {
+        width: 100px;
+    }
+    #toolbar1  #libelle-menu-deconnexion {
+        display: none;
+    }
+}
+
+/* etape 2 : suppression des libell�s menu*/
+@media screen and (max-width: 1000px) {
+    
+    #toolbar1  .libelle-menu-entete {
+        display: none;
+    }
+}
+
+/* etape 2 : suppression des libell�s menu*/
+@media screen and (max-width: 600px) {
+  
+}

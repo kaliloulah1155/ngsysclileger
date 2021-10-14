@@ -1,0 +1,66 @@
+/* CUSTOM TABLELESS STYLES */
+
+
+.row{
+	clear:both;
+	overflow:hidden;
+	font-size: 20px;
+	
+}
+.left{
+	float:left;
+	padding-left:20px;
+	
+}
+.right{
+	float:right;
+	padding-right:20px;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	color: #073D62;
+	font-variant: small-caps;
+	border: 1px solid #ffffff;
+}
+.inline{
+	display:inline;
+}
+.container{
+	height:auto;
+	width:auto;
+	display:table;
+}
+.side-by-side{
+	float:left;
+}
+fieldset{
+	padding-top:10px;
+	padding-left:20px;
+	padding-right:20px;
+	padding-bottom:20px;
+	height:100%;
+}
+.fields-row{
+	clear:both;
+	padding-top:10px;
+	overflow:hidden;
+}
+.field{
+	float:left;
+	padding-left:20px;
+}
+label.radio{
+	cursor:pointer;
+}
+label.radio input[type="radio"]{
+	left: -10000px;
+	position: absolute;
+	top: -1000px;
+}
+#actions-container{
+	padding-left:50px;
+	padding-right:50px;
+	padding-top:10px;
+	padding-bottom:5px;
+	overflow: hidden;
+}

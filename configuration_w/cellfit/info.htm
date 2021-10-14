@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Cellule à texte ajusté</title>
+<style type="text/css">
+body {font-family:"Times New Roman",serif}
+h1 {font:bold 135% Arial,sans-serif; color:#4000A0; margin-bottom:0.9em}
+h2 {font:bold 95% Arial,sans-serif; color:#900000; margin-top:1.5em; margin-bottom:1em}
+</style>
+</head>
+<body>
+<h1>Cellule à texte ajusté</h1>
+<h2>Informations</h2>
+Auteur : Patrick Benny<br>
+Licence : FPDF
+<h2>Description</h2>
+Cette méthode est une extension de Cell() permettant d'afficher du texte avec espacement de
+caractères ou compression horizontale.<br>
+<br>
+<code>CellFit(<b>float</b> w [, <b>float</b> h [, <b>string</b> txt [, <b>mixed</b> border [, <b>int</b> ln [, <b>string</b> align [, <b>boolean</b> fill [, <b>mixed</b> link [, <b>boolean</b> scale [, <b>boolean</b> force]]]]]]]]])</code><br>
+<br>
+Les 8 premiers paramètres sont les mêmes que ceux de Cell(). Les paramètres supplémentaires sont :<br>
+<br>
+<code><u>scale</u></code><br>
+<br>
+<code>false</code> : espacement de caractères<br>
+<code>true</code> : compression horizontale<br>
+<br>
+<code><u>force</u></code><br>
+<br>
+<code>false</code> : espacer/compresser seulement si nécessaire (pas lorsque le texte est suffisamment court)<br>
+<code>true</code> : toujours espacer/compresser<br>
+<br>
+Les quatre méthodes suivantes sont également fournies, permettant toutes les combinaisons de
+scale/force, et utilisant seulement les 8 paramètres de Cell() :<br>
+<br>
+<code>CellFitScale()</code><br>
+<code>CellFitScaleForce()</code><br>
+<code>CellFitSpace()</code><br>
+<code>CellFitSpaceForce()</code>
+</body>
+</html>

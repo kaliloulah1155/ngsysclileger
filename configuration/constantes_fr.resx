@@ -1,0 +1,87 @@
+constantesPHP.conf
+<?php 
+
+if (!defined("CONSTANTE"))
+{
+
+define("CONSTANTE", 1);
+
+<!-- Serveur et Port pour la connexion -->
+<data name="POS_SERVEUR" xml:space="preserve"><value>localhost</value></data>
+<data name="POS_PORT" xml:space="preserve"><value>8903</value></data>
+
+<!-- Nombres de réponses par page de résultats. -->
+<data name="NB_REPONSES_PAR_PAGE" xml:space="preserve"><value>10</value></data>
+<!-- Nombres de page de résultats à afficher avant le bouton page suivantes. -->
+
+<data name="NB_PAGES_AFFICHEES" xml:space="preserve"><value>20</value></data>
+
+<!-- Nombres de locutions pour la recherche élaborée. -->
+<data name="CST_NB_LOC_RECH_ELA" xml:space="preserve"><value>5</value></data>
+
+<!-- Type de tri : CROISSANT:1, DECROISSANT:2 et AUCUN:0. -->
+<data name="CST_TYPE_TRI" xml:space="preserve"><value>1</value></data>
+
+<!-- Ouverture automatique lorsqu'on a une seule réponse : 1(oui) et 0(non). -->
+<data name="CST_OUVERTURE_AUTO" xml:space="preserve"><value>0</value></data>
+
+<!-- Constantes concernant l'ouverture de la page des fichiers. -->
+<data name="CST_TOP_FILE" xml:space="preserve"><value>50</value></data>
+<data name="CST_LEFT_FILE" xml:space="preserve"><value>200</value></data>
+<data name="CST_WIDTH_FILE" xml:space="preserve"><value>500</value></data>
+<data name="CST_HEIGHT_FILE" xml:space="preserve"><value>450</value></data>
+
+<!-- Systeme 0 pour Windows , 1 pour UNIX -->
+<data name="CST_UNIX" xml:space="preserve"><value>0</value></data>
+
+<!-- Langage (fr -> francais, it -> italien, en -> anglais) -->
+<data name="CST_LANG" xml:space="preserve"><value>fr</value></data>
+
+<!-- Impression  -->
+<data name="CST_IMPRIMER" xml:space="preserve"><value>1</value></data>
+
+<!-- Affichage du choix des profils de liste résumée. -->
+<data name="CST_AFFICHER_CHOIX_PROFIL" xml:space="preserve"><value>0</value></data>
+
+<!-- Exportation 0 et 1 (exportation excel). -->
+<data name="CST_EXPORTER" xml:space="preserve"><value>0</value></data>
+
+<!-- Affichage du panier -->
+<data name="CST_PANIER" xml:space="preserve"><value>0</value></data>
+
+<!-- Nombre de réponse maximum pour afficher directement la liste résumée -->
+<data name="NB_REPONSES_MAX_LR" xml:space="preserve"><value>100</value></data>
+
+<!-- utilisation des macros ou des librairies RTF -->
+<data name="CST_MACRO_WORD" xml:space="preserve"><value>0</value></data>
+
+<!-- Utilisation de posdav.exe oui(1) ou de l'applet (2) ou aucune utilisation(0). -->
+<data name="CST_UTIL_POS_DAV_POINT_POW" xml:space="preserve"><value>0</value></data>
+
+<!-- Gestion des dossiers oui(1) ou non(0). -->
+<data name="CST_GESTION_DOSSIER" xml:space="preserve"><value>1</value></data>
+<!-- Affichage du bouton 'Dossiers pères' 0(non) ou 1(oui). -->
+<data name="CST_DOSSIER_PERE" xml:space="preserve"><value>0</value></data>
+
+<!-- Largeur de la frame du menu. -->
+<data name="LARGEUR_FRM_MENU" xml:space="preserve"><value>220</value></data>
+<!-- Confimation à la fermeture. -->
+<data name="CST_CONFIRM_FERMETURE" xml:space="preserve"><value>1</value></data>
+
+<!-- Nom et url de l'application. -->
+<data name="NOM_APPLICATION" xml:space="preserve"><value>ariane-team-sh</value></data>
+<data name="URL_SITE" xml:space="preserve"><value>/ariane-team-sh</value></data>
+
+<!-- Gestion du multi-profil. -->
+<data name="CST_AFFICHAGE_PROFIL_BAL" xml:space="preserve"><value>0</value></data>
+
+<!-- Gestion du drag and drop. -->
+<data name="DRAG_AND_DROP" xml:space="preserve"><value>1</value></data>
+
+<!-- Gestion webdav. -->
+<data name="URL_WEBDAV" xml:space="preserve"><value>/webdav/</value></data>
+<data name="REP_WEBDAV" xml:space="preserve"><value>webdav</value></data>
+<data name="CHEMIN_WEBDAV" xml:space="preserve"><value></value></data>
+
+}
+?>

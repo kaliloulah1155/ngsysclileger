@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:pos="http://www.sesin.com/">
+
+  <head>
+    <title>Test avec plusieurs fiches d'index en entrée</title>
+  </head>
+
+  <body>
+    <pos:for-each>
+      <pos:field key="OBJ"/>
+    </pos:for-each>
+    <pos:for-each>
+      <p><pos:field key="OBJ"/> (<pos:field key="DAT" format="date" date-format="%e %B %Y"/>)</p>
+    </pos:for-each>
+    <pos:for-each>
+      <p>X</p>
+    </pos:for-each>
+  </body>
+
+</html>

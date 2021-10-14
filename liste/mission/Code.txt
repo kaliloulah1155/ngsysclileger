@@ -1,0 +1,3 @@
+<a href="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/MIS/liste/liste_MIS_1.php?APPLI={NOM_APPLICATION}&USER={NOM_UTILISATEUR}&PROFIL={PROFIL_UTILISATEUR}">
+	<span style="color:#4a67b3;">Cliquez pour consulter la liste</span>
+</a>

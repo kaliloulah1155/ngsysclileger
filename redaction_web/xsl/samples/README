@@ -1,0 +1,6 @@
+header-footer     : en-tête et pieds de page
+lettre            : courrier (image, mise en page complexe, date)
+multi-simple      : plusieurs fiches d'index en entrée (sans section de texte riche)
+multi             : plusieurs fiches d'index en entrée (avec section de texte riche)
+rubrique          : test simple de rubrique
+tableau           : rubriques tableaux

@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<title>Statistiques</title>
+<LINK rel="STYLESHEET" type="text/css" href="../../../../include/style/style.css">
+<LINK REL="stylesheet" TYPE="text/css" HREF="../../../../include/style/gestionbib.css">
+<SCRIPT language="javascript" SRC="../../../../include/script/popup_menu.js"></SCRIPT>
+<SCRIPT language="javascript" SRC="../../../../include/script/fonction_util.js"></SCRIPT>
+<SCRIPT language='javascript' src='../../../../include/script/ajax_search.js'></SCRIPT>
+<SCRIPT language='javascript' src='../../../../include/script/calendrier.js'></SCRIPT>
+
+<script language="javascript">
+
+function getCheckedValue(radiogroup)
+{
+	var valeur = 0;
+
+	for (i=0;i<radiogroup.length;i++)
+	if (radiogroup[i].checked)
+	{
+		valeur=radiogroup[i].value;
+		break;
+	}
+
+	return valeur;
+}
+
+function VerifForm()
+{
+	document.getElementById('btn_valider').className = 'verrouille';
+	document.getElementById('btn_valider').disabled = true;
+	if (getCheckedValue(document.principal.SORTIE) == "EXCEL") {
+			window.setTimeout(function(){ 
+		   	document.getElementById('btn_valider').className = '';
+				document.getElementById('btn_valider').disabled = false;
+			}, 5000);
+	}
+   return true;
+}
+
+function initEcranAccueilStat()
+{
+        parent.setTitle();
+}
+</SCRIPT>
+
+</HEAD>
+
+<BODY  topmargin="0" leftmargin="0" onLoad="initEcranAccueilStat();">
+<H1 align="center">Statistiques sur les courriers</h1>
+
+<FORM name=principal action="../../../session/principal/statistiques/afficher_statistiques.php" onSubmit="return VerifForm()">
+<INPUT TYPE=HIDDEN NAME="STAT2_GROUPBY">
+<INPUT TYPE=HIDDEN NAME="STAT3_GROUPBY">
+
+<TABLE border=0 cellspacing="0" cellpadding="3" width="100%">
+<TR>
+	<TD>
+		<TABLE style='border: 1px solid gray' cellspacing="0" cellpadding="3" width="100%" class=titrePage>
+		<TR>
+			<TD class="labelChamp" nowrap>
+				<INPUT NAME="RADIO" TYPE=radio VALUE="STAT3" checked>
+				<INPUT NAME="STAT3_NOM_QUEST" TYPE=hidden VALUE="tous_les_courriers_par_periode">
+				<INPUT NAME="STAT3_LIBELLE_QUEST" TYPE=hidden VALUE="Courriers du %STAT3_1 au %STAT3_2">
+				Du <INPUT NAME="STAT3_1" VALUE="" SIZE="8">
+				<a HREF="javascript:void ouvrir_calendrier('document.principal.STAT3_1');">
+					<div title="Voir le calendrier" class="iconcalendrier"></div></a>
+					au <INPUT NAME="STAT3_2" VALUE="" SIZE="8">
+				<A HREF="javascript:void ouvrir_calendrier('document.principal.STAT3_2');">
+					<div title="Voir le calendrier" class="iconcalendrier"></div></a>
+			</TD>
+			<TD class="labelChamp">
+				Groupées par <SELECT NAME="STAT3_GROUPBY" class="inputChamp" SIZE="1">
+						<OPTION VALUE="COD" selected>Sous-dossier</OPTION>
+						<OPTION VALUE="TYP">Type de courrier</OPTION>
+				</SELECT>
+			</TD>
+		</TR>
+		</TABLE>
+	</TD>
+</TR>
+</TABLE>
+<BR>
+<TABLE width=70%>
+<TR>
+	<TD align=center class="labelChamp">
+		Afficher le résultat sous 
+		le navigateur<INPUT type="radio" name="SORTIE" value="HTML" checked>
+		ou sous excel<INPUT type="radio" name="SORTIE" value="EXCEL">
+</TD>
+<TD align=right>
+		<INPUT TYPE=submit id='btn_valider' class="bouton_sub" VALUE="Valider">
+	</TD>
+</TR>
+</TABLE>
+
+</FORM>
+</BODY>
+</HTML>

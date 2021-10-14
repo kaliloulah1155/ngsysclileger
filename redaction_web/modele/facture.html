@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:pos="http://www.sesin.com/">
+  <head>
+    <title>Redaction web Poseidon</title>
+  </head>
+  <body>
+    <pos:header type="texte" align="RIGHT"><pos:field key="HMA"/></pos:header>
+    <pos:footer type="texte" align="RIGHT">$PAGE/$PAGES</pos:footer>
+    <pos:footer type="texte" align="LEFT"><b>SIRET : 30698807200063 -- TVA : FR56306988072 -- APE : 6201Z -- SA au Capital de 152 449,02 €</b></pos:footer>
+	<pos:need-tr-all />
+	<div style="font-family:Arial;margin: 3em 3em 3em 3em;">
+	<table border='0' width="92%" style="border-collapse: collapse;">
+	<tr>
+		<td valign='top' width='30%'>
+      <p style="text-align:left">
+				<img src="http://www.sesin.com/images/logo/sesin_petit_sans_texte.gif" border="0"/><br/><br/>
+				Société SESIN<br/>
+				7, avenue André Roussin, Bât B<br/>
+                13016 Marseille<br/>
+                TEL : 04.91.60.09.64<br/>
+                FAX : 04.91.46.71.83</p>
+		</td>
+		<td valign='top' width='70%'>
+		    <br/><br/><br/><br/><br/><br/>
+			<p style="text-align:right;font-weight:bold;">
+			<pos:field linked="yes" key="RAI" format='texte' rubrique-lien="IDS"/><br/>
+			<pos:if test-rub="ADF" test-op="different" test-valeur="" linked="yes" rubrique-lien="IDS">
+                <pos:field linked="yes" key="ADF" format='texte' rubrique-lien="IDS"/>
+            </pos:if>
+            <pos:if test-rub="ADF" test-op="egal" test-valeur="" linked="yes" rubrique-lien="IDS">
+                <pos:field linked="yes" key="ADR" format='texte' rubrique-lien="IDS"/><br/>
+                <pos:field linked="yes" key="CDP" rubrique-lien="IDS"/>
+                <pos:field linked="yes" key="VIL" rubrique-lien="IDS"/>
+            </pos:if>
+            </p>
+		</td>
+	</tr>
+	<tr>
+		<td colspan='2'>
+	   <br/><br/><br/><br/>
+    	<p style="text-align:right;">Marseille, le <pos:field key="DFF" format="date" date-format="%e %B %Y"/></p>
+      	</td>
+	</tr>
+	</table>
+	
+	<br/>
+	<table border='0' width="92%" style="border-collapse: collapse;">
+	<tr>
+		<td valign='top' width="100%">
+			<p style="font-weight:bold;text-align:center;">
+            <u>Facture N°<pos:field key="REF"/></u><br/>
+            </p>
+		</td>
+	</tr>
+	<pos:if test-rub="RFM" test-op="different" test-valeur="">
+	<tr>
+		<td valign='top'>
+			<p style="font-weight:bold;">
+            Marché N°<pos:field key="RFM"/>
+            </p>
+		</td>
+	</tr>
+	</pos:if>
+	<tr>
+		<td valign='top'>
+			<p style="font-weight:bold;">
+            Bon de commande N°<pos:field key="NCO"/>
+            </p>
+		</td>
+	</tr>
+	<tr>
+		<td valign='top'>
+			<p style="font-weight:bold;">
+            	<div style="margin-left:54pt;background-color:#dddddd;">
+                	<pos:text id="postext1" edit-rows="40">Zone de texte libre</pos:text>
+                </div> 
+            </p>
+		</td>
+	</tr>
+	<tr>
+		<td valign='top' width='100%'>
+			<p style="font-weight:bold;text-align:center;">
+			<br/>
+            <u>Désignation</u><br/><pos:field format="texte" key="DES"/>
+            </p>
+		</td>
+	</tr>
+	</table>
+	<br/>
+	<table border='1' width="92%">
+      <tr>
+        <th>Désignation</th>
+        <th>Quantité</th>
+        <th>PU</th>
+        <th>PT</th>
+      </tr>
+      <pos:for-each fils-index="TABLEAU_EFA" sort="NOR">
+        <pos:if test-rub="TIT" test-op="egal" test-valeur="OUI">
+        <tr>
+            <td style="text-align:left" colspan='4'><b><pos:field format='texte' key="DES"/></b></td>
+        </tr>
+        </pos:if>
+        <pos:if test-rub="TIT" test-op="egal" test-valeur="NON">
+        <tr>
+            <td style="text-align:left" width="70%"><pos:field format='texte' key="DES"/></td>
+            <td style="text-align:right" width="10%"><pos:field key="QUA"/></td>
+            <td style="text-align:right" width="10%"><pos:field format='decimal' key="PRU"/></td>
+            <td style="text-align:right" width="10%"><pos:field format='decimal' key="PTC"/></td>
+        </tr>
+        </pos:if>
+        </pos:for-each>
+        <tr>
+            <td style="text-align:right" colspan='2'>Total H.T.</td>
+            <td style="text-align:right" colspan='2'><pos:field format='decimal' key="MFH"/> €</td>
+        </tr>
+        <pos:if test-rub="CRG" test-op="different" test-valeur="0">
+            <tr>
+                <td style="text-align:right" colspan='2'>Retenue de garantie de 5%</td>
+                <td style="text-align:right" colspan='2'><pos:field format='decimal' key="MRG"/> €</td>
+            </tr>
+            <tr>
+                <td style="text-align:right" colspan='2'>TOTAL H.T.</td>
+                <td style="text-align:right" colspan='2'><pos:field format='decimal' key="MNT"/> €</td>
+            </tr>
+        </pos:if>
+        <tr>
+            <td style="text-align:right" colspan='2'>TVA 19,6% (Payable à l'encaissement)</td>
+            <td style="text-align:right" colspan='2'><pos:field format='decimal' key="MTV"/> €</td>
+        </tr>
+        <tr>
+            <td style="text-align:right" colspan='2'>TOTAL T.T.C.</td>
+            <td style="text-align:right" colspan='2'><b><pos:field format='decimal' key="MCT"/> €</b></td>
+        </tr>
+    </table>
+    <br/>
+    <p class="p0"><u>Domiciliation bancaire</u></p>
+	<table border='1' width="92%">
+      <tr>
+        <th>Code Banque</th>
+        <th>Code Guichet</th>
+        <th>N° de Compte / Clé</th>
+        <th>Domiciliation</th>
+      </tr>
+    <tr>
+        <td style="text-align:center">30002</td>
+        <td style="text-align:center">2871</td>
+        <td style="text-align:center">0000070654X 44</td>
+        <td style="text-align:center">CL MARSEILLE GD PAVOIS</td>
+    </tr>
+    </table>
+    <table border='0' width="92%">
+    <tr>
+        <td style="text-align:center">Facture payable à réception sans condition d'escompte et sous réserve des <br/>
+    pénalités de retard applicables après mise en demeure par la Loi du 31 décembre 1992</td>
+    </tr>
+    </table>
+	</div>
+  </body>
+</html>
