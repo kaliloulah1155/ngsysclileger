@@ -35,6 +35,9 @@
 	<!-- JQUERY UI -->
 		<link href="../../../../include/libraries/jquery-ui/css/smoothness/jquery-ui-1.10.3.custom.css" rel="stylesheet" type="text/css" />
 	<!-- END JQUERY UI -->
+
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
+    <link href="https://raw.githack.com/ttskch/select2-bootstrap4-theme/master/dist/select2-bootstrap4.css" rel="stylesheet"/>
 	
 	<style>
 		.col1_partie{
@@ -122,7 +125,7 @@
 				</div>
 				<div class="collapse navbar-collapse " id="navbar-collapse-3">
 					<ul class="nav navbar-nav level0 nav-tabs">
-						<li class="active b1" ><a role="button" class="btn btn-outline-primary" data-toggle="tab" href="#tabs-1" style="width: 100%;padding-top: -11px;">Demande</a></li>
+						<li class="active b1" ><a role="button" class=" btn-outline-primary" data-toggle="tab" href="#tabs-1" style="width: 100%;padding-top: -11px;">Demande</a></li>
 						<li class="b2"><a role="button" class="btn-outline-primary" data-toggle="tab" href="#tabs-2" style="width: 100%;padding-top: -11px;">Traitement</a></li>
 						<li class="b3"><a role="button" class="btn-outline-primary" data-toggle="tab" href="#tabs-3" style="width: 100%;padding-top: -11px;">Document</a></li>
 						<li class="b4"><a role="button" class="btn-outline-primary" data-toggle="tab" href="#tabs-4" style="width: 100%;padding-top: -11px;">Historique</a></li>
@@ -153,52 +156,48 @@
 
 											<div class="col-sm-4">
 												<label for="bio">Destination<span class='text'></span> :</label>
-												<select class="form-control">
-												    <option value="">Veuillez s&#233;lectionner</option>
-												    <option value="EUROPE/ASIE/ AMERIQUE">Europe/Asie/Amerique</option>
-												    <option value="AFRIQUE">Afrique</option>
-												    <option value="INTERIEUR  DU PAYS">Int&#233;rieur du pays</option>
+			       									<select class="form-control destination"   name="POS_VAL_RUB_DTN">
 												</select>
+												<input type="hidden"  class="interdestination" name='POS_VAL_CTRL_DTN' id='POS_VAL_CTRL_DTN' value='{POS_VAL_RUB_DTN}'>
 
 											</div>
 
 											<div class="col-sm-4">
 												<label for="bio">Profil<span class='text'></span> :</label>
-												<select class="form-control">
-												    <option value="">Veuillez s&#233;lectionner</option>
-												    <option value="DG">DG</option>
-												    <option value="Senior Manage">Senior Manage</option>
-												    <option value="Manager">Manager</option>
-												    <option value="N-1 manager">N-1 manager</option>
+												<select class="form-control profil"   name="POS_VAL_RUB_LOG">
 												</select>
+												<input type="hidden"   class="interprofil" name='POS_VAL_CTRL_LOG' id='POS_VAL_CTRL_LOG' value='{POS_VAL_RUB_LOG}'>
 											</div>
 
 											<div class="col-sm-4">
 												<label for="bio">Hotel<span class='text'></span> :</label>
-												<input type="text" onkeypress="return testNum(event, this, 2);" placeholder="Hotel" class="form-control">
+												<input type="text" onkeypress="return testNum(event, this, 2);" name="POS_VAL_RUB_L1A" value="{POS_VAL_RUB_L1A}" placeholder="Hotel" class="form-control hotel amount">
 											</div>
 
 											<div class="col-sm-4" style="margin-top: 13px">
 												<label for="bio">Nourriture<span class='text'></span> :</label>
-												<input type="text" onkeypress="return testNum(event, this, 2);" placeholder="Nourriture" class="form-control">
+												<input type="text" onkeypress="return testNum(event, this, 2);" name="POS_VAL_RUB_L1B" value="{POS_VAL_RUB_L1B}" placeholder="Nourriture" class="form-control nourriture amount">
 											</div>
 
 											<div class="col-sm-4" style="margin-top: 13px">
 												<label for="bio">Deplacement  Urbain<span class='text'></span> :</label>
-												<input type="text" onkeypress="return testNum(event, this, 2);" placeholder="Deplacement  Urbain" class="form-control">
+												<input type="text" onkeypress="return testNum(event, this, 2);" name="POS_VAL_RUB_L1C" value="{POS_VAL_RUB_L1C}" placeholder="Deplacement  Urbain" class="form-control deplacement_urb amount">
 											</div>
 
 											<div class="col-sm-4" style="margin-top: 13px">
 												<label for="bio">Assurance<span class='text'></span> :</label>
-												<input type="text" onkeypress="return testNum(event, this, 2);" placeholder="Assurance" class="form-control">
+												<input type="text" onkeypress="return testNum(event, this, 2);"  name="POS_VAL_RUB_L1D" value="{POS_VAL_RUB_L1D}" placeholder="Assurance" class="form-control assurance amount">
 											</div>
 
 											<div class="col-sm-4" style="margin-top: 13px">
 												<label for="bio">Transport<span class='text'></span> :</label>
-												<input type="text" onkeypress="return testNum(event, this, 2);" placeholder="Transport" class="form-control">
+												<input type="text" onkeypress="return testNum(event, this, 2);" name="POS_VAL_RUB_L1E" value="{POS_VAL_RUB_L1E}" placeholder="Transport" class="form-control transport amount">
 											</div>
 
 										</div>
+
+										<input type="hidden" class="totalprice"  name="POS_VAL_RUB_K9" value="{POS_VAL_RUB_K9}" />
+										TOTAL : <span class="montant">0 F CFA</span>
 
 										<div class="row" style="margin-top: 1%">
 											<div class="col-sm-4">
@@ -223,19 +222,6 @@
 															 </thead>
 
 															<tbody class="tableL nvlligne">
-																<td style="width: 100px;border:none;">
-																	<select name="category" class="form-control select2" style="width: 95%">
-																		<option>Veuillez selectionnez</option>
-																		<option value="Test covid aller">Test covid aller</option>
-																		<option value="Test covid retour">Test covid retour</option>
-																		<option value="Frais de visa">Frais de visa</option>
-																		<option value="Frais de visa entré">Frais de visa entr&#233;</option>
-																	</select>
-																</td>
-
-																<td style="width: 100px;border:none;">
-																	<input type="text" placeholder="Prix unitaire" class="form-control" style="width: 100%">
-																</td>
 																 
 															</tbody>
 														</table>
@@ -357,10 +343,37 @@
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 		<script language='javascript' src='/{NOM_APPLICATION}/include/jQuery/parseley.js'></script>
 	    <script language='javascript' src='/{NOM_APPLICATION}/include/jQuery/parseleyfr.js'></script>
-	    <script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/FRS/Mes_scripts_ihm/niveau1.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+	   
 	<!-- endjquery  -->
 	
 	 <script>
+
+	 var bouton_initial = $('.bouton_sub').val();
+var caractere_hermes = "LIBELLE_ACTION_HERMES";
+var  comp =bouton_initial.indexOf(caractere_hermes) !== -1;
+if(comp===true){
+	$('.btn').hide();	
+}else{
+	$('.btn').show();	
+}
+
+
+	   //-------number format 
+    Number.prototype.formatMoney=function(decPlaces,thouSeparator,decSeparator){
+      var n=this,
+        decPlaces=isNaN(decPlaces=Math.abs(decPlaces))?2 : decPlaces,
+        decSeparator=decSeparator ==undefined ? ".":decSeparator,
+        thouSeparator=thouSeparator ==undefined ? ".":thouSeparator,
+        sign=n<0 ? "_":"",
+        i=parseInt(n=Math.abs(+n ||0).toFixed(decPlaces))+"",
+        j=(j=i.length)>3 ? j%3 :0;
+
+        return sign+(j ? i.substr(0,j)+thouSeparator : "")
+        +i.substr(j).replace(/(\d{3})(?=\d)/g,"$1"+thouSeparator)
+        +(decPlaces ? decSeparator+Math.abs(n-i).toFixed(decPlaces).slice(2):"");
+    };
+    //------ fin number format
 		var prof_util = "{PROFIL_UTILISATEUR}";	 
 		switch (prof_util) {
 		 case "ADMIN" :
@@ -399,6 +412,8 @@
 	//Fin fonctionnement du Bouton Annuler
    
 	</script>
+	 <script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/FRS/Mes_scripts_ihm/niveau2.js"></script>
+	<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/FRS/update.js"></script>
 	
 </html>
 

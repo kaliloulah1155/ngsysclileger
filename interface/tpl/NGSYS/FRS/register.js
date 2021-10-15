@@ -52,10 +52,10 @@ $(document).on('click','.btn_enreg',(e)=>{
 
     reg_besoins(code_key,besoins,pu)
     .then(data=>{
-        console.log('cool' ,data);
+       // console.log('cool' ,data);
     }).catch(err=>console.log(err));
 
-    e.preventDefault();
+    //e.preventDefault();
 });
 
 

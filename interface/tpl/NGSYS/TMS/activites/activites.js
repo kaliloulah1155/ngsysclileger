@@ -46,7 +46,7 @@ function mesActivites(poste){
 		.then(data=>{
 		            
 		         let donnees=data.activites;
-
+           
 		       ///tableau
 		       	/*   with select 2 */
 
