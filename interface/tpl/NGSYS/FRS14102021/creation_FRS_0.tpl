@@ -131,7 +131,6 @@
 								    
 								</select>
 								<input type="hidden"  class="interdestination" name='POS_VAL_CTRL_DTN' id='POS_VAL_CTRL_DTN' value='{POS_VAL_RUB_DTN}'>
-								<input type="hidden" class="lib_destination" name="POS_VAL_RUB_A1" value="{POS_VAL_RUB_A1}" />
 							</div>
 
 							<div class="col-sm-4">
@@ -139,7 +138,6 @@
 								<select class="form-control profil"   name="POS_VAL_RUB_LOG">
 								</select>
 								<input type="hidden"   class="interprofil" name='POS_VAL_CTRL_LOG' id='POS_VAL_CTRL_LOG' value='{POS_VAL_RUB_LOG}'>
-								<input type="hidden" class="lib_profil" name="POS_VAL_RUB_A2" value="{POS_VAL_RUB_A2}" />
 							</div>
 
 							<div class="col-sm-4">
@@ -167,20 +165,23 @@
 								<input type="text" onkeypress="return testNum(event, this, 2);" name="POS_VAL_RUB_L1E" value="{POS_VAL_RUB_L1E}" placeholder="Transport" class="form-control transport amount">
 							</div>
 
-							<div class="col-sm-8 text-center" style="padding-top: 50px">
-									<input type="hidden" class="totalprice"  name="POS_VAL_RUB_K9" value="{POS_VAL_RUB_K9}" />
-									TOTAL : <span class="montant">0 F CFA</span>
-							</div>
-
 						</div>
 
-						<div class="row" style="margin-top: 1%">
+						<input type="hidden" class="totalprice"  name="POS_VAL_RUB_K9" value="{POS_VAL_RUB_K9}" />
+						TOTAL : <span class="montant">0 F CFA</span>
 
-							<div class="col-sm-10 autresBesions">
-								<label for="bio">Autres besions:</label>
+						<div class="row" style="margin-top: 1%">
+							<div class="col-sm-4">
+								<input type="checkbox" class="btn_check" value="NON">
+								<input type="hidden" name="POS_VAL_RUB_N1" value="false" class="btn_check_val" value="false">
+								<label style="font-size: 12px;">Autre besoin li&#233; &#224; la mission.</label>
+							</div>
+
+							<div class="col-sm-8 autresBesions" style="margin-top: -4%">
 								<div class="row">
 									<div class="col-sm-12">
-										<table class="test tableligne" id="table_tache" style="width: 100%;">
+										
+										<table class="test tableligne" id="table_tache" style="width: 100%;text-align: center; margin-top: 2%;">
 											 <thead>
 												<tr>
 													<td style="width: 100px;border:none;text-align: left;margin-right: 0;">
@@ -193,23 +194,13 @@
 											 </thead>
 
 											<tbody class="tableL nvlligne">
-												<!-- <tr>
-													<td style="width: 90px;border:none;">
-															<select name="besoins[]" class="form-control besoin select2" style="width: 95%">
-																<option>Veuillez selectionnez</option>
-																	<option value="' + newData[i]['id'] + '"    >' +newData[i]['valeur'] + '</option>
-															</select>
-													</td>
-													<td style="width: 70px;border:none;">
-															<input type="text" name="pu[]" placeholder="Prix unitaire" class="form-control pu">
-													</td>
-												</tr> -->
+												 
 											</tbody>
 										</table>
 
 									</div>
 
-									<div class="col-sm" style="float: right;padding-right: 15px;">
+									<div class="col-sm" style="float: right;padding-right: 17px;">
 										<span class="btn button_plus Suprim" title="Suprimer la derni&#232;re ligne" style="margin-right: 5px;">Suprimer</span>
 										<span class="button_plus addRowRl btn">Ajouter une ligne</i></span>
 									</div>

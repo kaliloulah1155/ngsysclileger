@@ -25,51 +25,8 @@ let link_urlprof =
     appName+
     "/FRS/Mes_scripts_ihm/besoin.php";
 
-var link_urldest_profil =
-    "/"+
-    appName+
-    "/interface/tpl/"+
-    appName+
-    "/FRS/consult/dest_profil.php";
-
  
 $('.montant').html(parseInt($('.totalprice').val()).formatMoney(0,'.',',')+" FCFA");
-
-
-////////// GET ESTIMATION DE PROFIL ET DESTINATION //////////////////
-
-var profil =$('.interprofil').val();
-var destination =$('.interdestination').val();
-
-const get_dest_profil =(profil,destination)=>{
-	return new Promise((resolve,reject)=>{
-		  $.ajax({
-				  url: link_urldest_profil,
-				  data:{
-					profil:profil,
-					destination:destination
-				  },
-				  type: "POST",
-				  success: function(data) {
-					  resolve(data);
-				  },
-				  error: function(error) {
-					  reject(error);
-				  },
-			  });
-	});
-}
-
-get_dest_profil(profil,destination)
-.then(data=>{
-	var get_data=JSON.parse(data);
-	$('.lib_destination').val(get_data.data[1].destination);
-	$('.lib_profil').val(get_data.data[0].profil);
-
-}).catch(err=>console.log(err));
-
-
-////////////////////////////////////////////////////////////////
 
 
   //////////////LOAD ROW FRAIS DESTINATION ////////////////
@@ -105,7 +62,7 @@ get_dest_profil(profil,destination)
 	  row_tab(load_code)
 	  .then(data=>{
  
-         // console.log(data);
+          console.log(data);
 		  $(".tableL").html(data);
 
 		   // Show all options
@@ -319,7 +276,7 @@ $(document).on('keyup keydown','.pu',function(e) {
 
 		  var removep=parseInt(tr.find(".pu:last").val());
 
-		  //console.log('remove price : '+removep);
+		  console.log('remove price : '+removep);
 	  
 		  somme= parseInt(total_price(tab_prix1,tab_prix2))-parseInt(removep);
 

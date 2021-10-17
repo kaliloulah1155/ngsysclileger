@@ -1,7 +1,6 @@
 
-var appName =$('.appName').val();
+let appName =$('.appName').val();
 
- 
 
 let link_urldest =
     "/"+
@@ -25,111 +24,7 @@ let link_urlprof =
     appName+
     "/FRS/Mes_scripts_ihm/besoin.php";
 
-var link_urldest_profil =
-    "/"+
-    appName+
-    "/interface/tpl/"+
-    appName+
-    "/FRS/consult/dest_profil.php";
 
- 
-$('.montant').html(parseInt($('.totalprice').val()).formatMoney(0,'.',',')+" FCFA");
-
-
-////////// GET ESTIMATION DE PROFIL ET DESTINATION //////////////////
-
-var profil =$('.interprofil').val();
-var destination =$('.interdestination').val();
-
-const get_dest_profil =(profil,destination)=>{
-	return new Promise((resolve,reject)=>{
-		  $.ajax({
-				  url: link_urldest_profil,
-				  data:{
-					profil:profil,
-					destination:destination
-				  },
-				  type: "POST",
-				  success: function(data) {
-					  resolve(data);
-				  },
-				  error: function(error) {
-					  reject(error);
-				  },
-			  });
-	});
-}
-
-get_dest_profil(profil,destination)
-.then(data=>{
-	var get_data=JSON.parse(data);
-	$('.lib_destination').val(get_data.data[1].destination);
-	$('.lib_profil').val(get_data.data[0].profil);
-
-}).catch(err=>console.log(err));
-
-
-////////////////////////////////////////////////////////////////
-
-
-  //////////////LOAD ROW FRAIS DESTINATION ////////////////
-
-  var link_urlrow ="/"+
-    appName+
-    "/interface/tpl/"+
-    appName+
-    "/FRS/consult/row_frs.php";
-
-      var load_code=$('.loadcode').val();
-
-	  
-
-      const row_tab =(code)=>{
-		  return new Promise((resolve,reject)=>{
-                $.ajax({
-			            url: link_urlrow,
-						data:{
-							code_key:code,
-						},
-			            type: "POST",
-			            success: function(data) {
-			                resolve(data);
-			            },
-			            error: function(error) {
-			                reject(error);
-			            },
-			        });
-          });
-	  }
-
-	  row_tab(load_code)
-	  .then(data=>{
- 
-         // console.log(data);
-		  $(".tableL").html(data);
-
-		   // Show all options
-		    $("option").prop("disabled", false);
-
-		    // Get an array of all current selections
-		    var selected = [];
-		    $(".besoin").each(function() {
-		        selected.push($(this).val());
-		    });
-		    // Remove all selected options, except the current showing one, from all lists
-		    $(".besoin").each(function() {
-		        for (var i = 0; i < selected.length; i++) {
-		            if (selected[i] != $(this).val()) {
-		                $(this).find("option[value='" + selected[i] + "']").prop("disabled", true);
-
-		                //$(this).find("option[value='" + selected[i] + "']").remove();
-		            }
-		        }
-		    });
-
-	  }).catch(err=>console.log(err));
-
-  ////////////////////////////////////////////////////////
 
 	//DEBUT CALCUL MONTANT 
 
@@ -261,13 +156,13 @@ $(document).on('keyup keydown','.pu',function(e) {
 
 
 	    //checked
-	    // $(document).on('click','.btn_check',function(){
-		//      if($(this).is(':checked')==true){
-		//          $('.btn_check_val').val(true);
-		//      }if($(this).is(':checked')==false){
-		//          $('.btn_check_val').val(false);
-		//      }
-		//  });
+	    $(document).on('click','.btn_check',function(){
+		     if($(this).is(':checked')==true){
+		         $('.btn_check_val').val(true);
+		     }if($(this).is(':checked')==false){
+		         $('.btn_check_val').val(false);
+		     }
+		 });
 
 
 
@@ -284,7 +179,7 @@ $(document).on('keyup keydown','.pu',function(e) {
 
 
     //les autres besions 
-   /// $('.autresBesions').hide();
+    $('.autresBesions').hide();
 
     $('input[type="checkbox"]').click(function(){
 	    if($(this).prop("checked") == true){
@@ -319,7 +214,7 @@ $(document).on('keyup keydown','.pu',function(e) {
 
 		  var removep=parseInt(tr.find(".pu:last").val());
 
-		  //console.log('remove price : '+removep);
+		  console.log('remove price : '+removep);
 	  
 		  somme= parseInt(total_price(tab_prix1,tab_prix2))-parseInt(removep);
 
@@ -368,10 +263,10 @@ $(document).on('keyup keydown','.pu',function(e) {
     }
 
 
-    //  getBesoin()
-    // .then(data=>{
-    // 	addRowRl(data.besoins);
-    // }).catch(err=>console.log(err));
+     getBesoin()
+    .then(data=>{
+    	addRowRl(data.besoins);
+    }).catch(err=>console.log(err));
 
 
  	function  addRowRl(donnees_besn){ 

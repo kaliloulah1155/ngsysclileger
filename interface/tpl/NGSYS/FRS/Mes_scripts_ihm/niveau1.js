@@ -122,6 +122,55 @@ $(document).on('keyup keydown','.pu',function(e) {
 	    //FIN DESTINATION
 
 
+
+		
+////////// GET ESTIMATION DE PROFIL ET DESTINATION //////////////////
+
+var link_urldest_profil =
+    "/"+
+    appName+
+    "/interface/tpl/"+
+    appName+
+    "/FRS/consult/dest_profil.php";
+
+
+const get_dest_profil =(profil,destination)=>{
+	return new Promise((resolve,reject)=>{
+		  $.ajax({
+				  url: link_urldest_profil,
+				  data:{
+					profil:profil,
+					destination:destination
+				  },
+				  type: "POST",
+				  success: function(data) {
+					  resolve(data);
+				  },
+				  error: function(error) {
+					  reject(error);
+				  },
+			  });
+	});
+}
+
+$(document).on('change',' .destination , .profil',function(){
+
+	var prof =$('.profil').val();
+	var dest =$('.destination').val();
+
+	get_dest_profil(prof,dest)
+		.then(data=>{
+			var get_data=JSON.parse(data);
+			$('.lib_destination').val(get_data.data[1].destination);
+			$('.lib_profil').val(get_data.data[0].profil);
+
+		}).catch(err=>console.log(err));
+});
+
+
+////////////////////////////////////////////////////////////////
+
+
 	    //DEBUT PROFIL
 
 	    const getprofil =()=>{
@@ -178,21 +227,6 @@ $(document).on('keyup keydown','.pu',function(e) {
     select2();
 
 
-    //les autres besions 
-    $('.autresBesions').hide();
-
-    $('input[type="checkbox"]').click(function(){
-	    if($(this).prop("checked") == true){
-	      // alert("Checkbox est coché.");
-	      $('.autresBesions').show();
-	    }
-	    else if($(this).prop("checked") == false){
-	      // alert("Checkbox n'est pas coché.");
-	      $('.autresBesions').hide();
-	    }
-	});
-
-
 
 	// Script pour supprimer une ligne
     $(document).on('click','.Suprim',function(){
@@ -233,7 +267,7 @@ $(document).on('keyup keydown','.pu',function(e) {
 	});
 
 
-	//Debut ajouter de ligne a la table
+	//Ajouter une ligne a la table
 	$(".Suprim").hide(); // masquer le bouton de supression
 	$(".addRowRl").click(function(){   
 		 getBesoin()
