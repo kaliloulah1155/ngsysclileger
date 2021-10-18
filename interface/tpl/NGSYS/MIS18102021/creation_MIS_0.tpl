@@ -72,11 +72,6 @@
 		color: red;
 		}
 
-.select2-selection{
-	height: 200px;
-	background: red;
-}
-
 	</style>
 </head>
 <body  class='tpl_creation tpl_creation_mis' onLoad='initTplCreation();' style="background-color: transparent;font-family: 'Times New Roman';">
@@ -102,7 +97,7 @@
 
 		<div class="col_list">
 			<i class="fa fa-eye fa-1x" style="color:#4a67b3;"></i>
-			<a href="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/MIS/liste/liste_MIS_1.php?APPLI={NOM_APPLICATION}&USER={NOM_UTILISATEUR}&PROFIL={PROFIL_UTILISATEUR}">
+			<a href="javascript:void lanceBibBal('/{NOM_APPLICATION}/interface/session/principal/resultat/rechercher_db.php&TYPE_RECHERCHE=RECHERCHE_BAL&POS_QUEST_NOM=Bal_MIS_lnv&POS_QUEST_PUBLIC=1', 'QUESTION_BAL');">
 				<span style="color:#4a67b3;">Cliquez pour consulter la liste</span>
 			</a>
 		</div>
@@ -117,243 +112,234 @@
 					<div class="col2_partie" style="padding-top: 2%;">
 						<div class="row">
 						
-							<!-- données de l'utilisateur connecté -->
-							<input type="hidden" name='POS_VAL_RUB_NOM' class="viewnom" value="{POS_VAL_RUB_NOM}" >
-							<input type="hidden" name='POS_VAL_RUB_PRE' class="viewprenom" value="{POS_VAL_RUB_PRE}" >
-							<input type="hidden" name='POS_VAL_RUB_FON' class="viewfonction" value="{POS_VAL_RUB_FON}" >
-							<input type="hidden" name='POS_VAL_RUB_DPT' class="viewdepartement" value="{POS_VAL_RUB_DPT}" >
-							
-							 <!--fin données de l'utilisateur connecté -->
-		        
-							<div class="col-sm-12 text-center" style="margin-bottom: 13px">
-								<label>Les champs avec (<span class='text'></span>) sont obligatoires</label>
-							</div>
-
-							<div class="col-sm-4">
-								<label for="bio">Pays de destination  <span class='text'></span> :</label>
-								<select name="POS_VAL_RUB_PAY"  class="form-control selectPas pays" style="width: 100%;" required="true">
-	 							</select>
-								<input type="hidden" class="init_pays" name='POS_VAL_CTRL_PAY' id='POS_VAL_CTRL_PAY' value='{POS_VAL_RUB_PAY}' required="true">
-							</div>
-
-							<div class="col-sm-4">
-								<label for="bio">Ville de destination <span class='text'></span> :</label>
-								<select name="POS_VAL_RUB_VLE" class="form-control selectVis ville" style="width: 100%;">
-	 							</select>
-								<input type="hidden" class="init_ville" name='POS_VAL_CTRL_VLE' id='POS_VAL_CTRL_VLE' value='{POS_VAL_RUB_VLE}' required="true">
-							</div>
+						<!-- données de l'utilisateur connecté -->
+					<input type="hidden" name='POS_VAL_RUB_NOM' class="viewnom" value="{POS_VAL_RUB_NOM}" >
+					<input type="hidden" name='POS_VAL_RUB_PRE' class="viewprenom" value="{POS_VAL_RUB_PRE}" >
+					<input type="hidden" name='POS_VAL_RUB_FON' class="viewfonction" value="{POS_VAL_RUB_FON}" >
+					<input type="hidden" name='POS_VAL_RUB_DPT' class="viewdepartement" value="{POS_VAL_RUB_DPT}" >
 					
+					 <!--fin données de l'utilisateur connecté -->
+        
+					<div class="col-sm-12 text-center" style="margin-bottom: 13px">
+						<label>Les champs avec (<span class='text'></span>) sont obligatoires</label>
+					</div>
+
+		<!--<input type="hidden" name="POS_VAL_RUB_COD" value="{POS_VAL_RUB_COD}" class="numero" />-->
+		<!--<input type="hidden" name="POS_VAL_RUB_NOM" value="{POS_VAL_RUB_NOM}" class="nom_pers" />-->
+		<!--<input type="hidden" name="POS_VAL_RUB_PRE" value="{POS_VAL_RUB_PRE}" class="prenoms_pers" />-->
+
+
+
+						<!--<div class="col-sm-4">
+							<label for="bio">Voyageur <span class='text'></span> :</label>
+							<select name="POS_VAL_RUB_MEL" class="form-control selectVos personnel" style="width: 100%;" required="true">
+							    <option value="">Veuillez s&#233;lectionner</option>
+							</select>
+							<input type="hidden" class="init_personnel" name='POS_VAL_CTRL_MEL' id='POS_VAL_CTRL_MEL' value='{POS_VAL_RUB_MEL}' required="true">
+						</div>-->
+						<div class="col-sm-4">
+							<label for="bio">Pays de destination  <span class='text'></span> :</label>
+							<select name="POS_VAL_RUB_PAY"  class="form-control selectPas pays" style="width: 100%;" required="true">
+ 							</select>
+							<input type="hidden" class="init_pays" name='POS_VAL_CTRL_PAY' id='POS_VAL_CTRL_PAY' value='{POS_VAL_RUB_PAY}' required="true">
+						</div>
+						<div class="col-sm-4">
+							<label for="bio">Ville de destination <span class='text'></span> :</label>
+							<select name="POS_VAL_RUB_VLE" class="form-control selectVis ville" style="width: 100%;">
+ 							</select>
+							<input type="hidden" class="init_ville" name='POS_VAL_CTRL_VLE' id='POS_VAL_CTRL_VLE' value='{POS_VAL_RUB_VLE}' required="true">
+						</div>
+					
+
+						
 							<div class="col-sm-4">
 								<label for="bio">Date de d&#233;part <span class='text'></span> :</label>
 								<input type="text" name="POS_VAL_RUB_DAA" value="{POS_VAL_RUB_DAA}" placeholder="jj/mm/aaaa" class="form-control datepicker dateDepart" id="date1" style="width: 100%;" required="true">
 							</div>
-
-							<div class="col-sm-4" style="margin-top: 13px">
+							<div class="col-sm-4">
 								<label for="bio">Dur&#233;e <span class='text'></span> :</label>
 								<input type="text" onkeypress="return testNum(event, this, 2);"  name="POS_VAL_RUB_DUR" value="{POS_VAL_RUB_DUR}"  min="0" class="form-control duree" style="width: 100%;" required="true">
 							</div>
-
-							<div class="col-sm-4" style="margin-top: 13px">
+							<div class="col-sm-4">
 								<label for="bio">Date de retour :</label>
 								<input type="text" name="POS_VAL_RUB_DFI" value="{POS_VAL_RUB_DFI}" placeholder="jj/mm/aaaa" class="form-control datefin" readonly='true' style="width: 100%;" required="true">
 							</div>
 						
-							<div class="col-sm-4" style="margin-top: 13px">
+
+							<div class="col-sm-4">
 								<label for="bio">Moyen de transport <span class='text'></span> :</label>
 								<select name="POS_VAL_RUB_MOT" class="form-control selectMoys" style="width: 100%;">
 								    <option value="">Veuillez s&#233;lectionner</option>
 								     <option value="AVION">Avion</option>
-								     <option value="TRANSPORT EN COMMUN">Transport en commun</option>
+								     <option value="BATEAUX">Bateaux</option>
 								     <option value="TRAIN">Train</option>
-								     <option value="VEHICULE DE LOCATION">V&#233;hicule de location</option>
+								     <option value="VOITURE">Voiture</option>
 								</select>
 								<input type="hidden" class="init_transport" name='POS_VAL_CTRL_MOT' id='POS_VAL_CTRL_MOT' value='{POS_VAL_RUB_MOT}'>
 							</div>
-
-							<div class="col-sm-4" id="Compagnies" style="margin-top: 13px;">
+							<div class="col-sm-4">
 								<label for="bio">Compagnie :</label>
 								<select name="POS_VAL_RUB_COP" class="form-control selectCops compagnie" style="width: 100%;">
  								</select>
 								<input type="hidden" class="init_compagnie" name='POS_VAL_CTRL_COP' id='POS_VAL_CTRL_COP' value='{POS_VAL_RUB_COP}'>
 							</div>
-
-							<div class="col-sm-4" id="Num_vol" style="margin-top: 13px">
-								<label for="bio">N&#176; de vol :</label>
-								<input type="text" placeholder="N&#176; de vol" class="form-control" style="width: 100%;">
-							</div>
-
-							<div class="col-sm-4" id="classe_autres" style="margin-top: 13px;">
+							<div class="col-sm-4">
 								<label for="bio">Classe :</label>
 								<select name="POS_VAL_RUB_CLA" class="form-control" style="width: 100%;">
 								    <option value="">Veuillez s&#233;lectionner</option>
-								    <option value="1ERE CLASSE" id="1_clas">1&#232;re classe</option>
-								    <option value="2EME CLASSE" id="2_clas">2eme classe</option>
-								    <option value="AFFAIRE" id="3_clas">Affaire</option>
-								    <option value="ECONOMIQUE" id="4_clas">Economique</option>
-								    <option value="PREMIUM" id="5_clas">Premium</option>
+								     <option value="PREMIUM">Premium</option>
+								    <option value="ECONOMIQUE">Economique</option>
+								    <option value="AFFAIRE">Affaire</option>
 								</select>
 								<input type="hidden" class="init_classe" name='POS_VAL_CTRL_CLA' id='POS_VAL_CTRL_CLA' value='{POS_VAL_RUB_CLA}'>
 							</div>
 
-							<div class="col-sm-4" id="classe_trps" style="margin-top: 13px;">
-								<label for="bio">Classe :</label>
-								<select class="form-control classe_trps" style="width: 100%;">
-									<option value="ECONOMIQUE">Economique</option>
-								    <option value="PREMIUM">Premium</option>
- 								</select>
+							<div class="col-sm-4">
+								<label for="bio">Immatricul&eacute; :</label>
+								<input type="text" class="form-control" name='POS_VAL_RUB_IMM' value="{POS_VAL_RUB_IMM}" onBlur="javascript:maximum(this,'119');" style="width: 100%;">
 							</div>
-
-							<div class="col-sm-4" id="Num_depart" style="margin-top: 13px;">
-								<label for="bio">N&#176; de depart :</label>
-								<input type="text" class="form-control" placeholder="N&#176; de depart" style="width: 100%;">
-							</div>
-
-							<div class="col-sm-4" id="Heure_depart" style="margin-top: 13px;">
-								<label for="bio">Heure de depart :</label>
-								<input type="time" class="form-control" style="width: 100%;">
-							</div>
-
-							<div class="col-sm-4" id="Heure_arrive" style="margin-top: 13px;">
-								<label for="bio">Heure d&#146;arriv&#233;e :</label>
-								<input type="time" class="form-control" style="width: 100%;">
-							</div>
-
-							<div class="col-sm-4" id="Duree_vol" style="margin-top: 13px;">
-								<label for="bio">Dur&#233;e de voyage :</label>
-								<input type="text" class="form-control" placeholder="Dur&#233;e de voyage" style="width: 100%;">
-							</div>
-
-							<div class="col-sm-4" id="Immatriculation" style="margin-top: 13px;">
-								<label for="bio">Immatriculation :</label>
-								<input type="text" class="form-control" name='POS_VAL_RUB_IMM' placeholder="Immatriculation" value="{POS_VAL_RUB_IMM}" onBlur="javascript:maximum(this,'119');" style="width: 100%;">
-							</div>
-
-							<div class="col-sm-4" id="Typ_vehicul" style="margin-top: 13px;">
-								<label for="bio">Type de v&#233;hicule :</label>
-								<input type="text" class="form-control" placeholder="Type de v&#233;hicule" style="width: 100%;">
-							</div>
-
-							<div class="col-sm-4" id="Nm_chauffeur" style="margin-top: 13px;">
+							<div class="col-sm-4">
 								<label for="bio">Nom du chauffeur :</label>
-								<input type="text" class="form-control" placeholder="Nom du chauffeur"  name='POS_VAL_RUB_NCH' value="{POS_VAL_RUB_NCH}" onBlur="javascript:maximum(this,'119');" style="width: 100%;">
+								<input type="text" class="form-control"  name='POS_VAL_RUB_NCH' value="{POS_VAL_RUB_NCH}" onBlur="javascript:maximum(this,'119');" style="width: 100%;">
 							</div>
-
-							<div class="col-sm-4" id="Nu_permis" style="margin-top: 13px;">
-								<label for="bio">N&#176; de permis :</label>
-								<input type="text" class="form-control" placeholder="N&#176; de permis" style="width: 100%;">
-							</div>
-
-							<div class="col-sm-4" style="margin-top: 13px">
-								<label for="bio">Client :</label>
+							<div class="col-sm-4">
+								<label for="bio">Client <span class='text'></span> :</label>
 								<select name="POS_VAL_RUB_SOC" class="form-control selectClts client" style="width: 100%;">
  								</select>
  								<input type="hidden" class="init_client" name='POS_VAL_CTRL_SOC' id='POS_VAL_CTRL_SOC' value='{POS_VAL_RUB_SOC}'>
 							</div>
+						
 
-							<div class="col-sm-4" style="margin-top: 13px">
-								<label for="bio">Autre raison :</label>
-								<input type="text" placeholder="Autre raison" class="form-control" style="width: 100%;">
-							</div>
-
-							<div class="col-sm-4" style="margin-top: 13px">
-								<label for="bio">Objet de la mission :</label>
+							<div class="col-sm-4">
+								<label for="bio">Projet :</label>
 								<select name="POS_VAL_RUB_LPR" class="form-control selectProjs projet" style="width: 100%;">
  								</select>
 								<input type="hidden" class="init_projet" name='POS_VAL_CTRL_LPR' id='POS_VAL_CTRL_LPR' value='{POS_VAL_RUB_LPR}' required="true">
 							</div>
-					
-							<div class="col-sm-12" style="margin-top: 13px">
+						</div>
+
+						<div class="row" style="margin-top: 13px">
+							<div class="col-sm-12">
 								<label for="bio">Motif de la mission <span class='text'></span> :</label>
 								<textarea type="text" rows="3" class="form-control motif_mis" name='POS_VAL_RUB_COM' style="width: 100%; resize: none">{POS_VAL_RUB_COM}</textarea>
 							</div>
 						</div>
 
-
 						<div class="row" style="margin-top: 13px">
 							<div class="col-sm-12">
 								<label for="bio">Estimation frais de mission :</label>
-								<table class="table table-bordered " id="table_tache" style="width: 100%;margin: auto;">
+								<table class="table" id="table_tache" style="width: 100%;margin: auto;">
 									<tbody class="table_mis">
 										<tr>
-											<td style="width: 50px; font-weight: bold;text-align: center;">
-												<label for="bio" style="font-size: 11px">DESIGNATION</label>
+											<td style="width: 30px; border: 1px solid;font-weight: bold;text-align: center;">
+												<label for="bio">DESIGNATION</label>
 											</td>
-											<td style="width: 35px; font-weight: bold;text-align: center;">
-												<label for="bio" style="font-size: 11px">PRIX UNITAIRES</label>
+											<td style="width: 45px; border: 1px solid;font-weight: bold;text-align: center;">
+												<label for="bio">PRIX UNITAIRES</label>
 											</td>
-											<td style="width: 35px; font-weight: bold;text-align: center;">
-												<label for="bio" style="font-size: 11px">QUANTITES</label>
+											<td style="width: 45px; border: 1px solid;font-weight: bold;text-align: center;">
+												<label for="bio">QUANTITES</label>
 											</td>
-											<td style="width: 35px; font-weight: bold;text-align: center;">
-												<span style="font-size: 11px">TOTAL XOF</span>	
+											<td style="width: 30px; border: 1px solid;font-weight: bold;text-align: center;">
+												<span>TOTAL XOF</span>	
 											</td>
 										</tr>
-										
 										<tr>
-											<td style="width: 50px; ">
+											<td style="width: 30px; border: 1px solid">
 												<span>Hotel</span>	
 											</td>
-											<td style="width: 35px;padding: 0">
-												<input type="hidden" name="POS_VAL_RUB_PU1" value="{POS_VAL_RUB_PU1}"   onkeypress="return testNum(event, this, 2);"  min="0" class="form-control pu1" style="width: 100%;border: none" >
-												<span style="padding: 10px 10px;position: absolute;">0</span>
+											<td style="width: 45px; border: 1px solid">
+												<input type="text" name="POS_VAL_RUB_PU1" value="{POS_VAL_RUB_PU1}"   onkeypress="return testNum(event, this, 2);"  min="0" class="form-control pu1" style="width: 100%;">
 											</td>
-											<td style="width: 35px;padding: 0">
-												<input type="text" name="POS_VAL_RUB_QT1" value="{POS_VAL_RUB_QT1}"   onkeypress="return testNum(event, this, 2);"  min="0" class="form-control qte1" style="width: 100%;border: none">
+											<td style="width: 45px; border: 1px solid">
+												<input type="text" name="POS_VAL_RUB_QT1" value="{POS_VAL_RUB_QT1}"   onkeypress="return testNum(event, this, 2);"  min="0" class="form-control qte1" style="width: 100%;">
 											</td>
-											<td style="width: 35px;padding: 0">
-												<input type="hidden" name="POS_VAL_RUB_TO1" value="{POS_VAL_RUB_TO1}"   onkeypress="return testNum(event, this, 2);"  min="0" class="form-control tot1" style="width: 100%;border: none">
-												<span style="padding: 10px 10px;position: absolute;">0</span>
+											<td style="width: 45px; border: 1px solid">
+												<input type="text" name="POS_VAL_RUB_TO1" value="{POS_VAL_RUB_TO1}"   onkeypress="return testNum(event, this, 2);"  min="0" class="form-control tot1" style="width: 100%;background: transparent;">
 											</td>
 										</tr>
-
 										<tr>
-											<td style="width: 50px;">
+											<td style="width: 30px; border: 1px solid">
 												<span>Nouriture</span>	
 											</td>
-											<td style="width: 35px;padding: 0">
-												<input type="hidden" name="POS_VAL_RUB_PU2" value="{POS_VAL_RUB_PU2}" onkeypress="return testNum(event, this, 2);"  min="0" class="form-control pu1" style="width: 100%;border: none;">
-												<span style="padding: 10px 10px;position: absolute;">0</span>
+											<td style="width: 45px; border: 1px solid">
+												<input type="text" name="POS_VAL_RUB_PU2" value="{POS_VAL_RUB_PU2}" onkeypress="return testNum(event, this, 2);"  min="0" class="form-control pu1" style="width: 100%;">
 											</td>
-											<td style="width: 35px;padding: 0">
-												<input type="text" name="POS_VAL_RUB_QT2" value="{POS_VAL_RUB_QT2}" onkeypress="return testNum(event, this, 2);"  min="0" class="form-control qte1" style="width: 100%;border: none;">
+											<td style="width: 45px; border: 1px solid">
+												<input type="text" name="POS_VAL_RUB_QT2" value="{POS_VAL_RUB_QT2}" onkeypress="return testNum(event, this, 2);"  min="0" class="form-control qte1" style="width: 100%;">
 											</td>
-											<td style="width: 35px;padding: 0">
-												<input type="hidden" name="POS_VAL_RUB_TO2" value="{POS_VAL_RUB_TO2}" onkeypress="return testNum(event, this, 2);" readonly="true"  min="0" class="form-control tot1" style="width: 100%;border: none;background: transparent;">
-												<span style="padding: 10px 10px;position: absolute;">0</span>
+											<td style="width: 45px; border: 1px solid">
+												<input type="text" name="POS_VAL_RUB_TO2" value="{POS_VAL_RUB_TO2}" onkeypress="return testNum(event, this, 2);" readonly="true"  min="0" class="form-control tot1" style="width: 100%;background: transparent;">
 											</td>
 										</tr>
-
 										<tr>
-											<td style="width: 50px;">
-												<span>Deplacemment urbain</span>	
+											<td style="width: 30px; border: 1px solid;font-weight: 500;">
+												<span>SOUS-TOTAL 1</span>	
 											</td>
-											<td style="width: 35px;padding: 0;">
-												<input type="hidden" onkeypress="return testNum(event, this, 2);"name="POS_VAL_RUB_PU3" value="{POS_VAL_RUB_PU3}"  min="0" class="form-control pu2" style="width: 100%;border: none;">
-												<span style="padding: 10px 10px;position: absolute;">0</span>
+											<td style="width: 45px; border: 1px solid">
+												<input type="text" disabled="true" class="form-control" style="width: 100%;background: transparent;">
 											</td>
-											<td style="width: 35px;padding: 0">
-												<input type="text" name="POS_VAL_RUB_QT3" value="{POS_VAL_RUB_QT3}" onkeypress="return testNum(event, this, 2);"  min="0" class="form-control qte2" style="width: 100%;border: none;">
+											<td style="width: 45px; border: 1px solid">
+												<input type="text" disabled="true" class="form-control" style="width: 100%;background: transparent;">
 											</td>
-											<td style="width: 35px;padding: 0">
-												<input type="hidden" name="POS_VAL_RUB_TO3" value="{POS_VAL_RUB_TO3}" onkeypress="return testNum(event, this, 2);"  min="0" class="form-control tot2" style="width: 100%;background: transparent;border: none;">
-												<span style="padding: 10px 10px;position: absolute;">0</span>
+											<td style="width: 45px; border: 1px solid">
+												<input type="text"  class="form-control stotal1" name="POS_VAL_RUB_E1" value="{POS_VAL_RUB_E1}" readonly="true" style="width: 100%;background: transparent;">
 											</td>
 										</tr>
-
 										<tr>
-											<td style="width: 50px;">
-												<span>Total frais de mission</span>	
+											<td style="width: 30px; border: 1px solid">
+												<span>Co&#251;t moyen de transport</span>	
 											</td>
-											<td style="width: 35px;padding: 0;">
-												<input type="hidden" onkeypress="return testNum(event, this, 2);"name="POS_VAL_RUB_PU3" value="{POS_VAL_RUB_PU3}"  min="0" class="form-control pu2" style="width: 100%;border: none;">
-												<span style="padding: 10px 10px;position: absolute;">0</span>
+											<td style="width: 45px; border: 1px solid">
+												<input type="text" onkeypress="return testNum(event, this, 2);"name="POS_VAL_RUB_PU3" value="{POS_VAL_RUB_PU3}"  min="0" class="form-control pu2" style="width: 100%;">
 											</td>
-											<td style="width: 35px;padding: 0">
-												<!-- <input type="text" name="POS_VAL_RUB_QT3" value="{POS_VAL_RUB_QT3}" onkeypress="return testNum(event, this, 2);"  min="0" class="form-control qte2" style="width: 100%;border: none;"> -->
+											<td style="width: 45px; border: 1px solid">
+												<input type="text" name="POS_VAL_RUB_QT3" value="{POS_VAL_RUB_QT3}" onkeypress="return testNum(event, this, 2);"  min="0" class="form-control qte2" style="width: 100%;">
 											</td>
-											<td style="width: 35px;padding: 0">
-												<input type="hidden" name="POS_VAL_RUB_TO3" value="{POS_VAL_RUB_TO3}" onkeypress="return testNum(event, this, 2);"  min="0" class="form-control tot2" style="width: 100%;background: transparent;border: none;">
-												<span style="padding: 10px 10px;position: absolute;">0</span>
+											<td style="width: 45px; border: 1px solid">
+												<input type="text" name="POS_VAL_RUB_TO3" value="{POS_VAL_RUB_TO3}" onkeypress="return testNum(event, this, 2);"  min="0" class="form-control tot2" style="width: 100%;background: transparent;">
+											</td>
+										</tr>
+										<tr>
+											<td style="width: 30px; border: 1px solid">
+												<span>Frais d&#145;assurance de voyage</span>	
+											</td>
+											<td style="width: 45px; border: 1px solid">
+												<input type="text" onkeypress="return testNum(event, this, 2);" name="POS_VAL_RUB_PU4" value="{POS_VAL_RUB_PU4}"  min="0" class="form-control pu2" style="width: 100%;">
+											</td>
+											<td style="width: 45px; border: 1px solid">
+												<input type="text" onkeypress="return testNum(event, this, 2);"name="POS_VAL_RUB_QT4" value="{POS_VAL_RUB_QT4}"  min="0" class="form-control qte2" style="width: 100%;">
+											</td>
+											<td style="width: 45px; border: 1px solid">
+												<input type="text" name="POS_VAL_RUB_TO4" value="{POS_VAL_RUB_TO4}" onkeypress="return testNum(event, this, 2);" readonly="true"  min="0" class="form-control tot2" style="width: 100%;background: transparent;">
+											</td>
+										</tr>
+										<tr>
+											<td style="width: 30px; border: 1px solid;font-weight: 500;">
+												<span>SOUS-TOTAL 2</span>	
+											</td>
+											<td style="width: 45px; border: 1px solid">
+												<input type="text" disabled="true" class="form-control" style="width: 100%;background: transparent;">
+											</td>
+											<td style="width: 45px; border: 1px solid">
+												<input type="text" disabled="true" class="form-control" style="width: 100%;background: transparent;">
+											</td>
+											<td style="width: 45px; border: 1px solid">
+												<input type="text" name="POS_VAL_RUB_E2" value="{POS_VAL_RUB_E2}" value="0" readonly="true" class="form-control stotal2" style="width: 100%;background: transparent;">
+											</td>
+										</tr>
+										<tr>
+											<td style="width: 30px; border: 1px solid;font-weight: bold;">
+												<span>TOTAL FRAIS DE PERS</span>	
+											</td>
+											<td style="width: 45px; border: 1px solid">
+												<input type="text" disabled="true" class="form-control" style="width: 100%;background: transparent;">
+											</td>
+											<td style="width: 45px; border: 1px solid">
+												<input type="text" disabled="true" class="form-control" style="width: 100%;background: transparent;">
+											</td>
+											<td style="width: 45px; border: 1px solid">
+												<input type="text" name="POS_VAL_RUB_E3" value="{POS_VAL_RUB_E3}" readonly="true" class="form-control sum_total" style="width: 100%;background: transparent;">
 											</td>
 										</tr>
 
@@ -388,11 +374,11 @@
 	<!-- <script language='javascript' src="/{NOM_APPLICATION}/include/alert/sweetalert.js"></script> -->
 
 	<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/MIS/code/code.js"></script>
-	<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/MIS/manipule_champs/container.js"></script>
-
-
 		<script>
-		$(document).ready(function (){
+
+
+
+		$(document).ready(function () {
 
 			//script du bouton fermer
 			$('.btn_ferme').on('click',function(){
@@ -426,7 +412,7 @@
 
 
 			// select2 
-            $('.selectVos,.selectPas,.selectVis,.selectCops,.selectClts,.selectProjs,.classe_trps').select2({
+            $('.selectVos,.selectPas,.selectVis,.selectCops,.selectClts,.selectProjs').select2({
                 theme:'bootstrap4',
                 tags:true,
                 allowClear: true

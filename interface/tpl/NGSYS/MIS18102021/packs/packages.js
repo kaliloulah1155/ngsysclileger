@@ -5,6 +5,8 @@ let linkcompagnie =
     appN +
     "/MIS/packs/compagnie.php";
 
+//alert('ok');
+
 let linkcompagnieInsert =
     "/" +
     appN +
@@ -189,9 +191,6 @@ function load_compagnie() {
 }
 load_compagnie();
 
-//INSERTION LORSQUE C'EST UN NOUVELLE COMPAGNIE
-
-
 const replaceSpecialChars = (str) => {
     return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Remove accents
         //.replace(/([^\w]+|\s+)/g, '-') // Replace space and other characters by hyphen
@@ -211,12 +210,16 @@ function removeSpecials(str) {
     return res;
 }
 
+//INSERTION LORSQUE C'EST UN NOUVELLE COMPAGNIE
 $(document).on('change', '.compagnie', function() {
+
+    // console.log($(this).val());
+
     $.ajax({
         url: linkcompagnieInsert,
         type: "GET",
         data: {
-            compagnie:  removeSpecials(replaceSpecialChars($(this).val()))
+            compagnie: removeSpecials(replaceSpecialChars($(this).val()))
         },
         success: function(response) {
             if (response == 1) {
@@ -228,6 +231,8 @@ $(document).on('change', '.compagnie', function() {
             console.log(error);
         }
     });
+
+
 });
 
 
