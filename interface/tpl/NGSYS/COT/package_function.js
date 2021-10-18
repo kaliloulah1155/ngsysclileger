@@ -976,7 +976,7 @@ let linkprime =
                               var selected = [];
                               $(".lib_prime").each(function () {
                                   selected.push($(this).val());
-                              });
+                              });   
 
                               // Remove all selected options, except the current showing one, from all lists
                               $(".lib_prime").each(function () {

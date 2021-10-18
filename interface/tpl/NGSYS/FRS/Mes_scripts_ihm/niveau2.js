@@ -71,7 +71,12 @@ get_dest_profil(profil,destination)
 
 ////////////////////////////////////////////////////////////////
 
+var tab_out_prix2=[];
 
+function get_tot_tab (tab,total_init){
+	tab.push(total_init)
+	return tab;
+}
   //////////////LOAD ROW FRAIS DESTINATION ////////////////
 
   var link_urlrow ="/"+
@@ -84,7 +89,7 @@ get_dest_profil(profil,destination)
 
 	  
 
-      const row_tab =(code)=>{
+      const row_tab = (code)=>{
 		  return new Promise((resolve,reject)=>{
                 $.ajax({
 			            url: link_urlrow,
@@ -104,10 +109,21 @@ get_dest_profil(profil,destination)
 
 	  row_tab(load_code)
 	  .then(data=>{
- 
-         // console.log(data);
 		  $(".tableL").html(data);
 
+		  //get all amount of table 
+		  var amount_init=0;
+		  var total_init=0;
+		  $(".pu").each(function() {
+			if (isNaN(parseInt($(this).val()))) {
+				amount_init=0;
+		   }else{
+			   var amount_init=parseInt($(this).val())-0;
+			   total_init +=amount_init;
+		   }
+		});
+		get_total_tab(load_code);
+ 	 
 		   // Show all options
 		    $("option").prop("disabled", false);
 
@@ -128,67 +144,112 @@ get_dest_profil(profil,destination)
 		    });
 
 	  }).catch(err=>console.log(err));
+	  
+  async function get_total_tab(load_code) {
+			var  restab=await row_tab(load_code).then(data=>{
+				//get all amount of table 
+				var amount_init1=0;
+				var total_init1=0;
+				$(".pu").each(function() {
+				  if (isNaN(parseInt($(this).val()))) {
+					  amount_init1=0;
+				 }else{
+					 var amount_init1=parseInt($(this).val())-0;
+					 total_init1 +=amount_init1;
+				 }
+			  });
+			  return total_init1;
+			});
+
+			var  restinput=await row_tab(load_code).then(data=>{
+				//get all amount of table 
+				var amount_init2=0;
+				var total_init2=0;
+				$(".amount").each(function() {
+				  if (isNaN(parseInt($(this).val()))) {
+					  amount_init2=0;
+				 }else{
+					 var amount_init2=parseInt($(this).val())-0;
+					 total_init2 +=amount_init2;
+				 }
+			  });
+			  return total_init2;
+			});
+
+			 
+			console.log(' restab ',restab); //total price tableau
+			console.log('restinput ',restinput); //total price input
+
+
+			function total_price(a,b){
+				return parseInt(a)+parseInt(b);
+			}
+		 
+		  var tab_prix1=parseInt(restinput);
+	      var tab_prix2=parseInt(restab);
+		 
+		//  var somme=0;
+		$(document).on('keyup keydown','.amount',function(e) {
+			
+			var total1=0;
+			var amount1=0;
+			$('.amount').each(function(i,e){
+				if (isNaN(parseInt($(this).val()))) {
+					 amount1=0;
+				}else{
+					var amount1=parseInt($(this).val())-0;
+					total1 +=amount1;
+				}
+			});
+			tab_prix1=[];
+			tab_prix1.push(total1);
+			somme=parseInt(total_price(tab_prix1,tab_prix2));
+			$('.totalprice').val(somme);
+			$('.montant').html(somme.formatMoney(0,'.',',')+" FCFA");
+	
+		});
+		$(document).on('keyup keydown','.pu',function(e) {
+		   
+			var total2=0;
+			var amount2=0;
+			$('.pu').each(function(i,e){
+				if (isNaN(parseInt($(this).val()))) {
+					 pu2=0;
+				}else{
+					var pu2=parseInt($(this).val())-0;
+					total2 +=pu2;
+				}
+			});
+			tab_prix2=[];
+			tab_prix2.push(total2);
+		
+			somme=total_price(tab_prix1,tab_prix2);
+			$('.totalprice').val(somme);
+			$('.montant').html(somme.formatMoney(0,'.',',')+" FCFA");
+			 
+		});
+		
+			
+
+
+			////////////////////////
+		    
+		 
+
+
+
+
+}
+
+
+	 // get_total_tab(load_code);
+	  
+
 
   ////////////////////////////////////////////////////////
 
 	//DEBUT CALCUL MONTANT 
-
-	function total_price(a,b){
-		return parseInt(a)+parseInt(b);
-	}
  
- var tab_prix1=0;
- var tab_prix2=0;
- var somme=0;
-
-$(document).on('keyup keydown','.amount',function(e) {
-    
-	var total1=0;
-	var amount1=0;
-	$('.amount').each(function(i,e){
-		if (isNaN(parseInt($(this).val()))) {
- 			amount1=0;
-		}else{
-			var amount1=parseInt($(this).val())-0;
-			total1 +=amount1;
-		}
-	});
-    tab_prix1=[];
-	tab_prix1.push(total1);
-	somme=parseInt(total_price(tab_prix1,tab_prix2));
-	$('.totalprice').val(somme);
-
-	$('.montant').html(somme.formatMoney(0,'.',',')+" FCFA");
-
- 	//console.log(' tab_prix1 : ',tab_prix1[0]);
-});
-
-var $dataRows =$('.tableL');
-var tr=$dataRows.parent().parent();
-$(document).on('keyup keydown','.pu',function(e) {
-   
-    var total2=0;
-	var amount2=0;
-	$('.pu').each(function(i,e){
-		if (isNaN(parseInt($(this).val()))) {
- 			pu2=0;
-		}else{
-			var pu2=parseInt($(this).val())-0;
-			total2 +=pu2;
-		}
-	});
-    tab_prix2=[];
-	tab_prix2.push(total2);
-
-	somme=total_price(tab_prix1,tab_prix2);
-
-	$('.totalprice').val(somme);
-
-	$('.montant').html(somme.formatMoney(0,'.',',')+" FCFA");
-	//console.log(' tab_prix2 : ',tab_prix2[0]);
-});
-
-
 	/////////////////////
 
 

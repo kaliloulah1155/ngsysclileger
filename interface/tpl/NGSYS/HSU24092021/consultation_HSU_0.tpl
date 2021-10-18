@@ -935,7 +935,7 @@
 		    // });
 			//ce checkbox recalcul les données de la ligne courante
 			$(document).on('click',".cbk",function() {
-					var $row = $(this).closest("tr");    // Find the row
+					var $row = $(this).t("tr");    // Find the row
 					//var $text = $row.find(".cbk").val(); // Find the text
 					// Let's test it out
 					   var $val = $row.find(".cbk").map(function() {

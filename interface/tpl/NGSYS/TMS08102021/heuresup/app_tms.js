@@ -27,7 +27,7 @@
             tr.find('.hsu').each(function (i) {
                 var $row = $(this).closest("tr");    // Find the row     
                     valduree=[];
-
+     
                      if($row.find(this).map(()=>this.checked).toArray()[0]==true){
                           
                           valhsutab.push(true);
