@@ -8,12 +8,9 @@ $retour=array();
 
 try {
 
-    $destination=$_POST['destination'] ;
-    $profil=$_POST['profil'];
-    $qte=$_POST['qte'];
-
-
-
+    $params = (array) json_decode(file_get_contents('php://input'), TRUE);
+    $destination= $params['destination'];
+    $profil= $params['profil'];
     $id_rq=0;
      //retrouvez les données à partir de l'id
      $frs_id=pg_query("SELECT
@@ -100,29 +97,29 @@ try {
                 'id'=> $k,
                 'lib'=>ucwords('hotel'),
                 'pu'=>intval($hotel),
-                'qte'=>intval($qte)-1,
-                'xof'=>intval($hotel)*intval(intval($qte)-1)
+                'qte'=>intval($params['qte'])-1,
+                'xof'=>intval($hotel)*intval(intval($params['qte'])-1)
             ];
 
-            $somme+=intval($hotel)*intval(intval($qte)-1);
+            $somme+=intval($hotel)*intval(intval($params['qte'])-1);
 
             $retour['data'][]=[
                 'id'=> $k+1,
                 'lib'=>ucwords('nourriture'),
                 'pu'=>intval($nourriture),
-                'qte'=>intval($qte),
-                'xof'=>intval($nourriture)*intval($qte)
+                'qte'=>intval($params['qte']),
+                'xof'=>intval($nourriture)*intval($params['qte'])
             ];
-            $somme+=intval($nourriture)*intval($qte);
+            $somme+=intval($nourriture)*intval($params['qte']);
 
             $retour['data'][]=[
                 'id'=> $k+2,
                 'lib'=>ucwords('deplacement urbain'),
                 'pu'=>intval($depl_urb),
-                'qte'=>intval($qte),
-                'xof'=>intval($depl_urb)*intval($qte)
+                'qte'=>intval($params['qte']),
+                'xof'=>intval($depl_urb)*intval($params['qte'])
             ];
-            $somme+=intval($depl_urb)*intval($qte);
+            $somme+=intval($depl_urb)*intval($params['qte']);
 
             $retour['data'][]=[
                 'id'=> $k+3,
@@ -151,6 +148,10 @@ try {
         }else{
             $retour["error"]='not found';
         }
+
+
+
+
 
         echo json_encode($retour, TRUE );
 

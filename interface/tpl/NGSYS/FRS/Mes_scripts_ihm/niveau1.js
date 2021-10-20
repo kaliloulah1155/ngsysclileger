@@ -105,7 +105,7 @@ $(document).on('keyup keydown','.pu',function(e) {
           });
 	    }
 
-
+          
 
 	    getdestination()
 	    .then(data=>{

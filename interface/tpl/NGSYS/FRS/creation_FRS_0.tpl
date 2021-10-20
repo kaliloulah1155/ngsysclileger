@@ -128,7 +128,6 @@
 							<div class="col-sm-4">
 								<label for="bio">Destination<span class='text'></span> :</label>
 								<select class="form-control destination"   name="POS_VAL_RUB_DTN">
-								    
 								</select>
 								<input type="hidden"  class="interdestination" name='POS_VAL_CTRL_DTN' id='POS_VAL_CTRL_DTN' value='{POS_VAL_RUB_DTN}'>
 								<input type="hidden" class="lib_destination" name="POS_VAL_RUB_A1" value="{POS_VAL_RUB_A1}" />

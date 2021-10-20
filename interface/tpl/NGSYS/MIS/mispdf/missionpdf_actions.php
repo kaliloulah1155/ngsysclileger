@@ -7,8 +7,6 @@
 
 
      ///////////TRAITEMENT DES DONNEES ////////////
-
-
      $rq='SELECT "COD","NOM","PRE","VLE","COM","LPR","DAA","DFI","DUR","MOT","IMM","NCH","DCR" FROM public.pos_tab_index_mis WHERE "NUD"='.$numposeidon.' ';
 
      $contents=pg_query($rq) or die('Query failed: ' . pg_last_error());
@@ -43,9 +41,6 @@
          $date_crea=$row[12];
 
      }
-
-    
-
      ////////////////////////////////////////////////
 
   
