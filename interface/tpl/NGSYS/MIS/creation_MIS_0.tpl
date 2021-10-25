@@ -217,17 +217,17 @@
 
 							<div class="col-sm-4" id="Heure_depart" style="margin-top: 13px;">
 								<label for="bio">Heure de depart :</label>
-								<input type="time" name='POS_VAL_RUB_N2B' value="{POS_VAL_RUB_N2B}" class="form-control" style="width: 100%;">
+								<input type="time" name='POS_VAL_RUB_N2B' value="{POS_VAL_RUB_N2B}" class="form-control heurein" style="width: 100%;">
 							</div>
 
 							<div class="col-sm-4" id="Heure_arrive" style="margin-top: 13px;">
 								<label for="bio">Heure d&#146;arriv&#233;e :</label>
-								<input type="time" name='POS_VAL_RUB_N2C' value="{POS_VAL_RUB_N2C}" class="form-control" style="width: 100%;">
+								<input type="time" name='POS_VAL_RUB_N2C' value="{POS_VAL_RUB_N2C}" class="form-control heureout" style="width: 100%;">
 							</div>
 
 							<div class="col-sm-4" id="Duree_vol" style="margin-top: 13px;">
 								<label for="bio">Dur&#233;e de voyage :</label>
-								<input type="text" class="form-control" name='POS_VAL_RUB_N2D' value="{POS_VAL_RUB_N2D}" placeholder="Dur&#233;e de voyage" style="width: 100%;">
+								<input type="text" class="form-control  voyDuree" name='POS_VAL_RUB_N2D' value="{POS_VAL_RUB_N2D}" placeholder="Dur&#233;e de voyage" style="width: 100%;">
 							</div>
 
 							<div class="col-sm-4" id="Immatriculation" style="margin-top: 13px;">
@@ -352,6 +352,37 @@
 
 
 		<script>
+
+       //CALCUL DES DUREES 
+	   $(document).on('change keyup','.heurein,.heureout',function(){
+
+           		var inphdeb=$('.heurein').val();
+				var inphfin=$('.heureout').val();
+
+
+				var timeStart = new Date("01/01/2010 " + inphdeb);
+				var timeEnd = new Date("01/01/2010 " + inphfin);
+
+				if(timeStart <= timeEnd){
+						var difference = timeEnd - timeStart;
+						var diff_result = new Date(difference);
+
+						var hourDiff = diff_result.getHours();
+						var minuteDiff = diff_result.getMinutes();
+
+						hourDiff1 = hourDiff > 9 ? hourDiff : '0'+hourDiff;
+						minuteDiff1 = minuteDiff > 9 ? minuteDiff : '0' + minuteDiff;
+
+						var countDuree=(isNaN(hourDiff1) ? '00' : hourDiff1)+':'+(isNaN(minuteDiff1) ? '00' : minuteDiff1) ;
+
+						$('.voyDuree').val(countDuree);
+  						
+				} 
+						 
+     		});
+	   ///////////////////////////
+
+
 		$(document).ready(function (){
 
 			//script du bouton fermer

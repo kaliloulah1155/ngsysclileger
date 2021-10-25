@@ -43,18 +43,33 @@
 	<!-- END JQUERY UI -->
 	<style>
 			body{
-				background-color:#e1e1e1;
+				background-color:transparent;
+			}
+
+			td.titrepage{
+				border: none;
+			}
+
+			h1.titrepage{
+				color: #ffffff;
+			}
+
+			TABLE.titrepage{
+				padding-top: 5px;
+				margin-bottom: 11px;
+				border: none;
 			}
 			
 			#main_div{
 				z-index:0;
-				background-color:#e1e1e1; 
+				background-color: transparent; 
 				margin-top:-30px;
 			}
 			.legend-fieldset{
-				background-color:#3186B1;
-				width:95%;
-				height:30px;
+				background-color:#4a67b3;
+				width:90%;
+				height:50px;
+				margin: auto;
 			}
 		
 			#title-head{
@@ -65,6 +80,8 @@
 			.legend-fieldset>h5{
 				text-align:center;
 				color:white;
+				/* font-size: 18px; */
+				margin-bottom: 3px;
 			}
 			
 			.fields-row>div{
@@ -82,7 +99,6 @@
 			
 			.titre-entete{
 				background-image: linear-gradient(180deg, #3186B1, #3186B1);
-				padding:opx;
 				margin:0px;
 				height:100px;
 			}
@@ -119,15 +135,15 @@
 		
 		<div id="actions-container" class="titre-boutons navbar-static-top">
 			<div class="t3-module module intro-title titre-entete" id="Mod123">
-				<h3  class="module-title text-center " style="text-transform: unset; padding-top:20px;; color:white; "><span class="title-head" >{TITRE_ENTETE_PAGE}</span></h3>
-				<div style="z-index:0;">
+				<!-- <h3  class="module-title text-center " style="text-transform: unset; padding-top:20px;; color:white; "><span class="title-head" >{TITRE_ENTETE_PAGE}</span></h3> -->
+				<div style="z-index:0;padding-top: 40px;background: #4a67b3;">
 					{TITRE_BOUTONS}
 				</div>
 			</div>
 		</div>
  			
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="main_div">
-			<div class="navbar navbar-default t3-mainnav marginBottom-0" role="navigation" >
+			<div class="navbar navbar-default t3-mainnav marginBottom-0" role="navigation" style="display: none;">
 				<div class="navbar-header">
 					<button title="Clicquez ici pour voir les onglets" style="float:left;" type="button" class="btn navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-5">
 						<i class="fa fa-bars fa-lg"></i> 
@@ -142,25 +158,25 @@
 			
 				
 			<div class="tab-content " style="margin-top:-20px; ">
-				<div class="tab-pane fade active in "  id="tabs-1" style="margin-top:0.5%; margin-left:-2%;"><!--debut tab 1 : onglet Général-->
+				<div class="tab-pane fade active in "  id="tabs-1" style="margin-top:0.5%; margin-left:-2%;"><!--debut tab 1 : onglet Gï¿½nï¿½ral-->
 					<div class='col-lg-3 col-md-3 col-sm-12 col-xs-12'></div>
 					<div class="  col-lg-6 col-md-6 col-sm-12 col-xs-12">
 						<div class="ts-service-info" >
-							<fieldset class="side-by-side panel panel-primary">
+							<fieldset class="side-by-side panel panel-primary" style="margin: 110px auto;">
 								<legend class="legend-fieldset center-block" style="">
 									<h5> Informations</h5>	
 								</legend>
 								
 								 
 								<div class="fields-row" >
-									<div class="  col-lg-10 col-md-10 col-sm-12 col-xs-12" >
-											<div style="margin:1%; float:right;" class="d-inline-block">
-												<a href="javascript:charger_vocabulaire(document.principal.POS_TYPEDOC.value, 'MEL', 'POS_VAL_RUB_MEL')"><div class='iconvocmonolie' id='img_voc_MEL' title='Libellé'></div></a>
+									<div class="  col-lg-10 col-md-10 col-sm-12 col-xs-12" style="text-align: center;height: 12vh;">
+											<div style="border: 1px solid; padding: 2px; float:right;margin-right: 5%;display: none;" class="d-inline-block">
+												<a href="javascript:charger_vocabulaire(document.principal.POS_TYPEDOC.value, 'MEL', 'POS_VAL_RUB_MEL')"><div class='iconvocmonolie' id='img_voc_MEL' title='Libellï¿½'></div></a>
 											</div>
 											<div class="input-group d-inline-block">
-												<label class="input-group-addon" for="id_rub_MEL" ><img  src='../../../../images/icons/vert.png' title='Autocomplétion'> E-mail </label>
+												<label class="input-group-addon" for="id_rub_MEL" >E-mail </label>
 												<input class="form-control"  name='POS_VAL_RUB_MEL' id='id_rub_MEL' size='20' value="{POS_VAL_RUB_MEL}"  onBlur="javascript:maximum(this,'119')"
-												onKeyDown='return autoCompleteKeyDown(event);' onkeyup="return searchSuggestMin(event, this, VOCAB_USED, 0, '');" autocomplete="off" onClick="return closeSearch();">
+												onKeyDown='return autoCompleteKeyDown(event);' onkeyup="return searchSuggestMin(event, this, VOCAB_USED, 0, '');" autocomplete="off" onClick="return closeSearch();" style="width: 50%;height: 30px; margin-left: 13px;">
 											</div>
 									</div>
 								</div>
@@ -169,36 +185,36 @@
 							</fieldset>
 						</div>
 					 
-						<div class="ts-service-info" >
+						<div class="ts-service-info" style="display: none;">
 							<fieldset class="side-by-side panel panel-primary">
 								<legend class="legend-fieldset center-block" style="">
 									<h5> Suivi Logiciel</h5>	
 								</legend>
 								
-								<div class="fields-row" >
-									<div class="  col-lg-10 col-md-10 col-sm-12 col-xs-12" >
+								<div class="fields-row" style="text-align: center;padding-bottom: 11px;">
+									<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12" >
 											<div class="input-group d-inline-block">
-												<label class="input-group-addon" for="id_rub_NUD" > N° Poseidon </label>
+												<label class="input-group-addon" for="id_rub_NUD" style="margin-left: 20px;"> Nï¿½ Poseidon </label>
 												<input class="form-control"  name='POS_VAL_RUB_NUD' id='id_rub_NUD' size='20' value="{POS_VAL_RUB_NUD}"  onBlur="javascript:maximum(this,'119')"
-												onKeyDown='return autoCompleteKeyDown(event);' onkeyup="return searchSuggestMin(event, this, VOCAB_USED, 0, '');" autocomplete="off" onClick="return closeSearch();">
+												onKeyDown='return autoCompleteKeyDown(event);' onkeyup="return searchSuggestMin(event, this, VOCAB_USED, 0, '');" autocomplete="off" onClick="return closeSearch();" style="width: 50%;height: 30px; margin-left: 13px;">
 											</div>
 									</div>
 								</div>
-								<div class="fields-row" >
+								<div class="fields-row" style="text-align: center;padding-bottom: 11px;">
 									<div class="  col-lg-10 col-md-10 col-sm-12 col-xs-12" >
 											<div class="input-group d-inline-block">
-												<label class="input-group-addon" for="id_rub_ETF" > Etat Fiche </label>
+												<label class="input-group-addon" for="id_rub_ETF" style="margin-left: 20px;"> Etat Fiche </label>
 												<input class="form-control"  name='POS_VAL_RUB_ETF' id='id_rub_ETF' size='20' value="{POS_VAL_RUB_ETF}"  onBlur="javascript:maximum(this,'119')"
-												onKeyDown='return autoCompleteKeyDown(event);' onkeyup="return searchSuggestMin(event, this, VOCAB_USED, 0, '');" autocomplete="off" onClick="return closeSearch();">
+												onKeyDown='return autoCompleteKeyDown(event);' onkeyup="return searchSuggestMin(event, this, VOCAB_USED, 0, '');" autocomplete="off" onClick="return closeSearch();" style="width: 50%;height: 30px; margin-left: 35px;">
 											</div>
 									</div>
 								</div>
 								 
-                                 <div class="fields-row" >
+                                 <div class="fields-row" style="text-align: center;padding-bottom: 11px;">
                                     <div class="  col-lg-12 col-md-12 col-sm-12 col-xs-12" >
                                         <div class="input-group d-inline-block">
-                                            <label for='id_rub_OBJ' class="input-group-addon">Historique des actions </label>
-                                            <textarea style="resize:none; height:100px;"  class='form-control' wrap='SOFT' name='POS_VAL_RUB_HIS' rows='1' id='id_rub_HIS'>{POS_VAL_RUB_HIS}</textarea>
+                                            <label for='id_rub_OBJ' class="input-group-addon" style="margin-bottom: 5px;">Historique des actions </label><br>
+                                            <textarea style="resize:none;width: 70%;"  class='form-control' wrap='SOFT' name='POS_VAL_RUB_HIS' rows='7' id='id_rub_HIS'>{POS_VAL_RUB_HIS}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -210,7 +226,7 @@
                     
 				</div>					
 			</div>
-		</div> <!--fin tab 1 : onglet Général-->
+		</div> <!--fin tab 1 : onglet Gï¿½nï¿½ral-->
 				
 	</div><!--fin de la zone du contenu des onglets-->
 </div>

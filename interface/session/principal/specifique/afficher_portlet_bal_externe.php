@@ -1,17 +1,17 @@
 <?php
 /**
- * Affichage des boîtes aux lettres d'une autre application de la même base
+ * Affichage des boï¿½tes aux lettres d'une autre application de la mï¿½me base
  * 
- * Pas facilement intégrable en standard pour les raisons suivantes
+ * Pas facilement intï¿½grable en standard pour les raisons suivantes
  * - Il y a peu de client qui ont plusieurs applications Poseidon
  * - Les applications doivent etre sur la meme base ou partager une base d'utilisateur/mot de passe commune
- * - L'url à préciser pour l'ouverture de la question dépend du paramétrage de la page d'index de l'application externe
- * - Le chargement peut être long
- * - Intéressant quand on est en mode SSO, moins si l'utilisateur doit saisir son mdp sur chaque nouvelle application
+ * - L'url ï¿½ prï¿½ciser pour l'ouverture de la question dï¿½pend du paramï¿½trage de la page d'index de l'application externe
+ * - Le chargement peut ï¿½tre long
+ * - Intï¿½ressant quand on est en mode SSO, moins si l'utilisateur doit saisir son mdp sur chaque nouvelle application
  * - pas de gestion des profils, seul le profil par defaut est charge.
  * On pourrait charger tous les profils mais ce serait long et il faudrait gerer la connexion sur la nouvelle application
  * en prenant en compte un profil passe en argument de l'Url ce qui n'existe pas pour le moment.
- * On pourrait aussi spécifier le profil dans les parametres de la portlet mais cela rendrait difficile un parametrage generique par
+ * On pourrait aussi spï¿½cifier le profil dans les parametres de la portlet mais cela rendrait difficile un parametrage generique par
  * l'administrateur.
  */
 include_once ("../include/bal.inc.php");
@@ -39,7 +39,7 @@ $objRetour["contenu"] = "";
 $sAppl = $_REQUEST['POS_NOM_APPLI_EXTERNE'];
 if (!defined('APPLI_EXTERNE_BAL') || !isset(APPLI_EXTERNE_BAL[$sAppl])) {
     $objRetour["code_retour"] = 0;
-    $objRetour["msg_erreur"] = "L'application externe n'est pas paramétrée sur cette application.";
+    $objRetour["msg_erreur"] = "L'application externe n'est pas paramï¿½trï¿½e sur cette application.";
 }
 else {
     $sUrlExterne = APPLI_EXTERNE_BAL[$sAppl]["URL"];
@@ -81,7 +81,7 @@ else {
             // --------------------------------
             // chargement des bals en XML
             // --------------------------------
-            // Utilisateur et profil par défaut
+            // Utilisateur et profil par dï¿½faut
             $szUtilisateur = $_SESSION["sess_user_name"];
             $ficBal = getRepTmpSession(session_id())."bal.xml";
             $szNomFichier = "";
@@ -103,7 +103,7 @@ else {
             if ($retour) {
                 //$ficBal = "../../../../configuration/bal_".$_SESSION["sess_application"].".xml";
                 $tabBalNiveau1 = array();
-                // On vérifie que le fichier existe
+                // On vï¿½rifie que le fichier existe
                 if($retour && file_exists($ficBal) && filesize($ficBal) > 0)
                 {
                     $ficBalXml = simplexml_load_file($ficBal);
@@ -300,17 +300,17 @@ function afficheBalPortletTpl($jeton, $objBal, $iCptGroup, $blocAParserUpper, &$
 			$tpl->set_var("POS_BAL_NB_REP", $iNbReponses);
         }
 	}
-	// la bal est fermée
+	// la bal est fermï¿½e
 	else
 	{
-    	// si fermé : marque d'un ? le nb de réponses
+    	// si fermï¿½ : marque d'un ? le nb de rï¿½ponses
 		$tpl->set_var("POS_BAL_NB_REP", "?");	
 	}
 	
-	//test si un profil résumé
+	//test si un profil rï¿½sumï¿½
 	//if (strlen($objBal->szProfilLr) == 0) 
     //$linkBal = sprintf(URL_PARAM_QUESTION_PROFIL_RESULTAT_AVEC_ATTENTE, "RECHERCHE_BAL", addslashes($objBal->szCode), 1, addslashes($objBal->szProfilLr));
-    // NB : depend du paramétrage de la page d'index
+    // NB : depend du paramï¿½trage de la page d'index
 	$linkBal =  $sUrlExterne."?question=".urlencode(addslashes($objBal->szCode));
     $tpl->set_var("POS_BAL_EXTERNE_LIEN", $linkBal);
     $tpl->set_var("POS_BAL_LIBELLE", $objBal->szLibelle);

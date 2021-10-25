@@ -15,6 +15,8 @@ include ("../../../../configuration_w/constantesPHP.conf.php");
 include ("../../../../configuration/label_".$_SESSION["sess_langue"].".conf");
 include ("../../../../configuration/url.conf.php");
 
+
+ 
 $t = new template(REP_TEMPLATE_APPLICATIF);
 if(defined('MODE_PORTAIL') && strcmp(MODE_PORTAIL, "1") == 0) {
     $t->set_file("question", "portail/container_portlet.tpl");

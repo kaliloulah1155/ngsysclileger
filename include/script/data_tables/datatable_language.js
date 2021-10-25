@@ -2,7 +2,7 @@
      
           
 
-    $("#min-data").DataTable({
+    $("#min-data , #min-data2 , #min-data3").DataTable({
         
 //      "paging": true,
 //      "lengthChange": false,

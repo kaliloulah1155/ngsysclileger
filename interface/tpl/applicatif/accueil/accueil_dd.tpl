@@ -1648,6 +1648,9 @@ function containerState(action){
                                 <li style="margin: 1% -13%;font-weigth: lighter;">
                                     <a style="font-size: 15px;color: rgb(42, 138, 247);font-family: 'Times New Roman';color: #4a67b3;" href="javascript:void(0)" onClick="javascript:return affichePageToolbar(this, 'lien_1','/{NOM_APPLICATION}/interface/session/principal/creation/afficher_creation.php?POS_TYPEDOC=PAY');">Fiche de paie</a>
                                 </li>
+                                <li style="margin: 1% -13%;font-weigth: lighter;">
+                                    <a style="font-size: 15px;color: rgb(42, 138, 247);font-family: 'Times New Roman';color: #4a67b3;" href="javascript:void(0)" onClick="javascript:return affichePageToolbar(this, 'lien_1','/{NOM_APPLICATION}/interface/session/principal/creation/afficher_creation.php?POS_TYPEDOC=TAI');">Paiement mensuel</a>
+                                </li>
                             </ul>
                         </li>
                     </ul>

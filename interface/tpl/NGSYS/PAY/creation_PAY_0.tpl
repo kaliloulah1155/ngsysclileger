@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>    
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fiche de paye</title>
@@ -20,9 +20,11 @@
 	<script language='javascript' src='/{NOM_APPLICATION}/include/script/ajax_recup_listhier.js'></script>
 	<script language='javascript' src='/{NOM_APPLICATION}/include/script/ajax_recup_arbo_dossier.js'></script>
 	<script language='javascript' src='/{NOM_APPLICATION}/include/script/action_accueil.js'></script>
-
+	
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
     <link href="https://raw.githack.com/ttskch/select2-bootstrap4-theme/master/dist/select2-bootstrap4.css" rel="stylesheet"/>
+	
+	<link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="Stylesheet" type="text/css" />
 
 
 	<style>
@@ -65,6 +67,11 @@
 			content: "*";
 			color: red;
 		}
+		
+		.ui-datepicker-calendar {
+	        display: none;
+	    }
+
 
 	</style>
 </head>
@@ -117,29 +124,22 @@
 
 
 
-							<div class="col-sm-12 text-center" style="margin-bottom: 13px">
+							<div class="col-sm-12 text-center" style="margin-bottom: 13px;margin-top: 10px">
 								<label>Les champs avec (<span class='text'></span>) sont obligatoires</label>
 							</div>
  				
  
-							<div class="col-sm-offset-3 col-sm-6" style="margin-top: 13px">
+							<div class="col-sm-6" style="margin-top: 13px">
 								<label>Nom & pr&#233;mons <span class='text'></span> :</label>
 								<select name="POS_VAL_RUB_MEL" class="form-control selectNom personnel prs" style="width: 100%;">
 								    <option value="">Veuillez s&#233;lectionner</option>
 								</select>
 								<input type="hidden"  class="interselectperso" name='POS_VAL_CTRL_MEL' id='POS_VAL_CTRL_MEL' value='{POS_VAL_RUB_MEL}'>
 							</div>
-							<!--
-							<div class="col-sm-6" style="margin-top: 13px">
-								<label>Statut employ&#233; :</label>
-								<select name="category" class="form-control selectEntres" id="selectStatus" style="width: 100%;">
-								    <option value="">Veuillez s&#233;lectionner</option>
-								    <option value="SALAIRE EMPLOYE">Salaire employ&#233;</option>
-								    <option value="SALAIRE STAGIAIRE">Salaire stagiaire</option>
-								    <option value="SALAIRE CONSULTANT">Salaire consultant</option>
-								</select>
+							<div class="col-sm-6" style="margin-top: 13px;float: right;">
+								<label for="bio">Mois & Ann&#233;e :</label>
+								<input type="text" placeholder="MM/AAAA" class="form-control date" style="width: 100%;" required="true">
 							</div>
-							-->
 
 						</div>
 					</div>
@@ -409,20 +409,10 @@
 	    <script language='javascript' src='/{NOM_APPLICATION}/include/jQuery/parseleyfr.js'></script>
 		<script language='javascript' src="/{NOM_APPLICATION}/include/jQuery/jquery-ui.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+		<script language='javascript' src="../../../../include/script/testNum.js"></script>
 	<!-- END JQUERY  -->
-	<script language='javascript' src="../../../../include/script/testNum.js"></script>
 	
-	 <script>
-
-	 	 $('form').submit(function() {
-
-     var etat_part = $('.vpart').val();
-     if (etat_part == '' || etat_part == undefined) {
-         alert("Veuillez renseigner la situation matrimoniale et le nombre d'enfant du personnel");
-         return false;
-     }
-     alert("VOTRE OPERATION S'EST DEROULEE AVEC SUCCES");
- });
+	<script>
 
 		$(document).ready(function(){
 		 	//script du bouton fermer
@@ -431,6 +421,17 @@
 							{CODE_ACTION_FERMER}
 				}
 			});
+			
+			//script du bouton enregistrer
+			$('form').submit(function() {
+				var etat_part = $('.vpart').val();
+				if (etat_part == '' || etat_part == undefined) {
+					 alert("Veuillez renseigner la situation matrimoniale et le nombre d'enfant du personnel");
+					 return false;
+				}
+				alert("VOTRE OPERATION S'EST DEROULEE AVEC SUCCES");
+			});
+			
 
 			// select2 
             $('.selectNom').select2({
@@ -443,25 +444,47 @@
             $('.deuxieme_col').hide();
             $('.deuxieme_col,.sursalaire,.transportImpos,.rendement,.representation,.assurances,.avances,.autres,.pret,.level,.entreprise,.is,.cn,.igr,.cnps,.ancinnete,.heureSup,.transport,.salaireBase,.salaireBrute,.salaireNet,.salaireNetPaye,.honoraireNet,.honoraireNetPaye,.transportImpos').css('display','none');
 
+
+			//initialisation du calendrier datepicker
+			$.datepicker.regional['fr'] = {
+			
+				},
+				
+			$('.date').datepicker({
+				changeMonth: true,
+				changeYear: true,
+				showButtonPanel: true,
+				monthNames: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'D&#233;cembre'],
+				monthNamesShort: ['Janv.', 'F&#233;vr.', 'Mars', 'Avril', 'Mai', 'Juin', 'Juil.', 'Ao&#251;t', 'Sept.', 'Oct.', 'Nov.', 'D&#233;c.'],
+				dateFormat: 'MM yy',
+				closeText: "OK",
+				currentText: "Aujourd'hui",
+				onClose: function(dateText, inst) { 
+					var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+					var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+					$(this).datepicker('setDate', new Date(year, month, 1));
+				},
+			});
+			$.datepicker.setDefaults($.datepicker.regional['fr']);
+
+		
+
         });
 	</script>
 
 
 	 <script>
- 	  //no-cache script
-	 var today_cache = new Date();
-     let time_cache =today_cache.getDate()+''+today_cache.getMonth()+''+today_cache.getFullYear()+''+today_cache.getHours() +''+today_cache.getMinutes()+''+today_cache.getSeconds();
+		//no-cache script
+		var today_cache = new Date();
+		let time_cache =today_cache.getDate()+''+today_cache.getMonth()+''+today_cache.getFullYear()+''+today_cache.getHours() +''+today_cache.getMinutes()+''+today_cache.getSeconds();
+		document.write("<script type='text/javascript' src='/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PAY/stagiaire/stagiaire.js?t="+time_cache+"'><\/script>");
+		document.write("<script type='text/javascript' src='/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PAY/consultant/consultant.js?t="+time_cache+"'><\/script>");
+		document.write("<script type='text/javascript' src='/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PAY/salarie/salarie.js?t="+time_cache+"'><\/script>");
 
-    
-     document.write("<script type='text/javascript' src='/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PAY/stagiaire/stagiaire.js?t="+time_cache+"'><\/script>");
-     document.write("<script type='text/javascript' src='/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PAY/consultant/consultant.js?t="+time_cache+"'><\/script>");
-     document.write("<script type='text/javascript' src='/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PAY/salarie/salarie.js?t="+time_cache+"'><\/script>");
-
-     document.write("<script type='text/javascript' src='/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PAY/salarie/cn.js?t="+time_cache+"'><\/script>");
-      document.write("<script type='text/javascript' src='/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PAY/salarie/igr.js?t="+time_cache+"'><\/script>");
-      document.write("<script type='text/javascript' src='/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PAY/salarie/taxe_patronale.js?t="+time_cache+"'><\/script>");
-      document.write("<script type='text/javascript' src='/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PAY/personnel/personnel.js?t="+time_cache+"'><\/script>");
-
+		document.write("<script type='text/javascript' src='/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PAY/salarie/cn.js?t="+time_cache+"'><\/script>");
+		document.write("<script type='text/javascript' src='/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PAY/salarie/igr.js?t="+time_cache+"'><\/script>");
+		document.write("<script type='text/javascript' src='/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PAY/salarie/taxe_patronale.js?t="+time_cache+"'><\/script>");
+		document.write("<script type='text/javascript' src='/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PAY/personnel/personnel.js?t="+time_cache+"'><\/script>");
      </script>
      <script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PAY/notification.js"></script>
 

@@ -7,6 +7,9 @@
 	<link href="/{NOM_APPLICATION}/include/style_nouveau/style_accueil.css" rel="stylesheet">
     <link href="/{NOM_APPLICATION}/include/bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href='https://use.fontawesome.com/releases/v5.0.8/css/all.css' type='text/css' rel='STYLESHEET' />
+	<link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="Stylesheet" type="text/css" />
+
+	
 	<script type='text/javascript' src='/{NOM_APPLICATION}/include/script/association.js'></script> 
 	<script type='text/javascript' src='/{NOM_APPLICATION}/include/script/vocabulaire.js'></script>
 	<script type='text/javascript' src='/{NOM_APPLICATION}/include/script/fermeture.js'></script>
@@ -19,7 +22,7 @@
 	<script type='text/javascript' src='/{NOM_APPLICATION}/include/script/ajax_search.js'></script>
 	<script language='javascript' src='/{NOM_APPLICATION}/include/script/ajax_recup_listhier.js'></script>
 	<script language='javascript' src='/{NOM_APPLICATION}/include/script/ajax_recup_arbo_dossier.js'></script>
-	<script language='javascript' src='/{NOM_APPLICATION}/include/script/action_accueil.js'></script>
+	<script language='javascript' src='/{NOM_APPLICATION}/include/script/action_accueil.js'></script>	
 	
 	<!--ABASS INCLUDE-->
 		<link href="/{NOM_APPLICATION}/include/ressources/plugins/all/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
@@ -185,6 +188,9 @@
 
 		/*Fin de la Barre de progression  1  */
 
+		.ui-datepicker-calendar {
+	        display: none;
+	    }
 
 	</style>
 </head>
@@ -247,26 +253,17 @@
 
 										<div class="row">
 
-
-											<div class="col-sm-offset-3 col-sm-6" style="margin-top: 13px">
+											<div class="col-sm-6" style="margin-top: 13px">
 												<label>Nom & pr&#233;mons :</label>
 												<select name="POS_VAL_RUB_MEL" class="form-control selectNom personnel prs" style="width: 100%;">
 												    <option value="">Veuillez s&#233;lectionner</option>
 												</select>
 												<input type="hidden"  class="interselectperso" name='POS_VAL_CTRL_MEL' id='POS_VAL_CTRL_MEL' value='{POS_VAL_RUB_MEL}'>
 											</div>
-											<!--
-											<div class="col-sm-6" style="margin-top: 13px">
-												<label>Statut employ&#233; :</label>
-												<select name="category" class="form-control selectEntres" id="selectStatus" style="width: 100%;">
-												    <option value="">Veuillez s&#233;lectionner</option>
-												    <option value="SALAIRE EMPLOYE">Salaire employ&#233;</option>
-												    <option value="SALAIRE STAGIAIRE">Salaire stagiaire</option>
-												    <option value="SALAIRE CONSULTANT">Salaire consultant</option>
-												</select>
+											<div class="col-sm-6" style="margin-top: 13px;float: right;">
+												<label for="bio">Mois & Ann&#233;e :</label>
+												<input type="text" placeholder="MM/AAAA" class="form-control date" style="width: 100%;" required="true">
 											</div>
-											-->
-
 
 										</div>
 
@@ -1015,6 +1012,23 @@
 			//  Fin Barre de progression 1
 
 	$(document).ready(function(){
+		
+		$('.date').datepicker({
+			changeMonth: true,
+			changeYear: true,
+			showButtonPanel: true,
+			monthNames: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'D&#233;cembre'],
+			monthNamesShort: ['Janv.', 'F&#233;vr.', 'Mars', 'Avril', 'Mai', 'Juin', 'Juil.', 'Ao&#251;t', 'Sept.', 'Oct.', 'Nov.', 'D&#233;c.'],
+			dateFormat: 'MM yy',
+			closeText: "OK",
+			currentText: "Aujourd'hui",
+			onClose: function(dateText, inst) { 
+				var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+				var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+				$(this).datepicker('setDate', new Date(year, month, 1));
+			},
+		});
+		$.datepicker.setDefaults($.datepicker.regional['fr']);
 
 		// select2 
         $('.selectNom').select2({
@@ -1029,7 +1043,7 @@
  
 	});
 		 
-  //fonctionnement du Bouton Annuler
+	//fonctionnement du Bouton Annuler
 	 function videchamp(){
 	
 	   var inputArray = document.querySelectorAll('input');
@@ -1042,7 +1056,7 @@
 		});
 		 
 		 return false;
-	 }
+	}
 	//Fin fonctionnement du Bouton Annuler
    
 	</script>

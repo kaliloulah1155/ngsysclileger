@@ -488,7 +488,7 @@ function timeConverter(UNIX_timestamp){
 	   $('.dureedeb').val( $(this).val());
 });
 
-  $('.dureedebselect,.duree , .timedeb').on('change keyup ',function(){
+  $('.dureedebselect,.duree , .timedeb').on('change',function(){
 
 		var dureeheure0=$('.dureedeb').val() ;
 		var dureeheure;

@@ -2,6 +2,10 @@
 include ("../include/form_values.inc.php");
 // afficheBalTpl
 // affichage d'une bal dans le template � partir de l'objet objBal
+
+
+
+
 function afficheBalTpl($objBal, $iCptGroup, $blocAParserUpper, &$iCptBal, &$tpl)
 {
     $tpl->set_var("SZ_CODE_BAL", $objBal->szCode);
@@ -23,7 +27,10 @@ function afficheBalTpl($objBal, $iCptGroup, $blocAParserUpper, &$iCptBal, &$tpl)
 		{
 			// chargement dynamique des BAL, on ne cherhce pas le nb de r�ponses ... dans la valeur.
 			$iNbReponses = "...";
+           // $tpl->set_var("POS_BAL_NB_REP", 'toto');
     	    $tpl->set_var("POS_BAL_NB_REP", $iNbReponses);
+            
+            
         }
 	}
 	// la bal est ferm�e
