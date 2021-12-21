@@ -114,7 +114,7 @@ $(".matricule ,.select_fiche").on("change", function() {
          $('.table > tbody').find('tr').remove();
         var t = $('.table').DataTable();
          t.clear();
-
+      
        /* t.row.add([
                 "ATTESTATION DE CONGE",
                 datetoday,

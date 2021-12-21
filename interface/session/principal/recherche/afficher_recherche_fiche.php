@@ -7,10 +7,10 @@
  *
  * Donnees en entree : 
  * POS_TYPEDOC : type du document
- * INUMQUEST : numéro de la question quand on vient de l'historique (facultatif)
+ * INUMQUEST : numï¿½ro de la question quand on vient de l'historique (facultatif)
  *------------------------------------------------------------------
  * Modifications :
- * 13.09.2001 GG remplacement des valeurs des rubriques afin de pouvoir réafficher la recherche
+ * 13.09.2001 GG remplacement des valeurs des rubriques afin de pouvoir rï¿½afficher la recherche
  * 24.02.2003 FT gestion pour le retour de l'historique
  * 25.03.2005 GG suppression de la connexion a Poseidon
  */
@@ -40,7 +40,7 @@ if(isset($_REQUEST["INUMQUEST"]))
 	for($i=0; $i < count($_SESSION["sess_tabHistQuest"][0][$_REQUEST["INUMQUEST"]]); $i++)
 	{
 		$szCodeRub = $_SESSION["sess_tabHistQuest"][0][$_REQUEST["INUMQUEST"]][$i]->szCodeRub;
-		//on crée le nom de la variable
+		//on crï¿½e le nom de la variable
 		$code = "POS_VAL_RUB_$szCodeRub";
 		$tabRecherche[$code] = $_SESSION["sess_tabHistQuest"][0][$_REQUEST["INUMQUEST"]][$i]->szValeur1;
         if (strlen($_SESSION["sess_tabHistQuest"][0][$_REQUEST["INUMQUEST"]][$i]->szCodeTypeLie) != 0)
@@ -50,11 +50,11 @@ if(isset($_REQUEST["INUMQUEST"]))
         }
 	}
 }
-
+      
 $szCodeTypeDoc = $_REQUEST["POS_TYPEDOC"];
 $iNumFiche = isset($_REQUEST["POS_NUM_FICHE"]) ? $_REQUEST["POS_NUM_FICHE"] : "0";
 
-// Test d'existence de la fiche d'index par défaut
+// Test d'existence de la fiche d'index par dï¿½faut
 $retour_file = get_file_tpl("RECHERCHE", $szCodeTypeDoc, $iNumFiche, /*pref*/$file_tpl);
 
 if (!$retour_file)
@@ -75,6 +75,13 @@ foreach($tabRecherche as $szCode => $szValeur)
 {
 	$tpl->set_var($szCode, htmlentities_currentcharset($szValeur, ENT_QUOTES));
 }
+
+//add by Ibson
+$nom_utilisateur=$_SESSION["sess_user_name"];
+$profil_utilisateur=$_SESSION["sess_profil"];
+echo "<input  type='hidden' class='utilisateur'value='{$nom_utilisateur}' />";
+echo "<input  type='hidden' class='profil'value='{$profil_utilisateur}' />";
+ 
 
 
 $tpl->set_var("URL_ATTENTE", URL_ATTENTE_RECHERCHE);

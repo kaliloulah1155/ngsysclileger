@@ -523,7 +523,7 @@
 																<span style="font-size: 11px">TOTAL XOF</span>	
 															</td>
 														</tr>
-													</thead>
+													</thead>    
 												    <tbody class="table_mis">
 														 
 													</tbody>

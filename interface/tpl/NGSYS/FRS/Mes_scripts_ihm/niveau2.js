@@ -61,7 +61,7 @@ const get_dest_profil =(profil,destination)=>{
 }
 
 get_dest_profil(profil,destination)
-.then(data=>{
+.then(data=>{    
 	var get_data=JSON.parse(data);
 	$('.lib_destination').val(get_data.data[1].destination);
 	$('.lib_profil').val(get_data.data[0].profil);

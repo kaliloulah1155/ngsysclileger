@@ -30,7 +30,7 @@ let link_urldestp =
 
 const get_estimation = (destination, profil, qte) => {
     return new Promise((resolve, reject) => {
-
+    
         $.ajax({
             url: link_urldestp,
             type: "POST",
@@ -55,7 +55,7 @@ function func_estimation(destination, profil, qte) {
 
     get_estimation(destination, profil, qte)
         .then(result => {
-
+                      
             $('.table_mis').empty();
 
             const resultats = result;

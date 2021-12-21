@@ -17,7 +17,7 @@ function ajaxListeCAS() {
         success: function(response) {
 
             var responseNew = JSON.parse(response);
-
+      
             var j = 1;
             var t = $('.table').DataTable();
             t.clear();

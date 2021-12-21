@@ -20,7 +20,7 @@ $(document).on('click', '.btn_export', function(e) {
     date_fin = $('.date_fin').val();
     email = $('.personnel').val();
 
-
+    
     var btnexport = $(this).val();
     var choice = $('.choice').val();
     window.open(downloadexcel + '?export=' + btnexport + '&choice=' + choice + '&date_deb=' + date_deb + '&date_fin=' + date_fin + '&email=' + email, "_blank ");

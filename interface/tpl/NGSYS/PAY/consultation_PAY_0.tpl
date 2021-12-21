@@ -7,9 +7,6 @@
 	<link href="/{NOM_APPLICATION}/include/style_nouveau/style_accueil.css" rel="stylesheet">
     <link href="/{NOM_APPLICATION}/include/bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href='https://use.fontawesome.com/releases/v5.0.8/css/all.css' type='text/css' rel='STYLESHEET' />
-	<link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="Stylesheet" type="text/css" />
-
-	
 	<script type='text/javascript' src='/{NOM_APPLICATION}/include/script/association.js'></script> 
 	<script type='text/javascript' src='/{NOM_APPLICATION}/include/script/vocabulaire.js'></script>
 	<script type='text/javascript' src='/{NOM_APPLICATION}/include/script/fermeture.js'></script>
@@ -22,7 +19,7 @@
 	<script type='text/javascript' src='/{NOM_APPLICATION}/include/script/ajax_search.js'></script>
 	<script language='javascript' src='/{NOM_APPLICATION}/include/script/ajax_recup_listhier.js'></script>
 	<script language='javascript' src='/{NOM_APPLICATION}/include/script/ajax_recup_arbo_dossier.js'></script>
-	<script language='javascript' src='/{NOM_APPLICATION}/include/script/action_accueil.js'></script>	
+	<script language='javascript' src='/{NOM_APPLICATION}/include/script/action_accueil.js'></script>
 	
 	<!--ABASS INCLUDE-->
 		<link href="/{NOM_APPLICATION}/include/ressources/plugins/all/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
@@ -33,6 +30,8 @@
 	<!--ABASS INCLUDE-->
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
     <link href="https://raw.githack.com/ttskch/select2-bootstrap4-theme/master/dist/select2-bootstrap4.css" rel="stylesheet"/>
+
+	<link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="Stylesheet" type="text/css" />
 	<style>
 		.col1_partie{
 			width: 100%;
@@ -188,9 +187,6 @@
 
 		/*Fin de la Barre de progression  1  */
 
-		.ui-datepicker-calendar {
-	        display: none;
-	    }
 
 	</style>
 </head>
@@ -253,6 +249,7 @@
 
 										<div class="row">
 
+
 											<div class="col-sm-6" style="margin-top: 13px">
 												<label>Nom & pr&#233;mons :</label>
 												<select name="POS_VAL_RUB_MEL" class="form-control selectNom personnel prs" style="width: 100%;">
@@ -262,8 +259,10 @@
 											</div>
 											<div class="col-sm-6" style="margin-top: 13px;float: right;">
 												<label for="bio">Mois & Ann&#233;e :</label>
-												<input type="text" placeholder="MM/AAAA" class="form-control date" style="width: 100%;" required="true">
+												<input type="text" name='POS_VAL_RUB_A1' value='{POS_VAL_RUB_A1}' placeholder="MM/AAAA" class="form-control date" style="width: 100%;" required="true">
+												<input type="hidden" name='POS_VAL_RUB_DAE' value='{POS_VAL_RUB_DAE}' class="form-control date_edit">
 											</div>
+
 
 										</div>
 
@@ -887,7 +886,7 @@
 								<!-- Consultation -->
 								<div class="form-group">
 								   <label for="bio">Consultation :</label>
-								  <textarea name="POS_VAL_RUB_AVU" class="form-control" id="bio" rows="2" style="width: 100%;resize: none;margin-top: -1%">{POS_VAL_RUB_AVU}</textarea>
+								  <textarea name="POS_VAL_RUB_AVU" class="form-control avu" id="bio" rows="2" style="width: 100%;resize: none;margin-top: -1%">{POS_VAL_RUB_AVU}</textarea>
 								</div>
 								<!-- Modification -->
 								<div class="form-group">
@@ -930,6 +929,13 @@
 
 
 	 	//Traitement sur les commentaires
+
+ 	
+
+		$(document).on('change','.personnel',function(e){
+				
+				$('.avu').val($(this).val());
+		});
 
 		var prof_util = "{PROFIL_UTILISATEUR}";	 
 		var str = prof_util;
@@ -1012,23 +1018,6 @@
 			//  Fin Barre de progression 1
 
 	$(document).ready(function(){
-		
-		$('.date').datepicker({
-			changeMonth: true,
-			changeYear: true,
-			showButtonPanel: true,
-			monthNames: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'D&#233;cembre'],
-			monthNamesShort: ['Janv.', 'F&#233;vr.', 'Mars', 'Avril', 'Mai', 'Juin', 'Juil.', 'Ao&#251;t', 'Sept.', 'Oct.', 'Nov.', 'D&#233;c.'],
-			dateFormat: 'MM yy',
-			closeText: "OK",
-			currentText: "Aujourd'hui",
-			onClose: function(dateText, inst) { 
-				var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
-				var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
-				$(this).datepicker('setDate', new Date(year, month, 1));
-			},
-		});
-		$.datepicker.setDefaults($.datepicker.regional['fr']);
 
 		// select2 
         $('.selectNom').select2({
@@ -1040,10 +1029,61 @@
 
        $('.deuxieme_col').hide();
             $('.deuxieme_col,.sursalaire,.transportImpos,.rendement,.representation,.assurances,.avances,.autres,.pret,.level,.entreprise,.is,.cn,.igr,.cnps,.ancinnete,.heureSup,.transport,.salaireBase,.salaireBrute,.salaireNet,.salaireNetPaye,.honoraireNet,.honoraireNetPaye,.transportImpos').css('display','none');
+
+			//initialisation du calendrier datepicker
+			$.datepicker.regional['fr'] = {
+			
+				},
+				
+			$('.date').datepicker({
+				changeMonth: true,
+				changeYear: true,
+			//	showButtonPanel: true,
+				monthNames: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Ao\u00fbt', 'Septembre', 'Octobre', 'Novembre', 'D\u00e9cembre'],
+				monthNamesShort: ['Janv.', 'F&#233;vr.', 'Mars', 'Avril', 'Mai', 'Juin', 'Juil.', 'Ao&#251;t', 'Sept.', 'Oct.', 'Nov.', 'D&#233;c.'],
+				dateFormat: 'MM yy',
+				closeText: "OK",
+				currentText: "Aujourd'hui",
+				onClose: function(dateText, inst) { 
+					var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+					var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+
+					//console.log(` in : mois : ${mois} , year : ${year}`);
+					$(this).datepicker('setDate', new Date(year, month, 1));
+				},
+				onSelect: function() {
+				 
+					var tab_date= ($(this).val()).split(' ');
+				    var mois= tab_date[0];  // mois
+				    var year= tab_date[1]; // année 
+
+					var map_date = new Map();
+					map_date.set('Janvier', '01'); 
+					map_date.set('Fevrier', '02');
+					map_date.set('Mars', '03'); 
+					map_date.set('Avril', '04');
+					map_date.set('Mai', '05');
+					map_date.set('Juin', '06'); 
+					map_date.set('Juillet', '07'); 
+					map_date.set('Ao\u00fbt', '08'); 
+					map_date.set('Septembre', '09');
+					map_date.set('Octobre', '10'); 
+					map_date.set('Novembre', '11');
+					map_date.set('D\u00e9cembre', '12'); 
+					
+					var dt_edit=`01/${map_date.get(mois)}/${year}`;
+					//console.log(`01/${map_date.get(mois)}/${year}`);
+
+					$('.date_edit').val(dt_edit);
+				}
+			});
+			$.datepicker.setDefaults($.datepicker.regional['fr']);
+
+		 
  
 	});
 		 
-	//fonctionnement du Bouton Annuler
+  //fonctionnement du Bouton Annuler
 	 function videchamp(){
 	
 	   var inputArray = document.querySelectorAll('input');
@@ -1056,7 +1096,7 @@
 		});
 		 
 		 return false;
-	}
+	 }
 	//Fin fonctionnement du Bouton Annuler
    
 	</script>

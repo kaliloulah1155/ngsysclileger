@@ -48,7 +48,7 @@ use \PhpOffice\PhpSpreadsheet\Style\Fill;
 	        }else{
 	        	 $query_prs_data =$query_init;
 	        }
-	    }
+	    }      
 
 	   if(!empty($email)){
 

@@ -139,7 +139,7 @@ if ($retour)
 			        $t->set_var("FONCTION_UTILISATEUR",$fonction);
 			        echo "<input  type='hidden' class='fonction' name='POS_VAL_RUB_FON'  value='{$fonction}' />";
 			     }
-
+  
 
 			     //get user departement
 			      $query_dpt="

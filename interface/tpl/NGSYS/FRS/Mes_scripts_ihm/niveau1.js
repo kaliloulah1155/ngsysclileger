@@ -88,7 +88,7 @@ $(document).on('keyup keydown','.pu',function(e) {
 
 
 
-    //DEBUT DESTINATION
+    //DEBUT DESTINATION     
 	    const getdestination =()=>{
           return new Promise((resolve,reject)=>{
                 $.ajax({

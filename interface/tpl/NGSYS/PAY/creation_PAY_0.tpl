@@ -20,10 +20,10 @@
 	<script language='javascript' src='/{NOM_APPLICATION}/include/script/ajax_recup_listhier.js'></script>
 	<script language='javascript' src='/{NOM_APPLICATION}/include/script/ajax_recup_arbo_dossier.js'></script>
 	<script language='javascript' src='/{NOM_APPLICATION}/include/script/action_accueil.js'></script>
-	
+
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
     <link href="https://raw.githack.com/ttskch/select2-bootstrap4-theme/master/dist/select2-bootstrap4.css" rel="stylesheet"/>
-	
+
 	<link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="Stylesheet" type="text/css" />
 
 
@@ -67,11 +67,6 @@
 			content: "*";
 			color: red;
 		}
-		
-		.ui-datepicker-calendar {
-	        display: none;
-	    }
-
 
 	</style>
 </head>
@@ -102,7 +97,7 @@
 		<!-- </div> -->
 		<div class="col_list">
 			<i class="fa fa-eye fa-1x" style="color:#4a67b3;"></i>
-			<a href="javascript:void lanceBibBal('/{NOM_APPLICATION}/interface/session/principal/resultat/rechercher_db.php&TYPE_RECHERCHE=RECHERCHE_BAL&POS_QUEST_NOM=Bal_PAY_lnv&POS_QUEST_PUBLIC=1', 'QUESTION_BAL');">
+			<a href="javascript:void lanceBibBal('/{NOM_APPLICATION}/interface/session/principal/resultat/rechercher_db.php&TYPE_RECHERCHE=RECHERCHE_BAL&POS_QUEST_NOM=Bal_PAY_nv&POS_QUEST_PUBLIC=1', 'QUESTION_BAL');">
 				<span style="color:#4a67b3;">Cliquez pour consulter la liste</span>
 			</a>
 		</div>
@@ -122,14 +117,12 @@
  				<input  class="form-control prenoms" type="hidden" name='POS_VAL_RUB_PRE' value="{POS_VAL_RUB_PRE}" placeholder="prenoms"  >
  				<input  class="form-control matricule" placeholder="matricule" type="hidden" name='POS_VAL_RUB_MAT'  value="{POS_VAL_RUB_MAT}"  >
 
-
-
-							<div class="col-sm-12 text-center" style="margin-bottom: 13px;margin-top: 10px">
+							<div class="col-sm-12 text-center" style="margin-bottom: 13px">
 								<label>Les champs avec (<span class='text'></span>) sont obligatoires</label>
 							</div>
  				
  
-							<div class="col-sm-6" style="margin-top: 13px">
+							<div  class="col-sm-6" style="margin-top: 13px">
 								<label>Nom & pr&#233;mons <span class='text'></span> :</label>
 								<select name="POS_VAL_RUB_MEL" class="form-control selectNom personnel prs" style="width: 100%;">
 								    <option value="">Veuillez s&#233;lectionner</option>
@@ -138,7 +131,8 @@
 							</div>
 							<div class="col-sm-6" style="margin-top: 13px;float: right;">
 								<label for="bio">Mois & Ann&#233;e :</label>
-								<input type="text" placeholder="MM/AAAA" class="form-control date" style="width: 100%;" required="true">
+								<input type="text" name='POS_VAL_RUB_A1' value='{POS_VAL_RUB_A1}' placeholder="MM/AAAA" class="form-control date" style="width: 100%;" required="true">
+								<input type="hidden" name='POS_VAL_RUB_DAE' value='{POS_VAL_RUB_DAE}' class="form-control date_edit">
 							</div>
 
 						</div>
@@ -394,6 +388,7 @@
 			</div>
 
 			<!-- button -->
+			<input type="hidden" name="POS_VAL_RUB_AVU" class="avu" value="{POS_VAL_RUB_AVU}">
 			<div class="row col_btn">
 				<input type="resset" class="btn col-sm-2 btn_ferme" value="FERMER" style="font-size: 12px;margin-left: 36%;">
 				<input class="btn col-sm-2 btn_reg" type="submit" value="ENREGISTRER" style="font-size: 12px;margin-left: 5%;" />
@@ -409,10 +404,26 @@
 	    <script language='javascript' src='/{NOM_APPLICATION}/include/jQuery/parseleyfr.js'></script>
 		<script language='javascript' src="/{NOM_APPLICATION}/include/jQuery/jquery-ui.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-		<script language='javascript' src="../../../../include/script/testNum.js"></script>
 	<!-- END JQUERY  -->
+	<script language='javascript' src="../../../../include/script/testNum.js"></script>
 	
-	<script>
+	 <script>
+
+	 	
+
+ $('form').submit(function() {
+     var etat_part = $('.vpart').val();
+     if (etat_part == '' || etat_part == undefined) {
+         alert("Veuillez renseigner la situation matrimoniale et le nombre d'enfant du personnel");
+         return false;
+     }
+     alert("VOTRE OPERATION S'EST DEROULEE AVEC SUCCES");
+ });
+
+ $(document).on('change','.personnel',function(e){
+        
+		$('.avu').val($(this).val());
+});
 
 		$(document).ready(function(){
 		 	//script du bouton fermer
@@ -421,17 +432,6 @@
 							{CODE_ACTION_FERMER}
 				}
 			});
-			
-			//script du bouton enregistrer
-			$('form').submit(function() {
-				var etat_part = $('.vpart').val();
-				if (etat_part == '' || etat_part == undefined) {
-					 alert("Veuillez renseigner la situation matrimoniale et le nombre d'enfant du personnel");
-					 return false;
-				}
-				alert("VOTRE OPERATION S'EST DEROULEE AVEC SUCCES");
-			});
-			
 
 			// select2 
             $('.selectNom').select2({
@@ -453,8 +453,8 @@
 			$('.date').datepicker({
 				changeMonth: true,
 				changeYear: true,
-				showButtonPanel: true,
-				monthNames: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'D&#233;cembre'],
+			//	showButtonPanel: true,
+				monthNames: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Ao\u00fbt', 'Septembre', 'Octobre', 'Novembre', 'D\u00e9cembre'],
 				monthNamesShort: ['Janv.', 'F&#233;vr.', 'Mars', 'Avril', 'Mai', 'Juin', 'Juil.', 'Ao&#251;t', 'Sept.', 'Oct.', 'Nov.', 'D&#233;c.'],
 				dateFormat: 'MM yy',
 				closeText: "OK",
@@ -462,29 +462,58 @@
 				onClose: function(dateText, inst) { 
 					var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
 					var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+
+					//console.log(` in : mois : ${mois} , year : ${year}`);
 					$(this).datepicker('setDate', new Date(year, month, 1));
 				},
+				onSelect: function() {
+				 
+					var tab_date= ($(this).val()).split(' ');
+				    var mois= tab_date[0];  // mois
+				    var year= tab_date[1]; // année 
+
+					var map_date = new Map();
+					map_date.set('Janvier', '01'); 
+					map_date.set('Fevrier', '02');
+					map_date.set('Mars', '03'); 
+					map_date.set('Avril', '04');
+					map_date.set('Mai', '05');
+					map_date.set('Juin', '06'); 
+					map_date.set('Juillet', '07'); 
+					map_date.set('Ao\u00fbt', '08'); 
+					map_date.set('Septembre', '09');
+					map_date.set('Octobre', '10'); 
+					map_date.set('Novembre', '11');
+					map_date.set('D\u00e9cembre', '12'); 
+					
+					var dt_edit=`01/${map_date.get(mois)}/${year}`;
+					//console.log(`01/${map_date.get(mois)}/${year}`);
+
+					$('.date_edit').val(dt_edit);
+				}
 			});
 			$.datepicker.setDefaults($.datepicker.regional['fr']);
 
-		
 
         });
 	</script>
 
 
 	 <script>
-		//no-cache script
-		var today_cache = new Date();
-		let time_cache =today_cache.getDate()+''+today_cache.getMonth()+''+today_cache.getFullYear()+''+today_cache.getHours() +''+today_cache.getMinutes()+''+today_cache.getSeconds();
-		document.write("<script type='text/javascript' src='/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PAY/stagiaire/stagiaire.js?t="+time_cache+"'><\/script>");
-		document.write("<script type='text/javascript' src='/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PAY/consultant/consultant.js?t="+time_cache+"'><\/script>");
-		document.write("<script type='text/javascript' src='/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PAY/salarie/salarie.js?t="+time_cache+"'><\/script>");
+ 	  //no-cache script
+	 var today_cache = new Date();
+     let time_cache =today_cache.getDate()+''+today_cache.getMonth()+''+today_cache.getFullYear()+''+today_cache.getHours() +''+today_cache.getMinutes()+''+today_cache.getSeconds();
 
-		document.write("<script type='text/javascript' src='/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PAY/salarie/cn.js?t="+time_cache+"'><\/script>");
-		document.write("<script type='text/javascript' src='/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PAY/salarie/igr.js?t="+time_cache+"'><\/script>");
-		document.write("<script type='text/javascript' src='/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PAY/salarie/taxe_patronale.js?t="+time_cache+"'><\/script>");
-		document.write("<script type='text/javascript' src='/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PAY/personnel/personnel.js?t="+time_cache+"'><\/script>");
+    
+     document.write("<script type='text/javascript' src='/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PAY/stagiaire/stagiaire.js?t="+time_cache+"'><\/script>");
+     document.write("<script type='text/javascript' src='/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PAY/consultant/consultant.js?t="+time_cache+"'><\/script>");
+     document.write("<script type='text/javascript' src='/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PAY/salarie/salarie.js?t="+time_cache+"'><\/script>");
+
+     document.write("<script type='text/javascript' src='/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PAY/salarie/cn.js?t="+time_cache+"'><\/script>");
+      document.write("<script type='text/javascript' src='/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PAY/salarie/igr.js?t="+time_cache+"'><\/script>");
+      document.write("<script type='text/javascript' src='/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PAY/salarie/taxe_patronale.js?t="+time_cache+"'><\/script>");
+      document.write("<script type='text/javascript' src='/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PAY/personnel/personnel.js?t="+time_cache+"'><\/script>");
+
      </script>
      <script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PAY/notification.js"></script>
 
