@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
+<head>    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fiche de paye</title>
@@ -23,8 +23,6 @@
 
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
     <link href="https://raw.githack.com/ttskch/select2-bootstrap4-theme/master/dist/select2-bootstrap4.css" rel="stylesheet"/>
-
-	<link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="Stylesheet" type="text/css" />
 
 
 	<style>
@@ -89,6 +87,7 @@
 				<input type="hidden" name="URL_CHANGER_PROFIL" value="{URL_CHANGER_PROFIL}">
 				<input type="hidden" id="nb-profils" value="{NB_PROFILS_UTIL}">
 				<!-- end important pour lancer la boite aux lettres  -->
+
 					
         </div>
 
@@ -96,7 +95,7 @@
 		<!-- </div> -->
 		<div class="col_list">
 			<i class="fa fa-eye fa-1x" style="color:#4a67b3;"></i>
-			<a href="javascript:void lanceBibBal('/{NOM_APPLICATION}/interface/session/principal/resultat/rechercher_db.php&TYPE_RECHERCHE=RECHERCHE_BAL&POS_QUEST_NOM=Bal_PAY_nv&POS_QUEST_PUBLIC=1', 'QUESTION_BAL');">
+			<a href="javascript:void lanceBibBal('/{NOM_APPLICATION}/interface/session/principal/resultat/rechercher_db.php&TYPE_RECHERCHE=RECHERCHE_BAL&POS_QUEST_NOM=Bal_PAY_lnv&POS_QUEST_PUBLIC=1', 'QUESTION_BAL');">
 				<span style="color:#4a67b3;">Cliquez pour consulter la liste</span>
 			</a>
 		</div>
@@ -110,29 +109,37 @@
 					</div>
 					<div class="col2_partie">
 						<div class="row">
-    
+
 							  <!-- nom de l'utilisateur-->
 				<input  class="form-control nom" type="hidden" name='POS_VAL_RUB_NOM' value="{POS_VAL_RUB_NOM}" placeholder="nom"  >
  				<input  class="form-control prenoms" type="hidden" name='POS_VAL_RUB_PRE' value="{POS_VAL_RUB_PRE}" placeholder="prenoms"  >
  				<input  class="form-control matricule" placeholder="matricule" type="hidden" name='POS_VAL_RUB_MAT'  value="{POS_VAL_RUB_MAT}"  >
+
+
 
 							<div class="col-sm-12 text-center" style="margin-bottom: 13px">
 								<label>Les champs avec (<span class='text'></span>) sont obligatoires</label>
 							</div>
  				
  
-							<div  class="col-sm-6" style="margin-top: 13px">
+							<div class="col-sm-offset-3 col-sm-6" style="margin-top: 13px">
 								<label>Nom & pr&#233;mons <span class='text'></span> :</label>
 								<select name="POS_VAL_RUB_MEL" class="form-control selectNom personnel prs" style="width: 100%;">
 								    <option value="">Veuillez s&#233;lectionner</option>
 								</select>
 								<input type="hidden"  class="interselectperso" name='POS_VAL_CTRL_MEL' id='POS_VAL_CTRL_MEL' value='{POS_VAL_RUB_MEL}'>
-							</div>    
-							<div class="col-sm-6" style="margin-top: 13px;float: right;">
-								<label for="bio">Mois & Ann&#233;e :</label>
-								<input type="text" name='POS_VAL_RUB_A1' value='{POS_VAL_RUB_A1}' placeholder="MM/AAAA" class="form-control date" style="width: 100%;" required="true">
-								<input type="hidden" name='POS_VAL_RUB_DAE' value='{POS_VAL_RUB_DAE}' class="form-control date_edit">
 							</div>
+							<!--
+							<div class="col-sm-6" style="margin-top: 13px">
+								<label>Statut employ&#233; :</label>
+								<select name="category" class="form-control selectEntres" id="selectStatus" style="width: 100%;">
+								    <option value="">Veuillez s&#233;lectionner</option>
+								    <option value="SALAIRE EMPLOYE">Salaire employ&#233;</option>
+								    <option value="SALAIRE STAGIAIRE">Salaire stagiaire</option>
+								    <option value="SALAIRE CONSULTANT">Salaire consultant</option>
+								</select>
+							</div>
+							-->
 
 						</div>
 					</div>
@@ -387,7 +394,6 @@
 			</div>
 
 			<!-- button -->
-			<input type="hidden" name="POS_VAL_RUB_AVU" class="avu" value="{POS_VAL_RUB_AVU}">
 			<div class="row col_btn">
 				<input type="resset" class="btn col-sm-2 btn_ferme" value="FERMER" style="font-size: 12px;margin-left: 36%;">
 				<input class="btn col-sm-2 btn_reg" type="submit" value="ENREGISTRER" style="font-size: 12px;margin-left: 5%;" />
@@ -408,9 +414,8 @@
 	
 	 <script>
 
-	 	
+	 	 $('form').submit(function() {
 
- $('form').submit(function() {
      var etat_part = $('.vpart').val();
      if (etat_part == '' || etat_part == undefined) {
          alert("Veuillez renseigner la situation matrimoniale et le nombre d'enfant du personnel");
@@ -418,11 +423,6 @@
      }
      alert("VOTRE OPERATION S'EST DEROULEE AVEC SUCCES");
  });
-
- $(document).on('change','.personnel',function(e){
-        
-		$('.avu').val($(this).val());
-});
 
 		$(document).ready(function(){
 		 	//script du bouton fermer
@@ -442,57 +442,6 @@
 
             $('.deuxieme_col').hide();
             $('.deuxieme_col,.sursalaire,.transportImpos,.rendement,.representation,.assurances,.avances,.autres,.pret,.level,.entreprise,.is,.cn,.igr,.cnps,.ancinnete,.heureSup,.transport,.salaireBase,.salaireBrute,.salaireNet,.salaireNetPaye,.honoraireNet,.honoraireNetPaye,.transportImpos').css('display','none');
-
-
-			//initialisation du calendrier datepicker
-			$.datepicker.regional['fr'] = {
-			
-				},
-				
-			$('.date').datepicker({
-				changeMonth: true,
-				changeYear: true,
-			//	showButtonPanel: true,
-				monthNames: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Ao\u00fbt', 'Septembre', 'Octobre', 'Novembre', 'D\u00e9cembre'],
-				monthNamesShort: ['Janv.', 'F&#233;vr.', 'Mars', 'Avril', 'Mai', 'Juin', 'Juil.', 'Ao&#251;t', 'Sept.', 'Oct.', 'Nov.', 'D&#233;c.'],
-				dateFormat: 'MM yy',
-				closeText: "OK",
-				currentText: "Aujourd'hui",
-				onClose: function(dateText, inst) { 
-					var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
-					var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
-
-					//console.log(` in : mois : ${mois} , year : ${year}`);
-					$(this).datepicker('setDate', new Date(year, month, 1));
-				},
-				onSelect: function() {
-				 
-					var tab_date= ($(this).val()).split(' ');
-				    var mois= tab_date[0];  // mois
-				    var year= tab_date[1]; // année 
-
-					var map_date = new Map();
-					map_date.set('Janvier', '01'); 
-					map_date.set('Fevrier', '02');
-					map_date.set('Mars', '03'); 
-					map_date.set('Avril', '04');
-					map_date.set('Mai', '05');
-					map_date.set('Juin', '06'); 
-					map_date.set('Juillet', '07'); 
-					map_date.set('Ao\u00fbt', '08'); 
-					map_date.set('Septembre', '09');
-					map_date.set('Octobre', '10'); 
-					map_date.set('Novembre', '11');
-					map_date.set('D\u00e9cembre', '12'); 
-					
-					var dt_edit=`01/${map_date.get(mois)}/${year}`;
-					//console.log(`01/${map_date.get(mois)}/${year}`);
-
-					$('.date_edit').val(dt_edit);
-				}
-			});
-			$.datepicker.setDefaults($.datepicker.regional['fr']);
-
 
         });
 	</script>
