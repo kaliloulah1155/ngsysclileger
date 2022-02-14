@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<clientlayout:Layout xmlns:clientlayout="http://www.sesin.com/clientlayout/1.0" type="vertical" name="2:1:1 3Columns">
+	<option name="rows" value="1"/>
+	<option name="columns" value="3"/>
+	<group>
+		<option name="weight" value="2"/>
+	</group>
+	<group>
+		<option name="weight" value="1"/>
+	</group>
+	<group>
+		<option name="weight" value="1"/>
+	</group>
+</clientlayout:Layout>

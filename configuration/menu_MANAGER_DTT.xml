@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="ISO-8859-1"?> 
+<menu>
+    <menu-entete>
+        <icone>images/toolbar/nouveau.png</icone>
+        <libelle>Création</libelle>
+        <title>Création</title>
+        <menu-item>
+            <libelle>{CST_LIBELLE_TOOLBAR_CREATION}</libelle>
+            <url>{URL_CHOIX_TYPE_CREATION}</url>
+        </menu-item>
+    </menu-entete>
+        
+   <menu-entete>
+        <icone>images/toolbar/recher.png</icone>
+        <libelle>{LIBELLE_TOOLBAR_BLOC_RECHERCHE}</libelle>
+        <title>{LIBELLE_TOOLBAR_BLOC_RECHERCHE}</title>
+        <onclick>javascript:return affichePageToolbar(this, 'lien_1','../../../../interface/session/principal/type/afficher_type.php?ACTION=RECHERCHE')</onclick>
+        <menu-item>
+            <libelle>{CST_LIBELLE_TOOLBAR_RECH_SIM}</libelle>
+            <url>{URL_CHOIX_TYPE_RECHERCHE_SIMPLE}</url>
+        </menu-item>
+        <menu-item>
+            <libelle>{CST_LIBELLE_TOOLBAR_RECH_ELA}</libelle>
+            <url>{URL_CHOIX_TYPE_RECHERCHE_ELABOREE}</url>
+        </menu-item>
+        <menu-item>
+            <libelle>{CST_LIBELLE_TOOLBAR_RECH_EXC_SIM}</libelle>
+            <url>{URL_AFFICHER_RECHERCHE_FTX}</url>
+        </menu-item>        
+        <menu-item>
+            <libelle>{CST_LIBELLE_TOOLBAR_GEST_BIB}</libelle>
+            <url>{URL_AFFICHE_QUEST_BIB}</url>
+        </menu-item>
+        <menu-item>
+            <libelle>{CST_LIBELLE_TOOLBAR_RECH_NUM}</libelle>
+            <url>{URL_RECHERCHE_POS_NUM_DOC}</url>
+        </menu-item>     
+        <menu-item>
+            <libelle>{CST_LIBELLE_TOOLBAR_RECH_CLE}</libelle>
+            <url>{URL_CHOIX_TYPE_RECHERCHE_CLE}</url>
+        </menu-item>       
+        <menu-item>
+            <libelle>{CST_LIBELLE_TOOLBAR_RECH_HIS_QUEST}</libelle>
+            <url>{URL_AFFICHE_HIST_QUESTION}</url>
+        </menu-item>                
+    </menu-entete>
+    
+    <menu-entete>
+        <icone>images/toolbar/outils.png</icone>
+        <libelle>Outils</libelle>
+        <title>Outils</title>
+        <menu-item type='titre'>
+            <libelle>Gestion</libelle>
+            <menu-item>
+                <libelle>Modifier la page portail</libelle>
+                <url>javascript:return affichePageToolbar(this, 'editionportail','{URL_AFFICHER_QUESTION}?EDITION=1')</url>
+            </menu-item> 
+            <menu-item>
+                <libelle>{CST_LIBELLE_TOOLBAR_GEST_PROFIL}</libelle>
+                <url>{URL_AFFICHE_GEST_PROFIL_LR}</url>
+            </menu-item>
+            <menu-item>
+                <libelle>{CST_LIBELLE_TOOLBAR_PASSWORD}</libelle>
+                <url>{URL_AFFICHER_CHANGER_PWD}</url>
+            </menu-item>
+        </menu-item>
+        <menu-item type='titre'>
+           <libelle>Statistiques</libelle>
+             <menu-item>
+                <libelle>{CST_LIBELLE_TOOLBAR_STAT_ADMIN}</libelle>
+                <url>{URL_STAT_ADMIN}</url>
+            </menu-item>
+         </menu-item>
+        <menu-item type='titre'>
+           <libelle>Administration</libelle>
+            <menu-item>
+                <libelle>{CST_LIBELLE_TOOLBAR_GEST_SESS_UTIL}</libelle>
+                <url>{URL_AFFICHE_CONNEXION}</url>
+            </menu-item>
+            <menu-item>
+                <libelle>{CST_LIBELLE_TOOLBAR_GEST_DOC_EN_MODIF}</libelle>
+                <url>{URL_AFFICHE_DOC_EN_MODIFICATION}</url>
+            </menu-item>
+           
+         </menu-item>
+        <menu-item type='titre'>
+            <libelle>Paramétrage</libelle>
+            <menu-item>
+                <libelle>{CST_LIBELLE_TOOLBAR_GEST_UTIL}</libelle>
+                <url>{URL_AFFICHE_UTILISATEUR}</url>
+            </menu-item>
+            <menu-item>
+                <libelle>{CST_LIBELLE_TOOLBAR_GEST_PROFIL_UTIL}</libelle>
+                <url>{URL_AFFICHE_PROFIL_UTILISATEUR}</url>
+            </menu-item>
+            <menu-item>
+                <libelle>{CST_LIBELLE_TOOLBAR_GEST_DOMAIN}</libelle>
+                <url>{URL_LIST_RUB_DOMFERME}</url>
+            </menu-item>
+            <menu-item>
+                <libelle>{CST_LIBELLE_TOOLBAR_GEST_LISTHIER}</libelle>
+                <url>{URL_LIST_LISTHIER}</url>
+            </menu-item>
+            <menu-item>
+                <libelle>{CST_LIBELLE_TOOLBAR_GEST_NATURE}</libelle>
+                <url>{URL_LIST_NATURE}</url>
+            </menu-item>
+            <menu-item>
+                <libelle>{CST_LIBELLE_TOOLBAR_RUBRIQUES}</libelle>
+                <url>{URL_LIST_RUBRIQUE}</url>
+            </menu-item>
+            <menu-item>
+                <libelle>{CST_LIBELLE_TOOLBAR_TYPES_DOC}</libelle>
+                <url>{URL_LIST_TYPEDOC}</url>
+            </menu-item>
+            <menu-item>
+                <libelle>Gestion des modèles</libelle>
+                <url>../../../../interface/session/principal/gestionmodele/afficher_liste_modeles.php</url>
+            </menu-item>
+        </menu-item>
+    </menu-entete>
+</menu>

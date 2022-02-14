@@ -1,0 +1,208 @@
+url.conf
+<?php
+
+if (!defined("URL"))
+{
+<data name="URL" xml:space="preserve"><value>1</value></data>
+
+<!-- url pour recherche elaboree -->
+<data name="URL_FRAME_RECHERCHE_ELABOREE" xml:space="preserve"><value>URL_SITE."/interface/session/principal/recherche/frame_afficher_recherche_elaboree.php"</value></data>
+<data name="URL_RECHERCHE_ELABOREE" xml:space="preserve"><value>URL_SITE."/interface/session/principal/recherche/afficher_recherche_elaboree.php"</value></data>
+<data name="URL_PARAM_RECHERCHE_ELABOREE" xml:space="preserve"><value>URL_SITE."/interface/session/principal/recherche/afficher_recherche_elaboree.php?iNumQuest=%d&POS_TYPEDOC=%s"</value></data>
+
+<!-- enregistrement question bib -->
+<data name="URL_RECHERCHE_ELABOREE_ENREG_QUEST" xml:space="preserve"><value>URL_SITE."/interface/session/principal/gestionbiblio/afficher_question_bib.php"</value></data>
+<data name="URL_ENREG_QUEST" xml:space="preserve"><value>URL_SITE."/interface/session/principal/gestionbiblio/enregistrer_question.php"</value></data>
+
+<!-- url pour recherche simple -->
+<data name="URL_FRAME_RECHERCHE_SIMPLE" xml:space="preserve"><value>URL_SITE."/interface/session/principal/recherche/frame.php"</value></data>
+<data name="URL_RECHERCHE_SIMPLE" xml:space="preserve"><value>URL_SITE."/interface/session/principal/recherche/afficher_recherche_fiche.php"</value></data>
+<data name="URL_PARAM_RECHERCHE_SIMPLE" xml:space="preserve"><value>URL_SITE."/interface/session/principal/recherche/afficher_recherche_fiche.php?iNumQuest=%d&POS_TYPEDOC=%s"</value></data>
+<data name="URL_PARAM_RECHERCHE_SIMPLE_NUM_FICHE" xml:space="preserve"><value>URL_SITE."/interface/session/principal/recherche/afficher_recherche_fiche.php?iNumQuest=%d&POS_TYPEDOC=%s&POS_NUM_FICHE=%d"</value></data>
+
+<!-- url pour recherche thesaurus -->
+<data name="URL_RECHERCHE_THESAURUS" xml:space="preserve"><value>URL_SITE."/interface/session/principal/recherche/afficher_recherche_thesaurus.php"</value></data>
+<data name="URL_PARAM_RECHERCHE_THESAURUS" xml:space="preserve"><value>URL_SITE."/interface/session/principal/recherche/afficher_recherche_thesaurus.php?iNumQuest=%d&POS_TYPEDOC=%s"</value></data>
+
+<!-- url pour recherche thesaurus -->
+<data name="URL_RECHERCHE_POS_NUM_DOC" xml:space="preserve"><value>URL_SITE."/interface/session/principal/recherche/afficher_recherche_num_doc.php"</value></data>
+<data name="URL_PARAM_RECHERCHE_POS_NUM_DOC" xml:space="preserve"><value>URL_SITE."/interface/session/principal/recherche/afficher_recherche_num_doc.php?POS_NUM_DOC=%s"</value></data>
+
+<!-- url pour recherche par cle hierarchique -->
+<data name="URL_PARAM_RECHERCHE_CLE_2" xml:space="preserve"><value>URL_SITE."/interface/session/principal/recherche/frame1_afficher_recherche_cle.php?iNumQuest=%d&POS_TYPEDOC=%s"</value></data>
+<data name="URL_AFF_RECH_CLE_HIER" xml:space="preserve"><value>URL_SITE."/interface/session/principal/recherche/afficher_recherche_cle.php"</value></data>
+<data name="URL_AFF_RECH_CLE_HIER_FRM1" xml:space="preserve"><value>URL_SITE."/interface/session/principal/recherche/frame1_afficher_recherche_cle.php"</value></data>
+
+<!-- url pour recherche d'affichage des resultats  -->
+<data name="URL_RESULTAT" xml:space="preserve"><value>URL_SITE."/interface/session/principal/resultat/rechercher_db.php"</value></data>
+<data name="URL_RESULTAT_SIMPLE" xml:space="preserve"><value>URL_SITE."/interface/session/principal/resultat/rechercher_db.php?TYPE_RECHERCHE=RECHERCHE_SIMPLE"</value></data>
+<data name="URL_PARAM_QUESTION_RESULTAT" xml:space="preserve"><value>URL_SITE."/interface/session/principal/resultat/rechercher_db.php?TYPE_RECHERCHE=%s&POS_QUEST_NOM=%s&POS_QUEST_TYPE=%s&POS_QUEST_PARTAGE=%d"</value></data>
+<data name="URL_PARAM_QUESTION_PROFIL_RESULTAT" xml:space="preserve"><value>URL_SITE."/interface/session/principal/resultat/rechercher_db.php?TYPE_RECHERCHE=%s&POS_QUEST_NOM=%s&POS_QUEST_TYPE=%s&POS_QUEST_PARTAGE=%d&POS_PROFIL_LR=%s"</value></data>
+
+<data name="URL_PARAM_QUESTION_RESULTAT_AVEC_ATTENTE" xml:space="preserve"><value>URL_SITE."/interface/session/principal/resultat/rechercher_db.php&TYPE_RECHERCHE=%s&POS_QUEST_NOM=%s&POS_QUEST_PUBLIC=%d"</value></data>
+<data name="URL_PARAM_QUESTION_PROFIL_RESULTAT_AVEC_ATTENTE" xml:space="preserve"><value>URL_SITE."/interface/session/principal/resultat/rechercher_db.php&TYPE_RECHERCHE=%s&POS_QUEST_NOM=%s&POS_QUEST_PUBLIC=%d&POS_PROFIL_LR=%s"</value></data>
+
+<!-- url pour la création de fiche d'index -->
+<data name="URL_CREATION" xml:space="preserve"><value>URL_SITE."/interface/session/principal/creation/afficher_creation.php"</value></data>
+<data name="URL_FRAME_CREATION" xml:space="preserve"><value>URL_SITE."/interface/session/principal/creation/frame.php"</value></data>
+<data name="URL_CREER" xml:space="preserve"><value>URL_SITE."/interface/session/principal/creation/creer_index.php"</value></data>
+
+<!-- Vocabulaire -->
+<data name="URL_AFFICHER_VOCAB" xml:space="preserve"><value>URL_SITE."/interface/session/principal/vocabulaire/afficher_db.php"</value></data>
+<data name="URL_AFFICHER_VOCAB_HIER" xml:space="preserve"><value>URL_SITE."/interface/session/principal/vocabulaire/afficher_vocab_hier.php"</value></data>
+<data name="URL_AFFICHER_VOCAB_KH" xml:space="preserve"><value>URL_SITE."/interface/session/principal/vocabulaire/afficher_cle_db.php"</value></data>
+
+<!-- Consultation d'un index -->
+<data name="URL_CONSULTER_INDEX" xml:space="preserve"><value>URL_SITE."/interface/session/principal/consultation/consulter_index.php"</value></data>
+<data name="URL_PARAM_CONSULTER_INDEX" xml:space="preserve"><value>URL_SITE."/interface/session/principal/consultation/consulter_index.php?MODE=%s&POS_NUM_DOC=%d&POS_TYPEDOC=%s&POS_NUM_FICHE=%d"</value></data>
+
+<!-- Modification d'un index -->
+<data name="URL_MODIFIER_INDEX" xml:space="preserve"><value>URL_SITE."/interface/session/principal/consultation/modifier_index.php"</value></data>
+
+<data name="URL_FERMER_INDEX" xml:space="preserve"><value>URL_SITE."/interface/session/principal/consultation/fermer_index.php"</value></data>
+<data name="URL_PARAM_FERMER_INDEX" xml:space="preserve"><value>URL_SITE."/interface/session/principal/consultation/fermer_index.php?MODE=%s&POS_NUM_DOC=%d"</value></data>
+<data name="URL_PARAM_UNLOAD_INDEX" xml:space="preserve"><value>"if (opener) LibereDocument('%s','%d')"</value></data>
+
+<!-- Impression d'un index -->
+<data name="URL_IMPRIMER_INDEX" xml:space="preserve"><value>URL_SITE."/interface/session/principal/consultation/imprimer_index.php"</value></data>
+
+<!-- Association d'un index -->
+<data name="URL_ASSOCIER_INDEX" xml:space="preserve"><value>URL_SITE."/interface/session/principal/association/associer_index.php"</value></data>
+
+<!-- Exportation des resultats -->
+<data name="URL_EXPORTATION_EXCEL" xml:space="preserve"><value>URL_SITE."/interface/session/principal/export/exporter_resultat.php"</value></data>
+
+<!-- Exportation des resultats -->
+<data name="URL_AFFICHER_QUESTION" xml:space="preserve"><value>URL_SITE."/interface/session/principal/question/afficher_question.php"</value></data>
+
+<!-- Affichage des fichiers -->
+<data name="URL_AFFICHER_ACTION_FICHIER" xml:space="preserve"><value>URL_SITE."/interface/session/principal/gestionfichier/afficher_liste_action.php"</value></data>
+<data name="URL_CONSULTER_FICHIER" xml:space="preserve"><value>URL_SITE."/interface/session/principal/gestionfichier/consulter_fichier.php"</value></data>
+<data name="URL_CONSULTER_FICHIER2" xml:space="preserve"><value>URL_SITE."/interface/session/principal/gestionfichier/consulter_fichier2.php"</value></data>
+<data name="URL_AFFICHER_LISTE_FICHIER" xml:space="preserve"><value>URL_SITE."/interface/session/principal/gestionfichier/frame.php"</value></data>
+<data name="URL_AFFICHER_ARBO_FICHIER" xml:space="preserve"><value>URL_SITE."/interface/session/principal/gestionfichier/afficher_arborescence.php"</value></data>
+<data name="URL_ACTION_FICHIER" xml:space="preserve"><value>URL_SITE."/interface/session/principal/gestionfichier/action_fichier.php"</value></data>
+<data name="URL_SAUVER_FICHIER" xml:space="preserve"><value>URL_SITE."/interface/session/principal/gestionfichier/sauver_fichier.php"</value></data>
+<data name="URL_PARAM_SAUVER_FICHIER" xml:space="preserve"><value>URL_SITE."/interface/session/principal/gestionfichier/sauver_fichier.php?POS_NUM_DOC=%s&POS_NUM_PAGE=%s&POS_NUM_SSPAGE=%s&PHPSESSID=%s&POS_NOMFICHIER=%s"</value></data>
+<data name="URL_SUPP_FICHIER" xml:space="preserve"><value>URL_SITE."/interface/session/principal/gestionfichier/supprimer_fichier_dav.php"</value></data>
+<data name="URL_PARAM_SUPP_FICHIER" xml:space="preserve"><value>URL_SITE."/interface/session/principal/gestionfichier/supprimer_fichier_dav.php?POS_NUM_DOC=%s&POS_NUM_PAGE=%s&POS_NUM_SSPAGE=%s&PHPSESSID=%s"</value></data>
+<data name="URL_APPLET_JAR" xml:space="preserve"><value>URL_SITE."/interface/tpl/applicatif/fichier/"</value></data>
+
+<!-- excalibur -->
+<data name="URL_AFFICHER_RECHERCHE_EXB" xml:space="preserve"><value>URL_SITE."/interface/session/principal/excalibur/afficher_excalibur.php"</value></data>
+<data name="URL_RECHERCHE_EXB" xml:space="preserve"><value>URL_SITE."/interface/session/principal/excalibur/rechercher.php"</value></data>
+<data name="URL_CONSULTER_EXB" xml:space="preserve"><value>URL_SITE."/interface/session/principal/excalibur/consulter_fichier.php"</value></data>
+<data name="URL_AFFICHER_MODE_EXPERT_EXB" xml:space="preserve"><value>URL_SITE."/interface/session/principal/excalibur/afficher_mode_expert.php"</value></data>
+
+<!-- ftx -->
+<data name="URL_AFFICHER_RECHERCHE_FTX" xml:space="preserve"><value>URL_SITE."/interface/session/principal/ftx/afficher_rech_ftx.php"</value></data>
+<data name="URL_RECHERCHE_FTX" xml:space="preserve"><value>URL_SITE."/interface/session/principal/ftx/recherche_ftx.php"</value></data>
+<data name="URL_CONSULT_OCC_FTX" xml:space="preserve"><value>URL_SITE."/interface/session/principal/ftx/consulter_occ_ftx.php"</value></data>
+<data name="URL_CONSULT_OCC_PDF_FTX" xml:space="preserve"><value>URL_SITE."/interface/session/principal/ftx/consulter_occ_pdf_ftx.php"</value></data>
+<data name="URL_CONSULT_NATIF" xml:space="preserve"><value>URL_SITE."/interface/session/principal/gestionfichier/consulter_fichier.php"</value></data>
+
+<!-- Attente -->
+<data name="URL_ATTENTE" xml:space="preserve"><value>URL_SITE."/interface/session/principal/attente/attente.php"</value></data>
+<data name="URL_ATTENTE_RECHERCHE" xml:space="preserve"><value>URL_SITE."/interface/session/principal/attente/attente.php"</value></data>
+<!-- <data name="URL_ATTENTE_RECHERCHE" xml:space="preserve"><value>URL_SITE."/interface/session/principal/attente/attente_recherche.php"</value></data> -->
+
+<!-- Affichage des questions de la bibliothèque -->
+<data name="URL_AFFICHE_QUEST_BIB" xml:space="preserve"><value>URL_SITE."/interface/session/principal/gestionbiblio/afficher_question_bib.php"</value></data>
+<data name="URL_PARTAGER_QUEST_BIB" xml:space="preserve"><value>URL_SITE."/interface/session/principal/gestionbiblio/partager_question_bib.php"</value></data>
+
+<!-- Affichage des profils de liste résumée -->
+<data name="URL_AFFICHE_GEST_PROFIL_LR" xml:space="preserve"><value>URL_SITE."/interface/session/principal/gestionprofillr/afficher_gestion_profils.php"</value></data>
+<data name="URL_AFFICHE_MODIF_PROFIL_LR" xml:space="preserve"><value>URL_SITE."/interface/session/principal/gestionprofillr/afficher_modif_profil.php"</value></data>
+<data name="URL_VALIDE_MODIF_PROFIL_LR" xml:space="preserve"><value>URL_SITE."/interface/session/principal/gestionprofillr/enregistrer_profil.php"</value></data>
+<data name="URL_AFF_VALEUR_CHAMP_PROFIL_LR" xml:space="preserve"><value>URL_SITE."/interface/session/principal/gestionprofillr/afficher_info_champ_profil.php?SZ_INFO_CHAMP="</value></data>
+
+<data name="URL_VERSION" xml:space="preserve"><value>URL_SITE."/interface/session/principal/version/version.php"</value></data>
+
+<!-- Gestion des dossiers -->
+<data name="URL_AFFICHE_GESTION_DOSSIER" xml:space="preserve"><value>URL_SITE."/interface/session/principal/dossier/arborescence_dossier.php"</value></data>
+
+<!-- Gestion du thésaurus -->
+<data name="URL_THESAURUS" xml:space="preserve"><value>URL_SITE."/interface/session/principal/thesaurus/afficher_thesaurus.php"</value></data>
+<data name="URL_THESAURUS_CREATION" xml:space="preserve"><value>URL_SITE."/interface/session/principal/thesaurus/creer_index.php"</value></data>
+<data name="URL_THESAURUS_DESCRIPTEUR" xml:space="preserve"><value>URL_SITE."/interface/session/principal/thesaurus/get_info_descripteur.php"</value></data>
+<data name="URL_THESAURUS_DELETE" xml:space="preserve"><value>URL_SITE."/interface/session/principal/thesaurus/supprimer_index.php"</value></data>
+<data name="URL_THESAURUS_AFF_MODIFICATION" xml:space="preserve"><value>URL_SITE."/interface/session/principal/thesaurus/afficher_modification.php"</value></data>
+<data name="URL_THESAURUS_AFF_CREATION" xml:space="preserve"><value>URL_SITE."/interface/session/principal/thesaurus/afficher_creation.php"</value></data>
+<data name="URL_THESAURUS_MODIFICATION" xml:space="preserve"><value>URL_SITE."/interface/session/principal/thesaurus/modifier_index.php"</value></data>
+<data name="URL_THESAURUS_RECHERCHE" xml:space="preserve"><value>URL_SITE."/interface/session/principal/thesaurus/afficher_recherche.php"</value></data>
+
+<!-- Gestion des utilisateurs -->
+<data name="URL_AFFICHE_UTILISATEUR" xml:space="preserve"><value>URL_SITE."/interface/session/principal/gestionutil/consulter_util.php"</value></data>
+<data name="URL_MODIFIE_UTILISATEUR" xml:space="preserve"><value>URL_SITE."/interface/session/principal/gestionutil/modifier_util.php"</value></data>
+
+<!-- Gestion des domaines Fermés -->
+<data name="URL_LIST_RUB_DOMFERME" xml:space="preserve"><value>URL_SITE."/interface/session/principal/gestiondomain/liste_rub_domferme.php"</value></data>
+<data name="URL_MODIFIE_DOMFERME" xml:space="preserve"><value>URL_SITE."/interface/session/principal/gestiondomain/modifier_val_domferme.php"</value></data>
+<data name="URL_CONSULTER_RUB_DOMFERME" xml:space="preserve"><value>URL_SITE."/interface/session/principal/gestiondomain/consulter_rub_domferme.php"</value></data>
+
+<!-- Gestion des listes hiérarchiques -->
+<data name="URL_LIST_LISTHIER" xml:space="preserve"><value>URL_SITE."/interface/session/principal/gestionlisthier/liste_listhier.php"</value></data>
+
+<!-- Gestion de l'historique des document consultés -->
+<data name="URL_AFFICHE_HISTORIQUE" xml:space="preserve"><value>URL_SITE."/interface/session/principal/resultat/rechercher_db.php?TYPE_RECHERCHE=RECHERCHE_HISTORIQUE"</value></data>
+
+<!-- Gestion de l'historique des question posées -->
+<data name="URL_AFFICHE_HIST_QUESTION" xml:space="preserve"><value>URL_SITE."/interface/session/principal/recherche/historique.php"</value></data>
+
+<!-- url combiner question -->
+<data name="URL_COMBINER_QUESTION" xml:space="preserve"><value>URL_SITE."/interface/session/principal/question/combiner_question.php"</value></data>
+
+<!-- url pour les parametres de combiner question -->
+<data name="URL_PARAM_COMBINER_QUESTION" xml:space="preserve"><value>URL_SITE."/interface/session/principal/question/aff_param_comb_quest.php"</value></data>
+
+<!-- Page de de résultats des associations -->
+<data name="URL_AFFICHE_LIEN_ASSO" xml:space="preserve"><value>URL_SITE."/interface/session/principal/association/afficher_index_lie.php"</value></data>
+<data name="URL_BOUTON_ASSOCIATION" xml:space="preserve"><value>URL_SITE."/interface/session/principal/association/bouton.php"</value></data>
+<data name="URL_AFFICHER_INDEX_LIE" xml:space="preserve"><value>URL_SITE."/interface/session/principal/association/afficher_index_lie.php"</value></data>
+
+<!-- url dossier pere -->
+<data name="URL_AFFICHER_PERES" xml:space="preserve"><value>URL_SITE."/interface/session/principal/dossier/afficher_dossiers_peres.php"</value></data>
+
+<!-- url hermes -->
+<data name="URL_RECHERCHER_ACT_HERMES" xml:space="preserve"><value>URL_SITE."/interface/session/principal/hermes/rech_action_hermes_db.php"</value></data>
+<data name="URL_LANCER_NACTIONS" xml:space="preserve"><value>URL_SITE."/interface/session/principal/hermes/lancer_nactions.php"</value></data>
+
+<data name="URL_LANCER_SRV_IMP" xml:space="preserve"><value>URL_SITE."/interface/session/principal/impression/lancer_srv_imp_db.php"</value></data>
+
+<!-- notes -->
+<data name="URL_AJOUTER_NOTE" xml:space="preserve"><value>URL_SITE."/interface/session/principal/note/ajouter_note.php"</value></data>
+<data name="URL_SUPPRIMER_NOTE" xml:space="preserve"><value>URL_SITE."/interface/session/principal/note/supprimer_note.php"</value></data>
+<data name="URL_AFFICHER_AJOUTER_NOTE" xml:space="preserve"><value>URL_SITE."/interface/session/principal/note/afficher_ajout_note.php"</value></data>
+
+<!-- tableau -->
+<data name="URL_CONSULTER_TABLEAU" xml:space="preserve"><value>URL_SITE."/interface/session/principal/tableau/consulter_db.php"</value></data>
+<data name="URL_CREER_TABLEAU" xml:space="preserve"><value>URL_SITE."/interface/session/principal/tableau/creer_db.php"</value></data>
+<data name="URL_AFFICHER_LISTE_TABLEAU" xml:space="preserve"><value>URL_SITE."/interface/session/principal/tableau/liste_doc_rub_tableau.php"</value></data>
+<data name="URL_MODIFIER_TABLEAU" xml:space="preserve"><value>URL_SITE."/interface/session/principal/tableau/modifier_db.php"</value></data>
+<data name="URL_JS_TABLEAU" xml:space="preserve"><value>URL_SITE."/include/script/action_tableau.js"</value></data>
+
+<data name="URL_TOOLBAR" xml:space="preserve"><value>URL_SITE."/interface/session/principal/toolbar/afficher_toolbar.php"</value></data>
+<data name="URL_VIDE" xml:space="preserve"><value>URL_SITE."/interface/vide.htm"</value></data>
+<data name="URL_LANCER_ACTION_HERMES" xml:space="preserve"><value>URL_SITE."/interface/session/principal/consultation/lancer_action_hermes.php"</value></data>
+
+<data name="URL_CONNECTER_PROFIL" xml:space="preserve"><value>URL_SITE."/interface/session/principal/connexion/connecter_profil.php"</value></data>
+
+<data name="URL_PANIER" xml:space="preserve"><value>URL_SITE."/interface/session/principal/resultat/rechercher_db.php&TYPE_RECHERCHE=RECHERCHE_PANIER"</value></data>
+
+<data name="URL_ACCUEIL" xml:space="preserve"><value>URL_SITE."/index.php"</value></data>
+
+<data name="URL_CHOIX_TYPE" xml:space="preserve"><value>URL_SITE."/interface/session/principal/type/afficher_type.php"</value></data>
+<data name="URL_LIST_THESAURUS" xml:space="preserve"><value>URL_SITE."/interface/session/principal/thesaurus/liste_thesaurus_xtree.php"</value></data>
+<data name="URL_AFFICHER_CHANGER_PWD" xml:space="preserve"><value>URL_SITE."/interface/session/principal/parametrage/afficher_changer_pwd.php"</value></data>
+<data name="URL_FERMER_APPLICATION" xml:space="preserve"><value>URL_SITE."/interface/session/principal/connexion/close.php"</value></data>
+
+<data name="URL_CONSULTER_TOUS_FICHIERS_ZIP" xml:space="preserve"><value>URL_SITE."/interface/session/principal/gestionfichier/consulter_fichier_tous_fichiers_zip.php"</value></data>
+<data name="URL_LANCER_NACTIONS_HERMES" xml:space="preserve"><value>URL_SITE."/interface/session/principal/hermes/lancer_nactions.php"</value></data>
+
+<data name="URL_CONSULTER_MODELE" xml:space="preserve"><value>URL_SITE."/interface/session/principal/gestionmodele/consulter_modele.php"</value></data>
+<data name="URL_PARAM_SAUVER_MODELE" xml:space="preserve"><value>URL_SITE."/interface/session/principal/gestionmodele/sauver_modele.php?PHPSESSID=%s&POS_NOMFICHIER=%s&POS_EXTENSION=%s"</value></data>
+<data name="URL_PARAM_SUPP_MODELE" xml:space="preserve"><value>URL_SITE."/interface/session/principal/gestionmodele/supprimer_modele_dav.php?PHPSESSID=%s&POS_NOMFICHIER=%s"</value></data>
+
+<data name="REP_TEMPLATE_APPLICATIF" xml:space="preserve"><value>"../../../tpl/applicatif/"</value></data>
+}
+?>

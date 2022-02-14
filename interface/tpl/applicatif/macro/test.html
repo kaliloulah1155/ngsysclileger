@@ -1,0 +1,45 @@
+<style>
+	td.labelRecEnteteTab{  
+    	color: #FFFFFF;
+		font-weight: bold;
+    	text-align: center;
+    	vertical-align: top;
+    	padding-top: 2px;
+    	white-space: nowrap;
+		background:#0070C0;
+	}
+    td.labelRecepisseTab{  
+    	color: #000000;
+    	text-align: center;
+    	vertical-align: top;
+    	padding-top: 2px;
+    	white-space: nowrap;
+		background:#f2f2f2;
+	}
+
+</style>
+<page backtop="40mm" backbottom="40mm" backleft="15mm" backright="15mm">
+<page_header>
+		<p align="center">En-tête<!--<img src="../images/entete.png" alt="" width=700 align=center>--></p>		
+</page_header>
+<page_footer>
+		<p align="center">Page [[page_cu]]/[[page_nb]]</p><br>		
+</page_footer>
+
+<p>Le document suivant :</p>
+<div>
+
+<table style="width: 80%;border-collapse: collapse;" border='1'>
+   <tr>
+		<td class='labelRecEnteteTab'>Nom </td>
+		<td class='labelRecEnteteTab'>Sujet</td>
+		<td class='labelRecEnteteTab'>Nature</td>
+	</tr>
+	<tr>
+		<td class='labelRecepisseTab' style='width: 130px'> {POS_VAL_RUB_FIC} </td>
+		<td class='labelRecepisseTab' style='width: 80px'> {POS_VAL_RUB_SUJ} </td>
+		<td class='labelRecepisseTab' style='width: 200px'> {POS_VAL_RUB_NAT} </td>
+	</tr>
+</table>
+</div>
+</page>

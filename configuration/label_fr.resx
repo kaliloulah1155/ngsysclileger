@@ -1,0 +1,926 @@
+label_fr.conf
+<?php
+
+if (!defined("LABEL"))
+{
+define("LABEL", 1);
+
+<!-- Libelle "OUI". -->
+<data name="CST_LIBELLE_OUI" xml:space="preserve"><value>Oui</value></data>
+
+<!-- Libelle "NON". -->
+<data name="CST_LIBELLE_NON" xml:space="preserve"><value>Non</value></data>
+
+<!-- Libelle "Annuler". -->
+<data name="CST_LIBELLE_ANNULER" xml:space="preserve"><value>Annuler</value></data>
+
+<!-- Libelle "Valider". -->
+<data name="CST_LIBELLE_VALIDER" xml:space="preserve"><value>Valider</value></data>
+
+<!-- Libelle "Attente". -->
+<data name="CST_LIBELLE_ATTENTE" xml:space="preserve"><value>Chargement en cours...</value></data>
+<data name="CST_LIBELLE_DECONNECT" xml:space="preserve"><value>Déconnexion en cours...</value></data>
+
+
+<!-- Libelle du bouton pour lancer les actions hermes. -->
+<data name="CST_LIBELLE_ACTION" xml:space="preserve"><value>Exécuter</value></data>
+
+<!-- Libelle du bouton pour voir les fichiers. -->
+<data name="CST_LIBELLE_FICHIER" xml:space="preserve"><value>Fichiers</value></data>
+
+<!-- Libelle du bouton pour imprimer. -->
+<data name="CST_LIBELLE_IMPRIMER" xml:space="preserve"><value>Imprimer</value></data>
+
+<!-- Libelle de la fenetre d'impression -->
+<data name="CST_LIBELLE_FENETRE_IMP_LR" xml:space="preserve"><value>Impression des réponses</value></data>
+
+<!-- Libelle du bouton des attributs. -->
+<data name="CST_LIBELLE_VOIR_ATTRIBUT" xml:space="preserve"><value>Voir attribut</value></data>
+
+<!-- Libelle du bouton Dossiers référentiels. -->
+<data name="CST_LIBELLE_DOSSIER_REF" xml:space="preserve"><value>Dossiers référentiels</value></data>
+
+<!-- Libelle du bouton Dossiers référentiels. -->
+<data name="CST_LIBELLE_DOSSIER_PERES" xml:space="preserve"><value>Dossiers pères</value></data>
+
+<!-- Libelle pas de Dossiers pere. -->
+<data name="CST_LIBELLE_NO_DOSS_PERE" xml:space="preserve"><value>Pas de dossiers pères</value></data>                    
+                      
+<!-- Libelle pas de Dossiers référentiels. -->
+<data name="CST_LIBELLE_NO_DOSS_REF" xml:space="preserve"><value>Pas de dossiers référentiels</value></data>
+
+<!-- Libelle "Clé Hiérarchique". -->
+<data name="CST_LIBELLE_KH" xml:space="preserve"><value>Clé Hiérarchique :</value></data>
+
+<!-- Libelle "Numéro de document". -->
+<data name="CST_LIBELLE_NUM_DOC" xml:space="preserve"><value>Numéro de document :</value></data>
+
+<!-- Libelle du bouton pour enregistrer. -->
+<data name="CST_LIBELLE_ENREGISTRER" xml:space="preserve"><value>Enregistrer</value></data>
+
+<!-- Libelle du bouton pour le passage de consultation en modification. -->
+<data name="CST_LIBELLE_PASSAGE_EN_MODIF" xml:space="preserve"><value>Mode modification</value></data>
+
+<!-- Libelle du bouton pour affichage dossiers peres -->
+<data name="CST_DOSSIERS_PERES" xml:space="preserve"><value>Dossiers pères</value></data>
+
+<!-- Libelle du bouton "consulter". -->
+<data name="CST_LIBELLE_CONSULT" xml:space="preserve"><value>Consulter</value></data>
+
+<!-- Libelle du bouton "modifier". -->
+<data name="CST_LIBELLE_MODIF" xml:space="preserve"><value>Modifier</value></data>
+
+<data name="CST_LIBELLE_OUVRIR_DOSSIER" xml:space="preserve"><value>Ouvrir le dossier</value></data>
+
+<!-- Libelle du bouton "modifier le fichier". -->
+<data name="CST_LIBELLE_MODIF_FICHIER" xml:space="preserve"><value>Modifier le fichier</value></data>
+
+<!-- Libelle du bouton "télécharger le fichier". -->
+<data name="CST_LIBELLE_TELECHARGER_FICHIER" xml:space="preserve"><value>Télécharger le fichier</value></data>
+<data name="CST_LIBELLE_PROPRIETE_FICHIER" xml:space="preserve"><value>Propriétés du fichier</value></data>
+
+<!-- Libelle du bouton "supprimer". -->
+<data name="CST_LIBELLE_SUPP" xml:space="preserve"><value>Supprimer</value></data>
+
+<!-- Libelle du bouton "effacer". -->
+<data name="CST_LIBELLE_EFFA" xml:space="preserve"><value>Effacer</value></data>
+
+<!-- Libelle du bouton "creer". -->
+<data name="CST_LIBELLE_CREER" xml:space="preserve"><value>Créer</value></data>
+
+<!-- Libelle du bouton "fermer". -->
+<data name="CST_LIBELLE_FERMER" xml:space="preserve"><value>Fermer</value></data>
+
+<!-- Libelle du bouton "Ajouter". -->
+<data name="CST_LIBELLE_AJOUTER" xml:space="preserve"><value>Ajouter</value></data>
+
+<!-- Libelle du bouton "panier". -->
+<data name="CST_LIBELLE_AJOUTER_PANIER" xml:space="preserve"><value>Ajouter au panier</value></data>
+
+<!-- Libelle du bouton "supprimer du panier". -->
+<data name="CST_LIBELLE_SUPP_PANIER" xml:space="preserve"><value>Supprimer du panier</value></data>
+
+<!-- Libelle du bouton "supprimer du panier". -->
+<data name="CST_LIBELLE_SUPP_DOC_PANIER" xml:space="preserve"><value>Etes-vous sûr de vouloir supprimer ce document du panier ?</value></data>
+
+<!-- Libelle "Mon panier". -->
+<data name="CST_LIBELLE_PANIER" xml:space="preserve"><value>Mon panier</value></data>
+
+<!-- Libelle "Panier vide". -->
+<data name="CST_LIBELLE_PANIER_VIDE" xml:space="preserve"><value>Votre panier est vide.</value></data>
+
+<!-- Libelle attente ajout panier. -->
+<data name="CST_LIBELLE_ATTENTE_AJOUT_PANIER" xml:space="preserve"><value>Mise à jour du panier, veuillez patienter.</value></data>
+
+<!-- Libelle attente suppression panier. -->
+<data name="CST_LIBELLE_ATTENTE_SUPP_PANIER" xml:space="preserve"><value>Mise à jour du panier, veuillez patienter.</value></data>
+
+<!-- Libelle du nombre de reponses du panier. -->
+<data name="CST_LIBELLE_NB_REP_PANIER" xml:space="preserve"><value>Il y a %d réponse dans votre panier</value></data>
+
+<!-- Libelle du nombre de reponses du panier au pluriel. -->
+<data name="CST_LIBELLE_NB_REP_PLURIEL_PANIER" xml:space="preserve"><value>Il y a %d réponses dans votre panier</value></data>
+
+<data name="CST_LIBELLE_SELECT_DOC_PANIER" xml:space="preserve"><value>Vous n'avez pas sélectionné de document pour effectuer cette action sur le panier</value></data>
+
+<!-- Libelle du bouton "Liste des actions". -->
+<data name="CST_LIBELLE_LISTE_ACTION_HERMES" xml:space="preserve"><value>Liste des actions...</value></data>
+
+<!-- Libelle imagette. -->
+<data name="CST_LIBELLE_IMAGETTE" xml:space="preserve"><value>Imagette</value></data>
+
+<!-- Libelle versions. -->
+<data name="CST_LIBELLE_VERSION" xml:space="preserve"><value>Versions</value></data>
+
+<!-- Libelle version serveur. -->
+<data name="CST_LIBELLE_VERSION_SERVEUR" xml:space="preserve"><value>La version du serveur est : </value></data>
+
+<!-- Libelle version php_vulcain. -->
+<data name="CST_LIBELLE_VERSION_PHP_VULCAIN" xml:space="preserve"><value>La version de php-vulcain est : </value></data>
+
+<!-- Libelle version vulcain. -->
+<data name="CST_LIBELLE_VERSION_VULCAIN" xml:space="preserve"><value>La version de vulcain est : </value></data>
+
+<!-- Libelle du bouton "Mode création". -->
+<data name="CST_LIBELLE_AFF_CREER" xml:space="preserve"><value>Mode création</value></data>
+
+<!-- Libelle du bouton "Recherche tous types". -->
+<data name="CST_LIBELLE_RECH_000" xml:space="preserve"><value>Recherche tous types</value></data>
+
+<!-- Libelle du bouton "Rechercher". -->
+<data name="CST_LIBELLE_RECHERCHER" xml:space="preserve"><value>Rechercher</value></data>
+
+<!-- Libelle du bouton "Vocabulaire". -->
+<data name="CST_LIBELLE_VOCABULAIRE" xml:space="preserve"><value>Vocabulaire</value></data>
+
+<!-- Libelle du bouton "Calendrier". -->
+<data name="CST_LIBELLE_CALENDRIER" xml:space="preserve"><value>Voir le calendrier</value></data>
+
+<!-- Libelle de la colonne "Code". -->
+<data name="CST_LIBELLE_VOCAB_CODE" xml:space="preserve"><value>Code</value></data>
+
+<!-- Libelle de la colonne "Libellé". -->
+<data name="CST_LIBELLE_VOCAB_VALEUR" xml:space="preserve"><value>Libellé</value></data>
+
+<!-- Libelle "Visualisation". -->
+<data name="CST_LIBELLE_VISUALISATION_VOC" xml:space="preserve"><value>Visualisation</value></data>
+
+<!-- Libelle "Commence par". -->
+<data name="CST_LIBELLE_DEBUT_MOT_VOC" xml:space="preserve"><value>Commence par</value></data>
+
+<!-- Libelle du select choix du type de document. -->
+<data name="CST_LIBELLE_CHOIX_TYPE" xml:space="preserve"><value>Choisissez un type</value></data>
+
+<!-- Libelle du code tous types 000 -->
+<data name="CST_LIBELLE_TOUS_TYPES" xml:space="preserve"><value>Tous types</value></data>
+
+<!-- Libelle accueil -->
+<data name="CST_LIBELLE_ACCUEIL" xml:space="preserve"><value>Page d'accueil</value></data>
+
+<!-- Libelle accueil -->
+<data name="CST_LIBELLE_BIENVENUE_ACCUEIL" xml:space="preserve"><value>Bienvenue</value></data>
+
+<!-- Excalibur (Plein Texte)  -->
+<!-- Libelle de document en cours de création -->
+<data name="CST_LIBELLE_EXCALIBUR_NB_OCC" xml:space="preserve"><value>Nombre d'occurrences :</value></data>
+
+<!-- Libelle de message d'attente -->
+<data name="CST_LIBELLE_EXCALIBUR_NOT_REPONSE" xml:space="preserve"><value>Il n'y a pas de réponse à votre recherche.</value></data>
+
+<!-- Libelle du bouton "consulter fiche". -->
+<data name="CST_LIBELLE_CONSULT_FICHE" xml:space="preserve"><value>Consulter Fiche</value></data>
+
+<!-- Libelle du bouton "consulter natif". -->
+<data name="CST_LIBELLE_CONSULT_NATIF" xml:space="preserve"><value>Consulter Natif</value></data>
+
+<!-- Libelle du bouton "consulter fichier principal". -->
+<data name="CST_LIBELLE_CONSULT_FICHIER_PRINCIPAL" xml:space="preserve"><value>Consulter fichier principal</value></data>
+
+<!-- Libelle du bouton "consulter occurrences". -->
+<data name="CST_LIBELLE_CONSULT_OCC" xml:space="preserve"><value>Consulter Occurrences</value></data>
+
+<!-- Libelle du bouton "consulter occurrences PDF". -->
+<data name="CST_LIBELLE_CONSULT_OCC_PDF" xml:space="preserve"><value>Consulter Occurrences PDF</value></data>
+
+<!-- Libelle du bouton "insertion dans dossier". -->
+<data name="CST_LIBELLE_INS_DOS" xml:space="preserve"><value>Insérer dans dossier</value></data>
+
+<data name="CST_LIBELLE_TITRE_EXPANSIONS" xml:space="preserve"><value>Recherche plein texte (choix des expansions)</value></data>
+<data name="CST_LIBELLE_EXPANSIONS" xml:space="preserve"><value>Expansion(s)</value></data>
+<data name="CST_LIBELLE_MOTS" xml:space="preserve"><value>Mot(s)</value></data>
+
+<data name="CST_LIBELLE_MODE_EXPERT" xml:space="preserve"><value>Mode expert</value></data>
+
+<data name="CST_EXCALIBUR_OCC_SUIV" xml:space="preserve"><value>Aller à l'occurence suivante</value></data>
+
+<data name="CST_EXCALIBUR_FILE_NOPDF" xml:space="preserve"><value>Le fichier n\'est pas au format PDF.</value></data>
+
+<data name="CST_EXCALIBUR_SUPP_CHAMPS" xml:space="preserve"><value>Suppression impossible : aucune valeur sélectionnée</value></data>
+<data name="CST_EXCALIBUR_BOOLEEN_EXPERT" xml:space="preserve"><value>Recherche booléenne : mode expert non applicable</value></data>
+<!-- FTX -->
+<data name="LIBELLE_QUESTION_FTX" xml:space="preserve"><value>Recherche &laquo; %s &raquo; dans %s</value></data>
+<data name="LIBELLE_RESULTAT_FTX" xml:space="preserve"><value>Résultats : %d</value></data>
+
+<data name="LIBELLE_PERTINENCE_FTX" xml:space="preserve"><value>Pertinence : %d</value></data>
+<data name="LIBELLE_OCCURRENCE_FTX" xml:space="preserve"><value>Nombre d'occurrences : %d</value></data>
+
+<data name="CST_TITRE_PAGE_RECH_FTX" xml:space="preserve"><value>Recherche plein texte</value></data>
+
+<data name="CST_LIB_MOT_A_RECHERCHER_FTX" xml:space="preserve"><value>Mot(s) à rechercher</value></data>
+<data name="CST_LIB_LIBRAIRIE_FTX" xml:space="preserve"><value>Type(s) de document</value></data>
+<data name="CST_LIB_AFFICHAGE_REPONSES_FTX" xml:space="preserve"><value>Affichage des réponses</value></data>
+<data name="CST_LIB_TRI_PERTINENCE_FTX" xml:space="preserve"><value>Pertinence</value></data>
+<data name="CST_LIB_TRI_OCCURRENCE_FTX" xml:space="preserve"><value>Occurrence</value></data>
+<data name="CST_LIB_TRI_FTX" xml:space="preserve"><value>Triées par</value></data>
+<data name="CST_LIB_NB_REP_FTX" xml:space="preserve"><value>Nombre maximum</value></data>
+
+<data name="CST_LIB_TITRE_CHOIX_INDEX_FICHIER" xml:space="preserve"><value>Rechercher dans</value></data>
+<data name="CST_LIB_CHOIX_FICHIER" xml:space="preserve"><value>Fichiers uniquement</value></data>
+<data name="CST_LIB_CHOIX_INDEX_FICHIER" xml:space="preserve"><value>Fichiers et index</value></data>
+<data name="CST_LIB_TOUS_TYPES" xml:space="preserve"><value>Tous les types</value></data>
+<data name="CST_LIBELLE_AFFINER_RECHERCHE_TOUS_CRITERES" xml:space="preserve"><value>Modifier tous les critères</value></data>
+
+<!--  Accueil BAL BIB -->
+<data name="CST_LIBELLE_BASCULER_LISTE_RESULTAT" xml:space="preserve"><value>Basculer vers la liste de résultats</value></data>
+<data name="CST_TITRE_PAGE_GEST_BIB" xml:space="preserve"><value>Bibliothèque des questions</value></data>
+<data name="CST_TITRE_PAGE_PARTAGE_BIB" xml:space="preserve"><value>Partage de la question</value></data>
+<data name="CST_MESSAGE_NO_AFFICHE_QUESTION_BIB" xml:space="preserve"><value>Cette question ne peut pas être affiché sur le client intranet.</value></data>
+<data name="CST_LIBELLE_BIB_CACHEE" xml:space="preserve"><value>Cachée</value></data>
+<data name="CST_LIBELLE_BIB_PARTAGE" xml:space="preserve"><value>Partage</value></data>
+
+<!-- Libelle "Partageable". -->
+<data name="CST_LIBELLE_BIB_PARTAGEABLE" xml:space="preserve"><value>Partageable</value></data>
+
+<!-- Libelle "Partage multiple". -->
+<data name="CST_LIBELLE_PARTAGE_MULTIPLE" xml:space="preserve"><value>Multiple</value></data>
+
+<!-- Libelle "Aucun partage". -->
+<data name="CST_LIBELLE_NON_PARTAGE" xml:space="preserve"><value>Non partagée</value></data>
+
+<!-- Libelle "Type partage". -->
+<data name="CST_LIBELLE_BIB_TYPE_PARTAGE" xml:space="preserve"><value>Type</value></data>
+
+<!-- Libelle "Valeur partage". -->
+<data name="CST_LIBELLE_BIB_VALEUR_PARTAGE" xml:space="preserve"><value>Valeur</value></data>
+
+<!-- Libelle "Libelle partage par fonction". -->
+<data name="CST_LIBELLE_BIB_PARTAGE_FONCTION" xml:space="preserve"><value>Fonction</value></data>
+
+<!-- Libelle "Libelle partage par profil". -->
+<data name="CST_LIBELLE_BIB_PARTAGE_PROFIL" xml:space="preserve"><value>Profil</value></data>
+
+<!-- Libelle "Libelle partage public". -->
+<data name="CST_LIBELLE_BIB_PARTAGE_PUBLIC" xml:space="preserve"><value>Public</value></data>
+
+<!-- Libelle "Libelle partage par service". -->
+<data name="CST_LIBELLE_BIB_PARTAGE_SERVICE" xml:space="preserve"><value>Service</value></data>
+
+<!-- Libelle "Libelle partage par utilisateur". -->
+<data name="CST_LIBELLE_BIB_PARTAGE_UTIL" xml:space="preserve"><value>Utilisateur</value></data>
+
+<!-- Libelle "BAL". -->
+<data name="CST_LIBELLE_BAL" xml:space="preserve"><value>Corbeille des tâches</value></data>
+
+<!-- Libelle "BIB". -->
+<data name="CST_LIBELLE_BIB" xml:space="preserve"><value>Liste des questions</value></data>
+
+<!-- Libelle "BIB". -->
+<data name="CST_LIBELLE_BIB_PUB" xml:space="preserve"><value>Liste des questions partagées</value></data>
+
+<!-- Libelle "BIB". -->
+<data name="CST_LIBELLE_BIB_PRIV" xml:space="preserve"><value>Liste des questions privées</value></data>
+
+<!-- Libelle bouton "combiner question". -->
+<data name="CST_LIBELLE_COMBINER_QUESTION" xml:space="preserve"><value>Combiner questions</value></data>
+
+<!-- Message select question. -->
+<data name="CST_LIBELLE_MESS_SELECT_QUESTION" xml:space="preserve"><value>Veuillez sélectionner au moins deux questions.</value></data>
+
+<!-- Libelle "Historique question". -->
+<data name="CST_LIBELLE_HIST_QUESTION" xml:space="preserve"><value>Historique de vos questions</value></data>
+
+<!-- Libelle "Pas de question dans l'historique". -->
+<data name="AUCUNE_QUESTION_HISTO" xml:space="preserve"><value>Aucune question n'a été enregistrée</value></data>
+
+<!-- Libelle  -->
+<data name="MODIFIER_QUESTION" xml:space="preserve"><value>Modifier la question</value></data>
+
+<!-- Libelle  -->
+<data name="CST_LIBELLE_RAFRAICHISSEMENT_BAL" xml:space="preserve"><value>Rafraichir les boîtes aux lettres</value></data>
+
+<!-- Libelle  -->
+<data name="CST_NOTE_RAFRAICHISSEMENT_BAL" xml:space="preserve"><value>Mettre à jour le nombre de réponses des boîtes aux lettres</value></data>
+
+<!-- Libelle message de suppression de la question. -->
+<data name="CST_LIBELLE_SUPP_QUEST_BIB" xml:space="preserve"><value>Etes-vous sûr de vouloir supprimer cette question de la bibliothèque ?</value></data>
+
+<!-- Libelle fenetre du détail des questions de la bib. -->
+<data name="CST_LIBELLE_FENETRE_DETAIL_QUEST_BIB" xml:space="preserve"><value>Détail de la question</value></data>
+
+<!-- Libelle message d'interdiction de supp cette question. -->
+<data name="CST_LIBELLE_NO_DROIT_SUPP_QUEST_BIB" xml:space="preserve"><value>Vous n'êtes pas autorisé à supprimer cette question.</value></data>
+
+<!-- Libelle bouton ajouter. -->
+<data name="CST_LIBELLE_AJOUTER_QUEST_BIB" xml:space="preserve"><value>Ajouter</value></data>
+
+<!-- Libelle bouton voir le détail de la question. -->
+<data name="CST_LIBELLE_DETAIL_QUEST_BIB" xml:space="preserve"><value>Détail</value></data>
+
+<!-- Libelle bouton voir le détail de la question. -->
+<data name="CST_LIBELLE_RAPPEL_QUEST_BIB" xml:space="preserve"><value>Rappel</value></data>
+
+<!-- Libelle du tableau enregistrement de la nouvelle question. -->
+<data name="CST_LIBELLE_ENREG_QUEST_BIB" xml:space="preserve"><value>Enregistrement de la question</value></data>
+
+<!-- Libelle du bouton enregistrement de la question. -->
+<data name="CST_LIBELLE_ENREG_QUESTION" xml:space="preserve"><value>Enregistrer la question</value></data>
+
+<!-- Libelle de demande du titre de la question. -->
+<data name="CST_LIBELLE_TITRE_QUEST" xml:space="preserve"><value>Titre de la question</value></data>
+
+<!-- Libelle quand le nom de la nouvelle question n'est pas renseigné. -->
+<data name="CST_LIBELLE_NO_NOM_QUEST_BIB" xml:space="preserve"><value>Veuillez renseigner le titre de la question</value></data>
+
+<!-- Libelle de refus de certains caratères dans le libelle de la question. -->
+<data name="CST_LIBELLE_NOK_CHAR_BIB" xml:space="preserve"><value>Les caractères suivants ne sont pas admis dans le titre de la question.\\n\" <!-- & @ et anti-slash</value></data> -->
+
+<!-- Libelle quand le nom de la nouvelle question existe déjà. -->
+<data name="CST_LIBELLE_QUEST_EXIST_DEJA" xml:space="preserve"><value>Une requête de même libellé existe déjà dans la bibliothèque.\\n Voulez-vous la remplacer ?</value></data>
+
+<!-- Libelle quand le nom de la nouvelle question existe déjà et qu'on ne peut pas la modifier -->
+<data name="CST_MESS_QUEST_EXIST_DEJA_NO_DROITS" xml:space="preserve"><value>Une question de même libellé existe déjà dans la bibliothèque.\\nVous n'avez pas les droits suffisants pour la modifier.</value></data>
+
+<!-- Libelle entete colonne. -->
+<data name="CST_LIBELLE_ENTETE_COL_LIEN" xml:space="preserve"><value>Lien</value></data>
+<data name="CST_LIBELLE_ENTETE_COL_TYPE" xml:space="preserve"><value>Type</value></data>
+<data name="CST_LIBELLE_ENTETE_COL_RUBRIQUE" xml:space="preserve"><value>Rubrique</value></data>
+<data name="CST_LIBELLE_ENTETE_COL_COLONNE" xml:space="preserve"><value>Colonne</value></data>
+<data name="CST_LIBELLE_ENTETE_COL_OPERATEUR" xml:space="preserve"><value>Opérateur</value></data>
+<data name="CST_LIBELLE_ENTETE_COL_VALEUR1" xml:space="preserve"><value>Valeur 1</value></data>
+<data name="CST_LIBELLE_ENTETE_COL_VALEUR2" xml:space="preserve"><value>Valeur 2</value></data>
+<data name="CST_LIBELLE_ENTETE_COL_THESAURUS" xml:space="preserve"><value>Thesaurus</value></data>
+<data name="CST_LIBELLE_ENTETE_COL_LIE" xml:space="preserve"><value>Liée</value></data>
+
+<!-- Libelle des liens -->
+<data name="CST_LIBELLE_LIEN_OU" xml:space="preserve"><value>Ou</value></data>
+<data name="CST_LIBELLE_LIEN_ET" xml:space="preserve"><value>Et</value></data>
+<data name="CST_LIBELLE_LIEN_SAUF" xml:space="preserve"><value>Sauf</value></data>
+
+<!-- Libelle des opérateur -->
+<data name="CST_LIBELLE_OPE_EGAL" xml:space="preserve"><value>est égal à</value></data>
+<data name="CST_LIBELLE_OPE_COMMENCE" xml:space="preserve"><value>commence par</value></data>
+<data name="CST_LIBELLE_OPE_SUP_EGAL" xml:space="preserve"><value>est plus grand ou égal à</value></data>
+<data name="CST_LIBELLE_OPE_INF_EGAL" xml:space="preserve"><value>est plus petit ou égal à</value></data>
+<data name="CST_LIBELLE_OPE_RESPECTE" xml:space="preserve"><value>respecte le format</value></data>
+<data name="CST_LIBELLE_OPE_SUPERIEUR" xml:space="preserve"><value>est plus grand que</value></data>
+<data name="CST_LIBELLE_OPE_INFERIEUR" xml:space="preserve"><value>est plus petit que</value></data>
+<data name="CST_LIBELLE_OPE_DIFFERENT" xml:space="preserve"><value>est différent de</value></data>
+<data name="CST_LIBELLE_OPE_COMPRIS" xml:space="preserve"><value>est compris entre</value></data>
+
+<!--  PAGE DE RESULTATS -->
+<!-- Libelle au pluriel. -->
+<data name="CST_LIBELLE_PAGE_RESULT_PLURIEL" xml:space="preserve"><value>Pages de résultats :</value></data>
+
+<!-- Libelle au singulier. -->
+<data name="CST_LIBELLE_PAGE_RESULT" xml:space="preserve"><value>Page de résultats :</value></data>
+
+<!-- Libelle page suivante. -->
+<data name="CST_LIBELLE_PAGE_SUIVANTE" xml:space="preserve"><value>Pages suivantes</value></data>
+
+<!-- Libelle page precedente. -->
+<data name="CST_LIBELLE_PAGE_PRECEDENTE" xml:space="preserve"><value>Pages précédentes</value></data>
+
+<!-- Libelle question. -->
+<data name="CST_LIBELLE_QUESTION" xml:space="preserve"><value>Question</value></data>
+
+<!-- Libelle dossier vide. -->
+<data name="CST_LIBELLE_DOSSIER_VIDE" xml:space="preserve"><value>Le dossier est vide.</value></data>
+
+<!-- Libelle du nombre de reponses. -->
+<data name="CST_LIBELLE_NB_REP" xml:space="preserve"><value>Il y a %d réponse à votre question</value></data>
+
+<!-- Libelle du nombre de reponses au pluriel. -->
+<data name="CST_LIBELLE_NB_REP_PLURIEL" xml:space="preserve"><value>Il y a %d réponses à votre question</value></data>
+
+<!-- Libelle du nombre de reponses dans un dossier. -->
+<data name="CST_LIBELLE_NB_REP_DOSSIER" xml:space="preserve"><value>Le dossier comporte %d document</value></data>
+
+<!-- Libelle du nombre de reponses dans un dossier au pluriel. -->
+<data name="CST_LIBELLE_NB_REP_DOSSIER_PLURIEL" xml:space="preserve"><value>Le dossier comporte %d documents</value></data>
+
+<!-- Libelle du chemin. -->
+<data name="CST_LIBELLE_CHEMIN" xml:space="preserve"><value>Chemin : </value></data>
+
+<!-- Libelle du choix de la liste resumee. -->
+<data name="CST_LIBELLE_CHOIX_LISTE_RESUMEE" xml:space="preserve"><value>Listes résumées</value></data>
+
+<!-- Libelle du message selectionner une reponse. -->
+<data name="CST_LIBELLE_SELECT_REP" xml:space="preserve"><value>Veuillez sélectionner une réponse.</value></data>
+
+<!-- Libelle du message supprime document. -->
+<data name="CST_LIBELLE_SUPP_DOC" xml:space="preserve"><value>Etes-vous sûr de vouloir supprimer ce document ?</value></data>
+
+<!-- Libelle du message supprime document. -->
+<data name="CST_LIBELLE_SUPP_DOC_TABLEAU" xml:space="preserve"><value>Etes-vous sûr de vouloir supprimer cette ligne du tableau ?</value></data>
+
+<!--  Libelle rappel de la question -->
+<data name="CST_LIBELLE_RAPPEL" xml:space="preserve"><value>Modifier question</value></data>
+
+<!-- Libelle de demande du numéro du pere pour insertion -->
+<data name="CST_LIBELLE_RENSEIGNE_PERE" xml:space="preserve"><value>Veuillez sélectionner un dossier en cliquant sur l'icône du dossier dans la fenêtre Arborescence à gauche.\n Le dossier doit présenter une flèche verte.</value></data>
+
+<!-- Libelle de titre du dossier -->
+<data name="CST_LIBELLE_TITRE_DOSSIER" xml:space="preserve"><value>Titre du dossier</value></data>
+
+<!--   AFFICHAGE CREATION -->
+<!-- Libelle du message pour choisir un type de document à la création -->
+<data name="CST_LIBELLE_CREATION_TYPE_DOC" xml:space="preserve"><value>Veuillez choisir un type de document</value></data>
+
+<!-- Libelle du message pour dire que la feuille de recherche choisie n'existe pas. -->
+<data name="CST_LIBELLE_CREATION_SEARCH_NOT_EXIST" xml:space="preserve"><value>La feuille de recherche que vous avez choisie n'existe pas</value></data>
+
+<!--   AFFICHAGE LIEN -->
+<!-- Libelle du message sur les fiches liées. -->
+<data name="CST_LIBELLE_AFFICHAGE_FICHES_LIEES" xml:space="preserve"><value>Fiches liées</value></data>
+
+<!-- Libelle du message sur les fils du dossier. -->
+<data name="CST_LIBELLE_AFFICHAGE_FILS_DOSSIER" xml:space="preserve"><value>Fils du dossier</value></data>
+
+<!-- Libelle du dossier vide. -->
+<data name="CST_LIBELLE_AFFICHAGE_DOSSIER_VIDE" xml:space="preserve"><value>Le dossier est vide</value></data>
+
+<!-- Libelle du message quand il n'y a aucune fiche liée. -->
+<data name="CST_LIBELLE_AFFICHAGE_NO_FICHE_LIEE" xml:space="preserve"><value>Aucune fiche liée.</value></data>
+
+<!-- Libelle du bouton valider association. -->
+<data name="CST_LIBELLE_BOUTON_VALIDER_ASSO" xml:space="preserve"><value>Valider</value></data>
+
+<!-- Libelle du bouton creer fiche liée. -->
+<data name="CST_LIBELLE_BOUTON_CREER_LIEN" xml:space="preserve"><value>Créer</value></data>
+
+<!-- Libelle du bouton pour revenir à la liste des fiches liées. -->
+<data name="CST_LIBELLE_BOUTON_AFFICHER_LISTE_LIEN" xml:space="preserve"><value>Afficher liste</value></data>
+
+<!-- Libelle de la fenetre des fiches liées.  -->
+<data name="CST_LIBELLE_FENETRE_FICHE_LIEE" xml:space="preserve"><value>Fiches liées</value></data>
+
+<!-- Libelle du nombre de réponses des fiches liées.  -->
+<data name="CST_LIBELLE_NB_REPONSE_FICHE_LIE" xml:space="preserve"><value>Nombre de réponses :</value></data>
+
+<!-- Libelle de la colonne des radio boutons des fiches liées.  -->
+<data name="CST_LIBELLE_COL_RADIO_BOUTON_FICHE_LIE" xml:space="preserve"><value>Choix</value></data>
+
+<!--   AFFICHAGE FICHIER -->
+<!-- Libelle du message d'affichage des fichiers. -->
+<data name="CST_LIBELLE_EREUR_RECUP_NUMDOC_FIC" xml:space="preserve"><value>Erreur : Le numéro de document n'a pas été récupéré</value></data>
+
+<!-- Libelle du titre du tableau x fichiers.  -->
+<data name="CST_LIBELLE_TAB_FICHIERS_LIES" xml:space="preserve"><value>Fichiers liés de premier niveau</value></data>
+
+<!-- Libelle du titre du tableau 1 fichier.  -->
+<data name="CST_LIBELLE_TAB_FICHIER_LIE" xml:space="preserve"><value>Fichier lié de premier niveau</value></data>
+
+<!-- Libelle du titre de l'arborescence des fichiers.  -->
+<data name="CST_LIBELLE_TITRE_ARBO" xml:space="preserve"><value>Liste des fichiers :</value></data>
+
+<!-- Libelle fin de page.  -->
+<data name="CST_LIBELLE_FIN_DE_PAGE" xml:space="preserve"><value>Ajouter un fichier</value></data>
+
+<!-- Libelle fin de sous page.  -->
+<data name="CST_LIBELLE_FIN_DE_SSPAGE" xml:space="preserve"><value>Ajouter un sous fichier</value></data>
+
+<!-- Libelle du bouton ajouter fichier.  -->
+<data name="CST_LIBELLE_AJOUT_FICHIER" xml:space="preserve"><value>Ajouter</value></data>
+
+<!-- Libelle de position.  -->
+<data name="CST_LIBELLE_POSITION" xml:space="preserve"><value>Position</value></data>
+
+<!-- Libelle de la fenetre des fichiers.  -->
+<data name="CST_LIBELLE_FENETRE_FICHIER" xml:space="preserve"><value>Fichier(s) du document</value></data>
+
+<!-- Libelle fermeture page vide. -->
+<data name="CST_LIBELLE_PAGE_FICHIER_A_FERMER" xml:space="preserve"><value>Cette fenêtre pourra être fermée après le chargement du fichier.</value></data>
+
+<!-- Libelle Visualiser le fichier. -->
+<data name="CST_LIBELLE_VISUALISER_FICHIER" xml:space="preserve"><value>Visualiser le document</value></data>
+
+<!-- Libelle Ajouter un fichier. -->
+<data name="CST_LIBELLE_AJOUTER_FICHIER" xml:space="preserve"><value>Ajouter un fichier</value></data>
+
+<data name="CST_LIBELLE_TELECHARGER" xml:space="preserve"><value>Télécharger</value></data>
+<data name="CST_LIBELLE_AJOUTER_FIN_PAGE" xml:space="preserve"><value>Ajouter en fin de liste</value></data>
+<data name="CST_LIBELLE_INSERER_AVANT" xml:space="preserve"><value>Insérer avant celui-ci</value></data>
+<data name="CST_LIBELLE_AJOUTER_FIN_SS_PAGE" xml:space="preserve"><value>Ajouter un sous fichier</value></data>
+<data name="CST_LIBELLE_AJOUTER_FIN_SSPAGE" xml:space="preserve"><value>Ajouter en dernier sous fichier</value></data>
+<data name="CST_LIBELLE_INSERER_AVANT_SSPAGE" xml:space="preserve"><value>Insérer avant ce sous fichier</value></data>
+<data name="CST_LIBELLE_PAS_DE_FICHIER" xml:space="preserve"><value>Aucun fichier</value></data>
+
+<!-- Libelle message ajout impossible -->
+<data name="CST_LIBELLE_AJOUT_IMP_PAS_DEFINI" xml:space="preserve"><value>Ajout impossible : le fichier ajouté n\'est pas défini</value></data>
+<data name="CST_LIBELLE_AJOUT_IMP_PAS_DE_FIC" xml:space="preserve"><value>Ajout impossible : aucun fichier local n\'a été sélectionné.</value></data>
+<data name="CST_LIBELLE_AJOUT_IMP_TAILLE" xml:space="preserve"><value>Ajout impossible : La taille du fichier local sélectionné est nulle.</value></data>
+
+<data name="CST_LIBELLE_NATURE_PAR_DEFAUT" xml:space="preserve"><value>Nature automatique</value></data>
+<data name="CST_LIBELLE_MESSAGE_NO_AFFECTE_NATURE" xml:space="preserve"><value>La nature n'a pas pu être affecté.\\nVeuillez sélectionner une nature dans la liste déroulante.</value></data>
+<data name="CST_LIBELLE_MESSAGE_SUPPRIME_FICHIER" xml:space="preserve"><value>Etes-vous sûr de vouloir supprimer ce fichier ?</value></data>
+
+<!-- Libelle fenetre applet java -->
+<data name="CST_LIBELLE_FENETRE_FICHIER_APPLET" xml:space="preserve"><value>Ouverture d'un fichier en modification</value></data>
+<data name="CST_LIBELLE_FENETRE_FICHIER_MESS_1" xml:space="preserve"><value>Ouverture du fichier en cours ...</value></data>
+<data name="CST_LIBELLE_FENETRE_FICHIER_MESS_2" xml:space="preserve"><value>Ne fermez pas cette fenêtre, elle est nécessaire au bon fonctionnement de l'application.</value></data>
+
+<!--  CONSULTER_DB  -->
+<!-- Libelle du message de non initialisation du numéro. -->
+<data name="CST_LIBELLE_CONSULTER_NUM_INIT" xml:space="preserve"><value>Le numéro n'est pas initialisé</value></data>
+
+<!-- Libelle du message de non existence de la feuille de recherche. -->
+<data name="CST_LIBELLE_CONSULTER_RECHERCHE_EXIST" xml:space="preserve"><value>La feuille de recherche que vous avez choisie n'existe pas</value></data>
+
+<!--    CREER_FICHIER_HERMES -->
+<!-- Libelle de la macro -->
+<data name="CST_LIBELLE_HERMES_MACRO" xml:space="preserve"><value>La macro</value></data>
+
+<!-- Libelle de la macro pas défini -->
+<data name="CST_LIBELLE_HERMES_MACRO_NOT_DEFINE" xml:space="preserve"><value>n est pas définie</value></data>
+
+<!--    ATTENTE_CREATION -->
+<!-- Libelle de document en cours de création -->
+<data name="CST_LIBELLE_CREATION_DOCUMENT" xml:space="preserve"><value>Document en cours de création</value></data>
+
+<!-- Libelle de message d'attente -->
+<data name="CST_LIBELLE_CREATION_ATTENTE" xml:space="preserve"><value>Veuillez patientez ...</value></data>
+
+<!--    AFFICHE_ACTION -->
+<!-- Libelle d'erreur lors de l'affichage des actions -->
+<data name="CST_LIBELLE_ACTION_AFFICHE_ERROR" xml:space="preserve"><value>Erreur : Le numéro de document n'a pas été récupéré</value></data>
+
+<!--    AFFICHE_ARBO -->
+<!-- Libelle d'erreur lors de l'affichage de l'arborescence -->
+<data name="CST_LIBELLE_ACTION_AFFICHE_ARBO" xml:space="preserve"><value>Erreur : Le numéro de document n'a pas été récupéré</value></data>
+
+<!-- Libelle retour au menu" -->
+<data name="CST_LIBELLE_RETOUR_MENU" xml:space="preserve"><value>Retour au menu</value></data>
+<data name="CST_LIBELLE_DIMINUER_TAILLE_MENU" xml:space="preserve"><value>Diminuer la taille du menu</value></data>
+<data name="CST_LIBELLE_AUGMENTER_TAILLE_MENU" xml:space="preserve"><value>Augmenter la taille du menu</value></data>
+
+<data name="CST_LIBELLE_PLAN_DE_CLASSEMENT" xml:space="preserve"><value>Plan de classement</value></data>
+
+<!--    RECH_ACTION_HERMES -->
+<!-- Libelle d'erreur lorsqu'il y a aucun profil -->
+<data name="CST_LIBELLE_ACTION_HERMES_NO_PROFIL" xml:space="preserve"><value>Aucun profil de liste résumé n'est défini pour ce type de document</value></data>
+
+<!-- Libelle d'erreur lorsqu'il n'y a pas de document correspondant à la recherche -->
+<data name="CST_LIBELLE_ACTION_HERMES_NO_DOCUMENT" xml:space="preserve"><value>Aucun document ne correspond à votre recherche</value></data>
+
+<data name="CST_LIBELLE_LANCEMENT_ACTION_HERMES" xml:space="preserve"><value>Lancement d'une action</value></data>
+
+<!--    ACCUEIL_TYPE -->
+<!-- Libelle pour choisir un type de document -->
+<data name="CST_LIBELLE_ACCUEIL_CHOOSE_DOC" xml:space="preserve"><value>Veuillez choisir un type de document</value></data>
+
+<!-- Libelle d'erreur lorsqu'il n'y a pas de feuille de recherche -->
+<data name="CST_LIBELLE_ACCUEIL_SEARCH_NO_EXIST" xml:space="preserve"><value>La feuille de recherche que vous avez choisie n'existe pas</value></data>
+
+<!--    PARSER -->
+<!-- Libelle pour choisir un type de document -->
+<data name="CST_LIBELLE_PARSER_CHOOSE_DOC" xml:space="preserve"><value>Veuillez choisir un type de document</value></data>
+
+<!-- Libelle d'erreur lorsqu'il n'y a pas de feuille de recherche -->
+<data name="CST_LIBELLE_PARSER_SEARCH_NO_EXIST" xml:space="preserve"><value>La feuille de recherche que vous avez choisie n'existe pas</value></data>
+
+<!--    RECHERCHE -->
+<!-- Libelle pour choisir un type de document -->
+<data name="CST_LIBELLE_SEARCH_CLE_CHOOSE_DOC" xml:space="preserve"><value>Veuillez choisir un type de document</value></data>
+
+<!-- Libelle pour choisir un type de document -->
+<data name="CST_LIBELLE_SEARCH_ELAB_CHOOSE_DOC" xml:space="preserve"><value>Veuillez choisir un type de document</value></data>
+
+<!-- Libelle pour choisir un type de document -->
+<data name="CST_LIBELLE_SEARCH_NO_PROFIL" xml:space="preserve"><value>Aucun profil de liste résumé n'est défini.</value></data>
+
+<!-- Libelle pour choisir un type de document -->
+<data name="CST_LIBELLE_SEARCH_NO_REPONSE" xml:space="preserve"><value>Aucune réponse à votre question.</value></data>
+
+<!-- Libelle pour choisir un type de document -->
+<data name="CST_LIBELLE_SEARCH_NO_REPONSE_SIMPLE" xml:space="preserve"><value>Aucune réponse</value></data>
+
+<!-- Libelle pour choisir un type de document -->
+<data name="CST_LIBELLE_SEARCH_FORM_REPONSE" xml:space="preserve"><value>Veuillez reformuler votre question</value></data>
+
+<!-- Libelle pour informer l'utilisateur qu'il doit saisir un critere de recherche -->
+<data name="CST_LIBELLE_SEARCH_NO_CRITERE" xml:space="preserve"><value>Vous devez saisir au moins un critère de recherche.</value></data>
+
+<!-- Libelle quand il n'y a plus de réponse. -->
+<data name="CST_LIBELLE_SEARCH_PLUS_REPONSE" xml:space="preserve"><value>Il n\'y a plus de réponses à la question posée</value></data>
+
+<!-- Libelle quand il n'y a plus de réponse dans une BAL ou BIB -->
+<data name="CST_LIBELLE_SEARCH_PLUS_REPONSE_BAL" xml:space="preserve"><value>Il n\'y a plus de documents à traiter dans cette boîte aux lettres</value></data>
+
+<!-- titre resolution de variable -->
+<data name="CST_LIBELLE_TITRE_RESOLUTION_VAR" xml:space="preserve"><value>Résolution des variables pour la question</value></data>
+
+<data name="CST_LIBELLE_LIEN" xml:space="preserve"><value>Lien</value></data>
+<data name="CST_LIBELLE_RUBRIQUE" xml:space="preserve"><value>Rubrique</value></data>
+<data name="CST_LIBELLE_OP" xml:space="preserve"><value>Opérateur</value></data>
+<data name="CST_LIBELLE_VALEUR" xml:space="preserve"><value>Valeur</value></data>
+
+<!-- rubriques de recherches speciales -->
+<data name="CST_LIBELLE_RUB_RECH_NUMDOC" xml:space="preserve"><value>#Numéro de document</value></data>
+<data name="CST_LIBELLE_RUB_RECH_NBFIC" xml:space="preserve"><value>#Nombre de fichiers</value></data>
+<data name="CST_LIBELLE_RUB_RECH_NBPERES" xml:space="preserve"><value>#Nombre de pères</value></data>
+<data name="CST_LIBELLE_RUB_RECH_FICHIERS" xml:space="preserve"><value>#Fichiers</value></data>
+
+<!-- DOMAINES FERMES -->
+<data name="CST_LIBELLE_NO_ADMIN_DOMFERME" xml:space="preserve"><value>Vous n'avez pas les droits d'administration des domaines fermés</value></data>
+<data name="CST_TITRE_PAGE_RUB_DOMFERME" xml:space="preserve"><value>Rubriques à domaine fermé</value></data>
+<data name="CST_TITRE_PAGE_GEST_DOMFERME" xml:space="preserve"><value>Valeurs du domaine fermé</value></data>
+<data name="CST_LIBELLE_CODE_RUB" xml:space="preserve"><value>Code rubrique</value></data>
+<data name="CST_LIBELLE_LIBELLE_RUB" xml:space="preserve"><value>Libellé rubrique</value></data>
+<data name="CST_LIBELLE_SELECT_RUB" xml:space="preserve"><value>Veuillez sélectionner une rubrique</value></data>
+<data name="CST_LIBELLE_SELECT_DOMFERME" xml:space="preserve"><value>Veuillez sélectionner une valeur</value></data>
+<data name="CST_VERIF_CODE_DOMFERME" xml:space="preserve"><value>Veuillez renseigner le champ Code</value></data>
+<data name="CST_VERIF_LIBELLE_DOMFERME" xml:space="preserve"><value>Veuillez renseigner le champ Libellé</value></data>
+<data name="CST_LIBELLE_SUPP_DOMFERME" xml:space="preserve"><value>Etes-vous sûr de vouloir supprimer cet valeur ?</value></data>
+<data name="CST_LIBELLE_CODE_DOMFERME" xml:space="preserve"><value>Code</value></data>
+<data name="CST_LIBELLE_LIBELLE_DOMFERME" xml:space="preserve"><value>Libellé</value></data>
+<data name="CST_LIBELLE_ENREG_VAL_DOMFERME" xml:space="preserve"><value>Enregistrement de valeurs</value></data>
+<data name="CST_LIBELLE_VALIDER_MODIF_DOMFERME" xml:space="preserve"><value>Valider</value></data>
+<data name="CST_LIBELLE_ANNULER_MODIF_DOMFERME" xml:space="preserve"><value>Annuler</value></data>
+
+<!-- LISTES HIERARCHIQUES -->
+<data name="CST_LIBELLE_NO_ADMIN_LISTHIER" xml:space="preserve"><value>Vous n'avez pas les droits d'administration des listes hiérarchiques</value></data>
+<data name="CST_TITRE_PAGE_ALL_LISTHIER" xml:space="preserve"><value>Listes hiérarchiques</value></data>
+<data name="CST_TITRE_PAGE_ARBO_LISTHIER" xml:space="preserve"><value>Liste hiérarchique</value></data>
+<data name="CST_LIBELLE_SELECT_LISTHIER" xml:space="preserve"><value>Veuillez sélectionner une liste hiérarchique</value></data>
+<data name="CST_LIBELLE_CODE_LISTHIER" xml:space="preserve"><value>Code liste hiérarchique</value></data>
+<data name="CST_LIBELLE_LIBELLE_LISTHIER" xml:space="preserve"><value>Libellé liste hiérarchique</value></data>
+
+<!-- VOCABULAIRE         -->
+<!-- Libelle pour choisir un type de document -->
+<data name="CST_LIBELLE_VOCAB_NO_VOC" xml:space="preserve"><value>Pas de vocabulaire.</value></data>
+
+<!-- Libelle pour choisir un type de document -->
+<data name="CST_LIBELLE_VOCAB_SELECT_VOC" xml:space="preserve"><value><------ SELECTIONNER UNE VALEUR ------></value></data>
+
+<!-- types de vocabulaire -->
+<data name="CST_LIBELLE_VOCAB_USED" xml:space="preserve"><value>Vocabulaire utilisé</value></data>
+<data name="CST_LIBELLE_VOCAB_RUB_LIEE" xml:space="preserve"><value>Vocabulaire lié</value></data>
+<data name="CST_LIBELLE_VOCAB_THE" xml:space="preserve"><value>Vocabulaire thésaurus</value></data>
+<data name="CST_LIBELLE_VOCAB_LIBELLE_DF" xml:space="preserve"><value>Domaine fermé trié par libellé</value></data>
+<data name="CST_LIBELLE_VOCAB_CODE_DF" xml:space="preserve"><value>Domaine fermé trié par code</value></data>
+<data name="CST_LIBELLE_VOCAB_HIER_PAR_CODE" xml:space="preserve"><value>Vocabulaire hiérarchique par code</value></data>
+<data name="CST_LIBELLE_VOCAB_HIER_PAR_LIB" xml:space="preserve"><value>Vocabulaire hiérarchique par libellé</value></data>
+
+<data name="CST_LIBELLE_VOCAB_SUIVANT" xml:space="preserve"><value>Vocabulaire suivant</value></data>
+<data name="CST_LIBELLE_VOCAB_PRECEDENT" xml:space="preserve"><value>Vocabulaire précédent</value></data>
+<data name="CST_LIBELLE_PAS_VOCAB_SUIVANT" xml:space="preserve"><value>Pas de vocabulaire suivant</value></data>
+<data name="CST_LIBELLE_PAS_VOCAB_PRECEDENT" xml:space="preserve"><value>Pas de vocabulaire précédent</value></data>
+
+<!-- EXPORT            -->
+<data name="CST_EXPORT_NOT_POSSIBLE" xml:space="preserve"><value>L'exportation n'est pas possible.</value></data>
+<data name="CST_EXPORT_EXCEL" xml:space="preserve"><value>Exportation des réponses vers Excel</value></data>
+<data name="CST_EXPORT_DOC" xml:space="preserve"><value>Options d'exportation des documents</value></data>
+<data name="CST_EXPORT_FILE_DEST" xml:space="preserve"><value>Fichier de destination:</value></data>
+<data name="CST_EXPORT_CARACT_SEP" xml:space="preserve"><value>Caractère séparateur:</value></data>
+<data name="CST_EXPORT_TAB" xml:space="preserve"><value>Tabulation</value></data>
+<data name="CST_EXPORT_OTHER_VALUE" xml:space="preserve"><value>Autre valeur</value></data>
+<data name="CST_FORMAT_EXPORT_RUB" xml:space="preserve"><value>Format d'exportation des rubriques</value></data>
+<data name="CST_EXPORT_PROFIL" xml:space="preserve"><value>Exportation en utilisant le profil de la liste résumée</value></data>
+<data name="CST_EXPORT_ALL_RUB" xml:space="preserve"><value>Exportation de toutes les rubriques</value></data>
+<data name="CST_EXPORT_XML" xml:space="preserve"><value>Exportation au format XML</value></data>
+<data name="CST_EXPORT_VALID" xml:space="preserve"><value>Valider</value></data>
+<data name="CST_EXPORT_CANCEL" xml:space="preserve"><value>Annuler</value></data>
+
+<data name="CST_EXPORT_DOC_EXCEL" xml:space="preserve"><value>Exportation de documents vers Excel</value></data>
+<data name="CST_EXPORT_NOM_FILE" xml:space="preserve"><value>Vous n'avez pas donné de nom de fichier. <BR></value></data>
+<data name="CST_EXPORT_SEP" xml:space="preserve"><value>Vous n'avez pas donné de séparateur. <BR></value></data>
+<data name="CST_EXPORT_IMPOSSIBLE_RESULT" xml:space="preserve"><value>Impossible de récupérer les résultats de la question</value></data>
+<data name="CST_EXPORT_IMPOSSIBLE_FILS" xml:space="preserve"><value>Impossible de récupérer les fils du dossier</value></data>
+<data name="CST_EXPORT_IMPOSSIBLE_EXPORT" xml:space="preserve"><value>L'exportation vers Excel n'a pas fonctionné.</value></data>
+<data name="CST_EXPORT_CLOSE" xml:space="preserve"><value>Fermer</value></data>
+<data name="CST_EXPORT_EXPORT" xml:space="preserve"><value>Exporter</value></data>
+<data name="CST_EXPORT_ERROR" xml:space="preserve"><value>Erreur Poseidon</value></data>
+
+<!--  CHANGEMENT DU MOT DE PASSE          -->
+<!-- Titre pour changement du password -->
+<data name="CST_TITRE_PAGE_CHANGER_PWD" xml:space="preserve"><value>Changement de mot de passe</value></data>
+
+<!-- Libelle du bouton pour valider le changement du password -->
+<data name="CST_LIBELLE_VALIDER_PWD" xml:space="preserve"><value>Valider</value></data>
+
+<!-- Libelle du bouton pour annuler le changement du password -->
+<data name="CST_LIBELLE_ANNULER_PWD" xml:space="preserve"><value>Annuler</value></data>
+
+<!-- Libelle ancien password -->
+<data name="CST_LIBELLE_OLD_PWD" xml:space="preserve"><value>Ancien mot de passe</value></data>
+
+<!-- Libelle new password -->
+<data name="CST_LIBELLE_NEW_PWD" xml:space="preserve"><value>Nouveau mot de passe</value></data>
+
+<!-- Libelle confirm new password -->
+<data name="CST_LIBELLE_CONFIRM_NEW_PWD" xml:space="preserve"><value>Confirmation du nouveau mot de passe</value></data>
+
+
+<data name="CST_LIBELLE_TROP_REP" xml:space="preserve"><value>La liste des résultats contient plus de %d réponses (%d réponses). Le traitement pour trier cette liste va prendre beaucoup de temps. Voulez-vous vraiment que la liste soit triée ?</value></data>
+
+<data name="CST_LIBELLE_AFFINER_RECHERCHE" xml:space="preserve"><value>Modifier la recherche</value></data>
+
+<!-- RUBRIQUE TABLEAU -->
+<data name="CST_LIBELLE_AJOUTER_AVEC_ENCHAINEMENT" xml:space="preserve"><value>Ajouter avec enchaînement</value></data>
+<data name="CST_LIBELLE_NB_LIGNE_RUB_TAB" xml:space="preserve"><value>Nombre de lignes : </value></data>
+
+<!--  TOOLBAR         -->
+<data name="CST_LIBELLE_TOOLBAR_BLOC_ACCUEIL" xml:space="preserve"><value>Accueil</value></data>
+<data name="CST_LIBELLE_TOOLBAR_BLOC_PARAMETRAGE" xml:space="preserve"><value>Paramétrage</value></data>
+<data name="CST_LIBELLE_TOOLBAR_BLOC_ADMIN" xml:space="preserve"><value>Administration</value></data>
+<data name="CST_LIBELLE_TOOLBAR_BLOC_RECHERCHE" xml:space="preserve"><value>Recherches</value></data>
+<data name="CST_LIBELLE_TOOLBAR_GEST_UTIL" xml:space="preserve"><value>Gestion des utilisateurs</value></data>
+<data name="CST_LIBELLE_TOOLBAR_GEST_DOMAIN" xml:space="preserve"><value>Gestion des domaines fermés</value></data>
+<data name="CST_LIBELLE_TOOLBAR_GEST_LISTHIER" xml:space="preserve"><value>Gestion des listes hiérarchiques</value></data>
+<data name="CST_LIBELLE_TOOLBAR_GEST_THESAURUS" xml:space="preserve"><value>Gestion des thésaurus</value></data>
+<data name="CST_LIBELLE_TOOLBAR_VERSION" xml:space="preserve"><value>Versions</value></data>
+<data name="CST_LIBELLE_TOOLBAR_RECH_NUM" xml:space="preserve"><value>Recherche par N° de document</value></data>
+<data name="CST_LIBELLE_TOOLBAR_RECH_CLE" xml:space="preserve"><value>Recherche par référence</value></data>
+<data name="CST_LIBELLE_TOOLBAR_RECH_ELA" xml:space="preserve"><value>Recherche élaborée</value></data>
+<data name="CST_LIBELLE_TOOLBAR_RECH_SIM" xml:space="preserve"><value>Recherche par fiche</value></data>
+<data name="CST_LIBELLE_TOOLBAR_RECH_EXC_SIM" xml:space="preserve"><value>Recherche plein texte</value></data>
+<data name="CST_LIBELLE_TOOLBAR_RECH_EXC_ELA" xml:space="preserve"><value>Recherche plein texte avancé</value></data>
+<data name="CST_LIBELLE_TOOLBAR_CREATION" xml:space="preserve"><value>Création d'un document</value></data>
+<data name="CST_LIBELLE_TOOLBAR_FRANCAIS" xml:space="preserve"><value>Français</value></data>
+<data name="CST_LIBELLE_TOOLBAR_ANGLAIS" xml:space="preserve"><value>Anglais</value></data>
+<data name="CST_LIBELLE_TOOLBAR_IMPRIMER" xml:space="preserve"><value>Imprimer</value></data>
+<data name="CST_LIBELLE_TOOLBAR_FERMER" xml:space="preserve"><value>Déconnexion</value></data>
+<data name="CST_LIBELLE_TOOLBAR_RECH_HIS_QUEST" xml:space="preserve"><value>Recherches effectuées</value></data>
+<data name="CST_LIBELLE_TOOLBAR_RECH_HIS_DOC" xml:space="preserve"><value>Documents consultés</value></data>
+<data name="CST_LIBELLE_TOOLBAR_PASSWORD" xml:space="preserve"><value>Changer le mot de passe</value></data>
+<data name="CST_LIBELLE_TOOLBAR_GEST_BIB" xml:space="preserve"><value>Gestion des questions de la bibliothèque</value></data>
+<data name="CST_LIBELLE_TOOLBAR_GEST_PROFIL" xml:space="preserve"><value>Gestion des profils de liste résumée</value></data>
+
+<!--   PROFIL LR -->
+<data name="CST_TITRE_PAGE_GEST_PROFIL" xml:space="preserve"><value>Configuration des profils de listes résumées</value></data>
+<data name="CST_LIBELLE_ENT_PROFIL" xml:space="preserve"><value>Nom du profil</value></data>
+<data name="CST_LIBELLE_ENT_TYPE_DOC" xml:space="preserve"><value>Type de document</value></data>
+<data name="CST_LIBELLE_ENT_ACTIF_TYPE" xml:space="preserve"><value>Actif pour le type</value></data>
+<data name="CST_LIBELLE_ENT_PUBLIC" xml:space="preserve"><value>Public</value></data>
+<data name="CST_LIBELLE_ENT_AUTO" xml:space="preserve"><value>Automatique</value></data>
+
+<data name="CST_LIBELLE_AJOUTER_PROFIL" xml:space="preserve"><value>Ajouter</value></data>
+<data name="CST_LIBELLE_VALIDER_PROFIL" xml:space="preserve"><value>Valider</value></data>
+<data name="CST_LIBELLE_MODIFIER_PROFIL" xml:space="preserve"><value>Modifier</value></data>
+<data name="CST_LIBELLE_SUPPRIMER_PROFIL" xml:space="preserve"><value>Supprimer</value></data>
+<data name="CST_LIBELLE_ACTIVE_PROFIL_TYPE" xml:space="preserve"><value>Activer profil</value></data>
+<data name="CST_LIBELLE_DESACTIVE_PROFIL_TYPE" xml:space="preserve"><value>Désactiver profil</value></data>
+
+<data name="CST_LIBELLE_NO_DROIT_ACTIVER_PROFIL" xml:space="preserve"><value>Un profil automatique est un profil actif par défaut</value></data>
+<data name="CST_LIBELLE_SUPP_PROFIL_LR" xml:space="preserve"><value>Etes-vous sûr de vouloir supprimer ce profil de liste résumée ?</value></data>
+<data name="CST_NO_DROIT_SUPP_PROFIL_LR" xml:space="preserve"><value>Vous n'êtes pas autorisé à supprimer ce profil de liste résumée.</value></data>
+<data name="CST_NO_DROIT_AJOU_PROFIL_LR" xml:space="preserve"><value>Vous n'êtes pas autorisé à ajouter un profil de liste résumée.</value></data>
+<data name="CST_NO_DROIT_MODIF_PROFIL_LR" xml:space="preserve"><value>Vous n'êtes pas autorisé à modifier ce profil de liste résumée.</value></data>
+
+<data name="CST_CHAMP_SPE_TYP_DOC" xml:space="preserve"><value>Type de doc</value></data>
+<data name="CST_CHAMP_SPE_KH" xml:space="preserve"><value>Clé hiérarchique</value></data>
+<data name="CST_CHAMP_SPE_CONF" xml:space="preserve"><value>Confidentialité</value></data>
+<data name="CST_CHAMP_SPE_CLOI" xml:space="preserve"><value>Cloisonnement</value></data>
+<data name="CST_CHAMP_SPE_HYPERTEXT" xml:space="preserve"><value>Hypertexte</value></data>
+<data name="CST_CHAMP_SPE_NUM_DOC" xml:space="preserve"><value>Numéro de document</value></data>
+<data name="CST_CHAMP_SPE_NB_FICHIERS" xml:space="preserve"><value>Nombre de fichiers</value></data>
+<data name="CST_CHAMP_SPE_DOC_ACCES" xml:space="preserve"><value>Document accessible</value></data>
+<data name="CST_CHAMP_SPE_LIB_TYP_DOC" xml:space="preserve"><value>Libellé du type de doc</value></data>
+
+<data name="CST_LIBELLE_TITRE_PROFIL_LR" xml:space="preserve"><value>Titre :</value></data>
+<data name="CST_LIBELLE_PROFIL_PUBLIC" xml:space="preserve"><value>Profil partagé</value></data>
+<data name="CST_LIBELLE_LISTE_RUB" xml:space="preserve"><value>Liste des rubriques :</value></data>
+<data name="CST_LIBELLE_VISU_PROFIL_LR" xml:space="preserve"><value>Liste résumée :</value></data>
+<data name="CST_LIBELLE_LISTE_CHAMP_SPE" xml:space="preserve"><value>Liste des champs spéciaux :</value></data>
+<data name="CST_LIBELLE_CREATION_PROFIL" xml:space="preserve"><value>Création d'un nouveau profil de liste résumée</value></data>
+<data name="CST_LIBELLE_MODIF_PROFIL" xml:space="preserve"><value>Modification d'un profil de liste résumée</value></data>
+
+<data name="CST_MESSAGE_IMPO_CREER_PROFIL_VIDE" xml:space="preserve"><value>Impossible de créer une liste résumée vide</value></data>
+<data name="CST_MESSAGE_IMPO_CREER_PROFIL_SANS_RUB" xml:space="preserve"><value>Impossible de créer une liste résumée sans rubriques</value></data>
+<data name="CST_MESSAGE_IMPO_CREER_PROFIL_SANS_TITRE" xml:space="preserve"><value>Impossible de créer une liste résumée sans titre</value></data>
+<data name="CST_MESSAGE_IMPO_CREER_PROFIL_AVEC_CARAC_SPE" xml:space="preserve"><value>Le titre ne doit pas contenir de guillemet ('') ou de dièse (#).</value></data>
+
+<data name="CST_TITRE_PAGE_MODIF_INFO_CHAMP_PROFIL" xml:space="preserve"><value>Propriété de la colonne</value></data>
+<data name="CST_LIBELLE_NOM_RUB_COLONNE_LR" xml:space="preserve"><value>Rubrique :</value></data>
+<data name="CST_LIBELLE_TITRE_COLONNE_LR" xml:space="preserve"><value>Titre :</value></data>
+<data name="CST_LIBELLE_TAILLE_COLONNE_LR" xml:space="preserve"><value>Taille :</value></data>
+<data name="CST_LIBELLE_GAUCHE_COLONNE_LR" xml:space="preserve"><value>Aligné à gauche</value></data>
+<data name="CST_LIBELLE_CENTRE_COLONNE_LR" xml:space="preserve"><value>Centré</value></data>
+<data name="CST_LIBELLE_DROIT_COLONNE_LR" xml:space="preserve"><value>Aligné à droite</value></data>
+
+
+<!--   DOSSIER -->
+<data name="CST_LIBELLE_DOSS_BIBLIOTHEQUE" xml:space="preserve"><value>Bibliothèque</value></data>
+<data name="CST_LIBELLE_DOSS_BIBLIOTHEQUE_PUB" xml:space="preserve"><value>Partagées</value></data>
+<data name="CST_LIBELLE_DOSS_BIBLIOTHEQUE_PRIV" xml:space="preserve"><value>Privées</value></data>
+<data name="CST_LIBELLE_DOSS_BAL" xml:space="preserve"><value>Corbeille des tâches</value></data>
+<data name="CST_LIBELLE_DOSS_QUESTION" xml:space="preserve"><value>Recherches effectuées</value></data>
+<data name="CST_LIBELLE_DOSS_HISTORIQUE" xml:space="preserve"><value>Documents consultés</value></data>
+<data name="CST_LIBELLE_DOSS_INSERTION" xml:space="preserve"><value>Insérer dans dossier</value></data>
+<data name="CST_LIBELLE_DOSS_RETRAIT" xml:space="preserve"><value>Retirer du dossier</value></data>
+<data name="CST_LIBELLE_DOSS_QST_BULLE" xml:space="preserve"><value>Voir le contenu de la question</value></data>
+<data name="CST_LIBELLE_DOSS_DOC_BULLE" xml:space="preserve"><value>Voir le contenu du dossier</value></data>
+<data name="CST_LIBELLE_DOSS_ACT_DOS_INS1" xml:space="preserve"><value>Activer le dossier</value></data>
+<data name="CST_LIBELLE_DOSS_ACT_DOS_INS2" xml:space="preserve"><value>pour l\'insertion</value></data>
+
+
+<!--   THESAURUS -->
+<data name="CST_DOMAINE_THESAURUS" xml:space="preserve"><value>Domaine du thésaurus : </value></data>
+<data name="CST_DESCRIPTEUR_NON_PERE" xml:space="preserve"><value>Ce descripteur ne contient pas de fils</value></data>
+<data name="CST_NOMBRE_FILS" xml:space="preserve"><value>Le nombre de fils : </value></data>
+<data name="CST_CHEMINS_FOUND" xml:space="preserve"><value>Liste des chemins trouvés : </value></data>
+<data name="CST_DELETE_THESAURUS" xml:space="preserve"><value>Souhaitez vous vraiment supprimer cette fiche ?</value></data>
+<data name="CST_NOUVEAU" xml:space="preserve"><value>Nouveau</value></data>
+<data name="CST_LIBELLE_NO_ADMIN_THESAURUS" xml:space="preserve"><value>Vous n'avez pas les droits de gestion des thésaurus.</value></data>
+<data name="CST_TITRE_PAGE_ALL_THESAURUS" xml:space="preserve"><value>Thésaurus</value></data>
+<data name="CST_LIBELLE_SELECT_THESAURUS" xml:space="preserve"><value>Veuillez sélectionner un thésaurus</value></data>
+<data name="CST_TITRE_TABLEAU_ALL_THESAURUS" xml:space="preserve"><value>Liste des thésaurus</value></data>
+
+<!--   UTILISATEUR -->
+<data name="CST_TITRE_PAGE_GEST_UTIL" xml:space="preserve"><value>Utilisateurs</value></data>
+<data name="CST_LIBELLE_PAGE_MODIF_USER" xml:space="preserve"><value>Modification de l'utilisateur</value></data>
+<data name="CST_LIBELLE_PAGE_CREATE_USER" xml:space="preserve"><value>Création d'un utilisateur</value></data>
+<data name="CST_LIBELLE_REMPLIR_CODE_UTIL" xml:space="preserve"><value>Vous devez renseigner le code utilisateur</value></data>
+<data name="CST_LIBELLE_REMPLIR_NOM_UTIL" xml:space="preserve"><value>Vous devez renseigner le nom de l'utilisateur</value></data>
+
+<data name="CST_LIBELLE_UTILISATEUR" xml:space="preserve"><value>Paramètres utilisateur</value></data>
+<data name="CST_LIBELLE_CODE_USER" xml:space="preserve"><value>Code</value></data>
+<data name="CST_LIBELLE_NOM_USER" xml:space="preserve"><value>Nom</value></data>
+<data name="CST_LIBELLE_PROFIL_USER" xml:space="preserve"><value>Profil</value></data>
+<data name="CST_LIBELLE_MAIL_USER" xml:space="preserve"><value>Adresse électronique</value></data>
+
+<data name="CST_LIBELLE_AJOUTER_USER" xml:space="preserve"><value>Ajouter</value></data>
+<data name="CST_LIBELLE_MODIFIER_USER" xml:space="preserve"><value>Modifier</value></data>
+<data name="CST_LIBELLE_SUPPRIMER_USER" xml:space="preserve"><value>Supprimer</value></data>
+
+<data name="CST_LIBELLE_LISTE_PROFIL" xml:space="preserve"><value>Liste des profils</value></data>
+<data name="CST_LIBELLE_VALIDER_MODIF_USER" xml:space="preserve"><value>Valider</value></data>
+<data name="CST_LIBELLE_ANNULER_MODIF_USER" xml:space="preserve"><value>Annuler</value></data>
+
+<data name="CST_LIBELLE_SELECT_USER" xml:space="preserve"><value>Veuillez sélectionner un utilisateur</value></data>
+<data name="CST_LIBELLE_SUPP_USER" xml:space="preserve"><value>Etes-vous sûr de vouloir supprimer cet utilisateur ?</value></data>
+<data name="CST_LIBELLE_NO_ADMIN_USER" xml:space="preserve"><value>Vous n'avez pas les droits d'administration des utilisateurs.</value></data>
+<data name="CST_LIBELLE_PROFIL_DEJA_ASSOCIE" xml:space="preserve"><value>L'utilisateur dispose déja de ce profil</value></data>
+<data name="CST_LIBELLE_DEFINIR_PROFIL_DEFAUT_1" xml:space="preserve"><value>Définir par défaut</value></data>
+<data name="CST_LIBELLE_DEFINIR_PROFIL_DEFAUT_2" xml:space="preserve"><value>Veuillez déclarer un profil par défaut</value></data>
+
+<data name="CST_LIBELLE_FERM_FICHE" xml:space="preserve"><value>Etes-vous sûr de vouloir fermer cette fiche ?</value></data>
+
+<!-- Navigation entre documents -->
+<data name="CST_LIBELLE_NO_DOC_PRECEDENT" xml:space="preserve"><value>Il n'y a pas de document précédent.</value></data>
+<data name="CST_LIBELLE_NO_DOC_SUIVANT" xml:space="preserve"><value>Il n'y a pas de document suivant.</value></data>
+
+<data name="CST_SESSION_INVALIDE" xml:space="preserve"><value>La session a expiré</value></data>
+
+#Annotations
+<data name="CST_LIBELLE_SAUVER_ANNOTATION" xml:space="preserve"><value>Sauver les annotations</value></data>
+
+<!--   REFERENTIEL -->
+<data name="CST_LIBELLE_NEW_IDENT" xml:space="preserve"><value>Nouvel identifiant</value></data>
+<data name="CST_LIBELLE_DUPLICATE_BUTTON" xml:space="preserve"><value>Dupliquer</value></data>
+<data name="CST_LIBELLE_NEW_IDENT_MESSAGE" xml:space="preserve"><value>Veuillez renseigner le nouvel identifiant</value></data>
+
+<!--  CONFIDENTIALITE -->
+<data name="CST_TITRE_CONFIDENTIALITE" xml:space="preserve"><value>Confidentialité du document</value></data>
+<data name="CST_LIBELLE_INDICE_HABITATION" xml:space="preserve"><value>Indice d'habilitation</value></data>
+<data name="CST_LIBELLE_NIVEAU_HABITATION" xml:space="preserve"><value>Niveau d'habilitation</value></data>
+<data name="CST_LIBELLE_CLOISONNEMENT" xml:space="preserve"><value>Niveau de cloisonnement</value></data>
+
+<!-- GESTION MODELES -->
+<data name="CST_TITRE_PAGE_GESTION_MODELE" xml:space="preserve"><value>Gestion des modèles</value></data>
+<data name="CST_LIBELLE_MODIFICATION_MODELE" xml:space="preserve"><value>Modification de modèle</value></data>
+<data name="CST_LIBELLE_MODIF_MODELE" xml:space="preserve"><value>Modèles pour la génération de documents</value></data>
+<data name="CST_LIBELLE_CREATION_MODELE" xml:space="preserve"><value>Création de modèle</value></data>
+<data name="CST_LIBELLE_MODELE_PREEXISTANT" xml:space="preserve"><value>Modèles préexistants</value></data>
+<data name="CST_LIBELLE_TYPES_DOCUMENT" xml:space="preserve"><value>Types de document</value></data>
+<data name="CST_MESSAGE_NO_MODELE_SELECTIONNE" xml:space="preserve"><value>Vous n'avez pas sélectionné de modèle</value></data>
+<data name="CST_MESSAGE_NO_TYPEDOC_SELECTIONNE" xml:space="preserve"><value>Vous n'avez pas sélectionné de type de document</value></data>
+
+<!-- Choix du profil -->
+<data name="CST_LIBELLE_CHOIX_PROFIL" xml:space="preserve"><value>Choisissez votre profil de connexion</value></data>
+<!-- libelle classique pour l'écran d'accueil -->
+<data name="CST_LIBELLE_ACCES_PROFIL" xml:space="preserve"><value>Basculer vers le profil</value></data>
+<!-- libelle court pour le menu -->
+<data name="CST_LIBELLE_ACCES_PROFIL_COURT" xml:space="preserve"><value>Profil</value></data>
+<!-- libelle classique pour l'écran d'accueil -->
+<data name="CST_LIBELLE_TITRE_ACCES_PROFIL" xml:space="preserve"><value>Accès aux autres profils</value></data>
+<!-- libelle court pour le menu -->
+<data name="CST_LIBELLE_TITRE_ACCES_PROFIL_COURT" xml:space="preserve"><value>Accès profils</value></data>
+<data name="CST_LIBELLE_CHANGER_PROFIL" xml:space="preserve"><value>Changer de profil</value></data>
+
+<!-- ACCUEIL -->
+<data name="CST_LIBELLE_MENU" xml:space="preserve"><value>Menu</value></data>
+<data name="CST_LIBELLE_ARBORESCENCE" xml:space="preserve"><value>Arborescence</value></data>
+
+<!--   Dossiers pères -->
+<data name="CST_LIBELLE_GARDER_EN_REPONSE_HISTO_DOC" xml:space="preserve"><value>Garder dans l'historique des documents</value></data>
+<data name="CST_LIBELLE_GARDER_EN_REPONSE_HISTO_QUEST" xml:space="preserve"><value>Garder en résultat de recherche</value></data>
+
+<data name="CST_LIBELLE_TITRE_TPL_CREATION" xml:space="preserve"><value>Creation : </value></data>
+<data name="CST_LIBELLE_TITRE_TPL_CONSULTATION" xml:space="preserve"><value></value></data>
+<data name="CST_LIBELLE_TITRE_TPL_RECHERCHE" xml:space="preserve"><value>Recherche : </value></data>
+
+<data name="CST_RECHERCHE" xml:space="preserve"><value>Recherche</value></data>
+
+}
+?>

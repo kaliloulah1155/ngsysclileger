@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:pos="http://www.sesin.com/">
+  <head>
+    <title>Redaction web Poseidon</title>
+  </head>
+  <body>
+    <pos:footer type="texte" align="LEFT"></pos:footer>
+    <pos:footer type="texte" align="RIGHT"></pos:footer>
+    <div style="font-family:Arial;margin: 3em 3em 3em 3em;">
+	<pos:need nb-lignes='40' />
+    <table border='0' width="92%" style="border-collapse: collapse;">
+	<tr>
+		<td valign='top' width='30%'>
+      <p style="text-align:left">
+				<img src="http://www.sesin.com/images/logo/sesin_petit_sans_texte.gif" border="0"/><br/><br/>
+				Société SESIN<br/>
+				7, avenue André Roussin, Bât B<br/>
+                13016 Marseille<br/>
+                TEL : 04.91.60.09.64<br/>
+                FAX : 04.91.46.71.83</p>
+		</td>
+		<td valign='top' width='70%'>
+		    <br/><br/><br/><br/><br/><br/>
+			<p style="text-align:right;font-weight:bold;">
+			<pos:field key="CIV"/> <pos:field key="NOM"/> <pos:field key="PRE"/><br/>
+			<pos:field key="ADR"/><br/>
+			<pos:field key="CPO"/> <pos:field key="CME"/><br/>
+			<!--
+            <pos:if test-rub="ADF" test-op="egal" test-valeur="" linked="yes" rubrique-lien="IDS">
+                <pos:field linked="yes" key="ADR" format='texte' rubrique-lien="IDS"/><br/>
+                <pos:field linked="yes" key="CDP" rubrique-lien="IDS"/>
+                <pos:field linked="yes" key="VIL" rubrique-lien="IDS"/>
+            </pos:if>
+            -->
+            </p>
+		</td>
+	</tr>
+	<tr>
+		<td colspan='2'>
+	   <br/><br/><br/><br/>
+    	<p style="text-align:right;">Marseille, le <pos:field key="DAC" type-index='principal' format="date" date-format="%e %B %Y"/></p>
+      	</td>
+	</tr>
+	</table>
+	
+	<br/>
+	<pos:field key="FAP"/>
+	<br/>
+	<br/>
+	<table border='0' width="92%" style="border-collapse: collapse;">
+	<tr>
+		<td valign='top'>
+			<p style="font-weight:bold;">
+            	<div style="margin-left:54pt;background-color:#dddddd;">
+                	<pos:text id="postext1" edit-rows="40">Zone de texte libre</pos:text>
+                </div> 
+            </p>
+		</td>
+	</tr>
+	</table>
+	<br/>
+    <table border='0' width="92%">
+    <tr>
+        <td style="text-align:right"><pos:field key="FPO"/></td>
+    </tr>
+    <tr>
+        <td style="text-align:right"><pos:field type-index='principal' key="DIR"/></td>
+    </tr>
+    </table>
+    
+	<pos:for-each fils-index="TABLEAU_TPB" affichage='apercu-only'>
+	<pos:need nb-lignes='40' />
+	<table border='0' width="92%" style="border-collapse: collapse;">
+	<tr>
+		<td valign='top' width='30%'>
+      <p style="text-align:left">
+				<img src="http://www.sesin.com/images/logo/sesin_petit_sans_texte.gif" border="0"/><br/><br/>
+				Société SESIN<br/>
+				7, avenue André Roussin, Bât B<br/>
+                13016 Marseille<br/>
+                TEL : 04.91.60.09.64<br/>
+                FAX : 04.91.46.71.83</p>
+		</td>
+		<td valign='top' width='70%'>
+		    <br/><br/><br/><br/><br/><br/>
+			<p style="text-align:right;font-weight:bold;">
+			<pos:field key="CIV"/> <pos:field key="NOM"/> <pos:field key="PRE"/><br/>
+			<pos:field key="ADR"/><br/>
+			<pos:field key="CPO"/> <pos:field key="CME"/><br/>
+			<!--
+            <pos:if test-rub="ADF" test-op="egal" test-valeur="" linked="yes" rubrique-lien="IDS">
+                <pos:field linked="yes" key="ADR" format='texte' rubrique-lien="IDS"/><br/>
+                <pos:field linked="yes" key="CDP" rubrique-lien="IDS"/>
+                <pos:field linked="yes" key="VIL" rubrique-lien="IDS"/>
+            </pos:if>
+            -->
+            </p>
+		</td>
+	</tr>
+	<tr>
+		<td colspan='2'>
+	   <br/><br/><br/><br/>
+    	<p style="text-align:right;">Marseille, le <pos:field key="DAC" type-index='principal' format="date" date-format="%e %B %Y"/></p>
+      	</td>
+	</tr>
+	</table>
+	
+	<br/>
+	<pos:field key="FAP"/>
+	<br/>
+	<br/>
+	<table border='0' width="92%" style="border-collapse: collapse;">
+	<tr>
+		<td valign='top'>
+			<p style="font-weight:bold;">
+            	<div style="margin-left:54pt;background-color:#dddddd;">
+                	<pos:text id="postext1" edit-rows="40">Zone de texte libre</pos:text>
+                </div> 
+            </p>
+		</td>
+	</tr>
+	</table>
+	
+    <br/>
+    <table border='0' width="92%">
+    <tr>
+        <td style="text-align:right"><pos:field key="FPO"/></td>
+    </tr>
+    <tr>
+        <td style="text-align:right"><pos:field type-index='principal' key="DIR"/></td>
+    </tr>
+    </table>
+    </pos:for-each>
+	</div>
+  </body>
+</html>

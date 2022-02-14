@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<document>
+<modele>{MODELE_HTML}</modele>
+<!-- BEGIN LISTE_SECTIONS -->
+<section id="{HTML_ID}" xmlns="http://www.w3.org/1999/xhtml">
+{HTML_CONTENU}
+</section>
+<!-- END LISTE_SECTIONS -->
+</document>

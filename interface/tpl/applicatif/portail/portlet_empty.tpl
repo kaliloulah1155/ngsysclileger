@@ -1,0 +1,3 @@
+<h2> {TITLE} </h2>
+<!-- BEGIN BLOC_ELEMENT -->
+<!-- END BLOC_ELEMENT -->

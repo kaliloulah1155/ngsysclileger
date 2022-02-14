@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:pos="http://www.sesin.com/">
+  <head>
+    <title>Redaction web Poseidon</title>
+  </head>
+  <body>
+	<pos:header type="texte" align="CENTER">Mise à jour le <pos:field key="DMA"/></pos:header>
+	<pos:header type="texte" align="RIGHT"><pos:field key="HMA"/></pos:header>
+	<pos:footer type="texte" align="RIGHT">$PAGE/$PAGES</pos:footer>
+	<pos:need-tr-all />
+	<div style="font-family:Arial;margin: 3em 3em 3em 3em;">
+	<center>
+	<table width='650px' cellspacing='0' cellpadding='0' border="1px solid black;">
+		<tr>
+		  	<td align='center' bgcolor='#d9d9d9'><b>CONSEIL MUNICIPAL DU <pos:field key="LD1"/> - <pos:field key="HCM"/><br/>PROJET D'ORDRE DU JOUR</b></td>
+		</tr>
+	</table>
+	</center>
+	<p style="text-align:justify;margin-bottom:6pt"><b><pos:field key="SAV"/></b> </p>
+		<pos:fils group-by-key='RUB' global-order-by='CRU' group-order-by='NOR'>
+		<pos:need nb-lignes='4' />
+		<br/>
+		<table cellspacing='0' cellpadding='0' border="1px solid black;">
+			<pos:need-tr nb-lignes='3' />
+            <tr>
+			  	<td colspan='3' border-left='0' border-top='0' border-right='0'><u><pos:field key="RUB"/></u><br/><br/></td>
+			</tr>
+		    
+	  		<tr>
+			  	<th width='130px'>Rapporteur</th>
+			    <th width='440px'>Objet</th>
+			    <th width='150px'>Fichier</th>
+			</tr>
+			<pos:ligne>
+            <tr>
+			  	<td width='130px'><pos:field key="RAP"/></td>
+			    <td width='440px'><pos:field key="OBJ"/></td>
+			    <td width='150px'><pos:field key="PNU"/></td>
+			</tr>
+			</pos:ligne>
+	</table>
+   		</pos:fils>
+	</div>
+  </body>
+</html>

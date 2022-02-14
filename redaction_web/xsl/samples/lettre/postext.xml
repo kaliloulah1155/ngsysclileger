@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<document>
+<section id="postext1" xmlns="http://www.w3.org/1999/xhtml">
+<p>
+sdqdsqd
+</p>
+<p>
+</p>
+<hr style="page-break-before: always"/>
+<p>
+sfddfs
+</p>
+</section>
+<section id="postext2" xmlns="http://www.w3.org/1999/xhtml">
+aaa<p>bbb</p>ccc
+<hr/>
+aaa<p>bbb</p>ccc
+</section>
+</document>

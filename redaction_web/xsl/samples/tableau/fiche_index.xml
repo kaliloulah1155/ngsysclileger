@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ROOT>
+<INDEX NUMINFO="34234" TYPE="COA" NBPAGE="2">
+<CONF IND="0" NIV="0" CLOI=""/>
+<TABLEAU_TRA>
+<INDEX NUMINFO="34236" TYPE="TRA" NBPAGE="0">
+<CONF IND="0" NIV="0" CLOI=""/>
+<IDT>29</IDT>
+<ORD>1</ORD>
+<ATR>TEST</ATR>
+<SAT></SAT>
+<DAT>20/03/2007</DAT>
+<HAT></HAT>
+<AAT>ACT</AAT>
+<DAC></DAC>
+<COS></COS>
+<SUP></SUP>
+<ZZZ>NORMAL</ZZZ>
+<NO4></NO4>
+<PR4></PR4>
+<SI4></SI4>
+</INDEX>
+<INDEX NUMINFO="34237" TYPE="TRA" NBPAGE="0">
+<CONF IND="0" NIV="0" CLOI=""/>
+<IDT>29</IDT>
+<ORD>1</ORD>
+<ATR>TEST</ATR>
+<SAT></SAT>
+<DAT>20/03/2007</DAT>
+<HAT></HAT>
+<AAT>ACT</AAT>
+<DAC></DAC>
+<COS></COS>
+<SUP></SUP>
+<ZZZ>NORMAL</ZZZ>
+<NO4></NO4>
+<PR4></PR4>
+<SI4></SI4>
+</INDEX>
+</TABLEAU_TRA>
+<TABLEAU_TII>
+<INDEX NUMINFO="34235" TYPE="TII" NBPAGE="0">
+<CONF IND="0" NIV="0" CLOI=""/>
+<IDT>31</IDT>
+<ATR>TEST</ATR>
+<SAT>test</SAT>
+<DAT>20/03/2007</DAT>
+<AAT>VISA</AAT>
+<CAA></CAA>
+<DAC>20/03/2007</DAC>
+<COS>test</COS>
+<SUP></SUP>
+<ZZZ>NORMAL</ZZZ>
+<NO4></NO4>
+<PR4></PR4>
+<SI4></SI4>
+</INDEX>
+</TABLEAU_TII>
+<TABLEAU_TIE>
+</TABLEAU_TIE>
+<K_H>A/2007/000007</K_H>
+<ATR></ATR>
+<SAT></SAT>
+<ENT></ENT>
+<PRC></PRC>
+<SPR></SPR>
+<STM></STM>
+<NBR>1</NBR>
+<CPT>7</CPT>
+<DJJ>19/03/2007</DJJ>
+<LAR>A</LAR>
+<DCO>18/03/2007</DCO>
+<DRE>19/03/2007</DRE>
+<DEN>12/12/2006</DEN>
+<NAT>LETTRE</NAT>
+<CNF>NON</CNF>
+<DUR>NORMAL</DUR>
+<CLI></CLI>
+<CCN></CCN>
+<RCA>test</RCA>
+<RAT>OUI</RAT>
+<RPL>19/03/2007</RPL>
+<DAL></DAL>
+<PAR></PAR>
+<MOC></MOC>
+<EPA>SESIN</EPA>
+<DBL></DBL>
+<SDB></SDB>
+<STX></STX>
+<COM></COM>
+<CLT></CLT>
+<LAT></LAT>
+<CPX>NORMALE</CPX>
+<P_J></P_J>
+<CIV></CIV>
+<NOM>GAUDIN</NOM>
+<PRE>Jean-Claude</PRE>
+<ORG>Ville de Marseille</ORG>
+<FCT>Maire de Marseille</FCT>
+<AD1>H&#244;tel de Ville</AD1>
+<AD2>Quai du port</AD2>
+<AD3></AD3>
+<C_P>13002</C_P>
+<VIL>Marseille</VIL>
+<PAY></PAY>
+<FAP></FAP>
+<FCO></FCO>
+<DES></DES>
+<SDE></SDE>
+<DDF></DDF>
+<ETA>ENREGISTREMENT</ETA>
+<HIS>Administrateur SESIN  - PUBLIC - Cr&#233;er la fiche arriv&#233;e - 19.03.2007 - 21:44
+Administrateur SESIN  - PUBLIC - Cr&#233;er la fiche arriv&#233;e - 19.03.2007 - 21:46
+Administrateur SESIN  - PUBLIC - Enregistrer - 20.03.2007 - 10:29</HIS>
+<AVU>SESIN</AVU>
+<AVH>ORGANISATION:
+ORG-UNIT&#62;:</AVH>
+<AMO>SESIN</AMO>
+<NUD>34234</NUD>
+<NUC></NUC>
+<CKH></CKH>
+<OCR>NON</OCR>
+<EML></EML>
+<OBT>Objet</OBT>
+<DCL></DCL>
+<COP></COP>
+<ZZZ>NORMAL</ZZZ>
+<MAJ>Enregistrer</MAJ>
+<XT1></XT1>
+<XT2></XT2>
+<XT3></XT3>
+<XT4></XT4>
+<XT5></XT5>
+<YCI></YCI>
+<YCA></YCA>
+<YCC></YCC>
+<YCE></YCE>
+<YCP></YCP>
+<YCX></YCX>
+<LL></LL>
+<DMJ>19/03/2007</DMJ>
+<NO1></NO1>
+<PR1></PR1>
+<SI1></SI1>
+<NO4></NO4>
+<PR4></PR4>
+<SI4></SI4>
+<NM3></NM3>
+<NM4></NM4>
+<PE3></PE3>
+<PE4></PE4>
+<SG3></SG3>
+<SG4></SG4>
+<TIT></TIT>
+<ADR></ADR>
+</INDEX>
+</ROOT>

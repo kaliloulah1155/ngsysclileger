@@ -1,0 +1,10 @@
+E:\utilitaires\easymenu\menubootstrap\index_files\ebab_mbmcp.png
+E:\utilitaires\easymenu\menubootstrap\index_files\mbico_mbmcp_1.png
+E:\utilitaires\easymenu\menubootstrap\index_files\ebab_mbmcp_d.png
+E:\utilitaires\easymenu\menubootstrap\index_files\ebab_mbmcp_d2.png
+E:\utilitaires\easymenu\menubootstrap\index_files\ebab_mbmcp_c.png
+E:\utilitaires\easymenu\menubootstrap\index_files\ebab_mbmcp_c2.png
+E:\utilitaires\easymenu\menubootstrap\index_files\mbjsmbmcp.js
+E:\utilitaires\easymenu\menubootstrap\index_files\mbcsmbmcp.css
+E:\utilitaires\easymenu\menubootstrap\index.htm
+E:\utilitaires\easymenu\menubootstrap\index_files\filelist_ytiw.txt

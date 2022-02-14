@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:pos="http://www.sesin.com/">
+
+  <head>
+
+    <title>Test de redaction web</title>
+
+  </head>
+  
+  <body>
+
+  <img src="http://www.sesin.com/site/logo/logo150.gif" title="" width="150" height="63" />
+<p style="font-weight: bold">
+<pos:field key="ELU"></pos:field>
+<br/>
+<pos:field key="QUA"></pos:field>
+<br/>
+<pos:field key="DLE"></pos:field>
+<br/>
+</p>
+<p style="margin-left: 50%">
+Marseille, le <pos:field key="DAC" format="date" date-format="%e %B %Y"></pos:field>, 
+</p>
+<p style="margin-left: 50%">
+<pos:field key="RED"></pos:field>
+<br/>
+<pos:field key="POL"></pos:field>
+<br/>
+<pos:field key="DIR"></pos:field>
+</p>
+<p>
+<br/>
+</p>
+<p>
+Ref : <pos:field key="DAC" format="date" date-format="%d-%m-%Y"></pos:field>
+</p>
+<p>
+Objet : <pos:field editable="yes" key="OBJ"></pos:field>
+</p>
+<p>
+<br/>
+</p>
+<p style="margin-left: 10%">
+Monsieur,
+</p>
+<pos:text id="postext1"></pos:text>
+<p style="margin-left: 70%">
+<pos:field key="RED"></pos:field>
+</p>
+<pos:text id="postext2"></pos:text>
+
+<hr/>
+<pos:text id="postext3">Toto</pos:text>
+
+<hr/>
+<pos:text id="postext4"></pos:text>
+
+  </body>
+
+</html>

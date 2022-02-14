@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<ROOT>
+  <INDEX NUMINFO="1" TYPE="DOC">
+    <OBJ>Fiche numero 1</OBJ>
+    <DAT>01/01/2001</DAT>
+  </INDEX>
+  <INDEX NUMINFO="2" TYPE="DOC">
+    <OBJ>Fiche numero 2</OBJ>
+    <DAT>02/02/2002</DAT>
+  </INDEX>
+  <INDEX NUMINFO="3" TYPE="DOC">
+    <OBJ>Fiche numero 3</OBJ>
+    <DAT>03/03/2003</DAT>
+  </INDEX>
+</ROOT>

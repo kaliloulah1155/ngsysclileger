@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<clientlayout:Layout xmlns:clientlayout="http://www.sesin.com/clientlayout/1.0" type="vertical" name="Default3Columns">
+	<option name="rows" value="1"/>
+	<option name="columns" value="3"/>
+	<group>
+	</group>
+	<group>
+	</group>
+	<group>
+	</group>
+</clientlayout:Layout>

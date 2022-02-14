@@ -1,0 +1,486 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Simple Resize</title>
+
+<style type="text/css">
+/*margin and padding on body element can introduce errors in determining element position and are not recommended;
+  we turn them off as a foundation for YUI CSS treatments. */
+body {
+	margin:0;
+	padding:0;
+}
+</style>
+
+<link rel="stylesheet" type="text/css" href="/pos-actes_Admin_20111024_PL/include/script/yui/build/fonts/fonts-min.css" />
+<link rel="stylesheet" type="text/css" href="/pos-actes_Admin_20111024_PL/include/script/yui/build/resize/assets/skins/sam/resize.css" />
+<link rel="stylesheet" type="text/css" href="/pos-actes_Admin_20111024_PL/include/script/yui/build/tabview/assets/skins/sam/tabview.css" />
+<link type="text/css" rel="stylesheet" href="/pos-actes_Admin_20111024_PL/include/script/yui/build/logger/assets/skins/sam/logger.css">
+<script type="text/javascript" src="/pos-actes_Admin/include/script/yui/build/yahoo-dom-event/yahoo-dom-event.js"></script>
+<script type="text/javascript" src="/pos-actes_Admin/include/script/yui/build/element/element-beta-min.js"></script>
+<script type="text/javascript" src="/pos-actes_Admin/include/script/yui/build/dragdrop/dragdrop-min.js"></script>
+<script type="text/javascript" src="/pos-actes_Admin/include/script/yui/build/resize/resize-min.js"></script>
+<script type="text/javascript" src="/pos-actes_Admin/include/script/yui/build/tabview/tabview-min.js"></script>
+<script type="text/javascript" src="/pos-actes_Admin/include/script/yui/build/logger/logger-min.js"></script>
+<style>
+    #resize {
+        border: 1px solid black;
+        height: 100px;
+        width: 200px;
+        background-color: #fff;
+    }
+    #resize div.data {
+        overflow: hidden;
+        height: 100%;
+        width: 100%;
+    }
+
+    .objet-dd {
+        position:absolute;
+        text-align:center;
+        color:#000;
+        cursor:move;
+    }
+    
+    .objet-dd-rubrique {
+        background-color: #fff;
+        z-index: 2;
+    }
+
+    .objet-dd-groupe {
+        z-index: 1;
+        background-color: #fff;
+        opacity : 0.5; 
+        filter : alpha(opacity=50);
+    }
+   
+    .objet-dd-non-select {
+        border: 1px solid #666;
+    }
+    
+    .objet-dd-select {
+        border: 3px solid blue;
+    }
+    
+    #container-bouton {
+        position:absolute;
+        top: 40px;
+        left: 60px;
+        z-index: 0;
+    }
+    
+    #container-fip {
+        position:absolute;
+        top: 120px;
+        left: 60px;
+        height: 630px; 
+        width: 820px;
+        /*height: 601px; 
+        width: 801px;*/
+        z-index: 0;
+    }
+    
+    .fiche-parametree {
+        height: 601px; 
+        width: 801px;
+        background-image:url('grille_par_10_grise.gif');
+        z-index: 0;
+    }
+
+</style>
+<script type="text/javascript">
+YAHOO.namespace("sesin.fip");
+var tabView = null;
+var logger = null;
+
+function init() {
+    logger = new YAHOO.widget.LogReader("logger", {draggable:true, newestOnTop: false});   
+    tabView = new YAHOO.widget.TabView('demo');
+    logger.setTitle("Logger");
+    YAHOO.log("message", "info", null);
+
+    AfficheRubriquesDansFiche();
+    AfficheListeRubrique();
+
+}
+YAHOO.util.Event.onDOMReady(init);
+
+function getObjFromEvent(evt)
+{
+    var obj;
+    if (evt.srcElement)
+        obj = evt.srcElement;
+    else
+    {
+        var node = evt.target;
+        while(node.nodeType != node.ELEMENT_NODE)
+        	node = node.parentNode;
+        obj = node;
+    }
+    
+    return obj;
+}
+
+YAHOO.sesin.fip.DDRubrique = function(id, config) {
+        YAHOO.sesin.fip.DDRubrique.superclass.constructor.apply(this, arguments);
+};
+    
+YAHOO.sesin.fip.DDRegroupement = function(id, config) {
+        YAHOO.sesin.fip.DDRegroupement.superclass.constructor.apply(this, arguments);
+};
+
+YAHOO.sesin.fip.DDObjetFip = function(id, config) {
+        this.container = config.container;
+        var xyPositionInitiale;
+        YAHOO.sesin.fip.DDObjetFip.superclass.constructor.apply(this, arguments);
+};
+
+//YAHOO.lang.augmentProto(YAHOO.sesin.fip.DDObjetFip, YAHOO.util.Resize);
+YAHOO.extend(YAHOO.sesin.fip.DDObjetFip, YAHOO.util.DD, {
+
+    container: null,
+    init: function() {
+        var Dom = YAHOO.util.Dom, Event = YAHOO.util.Event;
+        //Call the parent's init method
+        YAHOO.sesin.fip.DDObjetFip.superclass.init.apply(this, arguments);
+        
+        //Get the element we are working on
+        var el = this.getEl();
+        //Get the xy position of it   
+        this.xyPositionInitiale = Dom.getXY(el);
+        
+        //var obj = new YAHOO.util.Resize(this.id);
+        var resize = new YAHOO.util.Resize(this.id);
+        resize.on('endResize', function() {
+            YAHOO.log("ENDRESIZE");
+            this.initConstraints();
+        }, this, true);
+        this.initConstraints();
+    },
+    
+    initConstraints: function() {
+      
+        YAHOO.log("INIT CONSTRAINTS");
+        var Dom = YAHOO.util.Dom;
+        // position de la region containeur
+        var region = Dom.getRegion(this.container);
+        var el = this.getEl();
+        var width = parseInt(Dom.getStyle(el, 'width'), 10);   
+        var height = parseInt(Dom.getStyle(el, 'height'), 10);   
+          
+        // calcul le déplacement possible à gauche à partir de la position initiale   
+        var left = this.xyPositionInitiale[0] - region.left;
+        
+        //Set right to right minus x minus width   
+        var right = region.right - this.xyPositionInitiale[0] - width;
+        YAHOO.log("region.left:" + region.left + ",region.right:" + region.right + ", posX:" + this.xyPositionInitiale[0] + ",posY:" + this.xyPositionInitiale[1] + ",left:" + left + ",right:" + right, "info", null);            
+        YAHOO.log("width:" + width + ",height:" + height, "info", null);
+        
+        //Set top to y minus top   
+        var top = this.xyPositionInitiale[1] - region.top;   
+                    
+        //Set bottom to bottom minus y minus height   
+        var bottom = region.bottom - this.xyPositionInitiale[1] - height;   
+        
+        //Set the constraints based on the above calculations
+        this.setXConstraint(left, right, 10);
+        this.setYConstraint(top, bottom, 10);
+    }
+});
+
+YAHOO.extend(YAHOO.sesin.fip.DDRubrique, YAHOO.sesin.fip.DDObjetFip, {
+    onMouseDown : function(ev) {   
+        document.getElementById(this.id).className = "objet-dd objet-dd-rubrique objet-dd-select yui-resize";
+    },
+    endDrag: function(x, y) {   
+        document.getElementById(this.id).className = "objet-dd objet-dd-rubrique objet-dd-non-select yui-resize";
+    }
+});
+    
+    
+YAHOO.extend(YAHOO.sesin.fip.DDRegroupement, YAHOO.sesin.fip.DDObjetFip, {
+        
+    onMouseDown : function(ev) {   
+        document.getElementById(this.id).className = "objet-dd objet-dd-groupe objet-dd-select yui-resize";
+    },
+    endDrag: function(x, y) {   
+     document.getElementById(this.id).className = "objet-dd objet-dd-groupe objet-dd-non-select yui-resize";
+    }
+});
+    
+YAHOO.sesin.fip.ObjetFip = function(code, libelle, numOnglet, wX, wY, wDX, wDY) {
+    // type à initialiser en focntion de l'objet
+    this.type = 0;
+    this.code = code;
+    this.libelle = libelle;
+    this.numOnglet = numOnglet;
+    if (numOnglet == -1)
+        this.isAffiche = false;
+    else
+        this.isAffiche = true;
+    this.wX = wX;
+    this.wY = wY;
+    this.wDX = wDX;
+    this.wDY = wDY;
+        
+};
+
+YAHOO.sesin.fip.Rubrique = function (code, libelle, numOnglet, wX, wY, wDX, wDY) {
+    YAHOO.sesin.fip.Rubrique.superclass.constructor.apply(this, arguments);
+    this.type = "rubrique";
+    YAHOO.log("Création d'une rubrique", null);
+}
+
+YAHOO.sesin.fip.Regroupement = function (code, libelle, numOnglet, wX, wY, wDX, wDY) {
+    YAHOO.sesin.fip.Rubrique.superclass.constructor.apply(this, arguments);
+    this.type = "regroupement";
+    YAHOO.log("Création d'un regroupement", null);
+}
+
+YAHOO.sesin.fip.ObjetFip.prototype.getInfo = function() {
+    return this.code + ' ' + this.libelle;
+};
+
+YAHOO.sesin.fip.ObjetFip.prototype.setAffiche = function(isAffiche) {
+    this.isAffiche = setAffiche;
+};
+
+// GG : ne fonctionne pas
+YAHOO.sesin.fip.ObjetFip.prototype.getAffiche = function() {
+    return this.isAffiche;
+};
+
+YAHOO.extend(YAHOO.sesin.fip.Rubrique, YAHOO.sesin.fip.ObjetFip, {
+});
+
+
+// tableau de toutes les rubriques du type de document qu'elles soient affichées ou pas dans la FIP
+var tabCompletRubrique = new Array();
+// <!-- BEGIN BLOC_TOUTES_NATURES -->
+// tabCompletRubrique["{CODE}"] = new YAHOO.sesin.fip.Rubrique("{CODE}", "{LIBELLE}", -1, 0, 0, 0, 0);
+// <!-- END BLOC_TOUTES_NATURES -->
+tabCompletRubrique["AUT"] = new YAHOO.sesin.fip.Rubrique("AUT", "Auteur", -1, 0, 0, 0, 0);
+tabCompletRubrique["DAC"] = new YAHOO.sesin.fip.Rubrique("DAC", "Date de création", 2, 5, 30, 200, 60);
+tabCompletRubrique["DAJ"] = new YAHOO.sesin.fip.Rubrique("DAJ", "Date du jour", -1, 0, 0, 0, 0);
+tabCompletRubrique["SEB"] = new YAHOO.sesin.fip.Rubrique("SEB", "Seb", 0, 10, 60, 95, 30);
+
+var tabCompletRegroupement = new Array();
+tabCompletRegroupement["Groupe1"] = new YAHOO.sesin.fip.Regroupement("AUT", "Groupe1", 0, 30, 60, 300, 80);
+
+/**
+ * Affiche la liste des rubriques dans la liste déroulante à partir du tableau contenant
+ * l'ensemble des rubriques
+ * Les rubriques déjà affichées dans un onglet ne sont pas proposées dans la liste  
+ */ 
+function AfficheRubriquesDansFiche()
+{
+    YAHOO.log("Appel AfficheRubriquesDansFiche", null);
+    // le premier onglet existe toujours : on utilise celui-ci pour obtenir les coordonnées
+    var objContainer = document.getElementById("fiche-parametree-" + "0");
+    for(var a in tabCompletRubrique)
+    {
+        YAHOO.log("Appel AfficheRubriquesDansFiche rubrique:" + a, null);
+        if (tabCompletRubrique[a].isAffiche)
+        {
+            var region = YAHOO.util.Dom.getRegion(objContainer);
+            var objDiv = AfficheRubriqueDansOnglet(tabCompletRubrique[a].code, tabCompletRubrique[a].libelle, 
+                        tabCompletRubrique[a].numOnglet,
+                        tabCompletRubrique[a].wX + region.left, tabCompletRubrique[a].wY + region.top,
+                        tabCompletRubrique[a].wDX, tabCompletRubrique[a].wDY);
+        }
+    }
+}
+
+function AfficheRubriqueDansOnglet(idDivRubrique, libelleDivRubrique, numOnglet, left, top, width, height)
+{
+    YAHOO.log("Appel AfficheRubriqueDansOnglet", null);
+	var newDiv = document.createElement("div");
+	newDiv.id = idDivRubrique;
+    newDiv.className = "objet-dd objet-dd-rubrique";
+    newDiv.innerHTML = libelleDivRubrique;
+    newDiv.style.left = left + "px";
+    newDiv.style.top = top + "px";
+    newDiv.style.width = width + "px";
+    newDiv.style.height = height + "px";
+            
+    //var idObjContainer = "fiche-parametree-" + tabView.get('activeIndex');
+    var idObjContainer = "fiche-parametree-" + numOnglet;
+    document.getElementById(idObjContainer).appendChild(newDiv);
+    var dd4 = new YAHOO.sesin.fip.DDRubrique(newDiv.id, {container: idObjContainer});
+    tabCompletRubrique[newDiv.id].isAffiche = true;
+    //tabCompletRubrique[newDiv.id].numOnglet = tabView.get('activeIndex');*/*/
+    tabCompletRubrique[newDiv.id].numOnglet = numOnglet;
+    return newDiv;
+}
+
+function AfficheRegroupementDansFiche()
+{
+    YAHOO.log("Appel AfficheRegroupementDansFiche", null);
+    // le premier onglet existe toujours : on utilise celui-ci pour obtenir les coordonnées
+    var objContainer = document.getElementById("fiche-parametree-" + "0");
+    for(var a in tabCompletRegroupement)
+    {
+        if (tabCompletRegroupement[a].isAffiche)
+        {
+            var region = YAHOO.util.Dom.getRegion(objContainer);
+            var objDiv = AfficheRegroupementDansOnglet(tabCompletRubrique[a].code, tabCompletRubrique[a].libelle, 
+                        tabCompletRubrique[a].numOnglet,
+                        tabCompletRubrique[a].wX + region.left, tabCompletRubrique[a].wY + region.top,
+                        tabCompletRubrique[a].wDX, tabCompletRubrique[a].wDY);
+        }
+    }
+}
+
+function onClicAjouterRegroupement()
+{
+    //var idDivRubrique = document.getElementById("liste-rubriques").options[indexRubrique].value;
+    //var textDivRubrique = document.getElementById("liste-rubriques").options[indexRubrique].text;
+    AfficheRegroupementDansOnglet("xx", "Regr.", tabView.get('activeIndex'), 20, 40, 200, 30);
+}
+
+var iNbRegroupement = 0;
+function AfficheRegroupementDansOnglet(idDivRubrique, libelleDivRegroupement, numOnglet, left, top, width, height)
+{
+    YAHOO.log("Appel AfficheRegroupementDansOnglet", null);
+    var newDiv = document.createElement("div");
+    newDiv.id = "groupe_" + iNbRegroupement;
+    iNbRegroupement++;
+    newDiv.className = "objet-dd objet-dd-groupe";
+    newDiv.innerHTML = libelleDivRegroupement;
+    newDiv.style.left = left + "px";
+    newDiv.style.top = top + "px";
+    newDiv.style.width = width + "px";
+    newDiv.style.height = height + "px";
+    var idObjContainer = "fiche-parametree-" + tabView.get('activeIndex');
+    document.getElementById(idObjContainer).appendChild(newDiv);
+    new YAHOO.sesin.fip.DDRegroupement(newDiv.id, {container: idObjContainer});
+    tabCompletRegroupement[newDiv.id] = new YAHOO.sesin.fip.Regroupement(newDiv.id, libelleDivRegroupement, tabView.get('activeIndex'),
+                left, top, width, height);
+    return newDiv;
+}
+
+/**
+ * Affiche la liste des rubriques dans la liste déroulante à partir du tableau contenant
+ * l'ensemble des rubriques
+ * Les rubriques déjà affichées dans un onglet ne sont pas proposées dans la liste  
+ */ 
+function AfficheListeRubrique()
+{
+    YAHOO.log("Appel AfficheListeRubrique", null);
+    var objSelectRubrique = document.getElementById("liste-rubriques");
+    objSelectRubrique.options.length = 0;
+    for(var a in tabCompletRubrique)
+    {
+        YAHOO.log("Appel AfficheListeRubrique rubrique:" + a, null);
+        if (!tabCompletRubrique[a].isAffiche)
+        {
+            var nouvel_element = new Option(tabCompletRubrique[a].libelle, tabCompletRubrique[a].code, false, false);
+ 		    objSelectRubrique.options[objSelectRubrique.options.length] = nouvel_element;
+        }
+    }
+}
+
+function onClicAjouterRubrique()
+{
+    var indexRubrique = document.getElementById("liste-rubriques").selectedIndex;
+    var idDivRubrique = document.getElementById("liste-rubriques").options[indexRubrique].value;
+    var textDivRubrique = document.getElementById("liste-rubriques").options[indexRubrique].text;
+    AfficheRubriqueDansOnglet(idDivRubrique, textDivRubrique, tabView.get('activeIndex'), 20, 40, 200, 30);
+	AfficheListeRubrique();
+}
+
+function SupprimerRubrique()
+{
+    var idObjContainer = "fiche-parametree-" + tabView.get('activeIndex');
+    var divFicheParametree = document.getElementById(idObjContainer);
+    for(var a in tabCompletRubrique)
+    {
+        // la rubrique est affichée et elle est affiché dans l'onglet courant
+        if (tabCompletRubrique[a].isAffiche && tabCompletRubrique[a].numOnglet == tabView.get('activeIndex'))
+        {
+            var obj = document.getElementById(a);
+            // la rubrique est sélectionnée
+            if (obj.className.indexOf("objet-dd-select") >= 0)
+            {
+                // suppression
+                divFicheParametree.removeChild(obj);
+                tabCompletRubrique[a].isAffiche = false;
+ 	  	    }
+        }
+    }
+    AfficheListeRubrique();
+}
+
+function AjouterOnglet()
+{
+    // GG : le fait de préciser active : true permet d'afficher l'onglet courant mais ne le marque pas comme
+    // l'onglet sélectionné.
+	// PL : sous Firefox 7.0.1, fonctionnement correct
+    var saisie = prompt("Saisissez le titre de l'onglet :", "Titre")
+    if (saisie != null) {
+        var titre = saisie;
+        var content = '<div id="fiche-parametree-' + tabView.get('tabs').length + '" class="fiche-parametree"></div>'
+        tabView.addTab( new YAHOO.widget.Tab({
+        label: titre,
+        content: content,
+        active: true
+        }));
+        // PL : pour palier au problème sous IE
+        tabView.set('activeIndex',tabView.get('tabs').length-1, true);
+    }
+}
+
+function GetCoordonnees()
+{
+    var s = "";
+    var Dom = YAHOO.util.Dom;
+    for(var a in tabCompletRubrique)
+    {
+        if (tabCompletRubrique[a].isAffiche)
+        {
+            var obj = document.getElementById(a);
+            s += a + ":" + Dom.getXY(obj) + "\n";
+        }
+    }
+    alert(s);
+}
+
+
+</script>
+</head>
+
+<body class="yui-skin-sam">
+<br>
+
+<div id="container-bouton">
+     <select id="liste-rubriques">
+    </select>
+        <input type="button" value="Ajouter" onClick="javascript:onClicAjouterRubrique();">
+        <input type="button" value="Supprimer" onClick="javascript:SupprimerRubrique();">
+        <input type="button" value="Ajouter un regroupement" onClick="javascript:onClicAjouterRegroupement();">
+        <input type="button" value="Ajouter un onglet" onClick="javascript:AjouterOnglet();">
+        <input type="button" value="Coordonnées" onClick="javascript:GetCoordonnees();">
+</div>        
+<div id="container-fip">
+<div id="demo" class="yui-navset">
+    <ul id="nav-fip" class="yui-nav">
+        <li class="selected"><a href="#tab1"><em>Onglet N°1</em></a></li>
+        <li><a href="#tab2"><em>Onglet N°2</em></a></li>
+        <li><a href="#tab3"><em>Onglet N°3</em></a></li>
+    </ul>            
+    <div id="content-fip" class="yui-content">
+        <div id="tab1">
+            <div id="fiche-parametree-0" class="fiche-parametree"></div>
+        </div>
+        <div id="tab2">  
+            <div id="fiche-parametree-1" class="fiche-parametree"></div>
+        </div>
+        <div id="tab3">
+            <div id="fiche-parametree-2" class="fiche-parametree"></div>
+        </div>
+    </div>
+</div>
+</div>
+<div id="logger" style="position:absolute;left:910px;top:50px;"></div>
+</body>
+</html>

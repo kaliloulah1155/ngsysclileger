@@ -1,0 +1,26 @@
+<HTML>
+<HEAD>
+	<TITLE>...</TITLE>
+	<LINK REL="stylesheet" TYPE="text/css" HREF="../../../../include/style/style.css">
+	<SCRIPT language="javascript" SRC="../../../../include/script/action_liste_reponse.js"></SCRIPT>
+	
+	<SCRIPT language="javascript">
+
+	function lance_suppression()
+	{
+		szVariablesLien = location.search.substring(1,location.search.length);
+
+		location.href = get_url("URL_SUPPRIMER")+szVariablesLien;
+	}
+
+	</SCRIPT>
+</HEAD>
+
+<BODY onLoad="lance_suppression()">
+
+<CENTER>
+<IMG src=../../../../images/icons/suppression.gif><BR><b>Supression en cours...</b>
+</CENTER>
+
+</BODY>
+</HTML>
