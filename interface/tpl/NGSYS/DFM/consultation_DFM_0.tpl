@@ -193,7 +193,9 @@
 		<input type="hidden" name="URL_CHANGER_PROFIL" value="{URL_CHANGER_PROFIL}">
 		<input type="hidden" id="nb-profils" value="{NB_PROFILS_UTIL}">
 		<!-- important pour lancer la boite aux lettres  -->
-
+		<!-- Appel du lien ngser -->
+		<input type="hidden" class="user_url" />
+		
    <input type='hidden' class='appName' value="{NOM_APPLICATION}">
 
 		<!-- BEGIN BLOC_OLD_VALUE -->

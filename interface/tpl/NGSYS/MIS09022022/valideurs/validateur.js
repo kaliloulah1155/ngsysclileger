@@ -76,6 +76,9 @@ function getLink(){
 //Appel
 getLink()  
 
+//Appel du lien 
+var lk_t =$('.user_url').val();
+
  //Envoi de mail via workflow
 class WorkflowMailer{
    
@@ -160,7 +163,7 @@ $(document).on('click','.bouton_sub',function(){
                        TYPE : DEMANDE DE MISSION <br/>
                        INFOS : VOUS AVEZ RECU UNE DEMANDE DE MISSION POUR VALIDATION <br/>
                        DEMANDEUR :  ${initiateur_wk}
-                       `/getLink()`
+                        ${lk_t}
                     `
                  ,appN);
              return  valid.sender();
@@ -172,7 +175,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : DEMANDE DE MISSION N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE EST CHEZ VOTRE MANAGER POUR VALIDATION
-                       `/getLink()` 
+                        ${lk_t} 
                     `
                 ,appN);
              initiateur.sender();
@@ -187,7 +190,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : DEMANDE DE MISSION N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE A ETE VALIDEE PAR VOTRE MANAGER (1)
-                       `/getLink()`
+                        ${lk_t}
                     `
                 ,appN);
              initiateur.sender();
@@ -201,7 +204,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : DEMANDE DE MISSION N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE A ETE VALIDEE PAR LE CONTROLEUR DE GESTION (1)
-                       `/getLink()`
+                        ${lk_t}
                     `
                 ,appN);
              initiateur.sender();
@@ -213,7 +216,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : DEMANDE DE MISSION N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE A ETE VALIDEE PAR LA RH (1)
-                       `/getLink()`
+                        ${lk_t}
                     `
                 ,appN);
              initiateur.sender();
@@ -225,7 +228,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : DEMANDE DE MISSION N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE A ETE VALIDEE PAR VOTRE MANAGER (2)
-                       `/getLink()`
+                        ${lk_t}
                     `
                 ,appN);
              initiateur.sender();
@@ -237,7 +240,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : DEMANDE DE MISSION N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE A ETE VALIDEE PAR LE CONTROLEUR DE GESTION (2)
-                       `/getLink()`
+                        ${lk_t}
                     `
                 ,appN);
              initiateur.sender();
@@ -250,7 +253,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : DEMANDE DE MISSION N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE A ETE VALIDEE PAR LE DGA
-                       `/getLink()`
+                        ${lk_t}
                     `
                 ,appN);
              initiateur.sender();
@@ -263,7 +266,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : DEMANDE DE MISSION N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE A ETE VALIDEE PAR LE DG
-                       `/getLink()`
+                        ${lk_t}
                     `
                 ,appN);
              initiateur.sender();
@@ -276,7 +279,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : DEMANDE DE MISSION N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE A ETE VALIDEE PAR LA RH (2)
-                       `/getLink()`
+                        ${lk_t}
                     `
                 ,appN);
              initiateur.sender();
@@ -289,7 +292,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : DEMANDE DE MISSION N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE A ETE VALIDEE 
-                       `/getLink()`
+                        ${lk_t}
                     `
                 ,appN);
              initiateur.sender();
@@ -309,7 +312,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE :  DEMANDE DE MISSION N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE A ETE REFUSEE
-                       `/getLink()`
+                        ${lk_t}
                     `
                 ,appN);
              initiateur.sender();

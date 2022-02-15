@@ -72,7 +72,8 @@ function getLink(){
 
 //Appel
 getLink()  
-
+//Appel du lien 
+var lk_t =$('.user_url').val();
  //Envoi de mail via workflow
 class WorkflowMailer{
    
@@ -145,7 +146,7 @@ $(document).on('click','.bouton_sub',function(){
                        TYPE : DEMANDE DE SANCTION <br/>
                        INFOS : VOUS AVEZ RECU UNE DEMANDE DE SANCTION POUR VALIDATION <br/>
                        DEMANDEUR :  ${initiateur_wk}
-                       `/getLink()`
+                        ${lk_t}
                     `
                  ,appN);
              return  valid.sender();
@@ -157,7 +158,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : DEMANDE DE SANCTION N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE EST CHEZ LA RH POUR VALIDATION
-                       `/getLink()`
+                        ${lk_t}
                     `
                 ,appN);
              initiateur.sender();
@@ -173,7 +174,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : DEMANDE DE SANCTION N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE A ETE VALIDEE PAR LA RH
-                       `/getLink()`
+                        ${lk_t}
                     `
                 ,appN);
              initiateur.sender();
@@ -186,7 +187,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : DEMANDE DE SANCTION N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE A ETE VALIDEE PAR LE MANAGER ADMIN
-                       `/getLink()`
+                        ${lk_t}
                     `
                 ,appN);
              initiateur.sender();
@@ -200,7 +201,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : DEMANDE DE SANCTION N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE A ETE VALIDEE PAR LE DGA
-                       `/getLink()`
+                        ${lk_t}
                     `
                 ,appN);
              initiateur.sender();
@@ -213,7 +214,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : DEMANDE DE SANCTION N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE A ETE VALIDEE 
-                       `/getLink()`
+                        ${lk_t}
                     `
                 ,appN);
              initiateur.sender();
@@ -224,7 +225,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE :  SANCTION N&deg; ${numdmd} <br/>
                        INFOS : VOUS AVEZ ETE SANCTIONNE PAR L'ADMINISTRATION
-                       `/getLink()`
+                        ${lk_t}
                     `
                 ,appN);
              sanctionne.sender();
@@ -244,7 +245,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE :  DEMANDE DE SANCTION N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE A ETE REFUSEE
-                       `/getLink()`
+                        ${lk_t}
                     `
                 ,appN);
              initiateur.sender();
@@ -255,7 +256,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE :  SANCTION N&deg; ${numdmd} <br/>
                        INFOS : VOUS N'AVEZ PAS ETE SANCTIONNE PAR L'ADMINISTRATION
-                       `/getLink()`
+                        ${lk_t}
                     `
                 ,appN);
              sanctionne.sender();

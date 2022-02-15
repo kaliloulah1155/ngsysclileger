@@ -305,6 +305,11 @@
 		<input type='hidden' name='POS_TYPEDOC' value='DBQ'/>
 		<input type='hidden' name='MODE' class="get_mode" value='{MODE}'>
 		<input type='hidden' name='NB_ONGLETS' value='4'>
+
+		<!-- Appel du lien ngser -->
+		<input type="hidden" class="user_url" />
+
+
 		<!-- BEGIN BLOC_OLD_VALUE -->
 		<input type='hidden' name='{NAME_OLD_RUB}' value="{VALUE_OLD_RUB}">
 		<!-- END BLOC_OLD_VALUE -->

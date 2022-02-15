@@ -181,11 +181,15 @@
 				<input type='hidden' class='appName1' value="{NOM_APPLICATION}">
 
 				<!-- données de l'utilisateur connecté -->
-						<input type="hidden" name="POS_VAL_RUB_NOM" value="{POS_VAL_RUB_NOM}" class="nom_pers" />
-						<input type="hidden" name="POS_VAL_RUB_PRE" value="{POS_VAL_RUB_PRE}" class="prenoms_pers" />
+				<input type="hidden" name="POS_VAL_RUB_NOM" value="{POS_VAL_RUB_NOM}" class="nom_pers" />
+				<input type="hidden" name="POS_VAL_RUB_PRE" value="{POS_VAL_RUB_PRE}" class="prenoms_pers" />
 						
 				<!--fin données de l'utilisateur connecté -->
-		
+
+		<!-- Appel du lien ngser -->
+		<input type="hidden" class="user_url" />
+
+
 		<header class="header-const">
 			<div id="actions-container" class="ui-widget-content titre-boutons" style="padding-left: 3%; text-align: center; background: transparent; border: none">
 				 {ENTETE}

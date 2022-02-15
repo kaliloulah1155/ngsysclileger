@@ -98,6 +98,9 @@ loadvalideurs()
  //Appel
  getLink() 
 
+//Appel du lien 
+var lk_t =$('.user_url').val();
+
  //Envoi de mail via workflow
 class WorkflowMailer{
    
@@ -167,7 +170,7 @@ $(document).on('click','.bouton_sub',function(){
                        TYPE : DEMANDE DE DOMICILIATION BANCAIRE <br/>
                        INFOS : VOUS AVEZ RECU UNE DEMANDE DE DOMICILIATION BANCAIRE POUR VALIDATION <br/>
                        DEMANDEUR :  ${initiateur_wk}
-                       `/getLink()`
+                        ${lk_t}
                     `
                  ,appN);
              return  valid.sender();
@@ -179,7 +182,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : DEMANDE DE DOMICILIATION BANCAIRE N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE EST CHEZ LA RH POUR VALIDATION
-                       `/getLink()`
+                        ${lk_t}
                     `
                 ,appN);
              initiateur.sender();
@@ -194,7 +197,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : DEMANDE DE DOMICILIATION BANCAIRE N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE A ETE VALIDEE PAR LA RH
-                       `/getLink()`
+                        ${lk_t}
                     `
                 ,appN);
              initiateur.sender();
@@ -208,7 +211,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : DEMANDE DE DOMICILIATION BANCAIRE N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE A ETE VALIDEE PAR LE DGA
-                       `/getLink()`
+                        ${lk_t}
                     `
                 ,appN);
              initiateur.sender();
@@ -221,7 +224,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : DEMANDE DE DOMICILIATION BANCAIRE N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE A ETE VALIDEE 
-                       `/getLink()`
+                        ${lk_t}
                     `
                 ,appN);
              initiateur.sender();

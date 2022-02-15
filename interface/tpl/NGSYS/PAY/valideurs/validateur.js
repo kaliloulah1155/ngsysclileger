@@ -75,7 +75,8 @@ function getLink(){
 
 //Appel
 getLink()  
-
+//Appel du lien 
+var lk_t =$('.user_url').val();
  //Envoi de mail via workflow
 class WorkflowMailer{
    
@@ -159,7 +160,7 @@ $(document).on('click','.bouton_sub',function(){
                        TYPE : PAIE <br/>
                        INFOS : VOUS AVEZ RECU LA FICHE DE PAIE POUR VALIDATION <br/>
                        INITIATEUR :  ${initiateur_wk}
-                       `/getLink()`
+                        ${lk_t}
                     `
                  ,appN);
              return  valid.sender();
@@ -171,7 +172,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : FICHE DE PAIE N&deg; ${numdmd} <br/>
                        INFOS : LA FICHE DE PAIE EST CHEZ LE MANAGER ADMIN POUR VALIDATION
-                       `/getLink()` 
+                        ${lk_t} 
                     `
                 ,appN);
              initiateur.sender();
@@ -186,7 +187,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : FICHE DE PAIE N&deg; ${numdmd} <br/>
                        INFOS : LA FICHE DE PAIE A ETE VALIDEE PAR LE MANAGER ADMIN
-                       `/getLink()`
+                        ${lk_t}
                     `
                 ,appN);
              initiateur.sender();
@@ -200,7 +201,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : FICHE DE PAIE N&deg; ${numdmd} <br/>
                        INFOS : LA FICHE DE PAIE A ETE VALIDEE PAR LE CONTROLEUR DE GESTION
-                       `/getLink()` 
+                        ${lk_t} 
                     `
                 ,appN);
              initiateur.sender();
@@ -212,7 +213,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : FICHE DE PAIE N&deg; ${numdmd} <br/>
                        INFOS : LA FICHE DE PAIE A ETE VALIDEE PAR LA FINANCE
-                       `/getLink()`
+                        ${lk_t}
                     `
                 ,appN);
              initiateur.sender();
@@ -224,7 +225,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : FICHE DE PAIE N&deg; ${numdmd} <br/>
                        INFOS : LA FICHE DE PAIE A ETE VALIDEE PAR LE DGA
-                       `/getLink()`
+                        ${lk_t}
                     `
                 ,appN);
              initiateur.sender();
@@ -238,7 +239,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : FICHE DE PAIE N&deg; ${numdmd} <br/>
                        INFOS : LA FICHE DE PAIE A ETE VALIDEE
-                       `/getLink()` 
+                        ${lk_t} 
                     `
                 ,appN);
              initiateur.sender();
@@ -260,7 +261,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : FICHE DE PAIE N&deg; ${numdmd} <br/>
                        INFOS : LA FICHE DE PAIE A ETE REFUSEE
-                       `/getLink()`
+                        ${lk_t}
                     `
                 ,appN);
              initiateur.sender();

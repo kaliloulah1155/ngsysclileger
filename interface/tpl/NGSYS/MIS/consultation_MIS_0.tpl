@@ -298,6 +298,8 @@
 		<!-- END BLOC_OLD_VALUE -->
 
 		<input type='hidden' class='appName' value="{NOM_APPLICATION}">
+		<!-- Appel du lien ngser -->
+		<input type="hidden" class="user_url" />
 		
 		<header class="header-const">
 			<div id="actions-container" class="ui-widget-content titre-boutons" style="padding-left: 3%; text-align: center; background: transparent; border: none">

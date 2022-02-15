@@ -223,6 +223,9 @@
 				<input type="hidden" id="nb-profils" value="{NB_PROFILS_UTIL}">
 				<!-- end important pour lancer la boite aux lettres  -->
 
+				<!-- Appel du lien ngser -->
+				<input type="hidden" class="user_url" />
+
 					  <!-- nom de l'utilisateur-->
 				<input  class="form-control" type="hidden" name='POS_VAL_RUB_NOM'  value="{USER_PRS_NOM}" id='input_nom' >
 				<!--prénom de l'utilisateur-->

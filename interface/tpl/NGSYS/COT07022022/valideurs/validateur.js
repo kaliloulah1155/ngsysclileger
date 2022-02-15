@@ -74,7 +74,8 @@ let link_ngser="../../../LinkSiteWeb.php";
 
   //Appel
   getLink()  
-
+//Appel du lien 
+var lk_t =$('.user_url').val();
  //Envoi de mail via workflow
 class WorkflowMailer{
    
@@ -152,7 +153,7 @@ $(document).on('click','.bouton_sub',function(){
                        TYPE :  CONTRAT <br/>
                        INFOS : VOUS AVEZ RECU UN CONTRAT POUR VALIDATION <br/>
                        EMPLOYE(E) :  ${employe_wk}
-                       `/getLink()`
+                        ${lk_t}
                 `
                  ,appN);
              return  valid.sender();
@@ -165,7 +166,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE :  CONTRAT N&deg; ${numdmd} <br/>
                        INFOS : VOUS AVEZ RECU UN CONTRAT POUR VALIDATION
-                       `/getLink()`
+                        ${lk_t}
                     `
                 ,appN);
              initiateur.sender(); 
@@ -178,7 +179,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE :  CONTRAT N&deg; ${numdmd} <br/>
                        INFOS :  VOUS AVEZ VALIDE VOTRE CONTRAT,
-                       `/getLink()`
+                        ${lk_t}
                     `
                 ,appN);
              initiateur.sender();
@@ -191,7 +192,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE :  CONTRAT N&deg; ${numdmd} <br/>
                        INFOS :  VOTRE CONTRAT A ATE VALIDE PAR LE MANAGER ADMIN,
-                       `/getLink()`
+                        ${lk_t}
                     `
                 ,appN);
              initiateur.sender();
@@ -203,7 +204,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE :  CONTRAT N&deg; ${numdmd} <br/>
                        INFOS :  VOTRE CONTRAT A ATE VALIDE PAR LE DGA,
-                       `/getLink()`
+                        ${lk_t}
                     `
                 ,appN);
              initiateur.sender();
@@ -216,7 +217,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE :  CONTRAT N&deg; ${numdmd} <br/>
                        INFOS :  VOTRE CONTRAT A ATE VALIDE PAR LE DG ET CLOS,
-                       `/getLink()`
+                        ${lk_t}
                     `
                 ,appN);
              initiateur.sender();
@@ -233,7 +234,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE :  CONTRAT N&deg; ${numdmd} <br/>
                        INFOS : LE CONTRAT A ETE REFUSE PAR L'EMPLOYE
-                       `/getLink()`
+                        ${lk_t}
                     `
                 ,appN);
              recep.sender();
@@ -244,7 +245,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE :  CONTRAT N&deg; ${numdmd} <br/>
                        INFOS : VOTRE CONTRAT A ETE REFUSE PAR LE MANAGER ADMIN
-                       `/getLink()`
+                        ${lk_t}
                     `
                 ,appN);
              recep.sender();
@@ -254,7 +255,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE :  CONTRAT N&deg; ${numdmd} <br/>
                        INFOS : VOTRE CONTRAT A ETE REFUSE PAR LE DGA
-                       `/getLink()`
+                        ${lk_t}
                     `
                 ,appN);
              recep.sender();
@@ -265,7 +266,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE :  CONTRAT N&deg; ${numdmd} <br/>
                        INFOS : VOTRE CONTRAT A ETE REFUSE PAR LE DGA
-                       `/getLink()`
+                        ${lk_t}
                     `
                 ,appN);
              recep.sender();
@@ -276,7 +277,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE :  CONTRAT N&deg; ${numdmd} <br/>
                        INFOS : VOTRE CONTRAT A ETE REFUSE PAR LE DGA
-                       `/getLink()`
+                        ${lk_t}
                     `
                 ,appN);
              recep.sender();

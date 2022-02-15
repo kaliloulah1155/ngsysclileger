@@ -327,7 +327,9 @@
 					<input type="hidden" name='POS_VAL_RUB_PRE' class="viewprenom" value="{POS_VAL_RUB_PRE}" >
 					<input type="hidden" name='POS_VAL_RUB_FON' class="viewfonction" value="{POS_VAL_RUB_FON}" >
 					<input type="hidden" name='POS_VAL_RUB_DPT' class="viewdepartement" value="{POS_VAL_RUB_DPT}" >
-					 <!--fin données de l'utilisateur connecté -->
+					 <!--fin données de l'utilisateur connecté -->  
+					 <!-- Appel du lien ngser -->
+					<input type="hidden" class="user_url" />
 		
 		<header class="header-const">
 			<div id="actions-container" class="ui-widget-content titre-boutons" style="padding-left: 3%; text-align: center; background: transparent; border: none">

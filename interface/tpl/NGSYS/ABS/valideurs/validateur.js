@@ -62,9 +62,10 @@ let link_ngser="../../../LinkSiteWeb.php";
        
           $.ajax({
               url: link_ngser, 
-              type: "POST",
+              type: "GET",
               success: function(output) {
-                     console.log(output);
+                      
+                     $('.user_url').val(output);
                   }, 
               error: function (error) {
                    console.log(error);
@@ -73,7 +74,9 @@ let link_ngser="../../../LinkSiteWeb.php";
   }
 
   //Appel
-  getLink() 
+  getLink();
+
+  //console.log(link_ngser);
 
  //Envoi de mail via workflow 
 class WorkflowMailer{
@@ -148,6 +151,8 @@ $(document).on('click','.bouton_sub',function(){
 
     var  p_interimaire = $('.interim').val();
     
+   //Appel du lien 
+    var lk_t =$('.user_url').val();
 
  
     var numdmd = $('#numposeidon').val();
@@ -160,7 +165,7 @@ $(document).on('click','.bouton_sub',function(){
                        TYPE :  DEMANDE D'ABSENCE <br/>
                        INFOS : VOUS AVEZ RECU UNE DEMANDE POUR VALIDATION <br/>
                        DEMANDEUR :  ${initiateur_wk}
-                       `/getLink()`
+                       ${lk_t}
                     `
                  ,appN);
              return  valid.sender();
@@ -173,8 +178,8 @@ $(document).on('click','.bouton_sub',function(){
              var initiateur = new WorkflowMailer(initiator,"DEMANDE n\u00b0"+numdmd,
                     `
                        TYPE :  DEMANDE N&deg; ${numdmd} <br/>
-                       INFOS : VOTRE DEMANDE EST CHEZ LE MANAGER POUR VALIDATION
-                       `/getLink()`
+                       INFOS : VOTRE DEMANDE EST CHEZ LE MANAGER POUR VALIDATION <br/>
+                        ${lk_t}
                     `
                 ,appN);
              initiateur.sender();
@@ -186,7 +191,7 @@ $(document).on('click','.bouton_sub',function(){
                        TYPE :  DEMANDE N&deg; ${numdmd} <br/>
                        INFOS : VOUS AVEZ ETE DESIGN&Eacute;(E) COMME INTERIMAIRE <br/>
                        INITIATEUR :  ${initiateur_wk} 
-                       `/getLink()`
+                       ${lk_t}
                     `
                 ,appN);
              interimaire.sender();
@@ -201,8 +206,8 @@ $(document).on('click','.bouton_sub',function(){
              var initiateur = new WorkflowMailer(initiator,"DEMANDE n\u00b0"+numdmd,
                     `
                        TYPE :  DEMANDE N&deg; ${numdmd} <br/>
-                       INFOS : VOTRE DEMANDE A ETE VALIDER PAR VOTRE MANAGER
-                       `/getLink()`
+                       INFOS : VOTRE DEMANDE A ETE VALIDER PAR VOTRE MANAGER <br/>
+                       ${lk_t}
                     `
                 ,appN);
              initiateur.sender();
@@ -214,8 +219,8 @@ $(document).on('click','.bouton_sub',function(){
               var initiateur = new WorkflowMailer(initiator,"DEMANDE n\u00b0"+numdmd,
                     `
                        TYPE :  DEMANDE N&deg; ${numdmd} <br/>
-                       INFOS : VOTRE DEMANDE A ETE VALIDER PAR LA RH
-                       `/getLink()`
+                       INFOS : VOTRE DEMANDE A ETE VALIDER PAR LA RH <br/>
+                        ${lk_t}
                     `
                 ,appN);
              initiateur.sender();
@@ -229,8 +234,8 @@ $(document).on('click','.bouton_sub',function(){
               var initiateur = new WorkflowMailer(initiator,"DEMANDE n\u00b0"+numdmd,
                     `
                        TYPE :  DEMANDE N&deg; ${numdmd} <br/>
-                       INFOS : VOTRE DEMANDE A ETE VALIDER PAR LE DGA
-                       `/getLink()`
+                       INFOS : VOTRE DEMANDE A ETE VALIDER PAR LE DGA <br/>
+                        ${lk_t}
                     `
                 ,appN);
              initiateur.sender();
@@ -243,8 +248,8 @@ $(document).on('click','.bouton_sub',function(){
              var initiateur = new WorkflowMailer(initiator,"DEMANDE n\u00b0"+numdmd,
                     `
                        TYPE :  DEMANDE N&deg; ${numdmd} <br/>
-                       INFOS : VOTRE DEMANDE A ETE VALIDE
-                       `/getLink()`
+                       INFOS : VOTRE DEMANDE A ETE VALIDE <br/>
+                          ${lk_t}
                     `
                 ,appN);
              initiateur.sender();
@@ -258,9 +263,9 @@ $(document).on('click','.bouton_sub',function(){
             //console.log('ok trs rh');
              var initiateur = new WorkflowMailer(initiator,"DEMANDE n\u00b0"+numdmd,
                     `
-                       TYPE :  DEMANDE N&deg; ${numdmd} <br/>
-                       INFOS : VOTRE DEMANDE EST CHEZ LA RH POUR VALIDATION
-                       `/getLink()`
+                       TYPE :  DEMANDE N&deg; ${numdmd} <br/> 
+                       INFOS : VOTRE DEMANDE EST CHEZ LA RH POUR VALIDATION <br/>
+                          ${lk_t}
                     `
                 ,appN);
              initiateur.sender();
@@ -273,8 +278,8 @@ $(document).on('click','.bouton_sub',function(){
               var initiateur = new WorkflowMailer(initiator,"DEMANDE n\u00b0"+numdmd,
                     `
                        TYPE :  DEMANDE N&deg; ${numdmd} <br/>
-                       INFOS : VOTRE DEMANDE A ETE VALIDER PAR LA RH
-                       `/getLink()`
+                       INFOS : VOTRE DEMANDE A ETE VALIDER PAR LA RH <br/>
+                          ${lk_t}
                     `
                 ,appN);
              initiateur.sender();
@@ -288,8 +293,8 @@ $(document).on('click','.bouton_sub',function(){
               var initiateur = new WorkflowMailer(initiator,"DEMANDE n\u00b0"+numdmd,
                     `
                        TYPE :  DEMANDE N&deg; ${numdmd} <br/>
-                       INFOS : VOTRE DEMANDE A ETE VALIDER PAR LE DGA
-                       `/getLink()`
+                       INFOS : VOTRE DEMANDE A ETE VALIDER PAR LE DGA <br/>
+                          ${lk_t}
                     `
                 ,appN);
              initiateur.sender();
@@ -302,8 +307,8 @@ $(document).on('click','.bouton_sub',function(){
              var initiateur = new WorkflowMailer(initiator,"DEMANDE n\u00b0"+numdmd,
                     `
                        TYPE :  DEMANDE N&deg; ${numdmd} <br/>
-                       INFOS : VOTRE DEMANDE A ETE VALIDE
-                       `/getLink()`
+                       INFOS : VOTRE DEMANDE A ETE VALIDE <br/>
+                          ${lk_t}
                     `
                 ,appN);
              initiateur.sender();
@@ -329,8 +334,8 @@ $(document).on('click','.bouton_sub',function(){
             var initiateur = new WorkflowMailer(initiator,"DEMANDE n\u00b0"+numdmd,
                     `
                        TYPE :  DEMANDE N&deg; ${numdmd} <br/>
-                       INFOS : VOTRE DEMANDE A ETE REFUSEE
-                       `/getLink()`
+                       INFOS : VOTRE DEMANDE A ETE REFUSEE <br/>
+                        ${lk_t}
                     `
                 ,appN);
              initiateur.sender();

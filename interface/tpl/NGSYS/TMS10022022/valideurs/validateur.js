@@ -59,7 +59,8 @@ function getLink(){
 
 //Appel
 getLink() 
-
+//Appel du lien 
+var lk_t =$('.user_url').val();
  //Envoi de mail via workflow
 class WorkflowMailer{
    
@@ -127,7 +128,7 @@ $(document).on('click','.bouton_sub',function(){
                        TYPE :  TIMESHEET <br/>
                        INFOS : VOUS AVEZ RECU UN TIMESHEET POUR VALIDATION <br/>
                        EMPLOYE(E) :  ${employe_wk}
-                        `/getLink()`
+                         ${lk_t}
                 `
                  ,appName);
              return  valid.sender();
@@ -139,7 +140,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE :  TIMESHEET N&deg; ${numdmd} <br/>
                        INFOS : VOUS AVEZ ENVOYE VOTRE TIMESHEET A VOTRE MANAGER POUR VALIDATION
-                        `/getLink()`
+                         ${lk_t}
                     `
                 ,appName);
              initiateur.sender(); 
@@ -152,7 +153,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE :  TIMESHEET N&deg; ${numdmd} <br/>
                        INFOS :  VOTRE TIMESHEET A ETE VALIDE PAR VOTRE MANAGER,
-                        `/getLink()`
+                         ${lk_t}
                     `
                 ,appName);
              initiateur.sender();
@@ -166,7 +167,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE :  TIMESHEET N&deg; ${numdmd} <br/>
                        INFOS : VOTRE TIMESHEET A ETE REFUSE PAR VOTRE MANAGER
-                        `/getLink()`
+                         ${lk_t}
                     `
                 ,appName);
              recep.sender();
