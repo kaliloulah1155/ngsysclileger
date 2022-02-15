@@ -15,8 +15,17 @@ ajaxcode()
     
    $('.numero').val(order);
 
-    order = results[0];
-    console.log(order);
+
+   if(isNaN(results[0])) {
+         order = 0 ;
+   }else{
+      order = results[0];
+   }
+
+    
+   
+
+
 	let newOrder = ++order;
 	$('.numero').val(parseInt(newOrder));
     
