@@ -45,7 +45,7 @@ function mesActivites(poste){
 		.then(data=>{
 		      
 		         let donnees=data.activites;
-       
+
 		       ///tableau
 		       	/*   with select 2 */
 
@@ -57,7 +57,7 @@ function mesActivites(poste){
 						    for (var i = 0; i < data.activites.length; i++) {
 					        html += '<option value="' + donnees[i]['id'] + '">' +donnees[i]['valeur'] + '</option>';
 					    }
-					    html += '</select>';     
+					    html += '</select>';
 
 					    html += '</td>' +   
 					            '<td style="width: 500px;border:none;">'+

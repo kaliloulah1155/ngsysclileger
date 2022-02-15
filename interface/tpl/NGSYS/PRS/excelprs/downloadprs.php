@@ -48,7 +48,7 @@ use \PhpOffice\PhpSpreadsheet\Style\Fill;
 	        }else{
 	        	 $query_prs_data =$query_init;
 	        }
-	    }      
+	    }
 
 	   if(!empty($email)){
 
@@ -228,7 +228,7 @@ if(isset($export)){
 
    $writer=\PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet,$choice);
   // $file_name=time().'.'.strtolower($choice);
-  $file_name='identifications.'.strtolower($choice);
+   $file_name='identifications.'.strtolower($choice);
    $writer->save($file_name);
 
 

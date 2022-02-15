@@ -1,4 +1,4 @@
-//let appNameN = "NGSYS";
+//let appNameN = "NGSYSTEST";
 
 let appNameN = $(".appName").val();
 

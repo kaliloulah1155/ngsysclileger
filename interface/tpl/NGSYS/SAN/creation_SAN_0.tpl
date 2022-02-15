@@ -67,8 +67,13 @@
   			border-color: red;
 		}
 		span.text:after {
-		content: "*";
-		color: red;
+			content: "*";
+			color: red;
+		}
+
+		label{
+			font-size: 15px;
+			font-weight: 100;
 		}
 		
 	</style>
@@ -106,9 +111,13 @@
 
 		<div class="col_list">
 			<i class="fa fa-eye fa-1x" style="color:#4a67b3;"></i>
-			<a href="javascript:void lanceBibBal('/{NOM_APPLICATION}/interface/session/principal/resultat/rechercher_db.php&TYPE_RECHERCHE=RECHERCHE_BAL&POS_QUEST_NOM=Bal_SAN_lnv&POS_QUEST_PUBLIC=1', 'QUESTION_BAL');">
+             <a href="javascript:void lanceBibBal('/{NOM_APPLICATION}/interface/session/principal/resultat/rechercher_db.php&TYPE_RECHERCHE=RECHERCHE_BAL&POS_QUEST_NOM=Bal_SAN_lnv&POS_QUEST_PUBLIC=1', 'QUESTION_BAL');">
 				<span style="color:#4a67b3;">Cliquez pour consulter la liste</span>
 			</a>
+
+			<!--<a href="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/SAN/liste/liste_SAN_1.php?APPLI={NOM_APPLICATION}&USER={NOM_UTILISATEUR}&PROFIL={PROFIL_UTILISATEUR}">
+				<span style="color:#4a67b3;">Cliquez pour consulter la liste</span>
+			</a>-->
 		</div>
 		
 		
@@ -128,7 +137,7 @@
 							
 							
 							<div class="col-sm-12 text-center" style="margin-bottom: 13px">
-								<label>Les champs avec (<span class='text'></span>) sont obligatoires</label>
+								<label style="font-weight: 100; font-size: 13px;">Les champs avec (<span class='text'></span>) sont obligatoires</label>
 							</div>
 							<div class="col-sm-4">
 								<label for="bio">Nom & pr&#233;noms <span class='text'></span> :</label>

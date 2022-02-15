@@ -171,4 +171,8 @@ function ajaxListeCOT() {
 
 //Debut chargement Liste pour le personnel connecté (employé)
 ajaxListeCOT()
+
+let liste_loader=()=>{
+    return ajaxListeCOT() ;
+} 
     //Fin chargement Liste pour le personnel connecté (employé)

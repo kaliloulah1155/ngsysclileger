@@ -3,7 +3,7 @@
 <head>    
     <meta charset="UTF-8">   
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demande de pret</title>
+    <title>Pr&#234;t d&#146;entreprise</title>
     <link href="/{NOM_APPLICATION}/include/bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- <link href="/{NOM_APPLICATION}/include/alert/sweetalert.css" rel="stylesheet"> -->
 	<link href='https://use.fontawesome.com/releases/v5.0.8/css/all.css' type='text/css' rel='STYLESHEET'/>
@@ -20,7 +20,7 @@
 	<script language='javascript' src='/{NOM_APPLICATION}/include/script/ajax_recup_listhier.js'></script>
 	<script language='javascript' src='/{NOM_APPLICATION}/include/script/ajax_recup_arbo_dossier.js'></script>
 	<script language='javascript' src='/{NOM_APPLICATION}/include/script/action_accueil.js'></script>
-	<link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="Stylesheet" type="text/css" />
+	<link href="https://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="Stylesheet" type="text/css" />
 	<style>
 		body{
 			font-weight: lighter;
@@ -58,6 +58,7 @@
 			padding-top: 3%;
 			padding-left: 5%;
 			padding-right: 5%;
+			height: 30rem;
 		}
 		
 		input.btn{
@@ -73,6 +74,13 @@
 			 border-style: solid;
   			border-color: red;
 		}
+
+
+		label{
+			font-size: 15px;
+			font-weight: 100;
+		}
+
 		span.text:after {
 		content: "*";
 		color: red;
@@ -110,6 +118,8 @@
 					<input type="hidden" name='POS_VAL_RUB_DPT' class="viewdepartement" value="{POS_VAL_RUB_DPT}" >
 					 <!--fin données de l'utilisateur connecté -->
 
+					 <input type='hidden' class='appName' value="{NOM_APPLICATION}">
+
 		<!-- <div class= "row">
 			<div class="col_list_01 text-center jumbotron">
 				<i class="fa fa-eye fa-1x" style="color:#4a67b3;"></i>
@@ -121,7 +131,7 @@
 
 		<div class="col_list">
 			<i class="fa fa-eye fa-1x" style="color:#4a67b3;"></i>
-			<a href="javascript:void lanceBibBal('/{NOM_APPLICATION}/interface/session/principal/resultat/rechercher_db.php&TYPE_RECHERCHE=RECHERCHE_BAL&POS_QUEST_NOM=Bal_PRT_nv&POS_QUEST_PUBLIC=1', 'QUESTION_BAL');">
+			<a href="javascript:void lanceBibBal('/{NOM_APPLICATION}/interface/session/principal/resultat/rechercher_db.php&TYPE_RECHERCHE=RECHERCHE_BAL&POS_QUEST_NOM=Bal_PRT_lnv&POS_QUEST_PUBLIC=1', 'QUESTION_BAL');">
 				<span style="color:#4a67b3;">Cliquez pour consulter la liste</span>
 			</a>
 		</div>
@@ -139,7 +149,8 @@
 				    <!-- nombre d'emprunt en cours -->
 					<input type="hidden"  name='POS_VAL_RUB_A2A' value="{POS_VAL_RUB_A2A}" class="vnbreemprunt"  />
 					 <!-- prelevement mensuel -->
-					<input type="hidden"  name='POS_VAL_RUB_DC1' value="{POS_VAL_RUB_DC1}" class="vprelevmens"  />
+					<input type="hidden"  name='POS_VAL_RUB_ADR' value="{POS_VAL_RUB_ADR}" class="vprelevmens"  />
+					<input type="hidden"  name='POS_VAL_RUB_DC1' value="{POS_VAL_RUB_DC1}" class="vprelevmens_actuel"  />
 					<input type="hidden" class="prelev_mens_lettre" name="POS_VAL_RUB_A1" value="{POS_VAL_RUB_A1}">
 
 					 <!-- Quotité cessible-->
@@ -156,11 +167,11 @@
 					<div class="row" style="margin: 2%">
 					    
 					    <div class="col-sm-6 form-group">
-					    	<label for="bio" style="width:200px">Nombre d'emprunt en cours</label>:
+					    	<label for="bio" style="width:200px">Nombre d'emprunt</label>:
 							<span class="viewnombreEmp" style="margin-left: 2%">0</span>
 					    </div>
 					    <div class="col-sm-6 form-group">
-					    	<label for="bio" style="width:200px">Montant emprunt en cours</label>:
+					    	<label for="bio" style="width:200px">Montant emprunt</label>:
 						    <span class="viewmontantEmp" style="margin-left: 2%">0</span>
 						    <label for="bio" style="margin-left: 2%;font-size: 10px">XOF</label>
 					    </div>
@@ -196,22 +207,27 @@
 					<div class="alert alert-danger flashalert" role="alert" style="display:none">
 				       Votre montant prelevable est sup&eacute;rieur &agrave; votre quotit&eacute; cessible!! Veuillez changer le nombre de mois(Dur&eacute;e) et le Montante emprunt&acute;
 					</div>
+					
+					<div class="col-sm-12 text-center" style="margin-bottom: 13px">
+						<label style="font-weight: 100; font-size: 13px;">Les champs avec (<span class='text'></span>) sont obligatoires</label>
+					</div>
 					<div class="row" style="padding-top: 1%">
 						<div class="col-sm-6 form-group">
-						   <label for="bio">Montant emprunt&eacute; <span class='text'></span> :</label>
+						   <label for="bio">Montant emprunt&eacute;<span class='text'></span> :</label>
 						   <input type="number"  name='POS_VAL_RUB_VEM' min="0" value="{POS_VAL_RUB_VEM}" class="form-control sommeEmprunt" id="bio" style="width: 100%;" required="true" data-parsley-pattern="^[0-9]+$" data-parsley-trigger="keyup" required="true">
 
 					<input type="hidden" name="POS_VAL_RUB_MDT" value="{POS_VAL_RUB_MDT}" class="emprunt_lettre" />
-
+						
 						</div>
+						
 						<div class="col-sm-6 form-group">
-						   <label for="bio">Dur&eacute;e (en mois) <span class='text'></span> :</label>
+						   <label for="bio">Dur&eacute;e (en mois)<span class='text'></span> :</label>
 						   <input type="number" name='POS_VAL_RUB_DUM' min="0" value="{POS_VAL_RUB_DUM}" class="form-control mois" id="bio" style="width: 100%;" required="true" data-parsley-trigger="keyup" data-parsley-pattern="[0-9][0-9]?">
 							<input type="hidden" name="POS_VAL_RUB_DLA" value="{POS_VAL_RUB_DLA}" class="mois_lettre" />
 
 						</div>
 						<div class="col-sm-6 form-group">
-						   <label for="bio">Date d&eacute;but de pr&eacute;l&egrave;vement <span class='text'></span> :</label>
+						   <label for="bio">Date d&eacute;but de pr&eacute;l&egrave;vement<span class='text'></span> :</label>
 						   <input type="text" name='POS_VAL_RUB_DIN' value="{POS_VAL_RUB_DIN}" class="form-control datedebut" placeholder="jj/mm/aaaa" id="date1" style="width: 100%;" required="true">
 						</div>
 						<div class="col-sm-6 form-group">
@@ -219,6 +235,11 @@
 						   <input type="text" name='POS_VAL_RUB_DFI' readonly= "true" value="{POS_VAL_RUB_DFI}" placeholder="jj/mm/aaaa" class="form-control dateFin " style="width: 100%;" required="true">
 						</div>
 					</div>
+					<div class="col-sm-12 form-group" >
+						<label for="bio">Motif<span class='text'></span></label>
+						<input type="text" name='POS_VAL_RUB_COM' value="{POS_VAL_RUB_COM}" placeholder="Motif du pret" class="form-control" style="width: 100%;" required="true">
+					</div>
+					       <input type="hidden"  name='POS_VAL_RUB_CRE'  value="{POS_VAL_RUB_CRE}" class="createur"   />
 				</div>
 			</div>
 			<!-- button -->
@@ -235,289 +256,23 @@
 	    <script language='javascript' src='/{NOM_APPLICATION}/include/jQuery/parseley.js'></script>
 	    <script language='javascript' src='/{NOM_APPLICATION}/include/jQuery/parseleyfr.js'></script>
 		<script language='javascript' src="/{NOM_APPLICATION}/include/jQuery/jquery-ui.js"></script>
-		<!-- <script language='javascript' src="/{NOM_APPLICATION}/include/alert/sweetalert.js"></script> -->
+		<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PRT/calcpret/calc_prt.js"></script>  
 	<!-- END JQUERY  -->
 
 	 <script>
 
+//Le nombre d'emprunt ne doit pas depasser 2
+$('form').submit(function () {
 
-	  //DEBUT SCRIPT DE CONVERSION DES MONTANTS EN LETTRE
+     var nbreEmprunt=$('.vnbreemprunt').val();
+    if (nbreEmprunt==2) {
+        alert("Le nombre d'emprunt est atteint.");
+        return false;
+    }
 
- function ConvNumberLetter(Nombre) {
-     var dblEnt, byDec;
-     var bNegatif;
-     var strCentimes = new String();
+});
 
-
-     if (Nombre < 0) {
-         bNegatif = true;
-         Nombre = Math.abs(Nombre);
-     }
-     dblEnt = parseInt(Nombre);
-     byDec = parseInt((Nombre - dblEnt) * 100);
-
-     if (byDec == 0) {
-         if (dblEnt > 999999999999999) {
-             return "#TropGrand";
-         }
-     } else {
-         if (dblEnt > 9999999999999.99) {
-             return "#TropGrand";
-         }
-     }
-     if (Nombre == $('.vprelevmens').val()) {
-         $('.prelev_mens_lettre').val(ConvNumEnt(dblEnt));
-     }
-
-      if (Nombre == $('.sommeEmprunt').val()) {
-          $('.emprunt_lettre').val(ConvNumEnt(dblEnt));
-      }
-     if (Nombre == $('.mois').val()) {
-          $('.mois_lettre').val(ConvNumEnt(dblEnt));
-      }
- }
-
- function ConvNumEnt(Nombre) {
-     var byNum, iTmp, dblReste;
-     var StrTmp = new String();
-     var NumEnt;
-     iTmp = Nombre - (parseInt(Nombre / 1000) * 1000);
-     NumEnt = ConvNumCent(parseInt(iTmp));
-     dblReste = parseInt(Nombre / 1000);
-     iTmp = dblReste - (parseInt(dblReste / 1000) * 1000);
-     StrTmp = ConvNumCent(parseInt(iTmp));
-     switch (iTmp) {
-         case 0:
-             break;
-         case 1:
-             StrTmp = "mille ";
-             break;
-         default:
-             StrTmp = StrTmp + " mille ";
-     }
-     NumEnt = StrTmp + NumEnt;
-
-     dblReste = parseInt(dblReste / 1000);
-     iTmp = dblReste - (parseInt(dblReste / 1000) * 1000);
-     StrTmp = ConvNumCent(parseInt(iTmp));
-     switch (iTmp) {
-         case 0:
-             break;
-         case 1:
-             StrTmp = StrTmp + " million ";
-             break;
-         default:
-             StrTmp = StrTmp + " millions ";
-     }
-     NumEnt = StrTmp + NumEnt;
-     dblReste = parseInt(dblReste / 1000);
-     iTmp = dblReste - (parseInt(dblReste / 1000) * 1000);
-     StrTmp = ConvNumCent(parseInt(iTmp));
-     switch (iTmp) {
-         case 0:
-             break;
-         case 1:
-             StrTmp = StrTmp + " milliard ";
-             break;
-         default:
-             StrTmp = StrTmp + " milliards ";
-     }
-     NumEnt = StrTmp + NumEnt;
-     dblReste = parseInt(dblReste / 1000);
-     iTmp = dblReste - (parseInt(dblReste / 1000) * 1000);
-     StrTmp = ConvNumCent(parseInt(iTmp));
-     switch (iTmp) {
-         case 0:
-             break;
-         case 1:
-             StrTmp = StrTmp + " billion ";
-             break;
-         default:
-             StrTmp = StrTmp + " billions ";
-     }
-     NumEnt = StrTmp + NumEnt;
-
-     return NumEnt;
- }
-
- function ConvNumDizaine(Nombre) {
-     var TabUnit, TabDiz;
-     var byUnit, byDiz;
-     var strLiaison = new String();
-
-     TabUnit = Array("", "un", "deux", "trois", "quatre", "cinq", "six", "sept",
-         "huit", "neuf", "dix", "onze", "douze", "treize", "quatorze", "quinze",
-         "seize", "dix sept", "dix huit", "dix neuf");
-     TabDiz = Array("", "", "vingt", "trente", "quarante", "cinquante",
-         "soixante", "soixante", "quatre vingt", "quatre vingt");
-
-     byDiz = parseInt(Nombre / 10);
-     byUnit = Nombre - (byDiz * 10);
-     strLiaison = " ";
-     if (byUnit == 1) strLiaison = " et ";
-     switch (byDiz) {
-         case 0:
-             strLiaison = "";
-             break;
-         case 1:
-             byUnit = byUnit + 10;
-             strLiaison = "";
-             break;
-         case 7:
-             byUnit = byUnit + 10;
-             break;
-         case 8:
-             strLiaison = " ";
-             break;
-         case 9:
-             byUnit = byUnit + 10;
-             strLiaison = " ";
-             break;
-     }
-     var NumDizaine = TabDiz[byDiz];
-     if (byDiz == 8 && byUnit == 0) NumDizaine = NumDizaine + "s";
-     if (TabUnit[byUnit] != "") {
-         NumDizaine = NumDizaine + strLiaison + TabUnit[byUnit];
-     } else {
-         NumDizaine = NumDizaine;
-     }
-     return NumDizaine;
- }
-
- function ConvNumCent(Nombre) {
-     var TabUnit;
-     var byCent, byReste;
-     var strReste = new String();
-     var NumCent;
-     TabUnit = Array("", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf", "dix");
-
-     byCent = parseInt(Nombre / 100);
-     byReste = Nombre - (byCent * 100);
-     strReste = ConvNumDizaine(byReste)
-     switch (byCent) {
-         case 0:
-             NumCent = strReste;
-             break;
-         case 1:
-             if (byReste == 0)
-                 NumCent = "cent";
-             else
-                 NumCent = "cent " + strReste;
-             break;
-         default:
-             if (byReste == 0)
-                 NumCent = TabUnit[byCent] + " cents";
-             else
-                 NumCent = TabUnit[byCent] + " cent " + strReste;
-     }
-     return NumCent;
- }
- //FIN SCRIPT DE CONVERSION DES MONTANTS EN LETTRE
-
-
- //Traitement des creances 
-
-	  Number.prototype.formatMoney = function(decPlaces, thouSeparator, decSeparator) {
-		var n = this,
-			decPlaces = isNaN(decPlaces = Math.abs(decPlaces)) ? 2 : decPlaces,
-			decSeparator = decSeparator == undefined ? "." : decSeparator,
-			thouSeparator = thouSeparator == undefined ? "," : thouSeparator,
-			sign = n < 0 ? "-" : "",
-			i = parseInt(n = Math.abs(+n || 0).toFixed(decPlaces)) + "",
-			j = (j = i.length) > 3 ? j % 3 : 0;
-		return sign + (j ? i.substr(0, j) + thouSeparator : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thouSeparator) + (decPlaces ? decSeparator + Math.abs(n - i).toFixed(decPlaces).slice(2) : "");
-	};
-
-
-      let mois=1;
-	  let sommeEmprunt=0
-	  let montantmensuel=0;
-
-      
-	   var mtnprelev= parseInt($('.viewmtnpreleve').text());
-
-	    var quotite = parseInt($('.quotite').text()) ;
-
-		 $('.vprelevmens').val(montantmensuel) ; 
-
-      
-	  //Calcul quotité cessible prelevable
-	  if(mtnprelev==0){
-		  var a=quotite;
-		   $('.vqutotiteprelev').val( isNaN(a) ?  0 : a.formatMoney(0,'','.') ) ;
-		  $('.viewquotiteprelev').text((a).formatMoney(0,'.','.')  );
-	  }else{
-           var b=(quotite*1)-(mtnprelev*1);
-		    $('.vqutotiteprelev').val( isNaN(b) ?  0 : b ) ;
-			$('.viewquotiteprelev').text((b).formatMoney(0,'.','.')  );
-	  }
-
-	  $('.mois, .sommeEmprunt').on('input',function(){
-
- 		  
-		   mois=parseInt($('.mois').val())*1;
-	       sommeEmprunt=parseInt($('.sommeEmprunt').val())*1;
-
-		   ConvNumberLetter($('.sommeEmprunt').val());
-
-		   ConvNumberLetter($('.mois').val());
-
-		   if(mois==0 || mois=='' ){
-			   montantmensuel=0 ;
-			    $('.vprelevmens').val(0) ; 
-				ConvNumberLetter($('.vprelevmens').val());
-			} else{
-
-					 montantmensuel= sommeEmprunt/mois;
-
-					 if(montantmensuel>quotite){
- 						   $('.flashalert').show();
-						  montantmensuel=0;
-						  $('.sommeEmprunt').val(0);
-						  ConvNumberLetter($('.sommeEmprunt').val());
-					 }else{
-                           $('.flashalert').hide();
-					 }
-
-					  //Calcul quotité cessible prelevable
-					if(montantmensuel==0){
-						var a=quotite;
-						 $('.vqutotiteprelev').val( isNaN(a) ?  0 : a.formatMoney(0,'','.') ) ;
-						$('.viewquotiteprelev').text((a).formatMoney(0,'.','.')  );
-					}else{
-						var b=(quotite*1)-(montantmensuel*1);
-
-						     
-							   $('.vqutotiteprelev').val( isNaN(b) ?  0 : b.formatMoney(0,'','.') ) ;
-
-							$('.viewquotiteprelev').text((b).formatMoney(0,'.','.')  );
-					}
-                      
-					 $('.viewmtnpreleve').text( ( montantmensuel ).formatMoney(0,'.','.'));
-
-					 $('.vprelevmens').val(isNaN(montantmensuel) ?  0 : montantmensuel.formatMoney(0,'','.')) ;   
-					 ConvNumberLetter($('.vprelevmens').val());
-			}
-
-		  
-	  });
-
-
-	  // vnbreemprunt vprelevmens vqutotite vmtnemprunt vdatefinprelev vqutotiteprelev
-	     
-
-	   $('.vnbreemprunt').val( $('.nombreEmp').text() ) ;
-	   $('.vqutotite').val( $('.quotite').text() ) ;
-	   $('.vmtnemprunt').val( $('.montantEmp').text() ) ;
-	    $('.vdatefinprelev').val( $('.datefin').text() ) ;
-
-	   $('.viewnombreEmp').text($('.nombreEmp').text());
-	   $('.viewmontantEmp').text( ( parseInt($('.montantEmp').text() ) ).formatMoney(0,'.','.')  );
-	   $('.viewquotite').text( ( parseInt($('.quotite').text() ) ).formatMoney(0,'.','.')  );
-	   $('.viewdatefin').text($('.datefin').text());
-
-	   
-
+ 
 //Fin Traitement des creances 
 
 	 //données de l'utilisateur connecté
@@ -562,7 +317,7 @@
 			});
 
 			//script du bouton enregistrer 
-	        $('#formpret').submit(function(event){
+	       /* $('#formpret').submit(function(event){
 				event.preventDefault();
 
 				if (confirm(" Confirmez-vous le traitement de cette action?" ) ) {
@@ -571,7 +326,7 @@
 			        }else{
 			    	return false;
 			    }
-	        });
+	        });*/
 	        
 
 			$('#date1, #date2').datepicker({
@@ -639,10 +394,7 @@
 		}
 
 			
-			console.log(date1); //Date de fin contrat format: 2019-10-02
-
-
-
+		//	console.log(date1); //Date de fin contrat format: 2019-10-02
 
 		});
 

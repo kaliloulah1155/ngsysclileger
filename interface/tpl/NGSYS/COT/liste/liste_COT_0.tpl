@@ -25,6 +25,8 @@
         background: transparent;
         margin: 0;
         padding: 0;
+        font-size: 12px;
+        font-weight: 100;
     }
 
     .btn_search{
@@ -34,11 +36,16 @@
         color: #fff;
         background: #4a67b3;
     }
+
+    th{
+        font-weight: 100;
+        font-size: 12px;
+    }
 </style>
 <body class="fluid">
 
     <div class="title mt-2 mb-1 text-center">
-        <span>Page de r&#233;sultat</span>
+        <span style="font-size: 17px; font-weight: 500">Page de r&#233;sultat</span>
     </div>
 
         
@@ -53,22 +60,22 @@
             <div class="row">
                 <div class="col-md-3">
                     <label>Date d&#233;but</label>
-                    <input type="date" class="form-control date_deb" placeholder="D&#233;partement" style="width: 100%;height:35px;padding: 2%;border-radius:3px;background:transparent">
+                    <input type="date" class="form-control date_deb" placeholder="D&#233;partement" style="width: 100%;height:35px;padding: 2%;border-radius:3px;background:transparent;font-weight: 100;font-size: 13px;">
                 </div>
                 <div class="col-md-3">
                     <label>Date fin</label>
-                    <input type="date" class="form-control date_fin" placeholder="D&#233;partement" style="width: 100%;height:35px;padding: 2%;border-radius:3px;background:transparent">
+                    <input type="date" class="form-control date_fin" placeholder="D&#233;partement" style="width: 100%;height:35px;padding: 2%;border-radius:3px;background:transparent;font-weight: 100;font-size: 13px;">
                 </div>
                 <div class="col-md-3">
                     <label>Nom & pr&#233;noms</label>
-                     <select class="form-control personnel" style="width: 100%">
+                     <select class="form-control personnel" style="width: 100%;font-weight: 100;font-size: 13px;">
                         
                     </select>
                 </div>    
 
                 <div class="col-md-3">
                     <label>Type de contrat</label>
-                     <select class="form-control contrat" style="width: 100%">
+                     <select class="form-control contrat" style="width: 100%;font-weight: 100;font-size: 13px;">
                         <option value="" selected>Veuillez s&#233;lectionner</option>
                         <option value="Stage-ecole">Stage-&#233;cole</option>
                         <option value="Stage professionnel">Stage professionnel</option>
@@ -93,19 +100,27 @@
     </div>
 
     <div class="row mb-3">
-        <div class="col-md-2 mt-2 offset-6">
-            <select class="form-control typeDemande choice" style="width: 100%">
+
+       <div class="col-md-2 mt-2">
+            <input type="file" id="file" class="filename btn" name="fichier" style="font-weight: 100;font-size: 13px;" />
+        </div>
+        <div class="col-md-2 mt-3 offset-1">
+            <input type="button"  class="sendfile" value="Charger le fichier" style="font-weight: 100;font-size: 13px;" />
+        </div>
+
+        <div class="col-md-2 mt-2 offset-1">
+            <select class="form-control typeDemande choice" style="width: 100%;font-weight: 100;font-size: 14px;">
                 <option value="Xls">Xls</option>
                 <option value="Xlsx">Xlsx</option>
                 <option value="Csv">Csv</option>
             </select>
         </div>
         <div class="col-md-2 mt-2">
-            <button class="btn btn_export" title="cliquez pour exporter vos documents en format s&#233;lectionner">Exporter</button>
+            <button class="btn btn_export" title="cliquez pour exporter vos documents en format s&#233;lectionner" style="font-size: 13px; font-weight: 100">Exporter</button>
         </div>
 
         <div class="col-md-2 mt-2" style="float: right;">
-            <button class="btn btn_pdf" title="cliquez pour t&#233;l&#233;charger vos document en format pdf">Format pdf</button>
+            <button class="btn btn_pdf" title="cliquez pour t&#233;l&#233;charger vos document en format pdf" style="font-size: 13px; font-weight: 100">Format pdf</button>
         </div>
     </div>
 
@@ -140,6 +155,7 @@
 
     <script language='javascript' src="/<?php echo $_GET['APPLI'] ?>/interface/tpl/<?php echo $_GET['APPLI'] ?>/COT/liste/listeAjaxCOT/load_liste_COT.js"></script>
     <script language='javascript' src="/<?php echo $_GET['APPLI'] ?>/interface/tpl/<?php echo $_GET['APPLI'] ?>/COT/excelcot/contratexcel.js"></script>
+    <script language='javascript' src="/<?php echo $_GET['APPLI'] ?>/interface/tpl/<?php echo $_GET['APPLI'] ?>/COT/liste/importdata/transfert.js"></script>
 
 
       <script>

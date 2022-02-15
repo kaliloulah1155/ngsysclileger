@@ -1,0 +1,287 @@
+<!doctype html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	
+	<!--INCLUDE ABASS-->
+		<!-- Code de la couleur verte du menu et autres : #1bbc9b -->
+		<!-- //META FOR IOS & HANDHELD -->
+		<meta name="HandheldFriendly" content="true" />
+		<meta name="apple-mobile-web-app-capable" content="YES" />
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="Joomla! - Open Source Content Management" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<!--menugrisboot de M FLEUROT Dominique -->	
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link rel="stylesheet" href="/{NOM_APPLICATION}/include/menugrisboot/index_files/mbcsmbmcp.css" type="text/css" />
+		<!--des polices à utiliser -->	
+		<link href="http://fonts.googleapis.com/css?family=Roboto:400,300,500,700" rel="stylesheet" type="text/css" />
+		<link href="https://fonts.googleapis.com/css?family=Raleway:400,300,500,600,700,800,900" rel="stylesheet" type="text/css"/>
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+		<!--menu déroulant bootstrap simplement. mais avec sousmenu déroulant le fichier submenu.css obligatoir -->
+		<link rel="stylesheet" href="/{NOM_APPLICATION}/include/bootstrap-3.3.7/abass/submenu.css" type="text/css" />
+		<link href="/{NOM_APPLICATION}/include/ressources/plugins/all/css/local/bootstrap.css" rel="stylesheet" type="text/css" />
+		<!--icônes vectorielles-->
+		<link href="/{NOM_APPLICATION}/include/fontawesome-free-5.8.2-web/css/all.css" rel="stylesheet">
+		<link href="/{NOM_APPLICATION}/include/ressources/plugins/all/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+		<!--systems et tpl important pour la couleur verte generale du site-->
+		<link href="/{NOM_APPLICATION}/include/ressources/plugins/all/css/system/css/system.css" rel="stylesheet" type="text/css" />
+		<link href="/{NOM_APPLICATION}/include/ressources/plugins/all/css/local/template.css" rel="stylesheet" type="text/css" />
+		<!--gere le top bar avec les icons de fb, twitter, ...-->
+		<link href="/{NOM_APPLICATION}/include/ressources/plugins/all/css/sp_social.css" rel="stylesheet" type="text/css" />
+		<!--animations-->
+		<link rel="stylesheet" type="text/css" href="/{NOM_APPLICATION}/include/ressources/plugins/css/animate.css" />
+		<link rel="stylesheet" type="text/css" href="/{NOM_APPLICATION}/include/ressources/css/index.css" />
+		<!--style-->
+		<style type="text/stylesheet">
+			@-webkit-viewport { width: device-width; } @-moz-viewport { width: device-width; } @-ms-viewport { width: device-width; }
+			@-o-viewport { width: device-width; } @viewport { width: device-width; }
+		</style>
+		<!--script-->
+		<script src="/{NOM_APPLICATION}/include/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+		<script src="/{NOM_APPLICATION}/include/jQuery/jquery.min.js"></script>
+		<script type="text/javascript">
+			//<![CDATA[
+			if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+				var msViewportStyle = document.createElement("style");
+				msViewportStyle.appendChild(
+					document.createTextNode("@-ms-viewport{width:auto!important}")
+				);
+				document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+			}
+			//]]>
+		</script>	
+	<!--FIN INCLUDE ABASS-->
+
+	
+	<link rel="stylesheet" type="text/css" href="../../../../include/style/style.css">
+	<link rel="stylesheet" type="text/css" href="../../../../include/style/pos-yui-portal.css">    
+	<link rel="stylesheet" type="text/css" href="../../../../include/style/pos-yui-portlet.css">
+    <script language="JavaScript" src="../../../../include/script/yui_3.18.1/yui/build/yui/yui-min.js"></script>
+    <script language="JavaScript" src="../../../../include/script/yui_3.18.1/yui/yui-use.js"></script>
+    <script language="JavaScript" src="../../../../include/script/portail/pos-yui-portal-labels_{LANG}.js"></script>
+    <script language="JavaScript" src="../../../../include/script/portail/pos-yui-portlets-conf.js"></script>
+    <script language="JavaScript" src="../../../../include/script/portail/pos-yui-utils.js"></script>
+    <script language="JavaScript" src="../../../../include/script/portail/pos-yui-portlet-factory.js"></script>
+    <script language="JavaScript" src="../../../../include/script/portail/pos-yui-portal.js"></script>
+    <SCRIPT language="javascript" SRC="../../../../include/script/action_accueil.js"></SCRIPT>
+	
+    <script language="JavaScript">
+        var isAdmin = {IS_USER_ADMIN};
+        var i=0;
+        var tabBal = new Array();
+        var tabIfBalOpen = new Array();
+        var tabBalIcone = new Array();
+    	var tabNbRepBal = new Array();
+        <!-- BEGIN BLOC_NOM_BAL -->
+        tabBal[i]="{SZ_CODE_BAL}";
+        tabBalIcone[i] = "{ICONE_BAL}";
+    	tabNbRepBal[i] = -1;
+        tabIfBalOpen[i++]={BAL_OPEN};
+        <!-- END BLOC_NOM_BAL -->
+	var toggleEdition = function (button) {
+		var editing = Yglob.PosYUIPortal.get('editing');
+		if (editing) {
+		    button.style.backgroundImage = 'url('+ icon_path + 'plus.gif)';
+		} else {
+		    button.style.backgroundImage = 'url('+ icon_path + 'moins.gif)';
+		}
+		Yglob.PosYUIPortal.set('editing', !editing);		
+	}
+
+	function afficherResultat(portletType, szUrl)
+    {
+        var pos = szUrl.indexOf("POS_QUEST_NOM");
+        if (pos >= 0)
+        {
+            var posFin = szUrl.indexOf("&", pos);
+            if (posFin < 0)
+                posFin = szUrl.length;
+            szQuestNom = szUrl.substring(pos + "POS_QUEST_NOM".length + 1, posFin);
+            szQuestNom = replaceAll(unescape(szQuestNom), "+", " ");
+            szQuestNom = replaceAll(szQuestNom, "\\'", "\'");
+            parent.selectQuestionMenu(szQuestNom, (portletType == 'qpubliques') ? "QUESTION_PUBLIQUE" : 'QUESTION_PRIVEE');
+        }
+        parent.basculerEcran('center');
+        parent.center.location.href=szUrl;
+    }
+    var currentLayoutContent = "{LAYOUT_CONTENT}";
+    var currentLayoutContentMsgErr = "{LAYOUT_CONTENT_MSG_ERR}";
+    
+</script>
+<title>{TITRE_PAGE}</title>
+
+
+
+    <!-- Latest compiled and minified CSS -->
+	<link href="../../../../include/bootstrapSortablePortlet/bootstrap.sortable.min.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="../../../../include/bootstrapSortablePortlet/css/myStyle.css"/>
+    <link rel="stylesheet" href="../../../../include/bootstrapSortablePortlet/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="../../../../include/bootstrapSortablePortlet/css/tether.min.css"/>
+	<link rel="stylesheet" href="../../../../include/bootstrapSortablePortlet/css/font-awesome/css/font-awesome.min.css"/>
+	<link rel="stylesheet" href="../../../../include/bootstrapSortablePortlet/css/form_builder.css"/>
+	<style>
+        .table-sortable {
+            position: relative;
+        }
+        .table-sortable .sortable-placeholder {
+            height: 37px;
+        }
+        .table-sortable .sortable-placeholder:after {
+            position: absolute;
+            z-index: 10;
+            content: " ";
+            height: 37px;
+            background: #f9f9f9;
+            left: 0;
+            right: 0;
+        }
+	</style>
+</head>
+<body class='container-fluid body_portlet_admin{IS_USER_ADMIN}' style="margin-top: 0;background-color: transparent;">
+	<form name="principal">
+		<input type="hidden" name="URL_RESULTAT" value="{URL_RESULTAT}">
+		<input type="hidden" name="URL_ATTENTE" value="{URL_ATTENTE}">
+		<input type="hidden" name="URL_OBTENIR_NB_REP" value="{URL_OBTENIR_NB_REP}">
+		<input type="hidden" name="URL_CHANGER_PROFIL" value="{URL_CHANGER_PROFIL}">
+	</form>
+	
+	<div class="container-fluid">
+		<div class="form_builder" style="margin-top: 25px">
+			<div class="row">
+				<div class="col-md-2 col-sm-12 col-xs-12 ">
+					<nav class="nav-sidebar">
+						<ul class="nav">
+							<li class="form_bal_textfield">
+								<a href="javascript:;"><img src="../../../../images/portail/balgenerale.gif" border='0'> Boite aux lettres</a>
+							</li>
+							<li class="form_bal_textfield">
+								<a href="javascript:;"><img src="../../../../images/portail/profil.gif" border='0'> Profils</a>
+							</li>
+							<li class="form_bal_textfield">
+								<a href="javascript:;"><img src="../../../../images/portail/panier.gif" border='0'> Panier</a>
+							</li>
+							<li class="form_bal_textfield">
+								<a href="javascript:;"><img src="../../../../images/portail/list_bib_priv.gif" border='0'> Questions privées</a>
+							</li>
+							<li class="form_bal_textfield">
+								<a href="javascript:;"><img src="../../../../images/portail/folderopen.gif" border='0'> Contenu d'un dossiers</a>
+							</li>
+							<li class="form_bal_textfield">
+								<a href="javascript:;"><img src="../../../../images/portail/list_bib_part.gif" border='0'> Questions publiques</a>
+							</li>
+							<li class="form_bal_textfield">
+								<a href="javascript:;"><img src="../../../../images/portail/rss.gif" border='0'> RSS</a>
+							</li>
+							<li class="form_bal_textfield">
+								<a href="javascript:;"><img src="../../../../images/portail/reponse.gif" border='0'> Réponses à une question</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+				
+				<div class="col-md-10 col-sm-12 col-xs-12 ">
+					<div class="col-md-3 col-sm-6">
+						<div class="form_builder_area"></div>
+					</div>
+					
+					<div class="col-md-3 col-sm-6">
+						<div class="form_builder_area"></div>
+					</div>
+					
+					<div class="col-md-3 col-sm-6">
+						<div class="form_builder_area"></div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	
+	
+			
+				<div class="container-fluid">
+					<div class="tab-content">
+						<div class="tab-pane fade in active" id="demos">
+							
+							<section>
+								<div class="row thumbnail-sortable">
+									<div class="col-md-3 col-sm-6 ">
+										<div class="thumbnail">
+											<div class="caption">
+												<div class="all_div">
+													<div class="row li_row">
+														<div class="col-md-12">
+															<h3 class="pull-left">Titre portlet Sesin 2</h3>
+															<button type="button" class="btn btn-primary btn-circle btn-sm remove_bal_field pull-right" data-field="' + field + '"><i class="fa fa-times"></i></button>
+															<button type="button" class="btn btn-primary btn-circle btn-sm remove_bal_field pull-right" data-field="' + field + '"><i class="fa fa-info"></i></button>
+															<button type="button" class="btn btn-primary btn-circle btn-sm remove_bal_field pull-right" data-field="' + field + '"><i class="fa fa-plus"></i></button>
+														</div>
+													</div>
+													<hr/>
+												</div>
+												
+												<div class="row li_row form_output" data-type="text" data-field="' + field + '">
+													<div class="col-md-12">
+														<div class="" style="overflow: auto; max-height: 150px;"> 
+															<ul style="margin: 0; padding: 0">
+																<li style="list-style: none outside none; margin: 3px; font-size: 80%">
+																	<img src="../../../../images/portail/puce.gif" border='0'><a href="javascript:void(0)" onClick="javascript: void afficherResultat('{PORTLET_TYPE}', '{URL_ELEMENT}');"><b>{LIBELLE_MARQUE}</b>{LIBELLE}</a>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									
+								</div>
+							</section>
+							
+						</div>
+					</div>
+				</div>	
+	
+	
+	<script src="../../../../include/bootstrapSortablePortlet/ajax.jquery.sortable.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="../../../../include/bootstrapSortablePortlet/bootstrap.sortable.min.js"></script>
+	<script src="../../../../include/bootstrapSortablePortlet/jquery.sortable.js"></script>
+	<script>
+		$(function() {
+            $('.thumbnail-sortable').sortable({
+                placeholderClass: 'col-sm-6 col-md-4'
+            });
+            $('.table-sortable tbody').sortable({
+                handle: 'span'
+            });
+            $('.list-group-sortable').sortable({
+                placeholderClass: 'list-group-item'
+            });
+            $('.list-group-sortable-exclude').sortable({
+                placeholderClass: 'list-group-item',
+                items: ':not(.disabled)'
+            });
+            $('.list-group-sortable-handles').sortable({
+                placeholderClass: 'list-group-item',
+                handle: 'span'
+            });
+            $('.list-group-sortable-connected').sortable({
+                placeholderClass: 'list-group-item',
+                connectWith: '.connected'
+            });
+		});
+	</script>
+	
+	
+		<script src="../../../../include/bootstrapSortablePortlet/js/jquery.min.js"></script>
+        <script src="../../../../include/bootstrapSortablePortlet/js/jquery-ui.min.js"></script>
+        <script src="../../../../include/bootstrapSortablePortlet/js/tether.min.js"></script>
+        <script src="../../../../include/bootstrapSortablePortlet/js/bootstrap.min.js"></script>
+        <script src="../../../../include/bootstrapSortablePortlet/js/form_builder.js"></script>
+	
+	
+	
+</body>
+</html>

@@ -163,8 +163,8 @@
       $civ='Mlle';
      } 
 
-    
-          
+
+
      $query_fposte="
                 SELECT
                      \"IPO\"
@@ -206,7 +206,7 @@
         $cot_categorie=$rowcot[4];
         $cot_cnps=$rowcot[5];
      }
-      
+
      $query_dpt="
                 SELECT dpt.\"LIB\" 
                 FROM public.pos_tab_index_pos postab

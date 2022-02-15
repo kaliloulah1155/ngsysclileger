@@ -17,7 +17,7 @@ let link_urlcode =
     "/TMS/activites/getcode.php";
 
 
-         
+
 const getActivities=poste=>{
 
 	return new Promise((resolve,reject)=>{
@@ -39,14 +39,13 @@ const getActivities=poste=>{
 	});
 }
 
-     
-function mesActivites(poste){
 
+function mesActivites(poste){
 		getActivities(poste)
 		.then(data=>{
-		            
+		      
 		         let donnees=data.activites;
-           
+
 		       ///tableau
 		       	/*   with select 2 */
 
@@ -88,7 +87,6 @@ function mesActivites(poste){
 			 
 		})
 		.catch((err)=>console.log(err));
-
 }
 
 

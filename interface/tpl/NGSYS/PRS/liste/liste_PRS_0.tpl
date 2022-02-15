@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 <html lang="fr">
-<head>   
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,6 +20,8 @@
 <style type="text/css">
     body{
         background: transparent;
+        font-size: 12px;
+        font-weight: 100;
     }
 
     .btn_search{
@@ -30,11 +32,17 @@
         background: #4a67b3;
         margin-top: 40%;
     }
+
+    th{
+        font-weight: 100;
+        font-size: 12px;
+    }
+
 </style>
 <body class="fluid">
 
     <div class="title mt-2 mb-1 text-center">
-        <span>Page de r&#233;sultat</span>
+        <span style="font-size: 17px; font-weight: 500">Page de r&#233;sultat</span>
     </div>
 
         
@@ -45,16 +53,16 @@
             <div class="row">
                 <div class="col-md-3">
                     <label>Date d&#233;but</label>
-                    <input type="date" class="form-control date_deb" placeholder="D&#233;partement" style="width: 100%;height:35px;padding: 2%;border-radius:3px;background:transparent">
+                    <input type="date" class="form-control date_deb" placeholder="D&#233;partement" style="width: 100%;height:35px;padding: 2%;border-radius:3px;background:transparent;font-weight: 100;font-size: 13px;">
                 </div>
                 <div class="col-md-3">
                     <label>Date fin</label>
-                    <input type="date" class="form-control date_fin" placeholder="D&#233;partement" style="width: 100%;height:35px;padding: 2%;border-radius:3px;background:transparent">
+                    <input type="date" class="form-control date_fin" placeholder="D&#233;partement" style="width: 100%;height:35px;padding: 2%;border-radius:3px;background:transparent;font-weight: 100;font-size: 13px;">
                 </div>
                 <div class="col-md-4">
                     <label>Nom & pr&#233;noms</label>
-                     <select class="form-control typeDemande personnel" style="width: 100%">
-                        <option value="" selected>Veuillez s&#233;lectionner</option>
+                     <select class="form-control typeDemande personnel" style="width: 100%;font-weight: 100;font-size: 13px;">
+                        <option value="0" selected>Veuillez s&#233;lectionner</option>
                     </select>
                 </div>
 
@@ -70,18 +78,18 @@
 
     <div class="row mb-3">
         <div class="col-md-2 mt-2 offset-6">
-            <select class="form-control typeDemande choice" style="width: 100%">
+            <select class="form-control typeDemande choice" style="width: 100%;font-weight: 100;font-size: 14px;">
                 <option value="Xls">Xls</option>
                 <option value="Xlsx">Xlsx</option>
                 <option value="Csv">Csv</option>
             </select>
         </div>
         <div class="col-md-2 mt-2">
-            <button class="btn btn_export" title="cliquez pour exporter vos documents en format s&#233;lectionner" >Exporter</button>
+            <button class="btn btn_export" title="cliquez pour exporter vos documents en format s&#233;lectionner" style="font-size: 13px; font-weight: 100">Exporter</button>
         </div>
 
         <div class="col-md-2 mt-2">
-            <button class="btn btn_pdf" title="cliquez pour t&#233;l&#233;charger vos document en format pdf">Format pdf</button>
+            <button class="btn btn_pdf" title="cliquez pour t&#233;l&#233;charger vos document en format pdf" style="font-size: 13px; font-weight: 100">Format pdf</button>
         </div>
     </div>
 
@@ -98,13 +106,13 @@
                 <th style="min-width: 100px;text-align: center;border-top-right-radius: 5px;">Actions</th>
             </tr>
         </thead>
-        <tbody  class="list_personnel" >
+        <tbody  class="list_personnel" style="font-size: 14px; font-weight: 100;">
 
 
 
         </tbody>
     </table>
-     
+
 
         <script language='javascript' src="/<?php echo $_GET['APPLI'] ?>/interface/tpl/<?php echo $_GET['APPLI'] ?>/PRS/liste/listeAjaxPRS/load_liste_PRS.js"></script>
         <script language='javascript' src="/<?php echo $_GET['APPLI'] ?>/interface/tpl/<?php echo $_GET['APPLI'] ?>/PRS/excelprs/personneexcel.js"></script>
@@ -116,7 +124,7 @@
           window.location.href='/<?php echo $_GET["APPLI"] ?>/interface/session/principal/consultation/consulter_index.php?MODE=MODIFICATION&POS_NUM_DOC='+numposeidon+'&POS_TYPEDOC=PRS&POS_NUM_FICHE=0';
 
         });
-     
+
         
         $(document).on('click','.supprimer',function(e){
            
@@ -148,8 +156,14 @@
 
                    // alert('nok');
                  }
+                
+            
                   e.preventDefault();
         });
+
+
+        
+ 
 
     </script>
 

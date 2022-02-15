@@ -3,7 +3,7 @@ header('Content-Type:application/json');
 include ('../../../../../configuration_w/mabd.php');
 
     $poste=$_POST['poste'];
-    
+
     $retour=array();
 
 try{

@@ -56,7 +56,12 @@
 	span.text:after {
 		content: "*";
 		color: red;
-		}
+	}
+
+	label{
+			font-size: 15px;
+			font-weight: 100;
+	}
 
 
 </style>
@@ -115,7 +120,7 @@
 					<div class="col-sm-12 pt-2" style="border: 1px solid #4a67b3">
 						<div class="row">
 							<div class="col-sm-12 text-center" style="margin-bottom: 13px">
-								<label>Les champs avec (<span class='text'></span>) sont obligatoires</label>
+								<label style="font-weight: 100; font-size: 13px;">Les champs avec (<span class='text'></span>) sont obligatoires</label>
 							</div>
 							<div class="col-sm-6">
 							<label for="selection">Type de demande<span class='text'></span> :</label>

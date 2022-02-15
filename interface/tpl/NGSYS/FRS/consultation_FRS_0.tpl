@@ -40,6 +40,16 @@
     <link href="https://raw.githack.com/ttskch/select2-bootstrap4-theme/master/dist/select2-bootstrap4.css" rel="stylesheet"/>
 	
 	<style>
+
+		.col_list{
+			width: 22%;
+			float: right;
+			font-family: 'Times New Roman';
+			font-size: 14px;
+			background-color: transparent;
+			font-weight: lighter; 
+		}
+
 		.col1_partie{
 			width: 100%;
 			font-family: 'Times New Roman';
@@ -73,17 +83,6 @@
 			margin: 0%; 
 		}
 		
-		.col_list{
-			width: 50%;
-			margin-top: -3%;
-			margin-right: 5%;
-			font-family: 'Times New Roman';
-			font-size: 17px;
-			background-color: transparent;
-			font-weight: lighter; 
-			float: right;
-		}
-		
 		.header-const{
 			margin-bottom: 3%;
 		}
@@ -112,6 +111,20 @@
 		<input type='hidden' class='appName' value="{NOM_APPLICATION}">
 
 			<input type="hidden" class="loadcode" name="POS_VAL_RUB_COD" value="{POS_VAL_RUB_COD}"  style="width: 50%;">
+
+
+			<input type="hidden" name="URL_ATTENTE" value="{URL_ATTENTE}"><!--  -->
+			<input type="hidden" name="URL_RESULTAT" value="{URL_RESULTAT}">
+			<input type="hidden" name="URL_OBTENIR_NB_REP" value="{URL_OBTENIR_NB_REP}">
+			<input type="hidden" name="URL_CHANGER_PROFIL" value="{URL_CHANGER_PROFIL}">
+			<input type="hidden" id="nb-profils" value="{NB_PROFILS_UTIL}">
+
+			<div class="col_list">
+				<i class="fa fa-eye fa-1x" style="color:#4a67b3;"></i>
+				<a href="javascript:void lanceBibBal('/{NOM_APPLICATION}/interface/session/principal/resultat/rechercher_db.php&TYPE_RECHERCHE=RECHERCHE_BAL&POS_QUEST_NOM=Bal_FRS_nv&POS_QUEST_PUBLIC=1', 'QUESTION_BAL');">
+					<span style="color:#4a67b3;">Cliquez pour consulter la liste</span>
+				</a>
+			</div>
 		
 		<header class="header-const">
 			<div id="actions-container" class="ui-widget-content titre-boutons" style="padding-left: 3%; text-align: center; background: transparent; border: none">
@@ -172,31 +185,31 @@
 
 											<div class="col-sm-4">
 												<label for="bio">Hotel<span class='text'></span> :</label>
-												<input type="text" onkeypress="return testNum(event, this, 2);" name="POS_VAL_RUB_L1A" value="{POS_VAL_RUB_L1A}" placeholder="Hotel" class="form-control hotel amount">
+												<input type="text" onkeypress="return testNum(event, this, 2);" name="POS_VAL_RUB_L1A" value="{POS_VAL_RUB_L1A}" placeholder="Hotel" class="form-control hotel amount" style="width: 100%;">
 											</div>
 
 											<div class="col-sm-4" style="margin-top: 13px">
 												<label for="bio">Nourriture<span class='text'></span> :</label>
-												<input type="text" onkeypress="return testNum(event, this, 2);" name="POS_VAL_RUB_L1B" value="{POS_VAL_RUB_L1B}" placeholder="Nourriture" class="form-control nourriture amount">
+												<input type="text" onkeypress="return testNum(event, this, 2);" name="POS_VAL_RUB_L1B" value="{POS_VAL_RUB_L1B}" placeholder="Nourriture" class="form-control nourriture amount" style="width: 100%;">
 											</div>
 
 											<div class="col-sm-4" style="margin-top: 13px">
 												<label for="bio">Deplacement  Urbain<span class='text'></span> :</label>
-												<input type="text" onkeypress="return testNum(event, this, 2);" name="POS_VAL_RUB_L1C" value="{POS_VAL_RUB_L1C}" placeholder="Deplacement  Urbain" class="form-control deplacement_urb amount">
+												<input type="text" onkeypress="return testNum(event, this, 2);" name="POS_VAL_RUB_L1C" value="{POS_VAL_RUB_L1C}" placeholder="Deplacement  Urbain" class="form-control deplacement_urb amount" style="width: 100%;">
 											</div>
 
 											<div class="col-sm-4" style="margin-top: 13px">
 												<label for="bio">Assurance<span class='text'></span> :</label>
-												<input type="text" onkeypress="return testNum(event, this, 2);"  name="POS_VAL_RUB_L1D" value="{POS_VAL_RUB_L1D}" placeholder="Assurance" class="form-control assurance amount">
+												<input type="text" onkeypress="return testNum(event, this, 2);"  name="POS_VAL_RUB_L1D" value="{POS_VAL_RUB_L1D}" placeholder="Assurance" class="form-control assurance amount" style="width: 100%;">
 											</div>
 
 											<div class="col-sm-4" style="margin-top: 13px">
 												<label for="bio">Transport<span class='text'></span> :</label>
-												<input type="text" onkeypress="return testNum(event, this, 2);" name="POS_VAL_RUB_L1E" value="{POS_VAL_RUB_L1E}" placeholder="Transport" class="form-control transport amount">
+												<input type="text" onkeypress="return testNum(event, this, 2);" name="POS_VAL_RUB_L1E" value="{POS_VAL_RUB_L1E}" placeholder="Transport" class="form-control transport amount" style="width: 100%;">
 											</div>
 
 											<div class="col-sm-8 text-center" style="padding-top: 50px">
-												<input type="hidden" class="totalprice"  name="POS_VAL_RUB_K9" value="{POS_VAL_RUB_K9}" />
+												<input type="hidden" class="totalprice"  name="POS_VAL_RUB_K9" value="{POS_VAL_RUB_K9}" style="width: 100%;"/>
 												TOTAL : <span class="montant">0 F CFA</span>
 											</div>
 

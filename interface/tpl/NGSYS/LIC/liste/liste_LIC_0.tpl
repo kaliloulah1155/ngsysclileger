@@ -43,21 +43,23 @@
 
         
     <input type="hidden" class="appli" value="<?php echo $_GET['APPLI'] ?>" />
-   
+    <input type="hidden" class="user_email" value="<?php echo strtoupper($_GET['USER']) ?>" />
+    <input type="hidden" class="profil" value="<?php echo strtoupper($_GET['PROFIL']) ?>" />
+
     <div class="card mb-1" >
         <div class="card-header">
             <div class="row">
                 <div class="col-md-3">
                     <label>Date d&#233;but</label>
-                    <input type="date" class="form-control date_deb" placeholder="D&#233;partement" style="width: 100%;height:35px;padding: 2%;border-radius:3px;background:transparent">
+                    <input type="date" class="form-control departement" placeholder="D&#233;partement" style="width: 100%;height:35px;padding: 2%;border-radius:3px;background:transparent">
                 </div>
                 <div class="col-md-3">
                     <label>Date fin</label>
-                    <input type="date" class="form-control date_fin" placeholder="D&#233;partement" style="width: 100%;height:35px;padding: 2%;border-radius:3px;background:transparent">
+                    <input type="date" class="form-control departement" placeholder="D&#233;partement" style="width: 100%;height:35px;padding: 2%;border-radius:3px;background:transparent">
                 </div>
                 <div class="col-md-3 offset-1">
                     <label>Nom & pr&#233;noms</label>
-                     <select class="form-control personnel" style="width: 100%">
+                     <select class="form-control" style="width: 100%">
                         <option value="" selected>Veuillez s&#233;lectionner</option>
                     </select>
                 </div>
@@ -74,18 +76,18 @@
 
     <div class="row mb-3">
         <div class="col-md-2 mt-2 offset-6">
-            <select class="form-control typeDemande choice" style="width: 100%">
+            <select class="form-control typeDemande" style="width: 100%">
                 <option value="Xls">Xls</option>
                 <option value="Xlsx">Xlsx</option>
                 <option value="Csv">Csv</option>
             </select>
         </div>
         <div class="col-md-2 mt-2">
-            <button class="btn btn_export" title="cliquez pour exporter vos documents en format s&#233;lectionner">Exporter</button>
+            <button class="btn" title="cliquez pour exporter vos documents en format s&#233;lectionner">Exporter</button>
         </div>
 
         <div class="col-md-2 mt-2" style="float: right;">
-            <button class="btn btn_pdf" title="cliquez pour t&#233;l&#233;charger vos document en format pdf">Format pdf</button>
+            <button class="btn" title="cliquez pour t&#233;l&#233;charger vos document en format pdf">Format pdf</button>
         </div>
     </div>
 
@@ -101,53 +103,23 @@
                 <th style="min-width: 100px;text-align: center;border-top-right-radius: 5px;">Actions</th>
             </tr>
         </thead>
-        <tbody class="list_licenciement">
+        <tbody>
 
-            
+            <tr>
+                <th>1</th>
+                <th>Kobenan</th>
+                <th>Marcel</th>
+                <th>Dev</th>
+                <th>2</th>
+                <th>12/06/2013</th>
+                <th>
+                    <a href="#" class="btn" style="width: 30px;height: 30px;padding: 3px;border: 1px solid black;cursor: pointer;"><i class='fa fa-eye'></i></a>
+                    <a href="#" class="btn" style="width: 30px;height: 30px;padding: 3px;border: 1px solid black;cursor: pointer;"><i class='fa fa-print'></i></a>
+                    <a href="#" class="btn" style="width: 30px;height: 30px;padding: 3px;border: 1px solid black;cursor: pointer;"><i class='fa fa-archive'></i></i></a>
+                </th>
+            </tr>
 
         </tbody>
     </table>
-
-<script language='javascript' src="/<?php echo $_GET['APPLI'] ?>/interface/tpl/<?php echo $_GET['APPLI'] ?>/LIC/liste/listeAjaxLIC/load_liste_LIC.js"></script>
-<script language='javascript' src="/<?php echo $_GET['APPLI'] ?>/interface/tpl/<?php echo $_GET['APPLI'] ?>/LIC/excellic/licenciementexcel.js"></script>
-
-  <script>
-     //bouton oeil
-        $(document).on('click','.modifier',function(){
-            var numposeidon=$(this).data('num');
-            //alert(numposeidon);
-         window.location.href='/<?php echo $_GET["APPLI"] ?>/interface/session/principal/consultation/consulter_index.php?MODE=MODIFICATION&POS_NUM_DOC='+numposeidon+'&POS_TYPEDOC=LIC&POS_NUM_FICHE=0';
-
-        });
-
-          
-        $(document).on('click','.supprimer',function(e){
-                var num_poseidon=$(this).data('numsup');
-                var link_url_del="/<?php echo $_GET['APPLI'] ?>/interface/tpl/<?php echo $_GET['APPLI'] ?>/LIC/liste/listeAjaxLIC/delete_LIC.php";
-                 if(confirm('Voulez-vous supprimer cette fiche ?')){
-                    //alert('good');
-
-                    $.ajax({
-                        url: link_url_del,
-                        type: "GET",
-                        data: {
-                            num_poseidon:num_poseidon,
-                        },
-                        success: function(response) {
-                             //console.log(response);
-                        },
-                        error: function(err) {
-                            console.log(err);
-                        },
-                    });
-                    location.reload();
-                 }else{
-
-                   // alert('nok');
-                 }
-                  e.preventDefault();
-        });
-
-     </script>
 </body>
 </html>

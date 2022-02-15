@@ -40,6 +40,8 @@
 <style type="text/css">
     body{
         background: transparent;
+        font-size: 12px;
+        font-weight: 100;
     }
 
     .btn_search{
@@ -52,16 +54,20 @@
         margin-top: -3.5%;
     }
 
+    th{
+        font-weight: 100;
+        font-size: 12px;
+    }
+
     .icon_btn{
         position: absolute;
-       /* margin-top: -1.5%;*/
         margin-left: 1%;
     }
 </style>
 <body class="fluid">
 
     <div class="title mt-2 mb-1 text-center">
-        <span>Page de r&#233;sultat</span>
+        <span style="font-size: 17px; font-weight: 500">Page de r&#233;sultat</span>
     </div>
 
         
@@ -76,19 +82,19 @@
             <div class="row">
                 <div class="col-md-3">
                     <label>D&#233;partement</label>
-                    <input type="text" class="form-control departement" placeholder="D&#233;partement" style="width: 80%;height:35px;padding: 2%;border-radius:3px;background:transparent">
+                    <input type="text" class="form-control departement" placeholder="D&#233;partement" style="width: 100%;height:35px;padding: 2%;border-radius:3px;background:transparent;font-weight: 100;font-size: 13px;">
                 </div>
                 <div class="col-md-3">
                     <label>Service</label>
-                    <input type="text" class="form-control service" placeholder="Service" style="width: 80%;height:35px;padding: 2%;border-radius:3px;background:transparent">
+                    <input type="text" class="form-control service" placeholder="Service" style="width: 100%;height:35px;padding: 2%;border-radius:3px;background:transparent;font-weight: 100;font-size: 13px;">
                 </div>
                 <div class="col-md-3">
                     <label>Nom & pr&#233;noms</label>
-                    <input type="text" class="form-control nom_pre" placeholder="Nom & pr&#233;noms" style="width: 80%;height:35px;padding: 2%;border-radius:3px;background:transparent">
+                    <input type="text" class="form-control nom_pre" placeholder="Nom & pr&#233;noms" style="width: 100%;height:35px;padding: 2%;border-radius:3px;background:transparent;font-weight: 100;font-size: 13px;">
                 </div>
                 <div class="col-md-2">
                     <label>Date</label>
-                    <input type="date" class="form-control date_search"   placeholder="Date" style="width: 100%;height:35px;padding: 2%;border-radius:3px;background:transparent">
+                    <input type="date" class="form-control date_search"   placeholder="Date" style="width: 100%;height:35px;padding: 2%;border-radius:3px;background:transparent;font-weight: 100;font-size: 13px;">
                 </div>
             </div>
             <button class="btn btn_search">

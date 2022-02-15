@@ -20,7 +20,7 @@
 	<script language='javascript' src='/{NOM_APPLICATION}/include/script/ajax_recup_arbo_dossier.js'></script>
 	<script language='javascript' src='/{NOM_APPLICATION}/include/script/action_accueil.js'></script>
 	<link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="Stylesheet" type="text/css" />
-	<script language='javascript' src='/NGSYS/include/script/action_accueil.js'></script>
+	<script language='javascript' src='/{NOM_APPLICATION}/include/script/action_accueil.js'></script>
 	<style>
 		.col_list{
 			width: 23%;
@@ -64,6 +64,11 @@
 		color: red;
 		}
 
+		label{
+			font-size: 15px;
+			font-weight: 100;
+		}
+
 	</style>
 </head>
 <body  class='tpl_creation tpl_creation_dbq' onLoad='initTplCreation();' style="background-color: transparent;font-family: 'Times New Roman';">
@@ -96,15 +101,19 @@
 					<input type="hidden" name='POS_VAL_RUB_NOM' class="viewnom" value="{POS_VAL_RUB_NOM}" >
 					<input type="hidden" name='POS_VAL_RUB_PRE' class="viewprenom" value="{POS_VAL_RUB_PRE}" >
 					<input type="hidden" name='POS_VAL_RUB_FON' class="viewfonction" value="{POS_VAL_RUB_FON}" >
-					<input type="hidden" name='POS_VAL_RUB_DPT' class="viewdepartement" value="{POS_VAL_RUB_DPT}" >
+					<input type="hidden" name='POS_VAL_RUB_DPT' class="viewdepartement"  value="{DEPARTEMENT_UTILISATEUR}"   >
 					 <!--fin données de l'utilisateur connecté -->
 				
 			</div>
 		<div class="col_list">
 			<i class="fa fa-eye fa-1x" style="color:#4a67b3;"></i>
-			<a href="javascript:void lanceBibBal('/{NOM_APPLICATION}/interface/session/principal/resultat/rechercher_db.php&TYPE_RECHERCHE=RECHERCHE_BAL&POS_QUEST_NOM=Bal_DBQ_nv&POS_QUEST_PUBLIC=1', 'QUESTION_BAL');">
+			 <a href="javascript:void lanceBibBal('/{NOM_APPLICATION}/interface/session/principal/resultat/rechercher_db.php&TYPE_RECHERCHE=RECHERCHE_BAL&POS_QUEST_NOM=Bal_DBQ_nv&POS_QUEST_PUBLIC=1', 'QUESTION_BAL');">
 				<span style="color:#4a67b3;">Cliquez pour consulter la liste</span>
-			</a>
+			</a> 
+
+			<!--<a href="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/DBQ/liste/liste_DBQ_1.php?APPLI={NOM_APPLICATION}&USER={NOM_UTILISATEUR}&PROFIL={PROFIL_UTILISATEUR}">
+				<span style="color:#4a67b3;">Cliquez pour consulter la liste</span>
+			</a>-->
 
 			
 		</div>
@@ -125,6 +134,11 @@
 
 		<nav class="container-fluid" style="margin-top: 3%">
 			<div class="row" style="margin-top: 1%">
+
+				<div class="col-sm-12 text-center" style="margin-bottom: 13px">
+					<label style="font-weight: 100; font-size: 13px;">Les champs avec (<span class='text'></span>) sont obligatoires</label>
+				</div>
+
 				<div class="col-sm-6 mt-5">
 					<div class="col1_partie text-center">
 						<span class="title text-while">DOMICILIATION BANCAIRE</span>
@@ -277,10 +291,16 @@
 			var fonction=$('.fonction').val();
 			var departement=$('.departement').val();
 
+			//alert(departement);
+
 			$('.viewnom').val(nom);
 			$('.viewprenom').val(prenom);
 			$('.viewfonction').val(fonction);
-			$('.viewdepartement').val(departement);
+			//$('.viewdepartement').val(departement);
+
+			//document.querySelector('input[name="POS_VAL_RUB_DPT"]').value='ee' ;
+
+
 			//fin données de l'utilisateur connecté
  
 	</script>

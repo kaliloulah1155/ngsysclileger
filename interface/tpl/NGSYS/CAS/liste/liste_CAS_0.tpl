@@ -24,6 +24,8 @@
         background: transparent;
         margin: 0;
         padding: 0;
+        font-size: 12px;
+        font-weight: 100;
     }
 
     .btn_search{
@@ -33,11 +35,16 @@
         color: #fff;
         background: #4a67b3;
     }
+
+    th{
+        font-weight: 100;
+        font-size: 12px;
+    }
 </style>
 <body class="fluid">
 
     <div class="title mt-2 mb-1 text-center">
-        <span>Page de r&#233;sultat</span>
+        <span style="font-size: 17px; font-weight: 500">Page de r&#233;sultat</span>
     </div>
 
         
@@ -48,11 +55,11 @@
             <div class="row">
                 <div class="col-md-3">
                     <label>Date d&#233;but</label>
-                    <input type="date" class="form-control date_deb" placeholder="D&#233;partement" style="width: 100%;height:35px;padding: 2%;border-radius:3px;background:transparent">
+                    <input type="date" class="form-control date_deb" placeholder="D&#233;partement" style="width: 100%;height:35px;padding: 2%;border-radius:3px;background:transparent; font-weight: 100;font-size: 13px;">
                 </div>
                 <div class="col-md-3">
                     <label>Date fin</label>
-                    <input type="date" class="form-control date_fin" placeholder="D&#233;partement" style="width: 100%;height:35px;padding: 2%;border-radius:3px;background:transparent">
+                    <input type="date" class="form-control date_fin" placeholder="D&#233;partement" style="width: 100%;height:35px;padding: 2%;border-radius:3px;background:transparent; font-weight: 100;font-size: 13px;">
                 </div>
 
                 <div class="col-md-1 offset-5">
@@ -67,25 +74,25 @@
 
     <div class="row mb-3">
         <div class="col-md-2 mt-2 offset-6">
-            <select class="form-control typeDemande choice" style="width: 100%">
+            <select class="form-control typeDemande choice" style="width: 100%;font-weight: 100;font-size: 14px;">
                 <option value="Xls">Xls</option>
                 <option value="Xlsx">Xlsx</option>
                 <option value="Csv">Csv</option>
             </select>
         </div>
         <div class="col-md-2 mt-2">
-            <button class="btn btn_export" title="cliquez pour exporter vos documents en format s&#233;lectionner">Exporter</button>
+            <button class="btn btn_export" title="cliquez pour exporter vos documents en format s&#233;lectionner" style="font-weight: 100;font-size: 13px;">Exporter</button>
         </div>
 
         <div class="col-md-2 mt-2" style="float: right;">
-            <button class="btn btn_pdf" title="cliquez pour t&#233;l&#233;charger vos document en format pdf">Format pdf</button>
+            <button class="btn btn_pdf" title="cliquez pour t&#233;l&#233;charger vos document en format pdf" style="font-weight: 100;font-size: 13px;">Format pdf</button>
         </div>
     </div>
 
     <table id="min-data" class="test table"> <!--   id="languages" un element important display -->
         <thead class="table-sm table-hover text-white" style="background: #4a67b3;">
             <tr>
-                <th style="min-width: 30px;text-align: center;border-top-left-radius: 5px;">#</th>
+               <!--  <th style="min-width: 30px;text-align: center;border-top-left-radius: 5px; display: none;">#</th> -->
                 <th style="min-width: 100px;text-align: center;">Code</th>
                 <th style="min-width: 100px;text-align: center;">Date de cr&#233;ation</th>
                 <th style="min-width: 100px;text-align: center;border-top-right-radius: 5px;">Actions</th>
@@ -117,7 +124,7 @@
                 var link_url_del="/<?php echo $_GET['APPLI'] ?>/interface/tpl/<?php echo $_GET['APPLI'] ?>/CAS/liste/listeAjaxCAS/delete_CAS.php";
 
 
-                 if(confirm('Voulez-vous supprimer cette fiche ?')){
+                 if(confirm('Voulez-vous supprimer ce personnel ?')){
                     //alert('good');
 
                     $.ajax({

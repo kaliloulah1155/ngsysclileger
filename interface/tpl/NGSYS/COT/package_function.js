@@ -281,7 +281,7 @@ let link2 =
 
 
       $(document).on('change','.personnel',function(){
-
+             $('.emp_wk').val($(this).val());
            //alert($(this).val());
             $('.get_fonction').val(' ');
 
@@ -976,7 +976,7 @@ let linkprime =
                               var selected = [];
                               $(".lib_prime").each(function () {
                                   selected.push($(this).val());
-                              });   
+                              });
 
                               // Remove all selected options, except the current showing one, from all lists
                               $(".lib_prime").each(function () {

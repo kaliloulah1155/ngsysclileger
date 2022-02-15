@@ -32,7 +32,19 @@
     <link href="https://raw.githack.com/ttskch/select2-bootstrap4-theme/master/dist/select2-bootstrap4.css" rel="stylesheet"/>
 
 	<link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="Stylesheet" type="text/css" />
+
+	 
 	<style>
+
+		.col_list{
+			width: 22%;
+			float: right;
+			font-family: 'Times New Roman';
+			font-size: 14px;
+			background-color: transparent;
+			font-weight: lighter; 
+		}
+
 		.col1_partie{
 			width: 100%;
 			font-family: 'Times New Roman';
@@ -57,17 +69,6 @@
 			border: 1px solid #4a67b3; 
 			margin: 0%; 
 			padding-left: 27px;
-		}
-		
-		.col_list{
-			width: 50%;
-			margin-top: -3%;
-			margin-right: 5%;
-			font-family: 'Times New Roman';
-			font-size: 17px;
-			background-color: transparent;
-			font-weight: lighter; 
-			float: right;
 		}
 		
 		.header-const{
@@ -197,13 +198,28 @@
 		<input type='hidden' name='URL' value='{CODE_ACTION}'>
 		<input type='hidden' name='POS_NUM_DOC' value='{POS_NUM_DOC}'>
 		<input type='hidden' name='POS_TYPEDOC' value='PAY'/>
-		<input type='hidden' name='MODE' value='{MODE}'>
+		<input type='hidden' name='MODE' class="get_mode" value='{MODE}'>
 		<input type='hidden' name='NB_ONGLETS' value='4'>
 		<!-- BEGIN BLOC_OLD_VALUE -->
 		<input type='hidden' name='{NAME_OLD_RUB}' value="{VALUE_OLD_RUB}">
 		<!-- END BLOC_OLD_VALUE -->
 
 		<input type='hidden' class='appName' value="{NOM_APPLICATION}">
+
+
+		<input type="hidden" name="URL_ATTENTE" value="{URL_ATTENTE}"><!--  -->
+		<input type="hidden" name="URL_RESULTAT" value="{URL_RESULTAT}">
+		<input type="hidden" name="URL_OBTENIR_NB_REP" value="{URL_OBTENIR_NB_REP}">
+		<input type="hidden" name="URL_CHANGER_PROFIL" value="{URL_CHANGER_PROFIL}">
+		<input type="hidden" id="nb-profils" value="{NB_PROFILS_UTIL}">
+
+
+		<div class="col_list">
+			<i class="fa fa-eye fa-1x" style="color:#4a67b3;"></i>
+			<a href="javascript:void lanceBibBal('/{NOM_APPLICATION}/interface/session/principal/resultat/rechercher_db.php&TYPE_RECHERCHE=RECHERCHE_BAL&POS_QUEST_NOM=Bal_PAY_nv&POS_QUEST_PUBLIC=1', 'QUESTION_BAL');">
+				<span style="color:#4a67b3;">Cliquez pour consulter la liste</span>
+			</a>
+		</div>
 		
 		<header class="header-const">
 			<div id="actions-container" class="ui-widget-content titre-boutons" style="padding-left: 3%; text-align: center; background: transparent; border: none">
@@ -550,6 +566,7 @@
 									<span class="pr-3" style="font-size: 13px; font-family: Times;">Login :</span>
 									<strong class="pt-1_pl-5" style="font-size: 13px;">{POS_VAL_RUB_CRE} </strong>
 								</p>
+								<input type="hidden" name='POS_VAL_RUB_CRE' value="{POS_VAL_RUB_CRE}" class="createur" style="color: black;"  />
 								<!-- Affichage de la date -->
 								<span class="d-flex">
 									<span class="pr-4" style="font-size: 13px; font-family: Times;padding-left: 3%">Date :</span>
@@ -569,6 +586,7 @@
 									<span class="pr-3" style="font-size: 13px; font-family: Times; display: none;">Login :</span>
 									<strong class="pt-1_pl-5" style="font-size: 13px;">{POS_VAL_RUB_A4A}</strong>
 								</p>
+								<input type="hidden" class="mngadm_wk" name="POS_VAL_RUB_A4A"  value="{POS_VAL_RUB_A4A}" style="color: black;" />
 								<!-- Affichage du visa -->
 								<span class="d-flex">
 									<span class="pr-4" style="font-size: 13px; font-family: Times;">Visa :</span>
@@ -600,6 +618,7 @@
 									<span class="pr-3" style="font-size: 13px; font-family: Times; display: none;">Login :</span>
 									<strong class="pt-1_pl-5" style="font-size: 13px;">{POS_VAL_RUB_A4B}</strong>
 								</p>
+								<input type="hidden" name='POS_VAL_RUB_A4B' value="{POS_VAL_RUB_A4B}" class="controleur_wk" style="color: black;"  />
 								<!-- Affichage du visa -->
 								<span class="d-flex">
 									<span class="pr-4" style="font-size: 13px; font-family: Times;">Visa :</span>
@@ -631,6 +650,7 @@
 									<span class="pr-3" style="font-size: 13px; font-family: Times;display: none;">Login :</span>
 									<strong class="pt-1_pl-5" style="font-size: 13px;">{POS_VAL_RUB_A4C}</strong>
 								</p>
+								<input type="hidden" name='POS_VAL_RUB_A4C' value="{POS_VAL_RUB_A4C}" class="finance_wk" style="color: black;"  />
 								<!-- Affichage du visa -->
 								<span class="d-flex">
 									<span class="pr-4" style="font-size: 13px; font-family: Times;">Visa :</span>
@@ -662,6 +682,7 @@
 									<span class="pr-3" style="font-size: 13px; font-family: Times;display: none;">Login :</span>
 									<strong class="pt-1_pl-5" style="font-size: 13px;">{POS_VAL_RUB_A4D}</strong>
 								</p>
+								<input type="hidden" name='POS_VAL_RUB_A4D' value="{POS_VAL_RUB_A4D}" class="dga_wk" style="color: black;"  />
 								<!-- Affichage du visa -->
 								<span class="d-flex">
 									<span class="pr-4" style="font-size: 13px; font-family: Times;">Visa :</span>
@@ -693,6 +714,7 @@
 									<span class="pr-3" style="font-size: 13px; font-family: Times;display: none;">Login :</span>
 									<strong class="pt-1_pl-5" style="font-size: 13px;">{POS_VAL_RUB_A4E}</strong>
 								</p>
+								<input type="hidden" name='POS_VAL_RUB_A4E' value="{POS_VAL_RUB_A4E}" class="dg_wk" style="color: black;"  />
 								<!-- Affichage du visa -->
 								<span class="d-flex">
 									<span class="pr-4" style="font-size: 13px; font-family: Times;">Visa :</span>
@@ -712,8 +734,7 @@
 							</div>
 						</div>
 						
-						
-						
+	
 						<span class="bar1"></span>
 						<div class="circle1">
 							<span class="label1">7</span>
@@ -917,6 +938,8 @@
 		<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 	<!-- endjquery  -->
 		<script language='javascript' src="../../../../include/script/testNum.js"></script>
+		<!-- imporation du fichier de desactivation des champs -->
+		<script src="../../../../disable_fields.js"></script>
 	 <script>
 
 
@@ -928,14 +951,12 @@
 			}
 
 
+$(document).on('change','.personnel',function(e){
+        
+		$('.avu').val($(this).val());
+});
+
 	 	//Traitement sur les commentaires
-
- 	
-
-		$(document).on('change','.personnel',function(e){
-				
-				$('.avu').val($(this).val());
-		});
 
 		var prof_util = "{PROFIL_UTILISATEUR}";	 
 		var str = prof_util;
@@ -1121,6 +1142,7 @@
     </script>
     <script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PAY/notification.js"></script>
 	<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PAY/workflowPAY.js"></script>
+	<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PAY/valideurs/validateur.js"></script>
 
 	
 </html>

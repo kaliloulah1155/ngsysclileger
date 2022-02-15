@@ -1067,6 +1067,7 @@ li .closeonglet:hover {
 }
 body.accueil {
   background-color: #e9e4e0;
+  height: 90vh;
 }
 /* 
  * lrstyle.css : table

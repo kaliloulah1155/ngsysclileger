@@ -21,6 +21,7 @@
 	<script language='javascript' src='/{NOM_APPLICATION}/include/script/ajax_recup_listhier.js'></script>
 	<script language='javascript' src='/{NOM_APPLICATION}/include/script/ajax_recup_arbo_dossier.js'></script>
 	<script language='javascript' src='/{NOM_APPLICATION}/include/script/action_accueil.js'></script>
+	<script language='javascript' src='/NGSYSTEST/include/script/testNum.js'></script>
 
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
     <link href="https://raw.githack.com/ttskch/select2-bootstrap4-theme/master/dist/select2-bootstrap4.css" rel="stylesheet"/>
@@ -65,6 +66,12 @@
 			 border-style: solid;
   			border-color: red;
 		}
+
+		label{
+			font-size: 15px;
+			font-weight: 100;
+		}
+
 		span.text:after {
 		content: "*";
 		color: red;
@@ -102,30 +109,36 @@
 				<!-- données de l'utilisateur connecté -->
 					<input type="hidden" name='POS_VAL_RUB_NOM' class="viewnom" value="{POS_VAL_RUB_NOM}" >
 					<input type="hidden" name='POS_VAL_RUB_PRE' class="viewprenom" value="{POS_VAL_RUB_PRE}" >
-					<input type="hidden" name='POS_VAL_RUB_FON' class="viewfonction" value="{POS_VAL_RUB_FON}" >
-					<input type="hidden" name='POS_VAL_RUB_AVA' class="viewanciennete" value="{POS_VAL_RUB_AVA}" >
-				<!--fin données de l'utilisateur connecté -->	
+					<input type="hidden" name='POS_VAL_RUB_FON' class="viewfonction" value="{POS_VAL_RUB_FON}">	
 			 
         </div>
 		
+		<!-- <div class="col_list">
+			<i class="fa fa-eye fa-1x" style="color:#4a67b3;"></i>
+			<a href="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/LIC/liste/liste_LIC_1.php?APPLI={NOM_APPLICATION}&USER={NOM_UTILISATEUR}&PROFIL={PROFIL_UTILISATEUR}">
+				<span style="color:#4a67b3;">Cliquez pour consulter la liste</span>
+			</a>
+		</div> -->
 		<div class="col_list">
 			<i class="fa fa-eye fa-1x" style="color:#4a67b3;"></i>
-			<a style="display:none" href="javascript:void lanceBibBal('/{NOM_APPLICATION}/interface/session/principal/resultat/rechercher_db.php&TYPE_RECHERCHE=RECHERCHE_BAL&POS_QUEST_NOM=Bal_LIC_nv&POS_QUEST_PUBLIC=1', 'QUESTION_BAL');">
+            <a href="javascript:void lanceBibBal('/{NOM_APPLICATION}/interface/session/principal/resultat/rechercher_db.php&TYPE_RECHERCHE=RECHERCHE_BAL&POS_QUEST_NOM=Bal_LIC_nv&POS_QUEST_PUBLIC=1', 'QUESTION_BAL');">
 				<span style="color:#4a67b3;">Cliquez pour consulter la liste</span>
-			</a>
-			<a href="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/LIC/liste/liste_LIC_1.php?APPLI={NOM_APPLICATION}">
-				<span style="color:#4a67b3;">Cliquez pour consulter la liste</span>
-			</a>
+            </a>
 		</div>
-		     
+		
 		<nav class="container-fluid">
 			<div class="row" style="margin-top: 4%">
 				<div class="col-sm-12 mt-5">
 					<div class="col1_partie text-center">
 						<span class="title text-while">DESCRIPTIFS</span>
 					</div>
-					<div class="col2_partie" style="padding-top: 2%;">
+					<div class="col2_partie" style="padding-top: 1%;">
 						<div class="row">
+
+							<div class="col-sm-12 text-center" style="margin-bottom: 13px">
+								<label style="font-weight: 100; font-size: 13px;">Les champs avec (<span class='text'></span>) sont obligatoires</label>
+							</div>
+
 							<div class="col-sm-4">
 								<label for="bio">Nom & pr&#233;noms <span class='text'></span> :</label>
 								<select id="interimaire" class="form-control select2 personnel" name='POS_VAL_RUB_INT' style="width: 100%;" required="true">
@@ -133,15 +146,22 @@
 								</select>
 								<input type="hidden" name='POS_VAL_CTRL_INT' id='POS_VAL_CTRL_INT' value='{POS_VAL_RUB_INT}' required="true">
 							</div>
-						 
+							<div class="col-sm-4" style="display: none;">
+								<label>Fonction :</label>
+								<input type="text" name='POS_VAL_RUB_FON'  class="form-control" value="{POS_VAL_RUB_FON}" placeholder="Fonction" style="width: 100%;">
+							</div>
+							<div class="col-sm-4" style="display: none;">
+								<label>Anciennet&eacute; :</label>
+								<input type="number" name='POS_VAL_RUB_AVA' value="{POS_VAL_RUB_AVA}" placeholder="Ancienn&eacute;t&eacute;" class="form-control" style="width: 100%;">
+							</div>
 						
 							<div class="col-sm-4">
 								<label>Date prise de decision <span class='text'></span> :</label>
 								<input type="text" name='POS_VAL_RUB_DEI' required="true" value="{POS_VAL_RUB_DEI}" placeholder="jj/mm/aaaa" class="form-control dateDepot"  id="date1" style="width: 100%;">
 							</div>
 							<div class="col-sm-4">
-								<label>Dur&#233;e pr&eacute;avis <span class='text'></span></label>
-								<input type="text" name='POS_VAL_RUB_CAT' required="true" value="{POS_VAL_RUB_CAT}"  placeholder="Dur&#233;e pr&eacute;avis" class="form-control dureePreavis" style="width: 100%;">
+								<label>Dur&#233;e pr&eacute;avis (en mois) <span class='text'></span> :</label>
+								<input type="text" name='POS_VAL_RUB_CAT' onkeypress="return testNum(event, this,2);" required="true" value="{POS_VAL_RUB_CAT}"  placeholder="Dur&#233;e pr&eacute;avis" class="form-control dureePreavis" style="width: 100%;">
 							</div>
 							<div class="col-sm-4" style="margin-top: 13px">
 								<label>Date de fin :</label>
@@ -193,12 +213,19 @@
 		<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 		<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/LIC/select2/select2tr.js"></script>
 		<script language='javascript' src="/{NOM_APPLICATION}/include/alert/sweetalert.js"></script>
- 
 
 	<!-- END JQUERY  -->
 	<script>
 	 	$('#formlicenc').parsley();
-	
+		var nom=$('.nom').val();
+		var prenom=$('.prenom').val();
+		var fonction=$('.fonction').val();
+		var departement=$('.departement').val();
+
+		  $('.viewnom').val(nom);
+		  $('.viewprenom').val(prenom);
+		  $('.viewfonction').val(fonction);
+		  $('.viewdepartement').val(departement);
 	 //fin données de l'utilisateur connecté
 		$(document).ready(function (){
 

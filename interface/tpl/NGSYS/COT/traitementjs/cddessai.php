@@ -82,7 +82,7 @@ $pdf->SetFont('dejavusans', '', 11, '', true);
   $query_prs =" SELECT  \"CIV\",\"NOM\",\"PRE\",\"DNS\",\"LNS\",\"NTP\",\"NPI\",\"CNE\"
    FROM public.pos_tab_index_prs WHERE  \"MEL\" ='".strtolower($email)."'";
       $contests_prs = pg_query($query_prs) or die('Query failed: ' . pg_last_error());
-     
+
    // $civ='';
     $civilite='';
     $nom='';

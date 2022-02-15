@@ -16,7 +16,8 @@
      \"DLA\",
      \"DC1\",
      \"A1\",
-     TO_CHAR(\"DFI\" :: DATE, 'mm/yyyy') 
+     TO_CHAR(\"DFI\" :: DATE, 'mm/yyyy'),
+     \"COM\"
      FROM public.pos_tab_index_prt WHERE  \"NUD\" ='$numposeidon'";
         $contests_prt = pg_query($query_prt) or die('Query failed: ' . pg_last_error());
 
@@ -29,6 +30,7 @@
         $prelev_mens=0;
         $prelev_lettre='';
         $date_fin='12/12/2020';
+        $commentaire="pret d'entreprise";
 
         while ($row_prt = pg_fetch_row($contests_prt)) {
              $date_edit=$row_prt[0] ?? '01/01/2021';
@@ -40,6 +42,7 @@
              $prelev_mens=str_replace(',','.',number_format($row_prt[6])) ?? 0;
              $prelev_lettre=strtolower($row_prt[7]) ?? 0;
              $date_fin=$row_prt[8] ?? '01/01/2021';
+             $commentaire=$row_prt[9] ?? '';
           }
 
       
@@ -165,7 +168,7 @@ $image_file =K_PATH_IMAGES.'ngser.jpg';
 <b><u>Objet</u></b> : Demande de prêt.<br/> <br/> <br/> 
        Messieurs,
 <br/> <br/>
-Dans un courrier en date du '.$date_deb.', j’ai sollicité et obtenu de votre part  un prêt  de  '.$mtn_lettre.'  ('.$mtn_emprunte.') francs CFA en vue de couvrir les frais liés à mon déménagement.
+Dans un courrier en date du '.$date_deb.', j’ai sollicité et obtenu de votre part  un prêt  de  '.$mtn_lettre.'  ('.$mtn_emprunte.') francs CFA en vue de couvrir les frais liés au '.$commentaire.'.
 
 <br/> <br/>
 

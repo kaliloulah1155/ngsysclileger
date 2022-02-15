@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fiche d&#146;identification</title>
-     <link href="/{NOM_APPLICATION}/include/bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/{NOM_APPLICATION}/include/bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="/{NOM_APPLICATION}/include/alert/sweetalert.css" rel="stylesheet"> -->
+     <!-- <link href="/{NOM_APPLICATION}/include/style/jquery-ui.css" rel="stylesheet"> -->
 	<link href='https://use.fontawesome.com/releases/v5.0.8/css/all.css' type='text/css' rel='STYLESHEET' />
 	<script type='text/javascript' src='/{NOM_APPLICATION}/include/script/association.js'></script> 
 	<script type='text/javascript' src='/{NOM_APPLICATION}/include/script/vocabulaire.js'></script>
@@ -20,10 +22,12 @@
 	<script language='javascript' src='/{NOM_APPLICATION}/include/script/ajax_recup_arbo_dossier.js'></script>
 	<script language='javascript' src='/{NOM_APPLICATION}/include/script/action_accueil.js'></script>
 	<link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="Stylesheet" type="text/css" />
-	<script language='javascript' src='/NGSYS/include/script/action_accueil.js'></script>
-	<style>
+	<script language='javascript' src='/NGSYSTEST/include/script/action_accueil.js'></script>
 
-		
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
+    <link href="https://raw.githack.com/ttskch/select2-bootstrap4-theme/master/dist/select2-bootstrap4.css" rel="stylesheet"/>
+
+	<style>
 		.col_list{
 			height: 7vh;
 			margin: 0 70%;
@@ -52,27 +56,36 @@
 			margin: -1% 0%; 
 			padding: 17px;
 		}
+
+		label{
+			font-size: 15px;
+			font-weight: 100;
+		}
 		
-		.btn{
+		input.btn{
 			width: 12%;
 			border: 1px solid #4a67b3;
 			text-align: center;
-			background: transparent;
 			color: #4a67b3;
 			margin: 2.5%;
+			background:transparent
 		}
 
 		.parsley-error{
 			 border-style: solid;
   			border-color: red;
 		}
+		span.text:after {
+		content: "*";
+		color: red;
+		font-size: 13px;
+		font-weight: 700;
+		}
 		
-		
-		
-	</style>      
+	</style>
 </head>
 <body  class='tpl_creation tpl_creation_prs' onLoad='initTplCreation();' style="background-color: transparent;font-family: 'Times New Roman';">
-	<form name='principal' id="formperso" ACTION='{URL_ATTENTE}' method='POST' onSubmit='return validerCreation();' data-parsley-validate>	
+	<form name='principal' id="formperso" class="cform" ACTION='{URL_ATTENTE}'  method='POST' onSubmit='return validerCreation();' data-parsley-validate>	
 	     		<input type='hidden' name='URL' value='{CODE_ACTION}'>
 				<input type='hidden' name='POS_NUM_DOC' value='{POS_NUM_DOC}'>
 				<input type='hidden' name='POS_TYPEDOC' value='PRS'>
@@ -88,7 +101,7 @@
 				<input type="hidden" name="URL_CHANGER_PROFIL" value="{URL_CHANGER_PROFIL}">
 				<input type="hidden" id="nb-profils" value="{NB_PROFILS_UTIL}">
 				<!-- end important pour lancer la boite aux lettres  -->
-     
+
 		<nav class="container-fluid">
 			<div class="row" >
 				<div class="col-sm-3 col_list">
@@ -101,43 +114,30 @@
 					</a>
 				</div>
 			</div>
-
-			
-			<!--
-			<div class="row" >
-                <div class="col-md-4">
-                  <select name="file_type" class="form-control input-sm choice">
-                    <option value="Xlsx">Xlsx</option>
-                    <option value="Xls">Xls</option>
-                    <option value="Csv">Csv</option>
-                  </select>
-                </div>
-                <div class="col-md-5">
-                     <input type="button" name="export" class="btn btn-primary btn-sm btn_export" value="Export" />
-                </div>
-              </div>
-			  -->
-			
-			<div class="row" style="margin-top: 7%">
+			<div class="row" style="margin-top: 7%;">
 				<div class="col-sm-12 mt-5" style="margin-top: -5.6%;">
 					<div class="col1_partie text-center">
 						<span class="title text-while">FICHE D&#145;IDENTIFICATION</span>
 					</div>
-					<div class="col12_partie" style="padding-top: 3%;">
+
+					<div class="col12_partie" style="padding-top: 6px;">
 						<div class="row" style="margin: 0.5% 0%">
-							<div class="col-sm-3" style="margin-top: 5px;">
+							<div class="col-sm-12 text-center">
+								<label style="font-weight: 100; font-size: 13px;">Les champs avec (<span class='text'></span>) sont obligatoires</label>
+							</div>
+							<div class="col-sm-4" style="margin-top: 5px;">
 								<label>Matricule</label>
 								<input type="text" name='POS_VAL_RUB_MAT' value="{POS_VAL_RUB_MAT}" placeholder="Matricule"  class="form-control matricul" />
 							</div>
 							 
-								<input type="hidden" name='POS_VAL_RUB_COD' value="{POS_VAL_RUB_COD}" placeholder="Code"  class="form-control codef"  />
+							<input type="hidden" name='POS_VAL_RUB_COD' value="{POS_VAL_RUB_COD}" placeholder="Code"  class="form-control codef"  />
 							 
 						</div>
 						<!-- civilite & Nom de l'epoux -->
 						<div class="form-group row" style="margin: 0.5% 0%">  
-							<div class="col-sm-3" style="margin-top: 5px">
-								<label>Civilit&eacute;</label>
-								<select id="selection" name='POS_VAL_RUB_CIV' class="form-control civilite" style="width: 100%;"    data-parsley-required="true">
+							<div class="col-sm-4" style="margin-top: 5px">
+								<label>Civilit&eacute;<span class='text'></span> :</label>
+								<select id="selection" name='POS_VAL_RUB_CIV' class="form-control civilite" style="width: 100%;" required="true" data-parsley-pattern="^[a-zA-Z'_ ]*$" data-parsley-trigger="keyup">
 									<option value="" selected>Veuillez s&#233;lectionner</option>
 									<option value="M">Monsieur</option>
 									<option value="MME">Madame</option>
@@ -145,53 +145,53 @@
 								</select>      
 								<input type="hidden" class="selectCivilite" name='POS_VAL_CTRL_CIV' id='POS_VAL_CTRL_CIV'  value='{POS_VAL_RUB_CIV}'>
 							</div>
-							<div class="col-sm-3" style="margin-top: 5px">
-								<label>Nom de l&#146;&#233;poux</label>
+							<div class="col-sm-4" style="margin-top: 5px">
+								<label>Nom de l&#146;&#233;poux :</label>
 								<input type="text" id="epoux"  placeholder="Nom de l&#146;&#233;poux" value="{POS_VAL_RUB_NEP}" name='POS_VAL_RUB_NEP' disabled data-parsley-pattern="^[a-zA-Z'_ ]*$" data-parsley-trigger="keyup" class="form-control" style="width: 100%;"/>
 
 							</div>
-							<div class="col-sm-3" style="margin-top: 5px">
-								<label>Nom</label>
-								<input type="text" class="form-control" placeholder="Nom" name='POS_VAL_RUB_NOM' data-parsley-required="true" data-parsley-pattern="^[a-zA-Z'_ ]*$" data-parsley-trigger="keyup" value="{POS_VAL_RUB_NOM}" style="width: 100%;"/>
+							<div class="col-sm-4" style="margin-top: 5px">
+								<label>Nom<span class='text'></span> :</label>
+								<input type="text" class="form-control nom" placeholder="Nom" name='POS_VAL_RUB_NOM' required="true" data-parsley-pattern="^[a-zA-Z'_ ]*$" data-parsley-trigger="keyup" value="{POS_VAL_RUB_NOM}" style="width: 100%;"/>
 							</div>
-							<div class="col-sm-3" style="margin-top: 5px">
-								<label>Pr&eacute;noms</label>
-								<input type="text" class="form-control" placeholder="Pr&eacute;noms" name='POS_VAL_RUB_PRE' value="{POS_VAL_RUB_PRE}" data-parsley-required="true" data-parsley-pattern="^[a-zA-Z'_ ]*$" data-parsley-trigger="keyup" style="width: 100%;"/>
+							<div class="col-sm-4" style="margin-top: 12px">
+								<label>Pr&eacute;noms<span class='text'></span> :</label>
+								<input type="text" class="form-control prenom" placeholder="Pr&eacute;noms" name='POS_VAL_RUB_PRE' value="{POS_VAL_RUB_PRE}" required="true" data-parsley-pattern="^[a-zA-Z'_ ]*$" data-parsley-trigger="keyup" style="width: 100%;"/>
 							</div>
-						</div>
+						<!-- </div> -->
 						<!-- Deuxieme ligne -->
-						<div class="form-group row" style="margin: 0.5% 0%">
-							<div class="col-sm-3" style="margin-top: 5px">
-								<label>Contact 1</label>
-							  	<input type="text" placeholder="Contact 1" name='POS_VAL_RUB_TPH' value="{POS_VAL_RUB_TPH}" placeholder="Contact 1" class="form-control" data-parsley-required="true" data-parsley-trigger="keyup" data-parsley-pattern="^\+?\d*$" data-parsley-maxlength="15" class="form-control" style="width: 100%;"/>
+						<!-- <div class="form-group row" style="margin: 0.5% 0%"> -->
+							<div class="col-sm-4" style="margin-top: 12px">
+								<label>Contact 1<span class='text'></span> :</label>
+							  	<input type="text" placeholder="Contact 1" name='POS_VAL_RUB_TPH' value="{POS_VAL_RUB_TPH}" class="form-control contact1" required="true" data-parsley-trigger="keyup" data-parsley-pattern="^\+?\d*$" data-parsley-maxlength="15" class="form-control" style="width: 100%;"/>
 							</div>
-							<div class="col-sm-3" style="margin-top: 5px">
-								<label>Contact 2</label>
+							<div class="col-sm-4" style="margin-top: 12px">
+								<label>Contact 2 :</label>
 							  	<input type="text" name='POS_VAL_RUB_TPM' value="{POS_VAL_RUB_TPM}" placeholder="Contact 2" class="form-control" data-parsley-trigger="keyup" data-parsley-pattern="^\+?\d*$" data-parsley-maxlength="15" style="width: 100%;"/>
 							</div>
-							<div class="col-sm-3" style="margin-top: 5px">
-								<label>Date de naissance</label>
-								<input type="text" id="date1" name="POS_VAL_RUB_DNS" value="{POS_VAL_RUB_DNS}" class="form-control text-center" data-parsley-required="true" style="width: 100%;">
+							<div class="col-sm-4" style="margin-top: 12px">
+								<label>Date de naissance<span class='text'></span> :</label>
+								<input type="text" id="date1" name="POS_VAL_RUB_DNS" value="{POS_VAL_RUB_DNS}" class="form-control naissance" required="true" style="width: 100%;" placeholder="jj/mm/aaaa">
 							</div>
-							<div class="col-sm-3" style="margin-top: 5px">
-								<label>Lieu de naissance</label>
-								<input type="text" name='POS_VAL_RUB_LNS' value="{POS_VAL_RUB_LNS}" placeholder="Lieu de naissance" class="form-control" data-parsley-required="true" data-parsley-pattern="^[a-zA-Z'_ ]*$" data-parsley-trigger="keyup" class="form-control" style="width: 100%;"/>
+							<div class="col-sm-4" style="margin-top: 12px">
+								<label>Lieu de naissance<span class='text'></span> :</label>
+								<input type="text" name='POS_VAL_RUB_LNS' value="{POS_VAL_RUB_LNS}" placeholder="Lieu de naissance" class="form-control lieuNais" required="true" data-parsley-pattern="^[a-zA-Z'_ ]*$" data-parsley-trigger="keyup" class="form-control" style="width: 100%;"/>
 							</div>
-						</div>
+						<!-- </div> -->
 						
 						<!-- troisième ligne -->
-						<div class="row" style="margin: 0.5% 0%">
-							<div class="col-sm-3" style="margin-top: 5px">
-								<label>E-mail</label>
-								<input type="email" placeholder="E-mail" class="form-control" name='POS_VAL_RUB_MEL' data-parsley-required="true" value="{POS_VAL_RUB_MEL}" data-parsley-pattern="/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/" style="width: 100%;"/>
+						<!-- <div class="row" style="margin: 0.5% 0%"> -->
+							<div class="col-sm-4" style="margin-top: 12px">
+								<label>E-mail<span class='text'></span> :</label>
+								<input type="email" placeholder="E-mail" class="form-control email" name='POS_VAL_RUB_MEL' required="true" value="{POS_VAL_RUB_MEL}" data-parsley-pattern="/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/" style="width: 100%;"/>
 							</div>
-							<div class="col-sm-3" style="margin-top: 5px">
-								<label>Bo&#238;te postale</label>
+							<div class="col-sm-4" style="margin-top: 12px">
+								<label>Bo&#238;te postale :</label>
 								<input type="text" placeholder="Bo&#238;te postale" name='POS_VAL_RUB_BP' value="{POS_VAL_RUB_BP}" class="form-control" style="width: 100%;">
 							</div>
-							<div class="col-sm-3" style="margin-top: 5px" style="width: 100%;">
-								<label>Nature de pi&egrave;ce</label>
-								<select id="selection" name='POS_VAL_RUB_NTP' rows="1" data-parsley-required="true" class="form-control" rows="1">
+							<div class="col-sm-4" style="margin-top: 12px" style="width: 100%;">
+								<label>Nature de pi&egrave;ce<span class='text'></span> :</label>
+								<select id="selection" name='POS_VAL_RUB_NTP' rows="1" required="true" class="form-control naturePiece" rows="1">
 									<option value="" selected>Veuillez s&#233;lectionner</option>
 									 <option value="ATTESTATION">Atttestation d'identit&eacute; </option>
 									 <option value="CNI">CNI </option>
@@ -201,45 +201,54 @@
 								</select>
 								<input type="hidden" name='POS_VAL_CTRL_NTP' id='POS_VAL_CTRL_NTP' value='{POS_VAL_RUB_NTP}'>
 							</div>
-							<div class="col-sm-3" style="margin-top: 5px">
-								<label>Num&eacute;ro de pi&egrave;ce</label>
-								<input type="text" name='POS_VAL_RUB_NPI' value="{POS_VAL_RUB_NPI}" data-parsley-required="true" data-parsley-trigger="keyup" data-parsley-pattern="^[A-Z0-9 ]*$" placeholder="Num&eacute;ro de pi&egrave;ce" class="form-control" style="width: 100%;"/>
+							<div class="col-sm-4" style="margin-top: 12px">
+								<label>Num&eacute;ro de pi&egrave;ce<span class='text'></span> :</label>
+								<input type="text" required="true" name='POS_VAL_RUB_NPI' value="{POS_VAL_RUB_NPI}" equired="true" data-parsley-trigger="keyup" data-parsley-pattern="^[A-Z0-9 ]*$" placeholder="Num&eacute;ro de pi&egrave;ce" class="form-control numP" style="width: 100%;"/>
 							</div>
-						</div>
+						<!-- </div> -->
 						
 						<!-- Quatrième ligne -->
-						<div class="row" style="margin: 0.5% 0%">
-							<div class="col-sm-3" style="margin: 0.5% 0%">
-								<label>Nationalit&eacute;</label>
-							  <select id="nationalite" name='POS_VAL_RUB_NAT' class="form-control" rows="1" data-parsley-required="true" >
+						<!-- <div class="row" style="margin: 0.5% 0%"> -->
+							<div class="col-sm-4" style="margin-top: 12px">
+								<label>Nationalit&eacute;<span class='text'></span> :</label>
+							  <select id="nationalite" name='POS_VAL_RUB_NAT' class="form-control nationalite" rows="1" required="true" >
 								     <option value="" >Selectionner</option>
 								</select>
 								<input type="hidden" name='POS_VAL_CTRL_NAT' id='POS_VAL_CTRL_NAT' value='{POS_VAL_RUB_NAT}'>
 							</div>
 
-							<div class="col-sm-3" style="margin-top: 5px">
-								<label>Lieu de domicile</label>
-								<input type="text" name='POS_VAL_RUB_CNE'value="{POS_VAL_RUB_CNE}" placeholder="Lieu de domicile" class="form-control" data-parsley-required="true" data-parsley-trigger="keyup" data-parsley-pattern="^[a-zA-Z'_ ]*$">
-
+							<div class="col-sm-4" style="margin-top: 12px">
+								<label>Lieu de domicile<span class='text'></span> :</label>
+								<input type="text" name='POS_VAL_RUB_CNE'value="{POS_VAL_RUB_CNE}" placeholder="Lieu de domicile" class="form-control lieu" required="true" data-parsley-trigger="keyup" data-parsley-pattern="^[a-zA-Z'_ ]*$">
+							</div>
+							<div class="col-sm-4" style="margin-top: 12px">
+								<label>Expatri&#233;(e)<span class='text'></span> :</label>
+								<select id="selection" class="form-control" rows="1" style="width: 100%;"required="true"> 
+									<option value="" selected>Veuillez s&#233;lectionner</option>
+									<option value="NON">Non</option>
+									<option value="OUI">Oui</option>
+								</select>
+								<input type="hidden" name='expatrie'value="expatrie">
 							</div>
 							
-							<div class="col-sm-3" style="margin-top: 5px">
-								<label>Situation matrimoniale</label>
-								<select id="selection" rows="1" name='POS_VAL_RUB_SIF' disabled data-parsley-required="true" class="form-control matrimoniale"  style="width: 100%;">
+							<div class="col-sm-4" style="margin-top: 12px">
+								<label>Situation matrimoniale<span class='text'></span> :</label>
+								<select id="selection" rows="1" name='POS_VAL_RUB_SIF' class="form-control matrimoniale" required="true" style="width: 100%;">
+									<option value="" >Selectionner</option>
 								</select>    
 								<input type="hidden" name='POS_VAL_CTRL_SIF' id='POS_VAL_CTRL_SIF'  value='{POS_VAL_RUB_SIF}'>
 							</div>
-							<div class="col-sm-3" style="margin-top: 5px">
-								<label>Nombre d&#146;enfants</label>
-								<input type="Number" name='POS_VAL_RUB_NEF' value="{POS_VAL_RUB_NEF}" placeholder="Nombre d&#146;enfant" min="0"max="50" class="form-control" data-parsley-required="true" data-parsley-trigger="keyup" data-parsley-pattern="[0-9][0-9]?" style="width: 100%;"/>
-							</div>
-						</div>
+						<!-- </div> -->
 						
 						<!-- Cinquième ligne -->
-						<div class="row" style="margin: 0.5% 0%">
-							<div class="col-sm-3" style="margin-top: 5px">
-								<label>Banque</label>
-								<select id="selection"  name='POS_VAL_RUB_BQE' class="form-control" rows="1" data-parsley-required="true" style="margin: 0% 0%" rows="1" style="width: 100%;" >
+						<!-- <div class="row" style="margin: 0.5% 0%"> -->
+							<div class="col-sm-4" style="margin-top: 12px">
+								<label>Nombre d&#146;enfants<span class='text'></span> :</label>
+								<input type="Number" name='POS_VAL_RUB_NEF' required="true" value="{POS_VAL_RUB_NEF}" placeholder="Nombre d&#146;enfant" min="0"max="50" class="form-control" style="width: 100%;"/>
+							</div>
+							<div class="col-sm-4" style="margin-top: 12px">
+								<label>Banque :</label>
+								<select id="selection"  name='POS_VAL_RUB_BQE' class="form-control" rows="1" style="margin: 0% 0%" rows="1" style="width: 100%;">
 									<option value="" selected>Veuillez s&#233;lectionner</option>
 									<option value="Afrilan First Bank">Afrilan First Bank</option>
 									<option value="Bank Of Africa">Bank Of Africa</option>
@@ -270,50 +279,68 @@
 									<option value="Versus Bank">Versus Bank</option>
 								</select>
 								<input type="hidden" name='POS_VAL_CTRL_BQE' id='POS_VAL_CTRL_BQE' value="{POS_VAL_RUB_BQE}" placeholder="Banque" />
+
 							</div>
-							<div class="col-sm-3" style="margin-top: 5px">
-								<label>RIB</label>
+							<div class="col-sm-4" style="margin-top: 12px">
+								<label>RIB :</label>
 								<input type="text" name='POS_VAL_RUB_RIB' id='POS_VAL_CTRL_RIB' value="{POS_VAL_RUB_RIB}" placeholder="RIB" class="form-control" style="width: 100%;"/>
-
 							</div>
-							<!-- <div class="col-sm-3" style="margin-top: 5px">
-								<label>N&deg; CNPS</label>
-								<input type="text" name='POS_VAL_RUB_CNP' id='POS_VAL_CTRL_CNP'  value="{POS_VAL_RUB_CNP}" placeholder="N&ordm; CNPS" class="form-control" data-parsley-trigger="keyup"  style="width: 100%;"/>
-
-							</div> -->
-							<div class="col-sm-3" style="margin-top: 5px">
-								<label>Date d&apos;entr&#233;e</label>
-								<input type="text" id="date2" name='POS_VAL_RUB_DAE' value="{POS_VAL_RUB_DAE}" data-parsley-required="true" placeholder="Date d&apos;entr&#233;e" class="form-control" data-parsley-trigger="keyup"  style="width: 100%;"/>
-
+							<div class="col-sm-4" style="margin-top: 12px">
+								<label>Date d&apos;entr&#233;e<span class='text'></span> :</label>
+								<input type="text" id="date2" name='POS_VAL_RUB_DAE' value="{POS_VAL_RUB_DAE}" required="true" placeholder="Date d&apos;entr&#233;e" class="form-control dateEntre" data-parsley-trigger="keyup"  style="width: 100%;"/>
 							</div>
 						</div>
-						
-						<!-- <div class="row" style="margin: 0.5% 0%">
-							<div class="col-sm-12" style="margin-top: 5px">
-								<label>Avantages</label>
-								<textarea class="form-control" name='POS_VAL_RUB_AVT' rows="2" style="width: 100%;resize: none">{POS_VAL_RUB_AVT}</textarea>
+
+						<!-- Fiche de poste  -->
+						<label for="bio" style="margin-top: 3%; font-size: 19px">Fiche de poste</label>
+							<div class="row">
+								<div class="col-sm-4">
+									<label>Poste<span class='text'></span> :</label>
+									<select id="selection" name='POS_VAL_RUB_NTP' rows="1" required="true" class="form-control naturePiece" rows="1">
+										<option value="" selected>Veuillez s&#233;lectionner</option>
+										 <option value="1">Analyste programmeur</option>
+										 <option value="2">Commercial</option>
+										 <option value="3">Comptable</option>
+									</select>
+									<input type="hidden" value=" " class="form-control" data-parsley-trigger="keyup"/>
+								</div>
+								<div class="col-sm-4">
+									<label for="bio">Niveau de formation<span class='text'></span> :</label>
+									<select name="POS_VAL_RUB_DIP" required="true" class="form-control selectForms diplome" style="width: 100%;">
+									    <option value="">Veuillez s&#233;lectionner</option>
+									</select>
+									<input type="hidden"  class="interselectdiplome" name='POS_VAL_CTRL_DIP' id='POS_VAL_CTRL_DIP' value='{POS_VAL_RUB_DIP}'>
+								</div>
+								<div class="col-sm-4">
+									<label for="bio">Exp&#233;rience professionnelle<span class='text'></span> :</label>
+									<input type="text" name="POS_VAL_RUB_EXP"  onkeypress="return testNum(event, this, 2);" class="form-control" min="0" placeholder="Exp&#233;rience professionnelle" style="width: 100%;">
+								</div>
+								<div class="col-sm-12" style="margin-top: 12px">
+									<label for="bio">Exigences particuli&#232;res :</label>
+									<textarea name="POS_VAL_RUB_EXG" class="form-control" style="width: 100%;resize: none" rows="2" data-parsley-required="true" data-parsley-trigger="keyup"></textarea>
+								</div>
 							</div>
-						</div> -->
+
 						
 						<!-- En cas d'urgence  -->
-						<label for="bio" style="margin: 1% 2%; font-size: 19px">En cas d&#146;urgence</label>
+						<label for="bio" style="margin-top: 3%; font-size: 19px">En cas d&#146;urgence</label>
 						
-						<div class="row" style="margin: 0.5% 0%">
+						<div class="row">
 							<div class="col-sm-3">
-								<label for="bio">Nom</label>
-								<input type="text" placeholder="Nom" name='POS_VAL_RUB_PAC' value="{POS_VAL_RUB_PAC}"  class="form-control" data-parsley-required="true" data-parsley-pattern="^[a-zA-Z'_ ]*$" data-parsley-trigger="keyup" style="width: 100%;"/>
+								<label for="bio">Nom<span class='text'></span> :</label>
+								<input type="text" placeholder="Nom" name='POS_VAL_RUB_PAC' value="{POS_VAL_RUB_PAC}"  class="form-control nomurg" required="true" data-parsley-pattern="^[a-zA-Z'_ ]*$" data-parsley-trigger="keyup" style="width: 100%;"/>
 							</div>
 							<div class="col-sm-3">
-								<label for="bio">Pr&eacute;noms</label>
-								<input type="text" placeholder="Pr&eacute;noms" value="{POS_VAL_RUB_PRM}" name='POS_VAL_RUB_PRM' class="form-control" data-parsley-required="true" data-parsley-pattern="^[a-zA-Z'_ ]*$" data-parsley-trigger="keyup" style="width: 100%;"/>
+								<label for="bio">Pr&eacute;noms<span class='text'></span> :</label>
+								<input type="text" placeholder="Pr&eacute;noms" value="{POS_VAL_RUB_PRM}" name='POS_VAL_RUB_PRM' class="form-control prenomurg" required="true" data-parsley-pattern="^[a-zA-Z'_ ]*$" data-parsley-trigger="keyup" style="width: 100%;"/>
 							</div>
 							<div class="col-sm-3">
-								<label for="bio">Contact</label>
-								<input type="text" placeholder="Contact" name='POS_VAL_RUB_NTC' value="{POS_VAL_RUB_NTC}" class="form-control" data-parsley-required="true" data-parsley-trigger="keyup"  data-parsley-pattern="^\+?\d*$" data-parsley-maxlength="15" style="width: 100%;"/>
+								<label for="bio">Contact<span class='text'></span> :</label>
+								<input type="text" placeholder="Contact" name='POS_VAL_RUB_NTC' value="{POS_VAL_RUB_NTC}" class="form-control contacturg" required="true" data-parsley-trigger="keyup"  data-parsley-pattern="^\+?\d*$" data-parsley-maxlength="15" style="width: 100%;"/>
 							</div>
 							<div class="col-sm-3">
-								<label for="bio">Filiation</label>
-								<select id="selection"  name='POS_VAL_RUB_FLN' class="form-control" rows="1" data-parsley-required="true" style="margin: 0% 0%" rows="1" style="width: 100%;">
+								<label for="bio">Filiation<span class='text'></span> :</label>
+								<select id="selection"  name='POS_VAL_RUB_FLN' class="form-control filiationurg" rows="1" required="true" style="margin: 0% 0%" rows="1" style="width: 100%;">
 									<option value="" selected>Veuillez s&#233;lectionner</option>
 									<option value="Pere">P&#232;re</option>
 									<option value="Mere">M&#232;re</option>
@@ -336,12 +363,15 @@
 			</div>
 			<!-- button -->
 			<div class="row col_btn">
-				<div type="submit" class="btn col-sm-2" onclick="{CODE_ACTION_FERMER}" style="font-size: 12px;margin-left: 36%">FERMER</div>
-				<input class="btn col-sm-2" type="submit" value="ENREGISTRER" style="font-size: 12px;margin-left: 5%;background:transparent" />
+				<input type="resset" class="btn col-sm-2 btn_ferme" value="FERMER" style="font-size: 12px;margin-left: 36%;">
+				<input class="btn col-sm-2" type="submit" value="ENREGISTRER" id="app" style="font-size: 12px;margin-left: 5%;" />
 			</div>
 		</nav>
 			
 	</form>
+	<div style="display:none;">
+        <div id = "dialog-2" title = "Dialog Title goes here...">Votre op&#233;ration s&#146;est d&#233;roul&#233;e avec succ&#232;s !</div>
+    </div>
 </body>   
     
 	 <!-- JQUERY  -->
@@ -350,20 +380,28 @@
 	    <script language='javascript' src='/{NOM_APPLICATION}/include/jQuery/parseley.js'></script>
 	    <script language='javascript' src='/{NOM_APPLICATION}/include/jQuery/parseleyfr.js'></script>
 		<script language='javascript' src="/{NOM_APPLICATION}/include/jQuery/jquery-ui.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+		<!-- <script language='javascript' src="/{NOM_APPLICATION}/include/alert/sweetalert.js"></script> -->
+		<!-- <script language='javascript' src="/{NOM_APPLICATION}/include/script/jquery-ui.js"></script> -->
 
 		<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PRS/departement/phppromise.js"></script>
 		<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PRS/nationalite/nat.js"></script>
 		<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PRS/code/code.js"></script>
 		<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PRS/matricule/mat.js"></script>
 
-	
- 	<!-- 	<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PRS/excelprs/personneexcel.js"></script>
-END JQUERY  -->
+
+
+	<!-- END JQUERY  -->
 	<script>
+
+		// select2 
+        $('.selectTits,.selectInts,.selectForms').select2({
+            theme:'bootstrap4',
+            tags:true,
+            allowClear: true
+        });
+
 	  $('#formperso').parsley();
-      
-
-
 
 	     var prof_util = "{PROFIL_UTILISATEUR}";	 
 	 
@@ -382,8 +420,30 @@ END JQUERY  -->
 			 $('.mydmdprs').show();
 			
 		}
-		$(document).ready(function () {
-			 $('#date1, #date2').datepicker({
+		$(document).ready(function (){
+
+			//script du bouton fermer
+			$('.btn_ferme').on('click',function(){
+				 if (confirm("Voulez-vous fermer le formulaire ?.Vos donn\u00e9s seront annul\u00e9es ." ) ) {
+							{CODE_ACTION_FERMER}
+				}
+			});
+
+
+			//script du bouton enregistrer 
+	        $('#formperso').submit(function(event){
+				event.preventDefault();
+
+				if (confirm(" Confirmez-vous le traitement de cette action?" ) ) {
+			        	alert("VOTRE OPERATION S'EST DEROULEE AVEC SUCCES");
+			          	event.currentTarget.submit();
+			        }else{
+			    	return false;
+			    }
+	        });
+
+
+			$('#date1, #date2').datepicker({
 				altField: "#datepicker",
 				closeText: 'Fermer',
 				prevText: 'Précédent',

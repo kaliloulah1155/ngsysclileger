@@ -14,7 +14,13 @@ let link_urlpdf =
     "/interface/tpl/" +
     appli +
     "/PRS/prspdf/prspdf_actions.php";
-          
+
+
+
+
+
+
+
 function ajaxListePRS() {
     // var dateclick = $(".datechck").val();
     ///alert(dateclick + " / " + userinfo + " " + link_url_rows);
@@ -28,7 +34,7 @@ function ajaxListePRS() {
             var j = 1;
             var t = $('.table').DataTable();
             t.clear();
-    
+
             for (let i = 0; i < responseNew.length; i++) {
                 t.row.add(
                     [

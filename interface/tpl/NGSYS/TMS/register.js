@@ -22,7 +22,7 @@ $(document).on('click','.btn_reg',function(e){
         })
         .get();
 
-     
+
 
          var taches = $("textarea[name='tache[]']")
         .map(function() {
@@ -91,7 +91,7 @@ $(document).on('click','.btn_reg',function(e){
        var service =$(".viewservice").val();
 
 
-       //console.log(user_email,activites,taches,heureins,heureouts,durees,taux,resultats,dateEnreg,departement,service);
+       console.log(user_email,activites,taches,heureins,heureouts,durees,taux,resultats,dateEnreg,departement,service);
 
      ajaxRegister(
             activites,

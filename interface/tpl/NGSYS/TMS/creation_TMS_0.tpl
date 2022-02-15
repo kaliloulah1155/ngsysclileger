@@ -21,8 +21,8 @@
 	<script type='text/javascript' src='/{NOM_APPLICATION}/include/script/ajax_search.js'></script>
 	<script language='javascript' src='/{NOM_APPLICATION}/include/script/ajax_recup_listhier.js'></script>
 	<script language='javascript' src='/{NOM_APPLICATION}/include/script/ajax_recup_arbo_dossier.js'></script>
-	<link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="Stylesheet" type="text/css" />
- 	<script type="text/javascript" src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<link href="https://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="Stylesheet" type="text/css" />
+ 	<script type="text/javascript" src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 	<script language='javascript' src='/{NOM_APPLICATION}/include/script/action_accueil.js'></script>
 	<script language='javascript' src='/{NOM_APPLICATION}/include/script/testNum.js'></script>
 	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
@@ -81,6 +81,7 @@
 		}
 
 		.button_plus{
+			position: relative;
 			font-size: 10px;
 			background-color: #4a67b3;
 			color: #fff;
@@ -106,11 +107,11 @@
 		}
 
 
-.select2-selection--single {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
+		.select2-selection--single {
+		  overflow: hidden;
+		  text-overflow: ellipsis;
+		  white-space: nowrap;
+		}
 
 	</style>
 </head>
@@ -192,7 +193,7 @@
 				<!--debut table  -->
 
 				<div class="col-sm-12 text-center" style="margin-bottom: 13px">
-					<label>Les champs avec (<span class='text'></span>) sont obligatoires</label>
+					<label style="font-weight: 100; font-size: 13px;">Les champs avec (<span class='text'></span>) sont obligatoires</label>
 				</div>
 
 				<table class="test tableligne" id="table_tache" style="width: 100%;text-align: center; margin-top: 2%;">
@@ -230,7 +231,7 @@
 			<!--fin table  -->
 
 				<!-- Les boutons de supression et ajout de nouvelle ligne -->
-				<div class="col-sm" style="float: right;padding-right:84px">
+				<div class="col-sm" style="float: right;">
 					<span class="btn button_plus Suprim" title="Suprimer la derni&#232;re ligne" style="margin-right: 5px; display: none;">Suprimer</span>
 					<span class="button_plus addRow btn">Ajouter une ligne</i></span>
 				</div>
@@ -480,6 +481,8 @@ function limit(element)
 							findTotalDuree();
 						
 				} 
+			 
+				
 						 
      		});
 

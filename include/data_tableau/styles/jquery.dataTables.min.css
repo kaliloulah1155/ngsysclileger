@@ -56,7 +56,7 @@ table.dataTable tbody tr:hover{
 
 table.dataTable tbody th,table.dataTable tbody td{
     padding:8px 10px;
-    border: 1px solid; /* La bordure du tableau  */
+    border: 1px solid #aaa; /* La bordure du tableau  */
 }
 /* table.dataTable.row-border tbody th,table.dataTable.row-border tbody td,table.dataTable.display tbody th,table.dataTable.display tbody td{
     border-top:1px solid #ddd

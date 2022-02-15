@@ -456,7 +456,7 @@ function get_tot_tab (tab,total_init){
 				Nouvell_ligne += '</select>';
 			Nouvell_ligne +='</td>';
 			Nouvell_ligne +='<td style="width: 70px;border:none;">';
-				Nouvell_ligne +='<input type="text" name="pu[]" placeholder="Prix unitaire" class="form-control pu">';
+				Nouvell_ligne +='<input type="text" name="pu[]" placeholder="Prix unitaire" class="form-control pu" style="width: 100%;">';
 			Nouvell_ligne +='</td>';
 		Nouvell_ligne +='</tr>';
 

@@ -68,6 +68,11 @@
 			color: red;
 		}
 
+		label{
+			font-size: 15px;
+			font-weight: 100;
+		}
+
 	</style>
 </head>
 <body  class='tpl_creation tpl_creation_pay' onLoad='initTplCreation();' style="background-color: transparent;font-family: 'Times New Roman';">
@@ -89,6 +94,7 @@
 				<input type="hidden" name="URL_CHANGER_PROFIL" value="{URL_CHANGER_PROFIL}">
 				<input type="hidden" id="nb-profils" value="{NB_PROFILS_UTIL}">
 				<!-- end important pour lancer la boite aux lettres  -->
+
 					
         </div>
 
@@ -104,20 +110,20 @@
 		<nav class="container-fluid">
 
 			<div class="row" style="margin-top: 1%">
-				<div class="col-sm-12" style="margin-top: 2%;">
+				<div class="col-sm-12" style="padding-top: 2%;">
 					<div class="col1_partie text-center">
 						<span class="title text-while">GENERALITE</span>
 					</div>
 					<div class="col2_partie">
 						<div class="row">
-    
+
 							  <!-- nom de l'utilisateur-->
 				<input  class="form-control nom" type="hidden" name='POS_VAL_RUB_NOM' value="{POS_VAL_RUB_NOM}" placeholder="nom"  >
  				<input  class="form-control prenoms" type="hidden" name='POS_VAL_RUB_PRE' value="{POS_VAL_RUB_PRE}" placeholder="prenoms"  >
  				<input  class="form-control matricule" placeholder="matricule" type="hidden" name='POS_VAL_RUB_MAT'  value="{POS_VAL_RUB_MAT}"  >
 
-							<div class="col-sm-12 text-center" style="margin-bottom: 13px">
-								<label>Les champs avec (<span class='text'></span>) sont obligatoires</label>
+							<div class="col-sm-12 text-center" style="margin-bottom: 13px;margin-top: 5px;">
+								<label style="font-weight: 100; font-size: 13px;">Les champs avec (<span class='text'></span>) sont obligatoires</label>
 							</div>
  				
  
@@ -127,7 +133,7 @@
 								    <option value="">Veuillez s&#233;lectionner</option>
 								</select>
 								<input type="hidden"  class="interselectperso" name='POS_VAL_CTRL_MEL' id='POS_VAL_CTRL_MEL' value='{POS_VAL_RUB_MEL}'>
-							</div>    
+							</div>
 							<div class="col-sm-6" style="margin-top: 13px;float: right;">
 								<label for="bio">Mois & Ann&#233;e :</label>
 								<input type="text" name='POS_VAL_RUB_A1' value='{POS_VAL_RUB_A1}' placeholder="MM/AAAA" class="form-control date" style="width: 100%;" required="true">
@@ -412,14 +418,23 @@
 
  $('form').submit(function() {
      var etat_part = $('.vpart').val();
+
+      var typcontrat=$('.typcontrat').val();
+
+     
+
      if (etat_part == '' || etat_part == undefined) {
-         alert("Veuillez renseigner la situation matrimoniale et le nombre d'enfant du personnel");
-         return false;
+     	 if( typcontrat=='Consultant externe') { 
+	      	 
+	      	$('.vpart').val(0);
+	      }
+        /* alert("Veuillez renseigner la situation matrimoniale et le nombre d'enfant du personnel");
+         return false;*/
      }
      alert("VOTRE OPERATION S'EST DEROULEE AVEC SUCCES");
  });
 
- $(document).on('change','.personnel',function(e){
+  $(document).on('change','.personnel',function(e){
         
 		$('.avu').val($(this).val());
 });

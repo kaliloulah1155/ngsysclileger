@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Demande de formation</title>
 	<link href="/{NOM_APPLICATION}/include/style_nouveau/style_accueil.css" rel="stylesheet">
+	<link href="/{NOM_APPLICATION}/include/alert/sweetalert.css" rel="stylesheet">
     <link href="/{NOM_APPLICATION}/include/bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href='https://use.fontawesome.com/releases/v5.0.8/css/all.css' type='text/css' rel='STYLESHEET' />
 	<script type='text/javascript' src='/{NOM_APPLICATION}/include/script/association.js'></script> 
@@ -65,10 +66,20 @@
 			 border-style: solid;
   			border-color: red;
 		}
+		span.text:after {
+			content: "*";
+			color: red;
+		}
+
+		label{
+			font-size: 15px;
+			font-weight: 100;
+		}
+
 	</style>
 </head>
 <body   class='tpl_creation tpl_creation_dfm' onLoad='initTplCreation();' style="background-color: transparent;font-family: 'Times New Roman';">
-	<form name='principal' id="formdmdformation" ACTION='{URL_ATTENTE}' method='POST' onSubmit='return validerCreation();' data-parsley-validate>
+	<form name='principal' id="formdmdformation" ACTION='{URL_ATTENTE}' class="cform" method='POST' onSubmit='return validerCreation();' data-parsley-validate>
  	 
 			<input type='hidden' name='URL' value='{CODE_ACTION}'>
 			<input type='hidden' name='POS_NUM_DOC' value='{POS_NUM_DOC}'>
@@ -85,12 +96,23 @@
 
 			<input type='hidden' class='appName' value="{NOM_APPLICATION}">
 			<!-- end important pour lancer la boite aux lettres  -->
+			<!-- données de l'utilisateur connecté -->
+			<input type="hidden" name='POS_VAL_RUB_NOM' class="viewnom" value="{POS_VAL_RUB_NOM}" >
+			<input type="hidden" name='POS_VAL_RUB_PRE' class="viewprenom" value="{POS_VAL_RUB_PRE}" >
+			<input type="hidden" name='POS_VAL_RUB_FON' class="viewfonction" value="{POS_VAL_RUB_FON}" >
+			<input type="hidden" name='POS_VAL_RUB_DPT' class="viewdepartement" value="{POS_VAL_RUB_DPT}" >
+		<!--fin données de l'utilisateur connecté -->
+		
 
 		<div class="col_list">
 			<i class="fa fa-eye fa-1x" style="color:#4a67b3;"></i>
-			<a href="javascript:void lanceBibBal('/{NOM_APPLICATION}/interface/session/principal/resultat/rechercher_db.php&TYPE_RECHERCHE=RECHERCHE_BAL&POS_QUEST_NOM=Bal_DFM_nv&POS_QUEST_PUBLIC=1', 'QUESTION_BAL');">
+			 <a href="javascript:void lanceBibBal('/{NOM_APPLICATION}/interface/session/principal/resultat/rechercher_db.php&TYPE_RECHERCHE=RECHERCHE_BAL&POS_QUEST_NOM=Bal_DFM_lnv&POS_QUEST_PUBLIC=1', 'QUESTION_BAL');">
 				<span style="color:#4a67b3;">Cliquez pour consulter la liste</span>
-			</a>
+			</a> 
+
+			<!--<a href="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/DFM/liste/liste_DFM_1.php?APPLI={NOM_APPLICATION}&USER={NOM_UTILISATEUR}&PROFIL={PROFIL_UTILISATEUR}">
+				<span style="color:#4a67b3;">Cliquez pour consulter la liste</span>
+			</a>-->
 		</div>
 
 		<nav class="container-fluid">
@@ -99,29 +121,32 @@
 					<div class="col1_partie text-center">
 						<span class="title text-while">DESCRIPTIFS</span>
 					</div>
-					<div class="col2_partie" style="padding-top: 2%;">
+					<div class="col2_partie" style="padding-top: 1%;">
 						<div class="row">
-							<div class="col-sm-4">
-								<label>Ann&#233;e du plan :</label>
-								<input type="text" name='POS_VAL_RUB_APL'  value="{POS_VAL_RUB_APL}" class="form-control" placeholder="Ann&#233;e de plan" style="width: 100%">
+							<div class="col-sm-12 text-center" style="margin-bottom: 13px">
+								<label style="font-weight: 100; font-size: 13px;">Les champs avec (<span class='text'></span>) sont obligatoires</label>
 							</div>
 							<div class="col-sm-4">
-								<label>Action de formation n&#176; :</label>
-								<input type="text" name="POS_VAL_RUB_ANF" value="{POS_VAL_RUB_ANF}" class="form-control" placeholder="Action de formation n&#176;" style="width: 100%">
+								<label>Ann&#233;e du plan<span class='text'></span> :</label>
+								<input type="text" name='POS_VAL_RUB_APL'  value="{POS_VAL_RUB_APL}" class="form-control plan" placeholder="Ann&#233;e de plan" style="width: 100%" required="true">
 							</div>
 							<div class="col-sm-4">
-								<label>Intitul&#233; de l&#145;action de formation :</label>
-								<input type="text"  name="POS_VAL_RUB_IAF" value="{POS_VAL_RUB_IAF}" class="form-control" placeholder="Intitul&#233; de l&#145;action de formation" style="width: 100%">
+								<label>Action de formation n&#176;<span class='text'></span> :</label>
+								<input type="text" name="POS_VAL_RUB_ANF" value="{POS_VAL_RUB_ANF}" class="form-control action" placeholder="Action de formation n&#176;" style="width: 100%" required="true">
+							</div>
+							<div class="col-sm-4">
+								<label>Intitul&#233; de l&#145;action de formation<span class='text'></span> :</label>
+								<input type="text"  name="POS_VAL_RUB_IAF" value="{POS_VAL_RUB_IAF}" class="form-control intitule" placeholder="Intitul&#233; de l&#145;action de formation" style="width: 100%" required="true">
 							</div>
 							<div class="col-sm-4" style="margin-top: 13px;padding-left: 5%">
-								<label>Intitul&#233;  :</label><br>
+								<label>Intitul&#233;<span class='text'></span> :</label><br>
 								<input type="radio" name="POS_VAL_RUB_TA1" checked value="INTRA" style="margin-right: 1%"><span style="font-size: 12px;margin-right: 3%">Intra</span><br>
 								<input type="radio" name="POS_VAL_RUB_TA1" value="INTER" style="margin-right: 1%"><span style="font-size: 12px;margin-right: 3%">Inter</span><br>
 								<input type="radio" name="POS_VAL_RUB_TA1" value="INTERNE" style="margin-right: 1%"><span style="font-size: 12px;">Interne</span><br>
 								<input type="hidden" name="POS_VAL_CTRL_TA1" value="{POS_VAL_RUB_TA1}">
 							</div>
 							<div class="col-sm-4" style="margin-top: 13px;padding-left: 5%">
-								<label class="but">But de la formation :</label><br>
+								<label class="but">But de la formation<span class='text'></span> :</label><br>
 								<input type="radio" class="btnFors" checked name="POS_VAL_RUB_BUF" value="INITIATION" style="margin-right: 1%"><span style="font-size: 12px;margin-right: 3%">Initiation</span><br>
 								<input type="radio" class="btnFors" name="POS_VAL_RUB_BUF" value="PERFECTIONNEMENT" style="margin-right: 1%"><span style="font-size: 12px;margin-right: 3%">Perfectionnement</span><br>
 								<input type="radio" class="btnFors" name="POS_VAL_RUB_BUF" value="RECONVERSION" style="margin-right: 1%"><span style="font-size: 12px;margin-right: 3%">Reconversion</span><br>
@@ -132,10 +157,10 @@
 						</div>
 						<div class="row">
 							<div class="col-sm-12">
-								<label>Objectifs p&#233;dagogiques :</label>
+								<label>Objectifs p&#233;dagogiques<span class='text'></span> :</label>
 								<br>
 								<span style="font-size: 12px;margin-left: 1%;">A l&#146;issue de la formation, le (s) b&#233;n&#233;ficiaire (s) doit (vent) &#234;tre capable (s) de :</span>
-								<textarea type="text" rows="3" name='POS_VAL_RUB_OBP' class="form-control" style="width: 100%; resize:none">{POS_VAL_RUB_OBP}</textarea>
+								<textarea type="text" rows="3" name='POS_VAL_RUB_OBP' class="form-control objectif" style="width: 100%; resize:none" required="true">{POS_VAL_RUB_OBP}</textarea>
 							</div>
 						</div>
 						<!-- Identifiant de la fiche poste (générer dans le code javascript) -->
@@ -169,6 +194,9 @@
 											</td>
 											<td style="width: 30px; border: 1px solid;font-weight: bold;text-align: center;font-size: 11px">
 												<span>CNPS</span>	
+											</td>
+											<td style="width: 30px; border: 1px solid;font-weight: bold;text-align: center;font-size: 11px">
+												<span>Statut</span>	
 											</td>
 											 
 										</tr>
@@ -253,7 +281,7 @@
 									</div>
 									<div class="col-sm-4">
 										<label>Nombre de groupe :</label>
-										<input name="POS_VAL_RUB_NGP" value="{POS_VAL_RUB_NGP}"  type="text" class="form-control" placeholder="Cout total" style="width: 100%">
+										<input name="POS_VAL_RUB_NGP" value="{POS_VAL_RUB_NGP}"  type="text" class="form-control" placeholder="Nombre de groupe" style="width: 100%">
 									</div>
 								</div>
 								<div class="row" style="margin-top: 13px">
@@ -276,7 +304,7 @@
 			<!-- button -->
 			<div class="row col_btn">
 				<input type="resset" class="btn col-sm-2 btn_ferme" value="FERMER" style="font-size: 12px;margin-left: 36%;">
-				<input class="btn col-sm-2 btn_enreg_dfm" type="submit" value="ENREGISTRER" style="font-size: 12px;margin-left: 5%;" />
+				<input class="btn col-sm-2 btn_enreg_dfm" type="submit" id="app" value="ENREGISTRER" style="font-size: 12px;margin-left: 5%;" />
 			</div>  
 		</nav>
 			
@@ -288,10 +316,24 @@
 	    <script language='javascript' src='/{NOM_APPLICATION}/include/jQuery/parseleyfr.js'></script>
 		<script language='javascript' src="/{NOM_APPLICATION}/include/jQuery/jquery-ui.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+		<script language='javascript' src="/{NOM_APPLICATION}/include/alert/sweetalert.js"></script>
 	<!-- END JQUERY  -->
 	<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/DFM/packs/packages.js"></script>
 
 <script>
+
+//donnee de l'utilisateur connecté
+    var nom=$('.nom').val();
+	var prenom=$('.prenom').val();
+	var fonction=$('.fonction').val();
+	var departement=$('.departement').val();
+
+	  $('.viewnom').val(nom);
+	  $('.viewprenom').val(prenom);
+	  $('.viewfonction').val(fonction);
+	  $('.viewdepartement').val(departement);
+//Fin desdonnées de l'utilisateur connecté
+
 	//UUID CODE   ::creation d'un code unique pour chaque document :poste idem à ID
      function generateUUID() { // Public Domain/MIT
 		    var d = new Date().getTime();//Timestamp
@@ -322,6 +364,21 @@
 				}
 			});
 
+
+			//script du bouton enregistrer 
+	        $('#formdmdformation').submit(function(event){
+				event.preventDefault();
+
+				if (confirm(" Confirmez-vous le traitement de cette action?" ) ) {
+			        	alert("VOTRE OPERATION S'EST DEROULEE AVEC SUCCES");
+			          	event.currentTarget.submit();
+			        }else{
+			    	return false;
+			    }
+	        });
+
+
+
 			// select2 
             $('.selectNom').select2({
                 theme:'bootstrap4',
@@ -329,15 +386,15 @@
                 allowClear: true
             });
 
-
-            $("#autresLigne").css("display","none");
+            // masquer & demasquer le champ de precision du bouton radio autre
+            $("#autresLigne").hide();
             $(document).on('click','.btnFors',function(){
             	let valbnt = $(this).val();
             	if(valbnt == "AUTRES"){
-            		$("#autresLigne").css("display","block");
+            		$("#autresLigne").show();
             	}
             	else{
-            		$("#autresLigne").css("display","none");
+            		$("#autresLigne").hide();
             	}
             });
 

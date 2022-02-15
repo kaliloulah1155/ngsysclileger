@@ -7,7 +7,7 @@ OCTYPE html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consultation de la Fiche d&#146;identification</title>
      <link href="/{NOM_APPLICATION}/include/bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link href='https://use.fontawesome.com/releases/v5.0.8/css/all.css' type='text/css' rel='STYLESHEET' />  
+	<link href='https://use.fontawesome.com/releases/v5.0.8/css/all.css' type='text/css' rel='STYLESHEET' />
 	<script type='text/javascript' src='/{NOM_APPLICATION}/include/script/association.js'></script> 
 	<script type='text/javascript' src='/{NOM_APPLICATION}/include/script/vocabulaire.js'></script>
 	<script type='text/javascript' src='/{NOM_APPLICATION}/include/script/fermeture.js'></script>
@@ -34,12 +34,14 @@ OCTYPE html>
 	
 	<!-- JQUERY UI -->
 		<link href="../../../../include/libraries/jquery-ui/css/smoothness/jquery-ui-1.10.3.custom.css" rel="stylesheet" type="text/css" />
+		<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
+    <link href="https://raw.githack.com/ttskch/select2-bootstrap4-theme/master/dist/select2-bootstrap4.css" rel="stylesheet"/>
 	<!-- END JQUERY UI -->
 	<style>
+
 		.col_list{
-			height: 7vh;
-			margin: 0 70%;
-			padding: 1%;
+			width: 22%;
+			float: right;
 			font-family: 'Times New Roman';
 			font-size: 14px;
 			background-color: transparent;
@@ -79,17 +81,6 @@ OCTYPE html>
 			padding-top: 5px;
 		}
 		
-		.col_list{
-			width: 50%;
-			margin-top: -3%;
-			margin-right: 5%;
-			font-family: 'Times New Roman';
-			font-size: 17px;
-			background-color: transparent;
-			font-weight: lighter; 
-			float: right;
-		}
-		
 		.header-const{
 			margin-bottom: 3%;
 		}
@@ -106,17 +97,11 @@ OCTYPE html>
 			margin: 1%;
 			color: black;
 		}
-		.col_list{
-	/*width: 50%;*/
-	margin-top: -1%;
-	margin-right: 5%;
-	margin-bottom: 0px;
-	font-family: 'Times New Roman';
-	font-size: 15px;
-	background-color: transparent;
-	font-weight: lighter; 
-	float: right;
-}
+
+		label{
+			font-size: 15px;
+			font-weight: 100;
+		}
 	</style>
 	<script>
 		$(document).ready(function (){
@@ -152,15 +137,13 @@ OCTYPE html>
 		<!-- END BLOC_OLD_VALUE -->
 
 		<input type='hidden' class='appName' value="{NOM_APPLICATION}">
-
-		<!-- Liste -->
-<div class="col_list">
-	<i class="fa fa-eye fa-1x" style="color:#4a67b3;"></i>
-	<a href="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PRS/liste/liste_PRS_1.php?APPLI={NOM_APPLICATION}">
-		<span style="color:#4a67b3;">Cliquez pour consulter la liste</span>
-	</a>
-</div>
-		<header class="header-const ">
+			<div class="col_list">
+				<i class="fa fa-eye fa-1x" style="color:#4a67b3;"></i>
+				<a href="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PRS/liste/liste_PRS_1.php?APPLI={NOM_APPLICATION}">
+					<span style="color:#4a67b3;">Cliquez pour consulter la liste</span>
+				</a>
+			</div>
+		<header class="header-const">
 			<div id="actions-container" class="ui-widget-content titre-boutons entete" style="padding-left: 3%; text-align: center; background: transparent; border: none">
 				 {ENTETE}
 			</div>
@@ -181,8 +164,6 @@ OCTYPE html>
 			</div>
 		</header>
 
-
-
 		<div class="tab-content" style="margin-top: 0px;">
 		   <div class="tab-pane fade active in"  id="tabs-1" style="margin-top: 0;">
 		   <section class="botton_pris">
@@ -199,8 +180,8 @@ OCTYPE html>
 									</div>
 									<div class="col12_partie" style="padding-top: 3%;">
 										<div class="row" style="margin: 0.5% 0%">
-											<div class="col-sm-3" style="margin-top: 5px; ">
-												<label>Matricule</label>
+											<div class="col-sm-4" style="margin-top: 5px; ">
+												<label>Matricule :</label>
 												<input type="text" name='POS_VAL_RUB_MAT' value="{POS_VAL_RUB_MAT}" class="form-control" style="width: 100%;"/>
 											</div>
 										
@@ -209,8 +190,8 @@ OCTYPE html>
 										
 										<!-- civilite & Nom de l'epoux -->
 										<div class="form-group row" style="margin: 0.5% 0%">  
-											<div class="col-sm-3" style="margin-top: 5px">
-												<label>Civilit&eacute;</label>
+											<div class="col-sm-4" style="margin-top: 5px">
+												<label>Civilit&eacute; :</label>
 												<select id="selection" name='POS_VAL_RUB_CIV' class="form-control civilite" style="width: 100%;">
 													<option value="" selected>Veuillez s&#233;lectionner</option>
 													<option value="M">Monsieur</option>
@@ -219,51 +200,51 @@ OCTYPE html>
 												</select>
 												<input type="hidden" class="selectCivilite" name='POS_VAL_CTRL_CIV' id='POS_VAL_CTRL_CIV'  value='{POS_VAL_RUB_CIV}'>
 											</div>
-											<div class="col-sm-3" style="margin-top: 5px">
-												<label>Nom de l&#146;&#233;poux</label>
+											<div class="col-sm-4" style="margin-top: 5px">
+												<label>Nom de l&#146;&#233;poux :</label>
 												<input type="text" id="epoux"  placeholder="Nom de l&#146;&#233;poux" value="{POS_VAL_RUB_NEP}" name='POS_VAL_RUB_NEP' disabled data-parsley-pattern="^[a-zA-Z'_ ]*$" data-parsley-trigger="keyup" class="form-control" style="width: 100%;"/>
 											</div>
-											<div class="col-sm-3" style="margin-top: 5px">
-												<label>Nom</label>
+											<div class="col-sm-4" style="margin-top: 5px">
+												<label>Nom :</label>
 												<input type="text" class="form-control" placeholder="Nom" name='POS_VAL_RUB_NOM' data-parsley-pattern="^[a-zA-Z'_ ]*$" data-parsley-trigger="keyup" value="{POS_VAL_RUB_NOM}" style="width: 100%;"/>
 											</div>
-											<div class="col-sm-3" style="margin-top: 5px">
-												<label>Pr&eacute;noms</label>
+											<div class="col-sm-4" style="margin-top: 12px">
+												<label>Pr&eacute;noms :</label>
 												<input type="text" class="form-control" placeholder="Pr&eacute;noms" name='POS_VAL_RUB_PRE' value="{POS_VAL_RUB_PRE}" data-parsley-pattern="^[a-zA-Z'_ ]*$" data-parsley-trigger="keyup" style="width: 100%;"/>
 											</div>
-										</div>
+										<!-- </div> -->
 										<!-- Deuxieme ligne -->
-										<div class="form-group row" style="margin: 0.5% 0%">
-											<div class="col-sm-3" style="margin-top: 5px">
-												<label>Contact 1</label>
+										<!-- <div class="form-group row" style="margin: 0.5% 0%"> -->
+											<div class="col-sm-4" style="margin-top: 12px">
+												<label>Contact 1 :</label>
 							  					<input type="text" placeholder="Contact 1" name='POS_VAL_RUB_TPH' value="{POS_VAL_RUB_TPH}" placeholder="Contact 1" class="form-control" data-parsley-trigger="keyup" data-parsley-pattern="^\+?\d*$" data-parsley-maxlength="15" class="form-control" style="width: 100%;"/>
 											</div>
-											<div class="col-sm-3" style="margin-top: 5px">
-												<label>Contact 2</label>
+											<div class="col-sm-4" style="margin-top: 12px">
+												<label>Contact 2 :</label>
 							  					<input type="text" name='POS_VAL_RUB_TPM' value="{POS_VAL_RUB_TPM}" placeholder="Contact 2" class="form-control" data-parsley-trigger="keyup" data-parsley-pattern="^\+?\d*$" data-parsley-maxlength="15" style="width: 100%;"/>
 											</div>
-											<div class="col-sm-3" style="margin-top: 5px">
-												<label>Date de naissance</label>
-												<input type="text" id="date1" name="POS_VAL_RUB_DNS" value="{POS_VAL_RUB_DNS}" class="form-control text-center" style="width: 100%;">
+											<div class="col-sm-4" style="margin-top: 12px">
+												<label>Date de naissance :</label>
+												<input type="text" id="date1" name="POS_VAL_RUB_DNS" value="{POS_VAL_RUB_DNS}" class="form-control" style="width: 100%;">
 											</div>
-											<div class="col-sm-3" style="margin-top: 5px">
-												<label>Lieu de naissance</label>
+											<div class="col-sm-4" style="margin-top: 12px">
+												<label>Lieu de naissance :</label>
 												<input type="text" name='POS_VAL_RUB_LNS' value="{POS_VAL_RUB_LNS}" placeholder="Lieu de naissance" class="form-control" data-parsley-pattern="^[a-zA-Z'_ ]*$" data-parsley-trigger="keyup" class="form-control" style="width: 100%;"/>
 											</div>
-										</div>
+										<!-- </div> -->
 										
 										<!-- troisième ligne -->
-										<div class="row" style="margin: 0.5% 0%">
-											<div class="col-sm-3" style="margin-top: 5px">
-												<label>E-mail</label>
+										<!-- <div class="row" style="margin: 0.5% 0%"> -->
+											<div class="col-sm-4" style="margin-top: 12px">
+												<label>E-mail :</label>
 												<input type="email" placeholder="E-mail" class="form-control" name='POS_VAL_RUB_MEL' value="{POS_VAL_RUB_MEL}" data-parsley-pattern="/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/" style="width: 100%;"/>
 											</div>
-											<div class="col-sm-3" style="margin-top: 5px">
-												<label>Bo&#238;te postale</label>
+											<div class="col-sm-4" style="margin-top: 12px">
+												<label>Bo&#238;te postale :</label>
 												<input type="text" placeholder="Bo&#238;te postale" name='POS_VAL_RUB_BP' value="{POS_VAL_RUB_BP}" class="form-control" style="width: 100%;">
 											</div>
-											<div class="col-sm-3" style="margin-top: 5px" style="width: 100%;">
-												<label>Nature de pi&egrave;ce</label>
+											<div class="col-sm-4" style="margin-top: 12px">
+												<label>Nature de pi&egrave;ce :</label>
 												<select name='POS_VAL_RUB_NTP' rows="1" class="form-control" class="form-control" rows="1">
 													<option value="" selected>Veuillez s&#233;lectionner</option>
 													 <option value="ATTESTATION">Atttestation d'identit&eacute; </option>
@@ -275,44 +256,53 @@ OCTYPE html>
 												<input type="hidden" name='POS_VAL_CTRL_NTP' id='POS_VAL_CTRL_NTP' value='{POS_VAL_RUB_NTP}'>
 
 											</div>
-											<div class="col-sm-3" style="margin-top: 5px">
-												<label>Num&eacute;ro de pi&egrave;ce</label>
+											<div class="col-sm-4" style="margin-top: 12px">
+												<label>Num&eacute;ro de pi&egrave;ce :</label>
 												<input type="text" name='POS_VAL_RUB_NPI' value="{POS_VAL_RUB_NPI}" data-parsley-trigger="keyup" data-parsley-pattern="^[A-Z0-9 ]*$" placeholder="Num&eacute;ro de pi&egrave;ce" class="form-control" style="width: 100%;"/>
 											</div>
-										</div>
+										<!-- </div> -->
 										
 										<!-- Quatrième ligne -->
-										<div class="row" style="margin: 0.5% 0%">
-											<div class="col-sm-3" style="margin: 0.5% 0%">
-											<label>Nationalit&eacute;</label>
+										<!-- <div class="row" style="margin: 0.5% 0%"> -->
+											<div class="col-sm-4" style="margin-top: 12px">
+											<label>Nationalit&eacute; :</label>
 											<select id="nationalite" name='POS_VAL_RUB_NAT' class="form-control" rows="1">
 												<option value="" >Selectionner</option>
 											</select>
 											<input type="hidden" name='POS_VAL_CTRL_NAT' id='POS_VAL_CTRL_NAT' value='{POS_VAL_RUB_NAT}'>
 										</div>
     
-											<div class="col-sm-3" style="margin-top: 5px">
-												<label>Lieu de domicile</label>
+											<div class="col-sm-4" style="margin-top: 12px">
+												<label>Lieu de domicile :</label>
 												<input type="text" name='POS_VAL_RUB_CNE'value="{POS_VAL_RUB_CNE}" placeholder="Lieu de domicile" class="form-control" data-parsley-trigger="keyup" data-parsley-pattern="^[a-z0-9A-Z'_ ]*$" style="width: 100%;">
 											</div>
-											<div class="col-sm-3" style="margin-top: 5px">
-												<label>Situation matrimoniale</label>
+
+											<div class="col-sm-4" style="margin-top: 12px">
+												<label>Expatri&#233;(e)<span class='text'></span> :</label>
+												<select id="selection" class="form-control" rows="1" style="width: 100%;"> 
+													<option value="" selected>Veuillez s&#233;lectionner</option>
+													<option value="NON">Non</option>
+													<option value="OUI">Oui</option>
+												</select>
+												<input type="hidden" name='expatrie'value="expatrie">
+											</div>
+											<div class="col-sm-4" style="margin-top: 12px">
+												<label>Situation matrimoniale :</label>
 												<select id="selection" rows="1" name='POS_VAL_RUB_SIF' class="form-control matrimoniale"style="width: 100%;">
-													 
 												</select>
 												<input type="hidden" name='POS_VAL_CTRL_SIF' id='POS_VAL_CTRL_SIF'  value='{POS_VAL_RUB_SIF}'>
-
 											</div>
-											<div class="col-sm-3" style="margin-top: 5px">
-												<label>Nombre d&#146;enfants</label>
-												<input type="number" name='POS_VAL_RUB_NEF' value="{POS_VAL_RUB_NEF}" placeholder="Nombre d&#146;enfant" class="form-control" data-parsley-required="true" data-parsley-trigger="keyup" min="0"max="50" data-parsley-pattern="[0-9][0-9]?" style="width: 100%;"/>
-											</div>
-										</div>
+											
+										<!-- </div> -->
 										
 										<!-- Cinquième ligne -->
-										<div class="row" style="margin: 0.5% 0%">
-											<div class="col-sm-3" style="margin-top: 5px">
-												<label>Banque</label>
+										<!-- <div class="row" style="margin: 0.5% 0%"> -->
+											<div class="col-sm-4" style="margin-top: 12px">
+												<label>Nombre d&#146;enfants :</label>
+												<input type="number" name='POS_VAL_RUB_NEF' value="{POS_VAL_RUB_NEF}" placeholder="Nombre d&#146;enfant" class="form-control" data-parsley-required="true" data-parsley-trigger="keyup" min="0"max="50" data-parsley-pattern="[0-9][0-9]?" style="width: 100%;"/>
+											</div>
+											<div class="col-sm-4" style="margin-top: 12px">
+												<label>Banque :</label>
 												<select id="selection" name='POS_VAL_RUB_BQE' class="form-control" style="width: 100%;">
 													<option value="0">Veuillez s&#233;lectionner</option>
 													<option value="Afrilan First Bank">Afrilan First Bank</option>
@@ -345,34 +335,64 @@ OCTYPE html>
 												</select>
 												<input type="hidden" name='POS_VAL_CTRL_BQE' id='POS_VAL_CTRL_BQE' value="{POS_VAL_RUB_BQE}" placeholder="Banque" />
 											</div>
-											<div class="col-sm-3" style="margin-top: 5px">
-												<label>RIB</label>
+											<div class="col-sm-4" style="margin-top: 12px">
+												<label>RIB :</label>
 												<input type="text" name='POS_VAL_RUB_RIB' id='POS_VAL_CTRL_RIB' value="{POS_VAL_RUB_RIB}" placeholder="RIB" class="form-control" style="width: 100%;" />
 											</div>
-											<div class="col-sm-3" style="margin-top: 5px">
-												<label>Date d&apos;entr&#233;e</label>
+											<div class="col-sm-4" style="margin-top: 12px">
+												<label>Date d&apos;entr&#233;e :</label>
 												<input type="text" id="date2" name='POS_VAL_RUB_DAE' value="{POS_VAL_RUB_DAE}" placeholder="Date d&apos;entr&#233;e" class="form-control" data-parsley-trigger="keyup" style="width: 100%;" />
 											</div>
 										</div>
+
+										<!-- Fiche de poste  -->
+										<label for="bio" style="margin-top: 3%; font-size: 19px">Fiche de poste</label>
+											<div class="row">
+												<div class="col-sm-4">
+													<label>Poste<span class='text'></span> :</label>
+													<select id="selection" name='POS_VAL_RUB_NTP' rows="1" class="form-control naturePiece" rows="1">
+														<option value="" selected>Veuillez s&#233;lectionner</option>
+														 <option value="1">Analyste programmeur</option>
+														 <option value="2">Commercial</option>
+														 <option value="3">Comptable</option>
+													</select>
+													<input type="hidden" value=" " class="form-control" data-parsley-trigger="keyup"/>
+												</div>
+												<div class="col-sm-4">
+													<label for="bio">Niveau de formation<span class='text'></span> :</label>
+													<select name="POS_VAL_RUB_DIP" class="form-control selectForms diplome" style="width: 100%;">
+													    <option value="">Veuillez s&#233;lectionner</option>
+													</select>
+													<input type="hidden" class="interselectdiplome" name='POS_VAL_CTRL_DIP' id='POS_VAL_CTRL_DIP'>
+												</div>
+												<div class="col-sm-4">
+													<label for="bio">Exp&#233;rience professionnelle<span class='text'></span> :</label>
+													<input type="text"  class="form-control" min="0" placeholder="Exp&#233;rience professionnelle" style="width: 100%;">
+												</div>
+												<div class="col-sm-12" style="margin-top: 12px">
+													<label for="bio">Exigences particuli&#232;res :</label>
+													<textarea name="POS_VAL_RUB_EXG" class="form-control" style="width: 100%;resize: none" rows="2" data-parsley-trigger="keyup"></textarea>
+												</div>
+											</div>
 										
 										<!-- En cas d'urgence  -->
-										<label for="bio" style="margin: 1% 2%; font-size: 19px">En cas d&#146;urgence</label>
+										<label for="bio" style="margin-top: 3%; font-size: 19px">En cas d&#146;urgence</label>
 										
 										<div class="row" style="margin: 0.5% 0%">
 											<div class="col-sm-3">
-												<label for="bio">Nom</label>
+												<label for="bio">Nom :</label>
 												<input type="text" placeholder="Nom" name='POS_VAL_RUB_PAC' value="{POS_VAL_RUB_PAC}"  class="form-control" data-parsley-pattern="^[a-zA-Z'_ ]*$" data-parsley-trigger="keyup" style="width: 100%;"/>
 											</div>
 											<div class="col-sm-3">
-												<label for="bio">Pr&eacute;noms</label>
+												<label for="bio">Pr&eacute;noms :</label>
 												<input type="text" placeholder="Pr&eacute;noms" value="{POS_VAL_RUB_PRM}" name='POS_VAL_RUB_PRM' class="form-control" data-parsley-required="true" data-parsley-pattern="^[a-zA-Z'_ ]*$" data-parsley-trigger="keyup" style="width: 100%;"/>
 											</div>
 											<div class="col-sm-3">
-												<label for="bio">Contact</label>
+												<label for="bio">Contact :</label>
 												<input type="text" placeholder="Contact" name='POS_VAL_RUB_NTC' value="{POS_VAL_RUB_NTC}" class="form-control" data-parsley-required="true" data-parsley-trigger="keyup"  data-parsley-pattern="^\+?\d*$" data-parsley-maxlength="15" style="width: 100%;"/>
 											</div>
 											<div class="col-sm-3">
-												<label for="bio">Filiation</label>
+												<label for="bio">Filiation :</label>
 												<select id="selection"  name='POS_VAL_RUB_FLN' class="form-control" rows="1" style="width: 100%;">
 													<option value="" selected>Veuillez s&#233;lectionner</option>
 													<option value="Pere">P&#232;re</option>
@@ -392,20 +412,23 @@ OCTYPE html>
 
 											</div>
 										</div>
-
+										
 										<label for="bio" style="margin: 1% 2%; font-size: 19px">Assur&#233;e</label>
 										<div class="row" style="padding-left: 2%">
 											<div class="col-sm-3">
 
-												<input type="radio" class="val_1"  name="POS_VAL_RUB_AUS" value="OUI" >
+												<input type="radio" class="val1"  name="POS_VAL_RUB_AUS" value="OUI" >
 												<label for="bio" style="margin-right: 3%">Oui</label>
-
-												<input type="radio" class="val_1"  name="POS_VAL_RUB_AUS" value="NON" checked >
+												<input type="radio" class="val1"  name="POS_VAL_RUB_AUS" value="NON" checked >
 												<label for="bio">Non</label>
 												<input type="hidden" name='POS_VAL_CTRL_AUS' id='POS_VAL_CTRL_AUS' value='{POS_VAL_RUB_AUS}'>
 
 											</div>
+											<div class="col-sm-7" id="doc_assurance">
+												<label for="bio">Veuillez joindre le document d&#146;assurance dans l&#146;onglet document !</label>
+											</div>
 										</div>
+										
 									</div>
 								</div>
 							</div>
@@ -510,6 +533,7 @@ OCTYPE html>
 		<script language='javascript' src='/{NOM_APPLICATION}/include/jQuery/parseley.js'></script>
 	    <script language='javascript' src='/{NOM_APPLICATION}/include/jQuery/parseleyfr.js'></script>
 		<script language='javascript' src="/{NOM_APPLICATION}/include/jQuery/jquery-ui.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
              <!-- requete de la mise en oeuvre d'une requete ajax-->
 		<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PRS/departement/phppromise.js"></script>
@@ -521,6 +545,13 @@ OCTYPE html>
 
 	
 	 <script>
+
+	 	// select2 
+    $('.selectTits,.selectInts,.selectForms').select2({
+        theme:'bootstrap4',
+        tags:true,
+        allowClear: true
+    });
 
 	 	var  selectmat ="";
 			if($('.get_mode').val()=='CONSULTATION'){
@@ -697,41 +728,29 @@ OCTYPE html>
 			}	
 			 
 	});
+	
+	
+	// Affichage du message d'assurance !!!!
+	var not = $("#POS_VAL_CTRL_AUS").val();
+	$('#doc_assurance').hide();
+	if (not == "OUI") {
+		$('#doc_assurance').hide();
 
+	}
+	else{
+		$('.val1').on('click',function(){
+			let cbk1 = $(this).val();
 
-		//JQUERY DIALOG
+			if(cbk1=="OUI"){
+				$('#doc_assurance').show();
+			}
 
-	 
-  var confirmed = false;
+			if(cbk1=="NON"){
+				$('#doc_assurance').hide();
+			}
 
-  $(".bouton_sub").on("click", function(event) {
-
-      var $self = $(this);
-
-      if (!confirmed) {
-
-        event.preventDefault();
-
-        $("<div />").text("Are you sure you want to do this?").dialog({
-          autoOpen: true,
-          modal: true,
-          title: "Confirmation Required",
-          buttons : {
-              "Confirm" : function() {
-                  //window.location.href ={URL_ATTENTE};
-                  $('form').submit();
-              },
-              "Cancel" : function() {
-                  $(this).dialog("close");
-              }
-          }
-        });
-
-      }
-  });
-
-
-
+		});
+	}
 
 	</script>
 	

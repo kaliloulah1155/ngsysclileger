@@ -11,7 +11,7 @@ let linkf =
 
 
  $(document).on('change','.personnel',function(){
-
+      $('.emp_wk').val($(this).val());
  	 
  	 $.ajax({
         url: linkf,

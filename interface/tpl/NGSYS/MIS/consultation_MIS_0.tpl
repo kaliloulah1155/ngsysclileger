@@ -19,6 +19,8 @@
 	<script language='javascript' src='/{NOM_APPLICATION}/include/script/ajax_recup_listhier.js'></script>
 	<script language='javascript' src='/{NOM_APPLICATION}/include/script/ajax_recup_arbo_dossier.js'></script>
 	<script language='javascript' src='/{NOM_APPLICATION}/include/script/action_accueil.js'></script>
+
+	
 	
 	<!--ABASS INCLUDE-->
 		<link href="/{NOM_APPLICATION}/include/ressources/plugins/all/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
@@ -31,6 +33,16 @@
 		
 	
 	<style>
+
+		.col_list{
+			width: 22%;
+			float: right;
+			font-family: 'Times New Roman';
+			font-size: 14px;
+			background-color: transparent;
+			font-weight: lighter; 
+		}
+
 		.col1_partie{
 			width: 100%;
 			font-family: 'Times New Roman';
@@ -281,6 +293,12 @@
 			margin: 1%;
 			color: black;
 		}
+
+		label{
+			font-size: 15px;
+			font-weight: 100;
+		}
+
 	</style>
 </head>
 <body  class='tpl_consultation tpl_consultation_mis' onLoad='initTplConsultation();{GRISE_CHAMP};' onBeforeUnLoad="{CODE_ACTION_UNLOAD}" style="background-color: transparent;font-family: 'Times New Roman';">
@@ -297,6 +315,20 @@
 		<!-- END BLOC_OLD_VALUE -->
 
 		<input type='hidden' class='appName' value="{NOM_APPLICATION}">
+
+		<input type="hidden" name="URL_ATTENTE" value="{URL_ATTENTE}"> 
+		<input type="hidden" name="URL_RESULTAT" value="{URL_RESULTAT}">
+		<input type="hidden" name="URL_OBTENIR_NB_REP" value="{URL_OBTENIR_NB_REP}">
+		<input type="hidden" name="URL_CHANGER_PROFIL" value="{URL_CHANGER_PROFIL}">
+		<input type="hidden" id="nb-profils" value="{NB_PROFILS_UTIL}">
+
+
+		<div class="col_list">
+			<i class="fa fa-eye fa-1x" style="color:#4a67b3;"></i>
+			<a href="javascript:void lanceBibBal('/{NOM_APPLICATION}/interface/session/principal/resultat/rechercher_db.php&TYPE_RECHERCHE=RECHERCHE_BAL&POS_QUEST_NOM=Bal_MIS_nv&POS_QUEST_PUBLIC=1', 'QUESTION_BAL');">
+				<span style="color:#4a67b3;">Cliquez pour consulter la liste</span>
+			</a>
+		</div>
 		
 		<header class="header-const">
 			<div id="actions-container" class="ui-widget-content titre-boutons" style="padding-left: 3%; text-align: center; background: transparent; border: none">
@@ -344,6 +376,20 @@
 											<input type="hidden" name="POS_VAL_RUB_PRE" value="{POS_VAL_RUB_PRE}" class="prenoms_pers" />
 
 											<div class="col-sm-4">
+												<label for="bio">Profil<span class='text'></span> :</label>
+												<select class="form-control profil"   name="POS_VAL_RUB_LOG">
+												</select>
+												<input type="hidden"   class="interprofil" name='POS_VAL_CTRL_LOG' id='POS_VAL_CTRL_LOG' value='{POS_VAL_RUB_LOG}'>
+				 							</div>
+
+											<div class="col-sm-4">
+												<label for="bio">Destination<span class='text'></span> :</label>
+												<select class="form-control destination"   name="POS_VAL_RUB_E1">
+												</select>
+												<input type="hidden"  class="interdestination" name='POS_VAL_CTRL_E1' id='POS_VAL_CTRL_E1' value='{POS_VAL_RUB_E1}'>
+				 							</div>
+
+											<div class="col-sm-4">
 												<label for="bio">Pays de destination :</label>
 												<!--<select name="POS_VAL_RUB_PAY" class="form-control selectPas pays" style="width: 100%;"> -->
 												<select name="POS_VAL_RUB_PAY" class="form-control pays" style="width: 100%;"> 
@@ -351,7 +397,7 @@
 												<input type="hidden" class="init_pays" name='POS_VAL_CTRL_PAY' id='POS_VAL_CTRL_PAY' value='{POS_VAL_RUB_PAY}'>
 											</div>
 
-											<div class="col-sm-4">
+											<div class="col-sm-4" style="margin-top: 13px">
 												<label for="bio">Ville de destination :</label>
 												<select name="POS_VAL_RUB_VLE" class="form-control selectVis ville" style="width: 100%;">
 												    <option value="0">Veuillez s&#233;lectionner</option>
@@ -359,7 +405,7 @@
 												<input type="hidden" class="init_ville" name='POS_VAL_CTRL_VLE' id='POS_VAL_CTRL_VLE' value='{POS_VAL_RUB_VLE}'>
 											</div>
 
-											<div class="col-sm-4">
+											<div class="col-sm-4" style="margin-top: 13px">
 												<label for="bio">Date de d&#233;part :</label>
 												<input type="text" name="POS_VAL_RUB_DAA" value="{POS_VAL_RUB_DAA}" placeholder="jj/mm/aaaa" class="form-control datepicker dateDepart" id="date1" style="width: 100%;">
 											</div>
@@ -429,7 +475,7 @@
 
 											<div class="col-sm-4" id="Heure_arrive" style="margin-top: 13px;">
 												<label for="bio">Heure d&#146;arriv&#233;e :</label>
-												<input type="time" name='POS_VAL_RUB_N2C' value="{POS_VAL_RUB_N2C}"  class="form-control heureout" style="width: 100%;">
+												<input type="time" name='POS_VAL_RUB_N2C' value="{POS_VAL_RUB_N2C}" class="form-control heureout" style="width: 100%;">
 											</div>
 
 											<div class="col-sm-4" id="Duree_vol" style="margin-top: 13px;">
@@ -483,24 +529,25 @@
 										</div>
 
 
-										<div class="form-group row">
+										<!-- <div class="form-group row">
 
-							<div class="col-sm-4">
-								<label for="bio">Destination<span class='text'></span> :</label>
-								<select class="form-control destination"   name="POS_VAL_RUB_E1">
-								</select>
-								<input type="hidden"  class="interdestination" name='POS_VAL_CTRL_E1' id='POS_VAL_CTRL_E1' value='{POS_VAL_RUB_E1}'>
- 							</div>
+											<div class="col-sm-4">
+												<label for="bio">Destination<span class='text'></span> :</label>
+												<select class="form-control destination"   name="POS_VAL_RUB_E1">
+												</select>
+												<input type="hidden"  class="interdestination" name='POS_VAL_CTRL_E1' id='POS_VAL_CTRL_E1' value='{POS_VAL_RUB_E1}'>
+				 							</div>
 
-							<div class="col-sm-4">
-								<label for="bio">Profil<span class='text'></span> :</label>
-								<select class="form-control profil"   name="POS_VAL_RUB_LOG">
-								</select>
-								<input type="hidden"   class="interprofil" name='POS_VAL_CTRL_LOG' id='POS_VAL_CTRL_LOG' value='{POS_VAL_RUB_LOG}'>
- 							</div>
-						</div>
-						<br/> 
-							<hr>
+											<div class="col-sm-4">
+												<label for="bio">Profil<span class='text'></span> :</label>
+												<select class="form-control profil"   name="POS_VAL_RUB_LOG">
+												</select>
+												<input type="hidden"   class="interprofil" name='POS_VAL_CTRL_LOG' id='POS_VAL_CTRL_LOG' value='{POS_VAL_RUB_LOG}'>
+				 							</div>
+										</div> -->
+
+										<br/> 
+										<hr>
 										
 
 										
@@ -523,7 +570,7 @@
 																<span style="font-size: 11px">TOTAL XOF</span>	
 															</td>
 														</tr>
-													</thead>    
+													</thead>
 												    <tbody class="table_mis">
 														 
 													</tbody>
@@ -570,7 +617,8 @@
 							<span class="title1">EMPLOYE</span>
 							<!-- zone d'affichage -->
 							<div class="jumbotron pt-1" style="width: 20%; padding-top: 1%;padding-bottom: 3%;background: #4a67b3;color:#fff;border-radius:5px;z-index:999">
-								<!-- Affichage du login  -->
+								<input type="hidden" name='POS_VAL_RUB_CRE' value="{POS_VAL_RUB_CRE}" class="createur" style="color: black;"  />
+															<!-- Affichage du login  -->
 								<p class="d-flex">
 									<span class="pr-3" style="font-size: 13px; font-family: Times;">Nom et Prenom(s) :</span>
 									<strong class="pt-1_pl-5" style="font-size: 13px;">{POS_VAL_RUB_NOM}  {POS_VAL_RUB_PRE}</strong>
@@ -596,6 +644,7 @@
 									<span class="pr-3" style="font-size: 13px;display:none; font-family: Times;">Login :</span>
 									<strong class="pt-1_pl-5" style="font-size: 13px;">{POS_VAL_RUB_A4A}</strong>
 								</p>
+								<input type="hidden" class="manager_wk" name="POS_VAL_RUB_A4A"  value="{POS_VAL_RUB_A4A}" />
 								<!-- Affichage du visa -->
 								<span class="d-flex">
 									<span class="pr-4" style="font-size: 13px; font-family: Times;">Visa :</span>
@@ -626,6 +675,7 @@
 									<span class="pr-3" style="font-size: 13px; font-family: Times;">Login :</span>
 									<strong class="pt-1_pl-5" style="font-size: 13px;">{POS_VAL_RUB_A4B}</strong>
 								</p>-->
+								<input type="hidden" name='POS_VAL_RUB_A4B' value="{POS_VAL_RUB_A4B}" class="controleur_wk" style="color: black;"  />
 								<!-- Affichage du visa -->
 								<span class="d-flex">
 									<span class="pr-4" style="font-size: 13px; font-family: Times;">Visa :</span>
@@ -656,6 +706,7 @@
 									<span class="pr-3" style="font-size: 13px; font-family: Times;">Login :</span>
 									<strong class="pt-1_pl-5" style="font-size: 13px;">{POS_VAL_RUB_A4C}</strong>
 								</p>-->
+								<input type="hidden" name='POS_VAL_RUB_A4C' value="{POS_VAL_RUB_A4C}" class="rh_wk" style="color: black;"  />
 								<!-- Affichage du visa -->
 								<span class="d-flex">
 									<span class="pr-4" style="font-size: 13px; font-family: Times;">Visa :</span>
@@ -687,6 +738,7 @@
 									<span class="pr-3" style="font-size: 13px; font-family: Times;">Login :</span>
 									<strong class="pt-1_pl-5" style="font-size: 13px;">{POS_VAL_RUB_A4D}</strong>
 								</p>-->
+								<input type="hidden" name='POS_VAL_RUB_A4D' value="{POS_VAL_RUB_A4D}" class="dga_wk" style="color: black;"  />
 								<!-- Affichage du visa -->
 								<span class="d-flex">
 									<span class="pr-4" style="font-size: 13px; font-family: Times;">Visa :</span>
@@ -718,6 +770,7 @@
 									<span class="pr-3" style="font-size: 13px; font-family: Times;">Login :</span>
 									<strong class="pt-1_pl-5" style="font-size: 13px;">{POS_VAL_RUB_A4E}</strong>
 								</p>-->
+								<input type="hidden" name='POS_VAL_RUB_A4E' value="{POS_VAL_RUB_A4E}" class="dg_wk" style="color: black;"  />
 								<!-- Affichage du visa -->
 								<span class="d-flex">
 									<span class="pr-4" style="font-size: 13px; font-family: Times;">Visa :</span>
@@ -748,6 +801,7 @@
 									<span class="pr-3" style="font-size: 13px; font-family: Times;">Login :</span>
 									<strong class="pt-1_pl-5" style="font-size: 13px;">{POS_VAL_RUB_A4F}</strong>
 								</p>-->
+								<input type="hidden" name='POS_VAL_RUB_A4F' value="{POS_VAL_RUB_A4F}" class="finance_wk" style="color: black;"  />
 								<!-- Affichage du visa -->
 								<span class="d-flex">
 									<span class="pr-4" style="font-size: 13px; font-family: Times;">Visa :</span>
@@ -969,36 +1023,9 @@
 	<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/MIS/manipule_champs/container.js"></script>
 	<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/MIS/api/tbl_estimation_edit.js"></script>
 
+	<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/MIS/dures.js"></script>
+
 	<script>
-
-	 //CALCUL DES DUREES 
-	   $(document).on('change keyup','.heurein,.heureout',function(){
-
-           		var inphdeb=$('.heurein').val();
-				var inphfin=$('.heureout').val();
-
-
-				var timeStart = new Date("01/01/2010 " + inphdeb);
-				var timeEnd = new Date("01/01/2010 " + inphfin);
-
-				if(timeStart <= timeEnd){
-						var difference = timeEnd - timeStart;
-						var diff_result = new Date(difference);
-
-						var hourDiff = diff_result.getHours();
-						var minuteDiff = diff_result.getMinutes();
-
-						hourDiff1 = hourDiff > 9 ? hourDiff : '0'+hourDiff;
-						minuteDiff1 = minuteDiff > 9 ? minuteDiff : '0' + minuteDiff;
-
-						var countDuree=(isNaN(hourDiff1) ? '00' : hourDiff1)+':'+(isNaN(minuteDiff1) ? '00' : minuteDiff1) ;
-
-						$('.voyDuree').val(countDuree);
-  						
-				} 
-						 
-     		});
-	   ///////////////////////////
 
 		var init_pays_sel=$('.init_pays').val();
 
@@ -1168,6 +1195,7 @@
             	$('.datefin').val('');
           		$('.datefin').val(timeConverter(parseInt(result_date_jrs/1000) ));
           	}
+
         
 
  	});
@@ -1178,6 +1206,7 @@
 	</script>
 		<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/MIS/workflowMIS.js"></script>
 		<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/MIS/notification.js"></script>
+		<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/MIS/valideurs/validateur.js"></script>
 
 	
 </html>

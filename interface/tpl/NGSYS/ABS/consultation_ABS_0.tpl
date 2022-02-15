@@ -43,7 +43,20 @@
 	 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
     <link href="https://raw.githack.com/ttskch/select2-bootstrap4-theme/master/dist/select2-bootstrap4.css" rel="stylesheet" />
 	<link type="text/css"  href="/{NOM_APPLICATION}/include/bootstrap-3.3.7/dist/css/bootstrap.css"></link>
+
+	
+
 	<style>
+
+		.col_list{
+			width: 22%;
+			float: right;
+			font-family: 'Times New Roman';
+			font-size: 14px;
+			background-color: transparent;
+			font-weight: lighter; 
+		}
+
 		.col1_partie{
 			width: 100%;
 			font-family: 'Times New Roman';
@@ -79,17 +92,6 @@
 			margin: 0%; 
 			padding-left: 27px;
 			padding-top: 5px;
-		}
-		
-		.col_list{
-			width: 50%;
-			margin-top: -3%;
-			margin-right: 5%;
-			font-family: 'Times New Roman';
-			font-size: 17px;
-			background-color: transparent;
-			font-weight: lighter; 
-			float: right;
 		}
 		
 		.header-const{
@@ -325,7 +327,21 @@
 					<input type="hidden" name='POS_VAL_RUB_FON' class="viewfonction" value="{POS_VAL_RUB_FON}" >
 					<input type="hidden" name='POS_VAL_RUB_DPT' class="viewdepartement" value="{POS_VAL_RUB_DPT}" >
 					 <!--fin données de l'utilisateur connecté -->
+
+				<input type="hidden" name="URL_ATTENTE" value="{URL_ATTENTE}"><!--  -->
+				<input type="hidden" name="URL_RESULTAT" value="{URL_RESULTAT}">
+				<input type="hidden" name="URL_OBTENIR_NB_REP" value="{URL_OBTENIR_NB_REP}">
+				<input type="hidden" name="URL_CHANGER_PROFIL" value="{URL_CHANGER_PROFIL}">
+				<input type="hidden" id="nb-profils" value="{NB_PROFILS_UTIL}">
 		
+
+			<div class="col_list">
+				<i class="fa fa-eye fa-1x" style="color:#4a67b3;"></i>
+				<a href="javascript:void lanceBibBal('/{NOM_APPLICATION}/interface/session/principal/resultat/rechercher_db.php&TYPE_RECHERCHE=RECHERCHE_BAL&POS_QUEST_NOM=Bal_ABS_lnv&POS_QUEST_PUBLIC=1', 'QUESTION_BAL');">
+					<span style="color:#4a67b3;">Cliquez pour consulter la liste</span>
+				</a>
+			</div>
+
 		<header class="header-const">
 			<div id="actions-container" class="ui-widget-content titre-boutons" style="padding-left: 3%; text-align: center; background: transparent; border: none">
 				 {ENTETE}
@@ -411,7 +427,8 @@
 												<select id="interimaire" style="width: 100%" name='POS_VAL_RUB_INT' class="form-control select2 personnel" rows="1" data-parsley-required="true" >
 								     <option value="{POS_VAL_RUB_INT}" selected>{POS_VAL_RUB_INT}</option>
 								</select>      
-								<input type="hidden" name='POS_VAL_CTRL_INT' class="interselect" id='POS_VAL_CTRL_INT' value='{POS_VAL_RUB_INT}'>
+										<input type="hidden" name='POS_VAL_CTRL_INT' class="interselect" id='POS_VAL_CTRL_INT' value='{POS_VAL_RUB_INT}'>
+										<input type="hidden" name='POS_VAL_RUB_INF' class="interim"  value='{POS_VAL_RUB_INF}'>
 											</div>
 											<div class="col-sm-3">
 												<label for="bio">Dur&eacute;e (en jour) :</label>
@@ -550,6 +567,8 @@
 									<span class="pr-3" style="font-size: 13px; font-family: Times;">Login :</span>
 									<strong class="pt-1_pl-5" style="font-size: 13px;">{POS_VAL_RUB_A4A}</strong>
 								</p>-->
+								<input type="hidden" class="manager_wk" name="POS_VAL_RUB_A4A"  value="{POS_VAL_RUB_A4A}" />
+
 								<!-- Affichage du visa -->
 								<span class="d-flex">
 									<span class="pr-4" style="font-size: 13px; font-family: Times;">Visa :</span>
@@ -579,7 +598,8 @@
 								<!--<p class="d-flex">
 									<span class="pr-3" style="font-size: 13px; font-family: Times;">Login :</span>
 									<strong class="pt-1_pl-5" style="font-size: 13px;">{POS_VAL_RUB_A4B}</strong>
-								</p>-->
+								</p>-->    
+								<input type="hidden" class="rh_wk" name="POS_VAL_RUB_A4B"  value="{POS_VAL_RUB_A4B}" />
 								<!-- Affichage du visa -->
 								<span class="d-flex">
 									<span class="pr-4" style="font-size: 13px; font-family: Times;">Visa :</span>
@@ -610,6 +630,7 @@
 									<span class="pr-3" style="font-size: 13px; font-family: Times;">Login :</span>
 									<strong class="pt-1_pl-5" style="font-size: 13px;">{POS_VAL_RUB_A4C}</strong>
 								</p>-->
+								<input type="hidden" class="dga_wk" name="POS_VAL_RUB_A4C"  value="{POS_VAL_RUB_A4C}" />
 								<!-- Affichage du visa -->
 								<span class="d-flex">
 									<span class="pr-4" style="font-size: 13px; font-family: Times;">Visa :</span>
@@ -640,6 +661,7 @@
 									<span class="pr-3" style="font-size: 13px; font-family: Times;">Login :</span>
 									<strong class="pt-1_pl-5" style="font-size: 13px;">{POS_VAL_RUB_A4C}</strong>
 								</p>-->
+								<input type="hidden" class="dg_wk" name="POS_VAL_RUB_A4D"  value="{POS_VAL_RUB_A4D}" />
 								<!-- Affichage du visa -->
 								<span class="d-flex">
 									<span class="pr-4" style="font-size: 13px; font-family: Times;">Visa :</span>
@@ -750,7 +772,7 @@
 
 						<div class="circle2">
 							<span class="label2">1</span>
-							<span class="title2">MANAGER</span>
+							<span class="title2">MANAGER</span>  
 							<!-- zone d'affichage -->
 							<div class="jumbotron pt-1" style="width: 20%; padding-top: 1%;padding-bottom: 3%;background: #4a67b3;color:#fff;border-radius:5px;z-index:999">
 								<!-- Affichage du login  -->
@@ -1008,7 +1030,7 @@
 								<!-- Etat Fiche -->
 								<div class="form-group" style="margin: 1%">
 									<label for="bio">Etat Fiche</label>
-									<input type="text" placeholder="N&#176; poseidon" name='POS_VAL_RUB_ETF' value="{POS_VAL_RUB_ETF}" class="form-control" style="width: 100%">
+									<input type="text" placeholder="N&#176; poseidon" name='POS_VAL_RUB_ETF' value="{POS_VAL_RUB_ETF}" class="form-control etat_fiche " style="width: 100%">
 								</div>
 								<!-- Etat type -->
 								<div class="form-group" style="margin: 1%">
@@ -1066,7 +1088,7 @@
 		<script language='javascript' src='/{NOM_APPLICATION}/include/jQuery/parseley.js'></script>
 	    <script language='javascript' src='/{NOM_APPLICATION}/include/jQuery/parseleyfr.js'></script>
 		<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/ABS/abspdf/pdfabs.js"></script>
-		<script language='javascript' src="/{NOM_APPLICATION}/include/alert/sweetalert.js"></script>
+		<!--<script language='javascript' src="/{NOM_APPLICATION}/include/alert/sweetalert.js"></script>-->
 		
 
 
@@ -1074,7 +1096,8 @@
 	
 	 	<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/ABS/select2/select2tr.js"></script>
 		<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/ABS/compteur/compt.js"></script>
-
+<!-- imporation du fichier de desactivation des champs -->
+		<script src="../../../../disable_fields.js"></script>
 	
 	 <script>
 
@@ -1538,10 +1561,20 @@ $('.dureedebselect').val( $('.dureedeb').val()); //vue de modification
 		
 
 
+	});   
+
+
+
+	  //Recuperation du mail de l'interimaire
+	$('.personnel').change(function() {
+     		p_interimaire=$(this).find(':selected').data('interim');
+            $('.interim').val(p_interimaire);
+     		 
 	});
 	</script>
 	<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/ABS/workflow.js"></script>
 	<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/ABS/notification.js"></script>
+	<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/ABS/valideurs/validateur.js"></script>
 
 	
 </html>

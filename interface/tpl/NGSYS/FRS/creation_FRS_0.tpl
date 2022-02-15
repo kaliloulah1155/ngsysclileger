@@ -74,6 +74,12 @@
 			content: "*";
 			color: red;
 		}
+
+		label{
+			font-size: 15px;
+			font-weight: 100;
+		}
+
 		
 	</style>
 </head>
@@ -120,7 +126,7 @@
 
 					<div class="col2_partie" style="padding: 2%;">
 						<div class="col-sm-12 text-center" style="margin-bottom: 10px">
-							<label>Les champs avec (<span class='text'></span>) sont obligatoires</label>
+							<label style="font-weight: 100; font-size: 13px;">Les champs avec (<span class='text'></span>) sont obligatoires</label>
 						</div>
 
 						<div class="form-group row">

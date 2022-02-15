@@ -1,4 +1,4 @@
-let appName = "NGSYS";
+let appName = "NGSYSTEST";
 
 let link_url1 =
     "/" +

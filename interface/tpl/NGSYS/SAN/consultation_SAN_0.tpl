@@ -30,8 +30,18 @@
 		<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
     	<link href="https://raw.githack.com/ttskch/select2-bootstrap4-theme/master/dist/select2-bootstrap4.css" rel="stylesheet"/>
 	<!-- END JQUERY UI -->
-	
+	     
 	<style>
+
+		.col_list{
+			width: 22%;
+			float: right;
+			font-family: 'Times New Roman';
+			font-size: 14px;
+			background-color: transparent;
+			font-weight: lighter; 
+		}
+
 		.col1_partie{
 			width: 100%;
 			font-family: 'Times New Roman';
@@ -186,6 +196,20 @@
 						
 				<!--fin données de l'utilisateur connecté -->
 		
+		<input type="hidden" name="URL_ATTENTE" value="{URL_ATTENTE}"><!--  -->
+		<input type="hidden" name="URL_RESULTAT" value="{URL_RESULTAT}">
+		<input type="hidden" name="URL_OBTENIR_NB_REP" value="{URL_OBTENIR_NB_REP}">
+		<input type="hidden" name="URL_CHANGER_PROFIL" value="{URL_CHANGER_PROFIL}">
+		<input type="hidden" id="nb-profils" value="{NB_PROFILS_UTIL}">
+
+		<div class="col_list">
+			<i class="fa fa-eye fa-1x" style="color:#4a67b3;"></i>
+             <a href="javascript:void lanceBibBal('/{NOM_APPLICATION}/interface/session/principal/resultat/rechercher_db.php&TYPE_RECHERCHE=RECHERCHE_BAL&POS_QUEST_NOM=Bal_SAN_lnv&POS_QUEST_PUBLIC=1', 'QUESTION_BAL');">
+				<span style="color:#4a67b3;">Cliquez pour consulter la liste</span>
+			</a>
+		</div>
+
+
 		<header class="header-const">
 			<div id="actions-container" class="ui-widget-content titre-boutons" style="padding-left: 3%; text-align: center; background: transparent; border: none">
 				 {ENTETE}
@@ -321,6 +345,7 @@
 									<span class="pr-3" style="font-size: 13px; font-family: Times;">Login :</span>
 									<strong class="pt-1_pl-5" style="font-size: 13px;">{POS_VAL_RUB_CRE}</strong>
 								</p>
+								 <input type="hidden" name='POS_VAL_RUB_CRE' value="{POS_VAL_RUB_CRE}" class="createur"   style="color: black;"  />
 								<!-- Affichage de la date -->
 								<span class="d-flex">
 									<span class="pr-4" style="font-size: 13px; font-family: Times;padding-left: 3%">Date :</span>
@@ -340,6 +365,7 @@
 									<span class="pr-3" style="font-size: 13px; font-family: Times;display:none;">Login :</span>
 									<strong class="pt-1_pl-5" style="font-size: 13px;">{POS_VAL_RUB_A4A}</strong>
 								</p>
+								<input type="hidden" name='POS_VAL_RUB_A4A' value="{POS_VAL_RUB_A4A}" class="rh_wk" style="color: black;"  />
 								<!-- Affichage du visa -->
 								<span class="d-flex">
 									<span class="pr-4" style="font-size: 13px; font-family: Times;">Visa :</span>
@@ -371,6 +397,7 @@
 									<span class="pr-3" style="font-size: 13px; font-family: Times;display:none;">Login :</span>
 									<strong class="pt-1_pl-5" style="font-size: 13px;">{POS_VAL_RUB_A4B}</strong>
 								</p>
+								<input type="hidden" name='POS_VAL_RUB_A4B' value="{POS_VAL_RUB_A4B}" class="manager_wk" style="color: black;"  />
 								<!-- Affichage du visa -->
 								<span class="d-flex">
 									<span class="pr-4" style="font-size: 13px; font-family: Times;">Visa :</span>
@@ -402,6 +429,7 @@
 									<span class="pr-3" style="font-size: 13px; font-family: Times;display:none;">Login :</span>
 									<strong class="pt-1_pl-5" style="font-size: 13px;">{POS_VAL_RUB_A4C}</strong>
 								</p>
+								<input type="hidden" name='POS_VAL_RUB_A4C' value="{POS_VAL_RUB_A4C}" class="dga_wk" style="color: black;"  />
 								<!-- Affichage du visa -->
 								<span class="d-flex">
 									<span class="pr-4" style="font-size: 13px; font-family: Times;">Visa :</span>
@@ -433,6 +461,7 @@
 									<span class="pr-3" style="font-size: 13px; font-family: Times;display:none;6666">Login :</span>
 									<strong class="pt-1_pl-5" style="font-size: 13px;">{POS_VAL_RUB_A4D}</strong>
 								</p>
+								<input type="hidden" name='POS_VAL_RUB_A4D' value="{POS_VAL_RUB_A4D}" class="dg_wk" style="color: black;"  />
 								<!-- Affichage du visa -->
 								<span class="d-flex">
 									<span class="pr-4" style="font-size: 13px; font-family: Times;">Visa :</span>
@@ -609,7 +638,7 @@
 								<!-- N° poseidon -->
 								<div class="form-group row" style="margin: 0%">
 									<label for="bio">N&#176; poseidon</label>
-									<input type="text" name='POS_VAL_RUB_NUD' value="{POS_VAL_RUB_NUD}"  placeholder="N&#176; poseidon" class="form-control" style="width: 100%">
+									<input type="text" name='POS_VAL_RUB_NUD' value="{POS_VAL_RUB_NUD}"  placeholder="N&#176; poseidon" class="form-control numposeidon" style="width: 100%">
 								</div>
 								<!-- Etat Fiche -->
 								<div class="form-group" style="margin: 1%">
@@ -662,7 +691,8 @@
 		<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/SAN/select2/select2tr.js"></script>
 		<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/SAN/packs_fpo.js"></script>
 
-
+<!-- imporation du fichier de desactivation des champs -->
+		<script src="../../../../disable_fields.js"></script>
 	
 	 <script>
 
@@ -777,7 +807,7 @@
 	</script>
 	<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/SAN/workflowSAN.js"></script>
 	<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/SAN/notification.js"></script>
-
+  <script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/SAN/valideurs/validateur.js"></script>
 </body>
 </html>
 

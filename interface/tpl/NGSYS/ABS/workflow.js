@@ -63,7 +63,8 @@ if(etat_type=="EMPLOYE" && profil_util=="MANAGER" ){
 
 			
 		
-	if(profil_util=="EMPLOYE"){
+	//if(profil_util=="EMPLOYE"){
+	  if(profil_util=="COLLABORATEUR"){
 		
 			$('.emplo').hide();
 		}

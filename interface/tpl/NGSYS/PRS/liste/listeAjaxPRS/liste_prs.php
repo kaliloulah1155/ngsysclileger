@@ -5,7 +5,7 @@
 
     $rq = pg_query($conn,"
     SELECT
-        \"MAT\",\"NOM\",\"PRE\",\"MEL\",\"TPH\",\"DAE\",\"NUD\"
+        \"MAT\",\"NOM\",\"PRE\",\"MEL\",\"TPH\",\"DEI\",\"NUD\"
     FROM 
             public.pos_tab_index_prs
     ");
@@ -17,4 +17,4 @@
    echo json_encode($data);
            
 
-        
+   

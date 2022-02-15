@@ -26,6 +26,8 @@
 	<td>&nbsp;&nbsp;</td>
 	<!--<td><input type=submit {ENABLED_BOUTON_ENREGISTRER} name="TYPE_ACTION" value="{LIBELLE_ACTION}"></td>
 	<td>&nbsp;&nbsp;</td>-->
-	<td><input type='button' class='bouton' name="FERMER" value="{LIBELLE_FERMER}" onClick="{CODE_ACTION_FERMER}"></td>
+	<td>
+		<input type='button' class='bouton' name="FERMER" value="{LIBELLE_FERMER}" onClick="{CODE_ACTION_FERMER}">
+	</td>
 	</tr>
 </table>

@@ -9,7 +9,7 @@ $loadcode= $_GET['loadcode'] ;
 
 
         
-      
+ 
 
 $result = pg_query("SELECT * FROM public.tache_journalieres WHERE email='".$user_email."' AND date_enreg='".$dateEnreg."'");
 $find = pg_num_rows($result);
@@ -62,13 +62,18 @@ if ($find!=0){
                                               
                                              while ($rowcontent = pg_fetch_row($rqcontent)) {
 
+
+ 
                                                 
+
         $output .="<option value='".$rowcontent[0]."'    ".(
         strcmp($rowcontent[0], $row[1])==0 ? 'selected': '')."   >".$rowcontent[1]."</option>";
 
                                              }
     
                              }
+
+                               
 
                              //fin activites
                                                         
@@ -78,6 +83,11 @@ if ($find!=0){
                                 </select>
                              
                         </td>
+
+
+
+
+
 
                         <td style='width: 500px;border:none;'>
                             <textarea type='text' name='tache[]' style='width: 100%; resize: none' rows='1' class='form-control tache'>".$row[2]."</textarea>

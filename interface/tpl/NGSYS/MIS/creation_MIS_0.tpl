@@ -72,10 +72,15 @@
 		color: red;
 		}
 
-.select2-selection{
-	height: 200px;
-	background: red;
-}
+		.select2-selection{
+			height: 200px;
+			background: red;
+		}
+
+		label{
+			font-size: 15px;
+			font-weight: 100;
+		}
 
 	</style>
 </head>
@@ -121,7 +126,7 @@
 					<div class="col1_partie text-center">
 						<span class="title text-while">DESCRIPTIF</span>
 					</div>
-					<div class="col2_partie" style="padding-top: 2%;">
+					<div class="col2_partie" style="padding-top: 1%;">
 						<div class="row">
 						
 							<!-- données de l'utilisateur connecté -->
@@ -133,32 +138,53 @@
 							 <!--fin données de l'utilisateur connecté -->
 		        
 							<div class="col-sm-12 text-center" style="margin-bottom: 13px">
-								<label>Les champs avec (<span class='text'></span>) sont obligatoires</label>
+								<label style="font-weight: 100; font-size: 13px;">Les champs avec (<span class='text'></span>) sont obligatoires</label>
 							</div>
 
 							<div class="col-sm-4">
-								<label for="bio">Pays de destination  <span class='text'></span> :</label>
+								<label for="bio">Profil<span class='text'></span> :</label>
+								<select class="form-control profil"   name="POS_VAL_RUB_LOG">
+								</select>
+								<input type="hidden"   class="interprofil" name='POS_VAL_CTRL_LOG' id='POS_VAL_CTRL_LOG' value='{POS_VAL_RUB_LOG}'>
+ 							</div>
+
+							<div class="col-sm-4">
+								<label for="bio">Destination<span class='text'></span> :</label>
+								<select class="form-control destination"   name="POS_VAL_RUB_E1">
+								</select>
+								<input type="hidden"  class="interdestination" name='POS_VAL_CTRL_E1' id='POS_VAL_CTRL_E1' value='{POS_VAL_RUB_E1}'>
+ 							</div>
+
+							<div class="col-sm-4">
+								<label for="bio">Pays de destination<span class='text'></span> :</label>
 								<select name="POS_VAL_RUB_PAY"  class="form-control selectPas pays" style="width: 100%;" required="true">
 	 							</select>
 								<input type="hidden" class="init_pays" name='POS_VAL_CTRL_PAY' id='POS_VAL_CTRL_PAY' value='{POS_VAL_RUB_PAY}' required="true">
 							</div>
 
-							<div class="col-sm-4">
-								<label for="bio">Ville de destination <span class='text'></span> :</label>
+						</div>
+
+						<div class="row">
+
+							<div class="col-sm-4" style="margin-top: 13px">
+								<label for="bio">Ville de destination<span class='text'></span> :</label>
 								<select name="POS_VAL_RUB_VLE" class="form-control selectVis ville" style="width: 100%;">
 	 							</select>
 								<input type="hidden" class="init_ville" name='POS_VAL_CTRL_VLE' id='POS_VAL_CTRL_VLE' value='{POS_VAL_RUB_VLE}' required="true">
 							</div>
 					
-							<div class="col-sm-4">
-								<label for="bio">Date de d&#233;part <span class='text'></span> :</label>
+							<div class="col-sm-4" style="margin-top: 13px">
+								<label for="bio">Date de d&#233;part<span class='text'></span> :</label>
 								<input type="text" name="POS_VAL_RUB_DAA" value="{POS_VAL_RUB_DAA}" placeholder="jj/mm/aaaa" class="form-control datepicker dateDepart" id="date1" style="width: 100%;" required="true">
 							</div>
 
 							<div class="col-sm-4" style="margin-top: 13px">
-								<label for="bio">Dur&#233;e <span class='text'></span> :</label>
+								<label for="bio">Dur&#233;e<span class='text'></span> :</label>
 								<input type="text" onkeypress="return testNum(event, this, 2);"  name="POS_VAL_RUB_DUR" value="{POS_VAL_RUB_DUR}"  min="0" class="form-control duree" style="width: 100%;" required="true">
 							</div>
+						</div>
+
+						<div class="row">
 
 							<div class="col-sm-4" style="margin-top: 13px">
 								<label for="bio">Date de retour :</label>
@@ -166,7 +192,7 @@
 							</div>
 						
 							<div class="col-sm-4" style="margin-top: 13px">
-								<label for="bio">Moyen de transport <span class='text'></span> :</label>
+								<label for="bio">Moyen de transport<span class='text'></span> :</label>
 								<select name="POS_VAL_RUB_MOT" class="form-control selectMoys" style="width: 100%;">
 								    <option value="">Veuillez s&#233;lectionner</option>
 								     <option value="AVION">Avion</option>
@@ -227,7 +253,7 @@
 
 							<div class="col-sm-4" id="Duree_vol" style="margin-top: 13px;">
 								<label for="bio">Dur&#233;e de voyage :</label>
-								<input type="text" class="form-control  voyDuree" name='POS_VAL_RUB_N2D' value="{POS_VAL_RUB_N2D}" placeholder="Dur&#233;e de voyage" style="width: 100%;">
+								<input type="text" class="form-control voyDuree" name='POS_VAL_RUB_N2D' value="{POS_VAL_RUB_N2D}" placeholder="Dur&#233;e de voyage" style="width: 100%;">
 							</div>
 
 							<div class="col-sm-4" id="Immatriculation" style="margin-top: 13px;">
@@ -262,11 +288,13 @@
 								<input type="text" placeholder="Autre raison" class="form-control" style="width: 100%;">
 							</div>
 
-							<div class="col-sm-4" style="margin-top: 13px">
-								<label for="bio">Objet de la mission :</label>
-								<select name="POS_VAL_RUB_LPR" class="form-control selectProjs projet" style="width: 100%;">
- 								</select>
-								<input type="hidden" class="init_projet" name='POS_VAL_CTRL_LPR' id='POS_VAL_CTRL_LPR' value='{POS_VAL_RUB_LPR}' required="true">
+							<div class="col-sm-4" style="margin-top: 13px;">
+								<div>
+									<label for="bio">Objet de la mission<span class='text'></span> :</label>
+									<select name="POS_VAL_RUB_LPR" class="form-control selectProjs projet" style="width: 100%;" required="true">
+	 								</select>
+									<input type="hidden" class="init_projet" name='POS_VAL_CTRL_LPR' id='POS_VAL_CTRL_LPR' value='{POS_VAL_RUB_LPR}' required="true">
+								</div>
 							</div>
 					
 							<div class="col-sm-12" style="margin-top: 13px">
@@ -275,7 +303,7 @@
 							</div>
 						</div>
 
-						<div class="form-group row">
+						<!-- <div class="form-group row">
 
 							<div class="col-sm-4">
 								<label for="bio">Destination<span class='text'></span> :</label>
@@ -290,9 +318,10 @@
 								</select>
 								<input type="hidden"   class="interprofil" name='POS_VAL_CTRL_LOG' id='POS_VAL_CTRL_LOG' value='{POS_VAL_RUB_LOG}'>
  							</div>
-						</div>
+						</div> -->
+
 						<br/> 
-							<hr>
+						<hr>
 						<div class="row" style="margin-top: 13px">
 							<div class="col-sm-12">
 								<label for="bio">Estimation frais de mission :</label>
@@ -349,40 +378,10 @@
 	<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/MIS/code/code.js"></script>
 	<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/MIS/manipule_champs/container.js"></script>
 	<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/MIS/api/tbl_estimation.js"></script>
+	<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/MIS/dures.js"></script>
 
 
 		<script>
-
-       //CALCUL DES DUREES 
-	   $(document).on('change keyup','.heurein,.heureout',function(){
-
-           		var inphdeb=$('.heurein').val();
-				var inphfin=$('.heureout').val();
-
-
-				var timeStart = new Date("01/01/2010 " + inphdeb);
-				var timeEnd = new Date("01/01/2010 " + inphfin);
-
-				if(timeStart <= timeEnd){
-						var difference = timeEnd - timeStart;
-						var diff_result = new Date(difference);
-
-						var hourDiff = diff_result.getHours();
-						var minuteDiff = diff_result.getMinutes();
-
-						hourDiff1 = hourDiff > 9 ? hourDiff : '0'+hourDiff;
-						minuteDiff1 = minuteDiff > 9 ? minuteDiff : '0' + minuteDiff;
-
-						var countDuree=(isNaN(hourDiff1) ? '00' : hourDiff1)+':'+(isNaN(minuteDiff1) ? '00' : minuteDiff1) ;
-
-						$('.voyDuree').val(countDuree);
-  						
-				} 
-						 
-     		});
-	   ///////////////////////////
-
-
 		$(document).ready(function (){
 
 			//script du bouton fermer

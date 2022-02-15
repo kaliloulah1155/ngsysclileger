@@ -62,9 +62,15 @@
 			background:transparent
 		}
 		span.text:after {
-		content: "*";
-		color: red;
+			content: "*";
+			color: red;
 		}
+
+		label{
+			font-size: 15px;
+			font-weight: 100;
+		}
+
 	</style>
 </head>
 <body  class='tpl_creation tpl_creation_abs' onLoad='initTplCreation();' style="background-color: transparent;font-family: 'Times New Roman';">
@@ -125,7 +131,7 @@
 						<div class="row">
 
 							<div class="col-sm-12 text-center" style="margin-bottom: 10px">
-								<label>Les champs avec (<span class='text'></span>) sont obligatoires</label>
+								<label style="font-weight: 100; font-size: 13px;">Les champs avec (<span class='text'></span>) sont obligatoires</label>
 							</div>
 
 							<div class="col-sm-6">
@@ -168,13 +174,15 @@
 							</div>
 						</div>
 
-						<div class="row" style="margin-top: 2%">
+						<div class="row" style="margin-top: 2%">   
 							<div class="col-sm-6">
 								<label for="bio">Interimaire <span class='text' ></span> :</label>
 								 <select id="interimaire" style="width: 100%" name='POS_VAL_RUB_INT' class="form-control select2 personnel" rows="1" data-parsley-required="true" >
 								     <option value="" >Selectionner</option>
-								</select>      
+								</select>   
+								   
 								<input type="hidden" name='POS_VAL_CTRL_INT' id='POS_VAL_CTRL_INT' value='{POS_VAL_RUB_INT}'>
+								<input type="hidden" name='POS_VAL_RUB_INF' class="interim"  value='{POS_VAL_RUB_INF}'>
 							</div>
 							<div class="col-sm-3">
 								<label for="bio">Dur&eacute;e (en jour) <span class='text' ></span> :</label>
@@ -772,6 +780,16 @@ if( $('.typeDemande').val() !=null ){
 
 
 	});
+
+     
+
+     //Recuperation du mail de l'interimaire
+	$('.personnel').change(function() {
+     		p_interimaire=$(this).find(':selected').data('interim');
+            $('.interim').val(p_interimaire);
+     		 
+	});
+  
 	</script>
 	
 </html>

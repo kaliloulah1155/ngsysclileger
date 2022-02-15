@@ -9,7 +9,7 @@ $query="SELECT \"CIV\",\"DNS\",\"NAT\" FROM public.pos_tab_index_prs WHERE \"MEL
 
     $retour = array() ;
 
-        
+
     $civ='';
      
 
@@ -32,7 +32,7 @@ $query="SELECT \"CIV\",\"DNS\",\"NAT\" FROM public.pos_tab_index_prs WHERE \"MEL
         $retour['nationalite'] = $row[2];
     }
 
-    
+
      $query_fposte="
                 SELECT
                      \"IPO\"
@@ -83,7 +83,7 @@ $query="SELECT \"CIV\",\"DNS\",\"NAT\" FROM public.pos_tab_index_prs WHERE \"MEL
 
 
 
-   $date_embauche='';
+	  $date_embauche='';
    if(strpos($type_contrat, "CD") !== false){
       $query_cot_eb ="SELECT  \"DSG\"
             FROM public.pos_tab_index_cot WHERE  \"MEL\" ='".strtolower($_POST['email'])."' ORDER BY   \"NUD\" ASC LIMIT 1 ";
@@ -98,7 +98,7 @@ $query="SELECT \"CIV\",\"DNS\",\"NAT\" FROM public.pos_tab_index_prs WHERE \"MEL
 
 
 
-     
+
 
       
     echo json_encode($retour);

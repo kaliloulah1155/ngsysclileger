@@ -20,6 +20,7 @@
 	<script language='javascript' src='/{NOM_APPLICATION}/include/script/ajax_recup_listhier.js'></script>
 	<script language='javascript' src='/{NOM_APPLICATION}/include/script/ajax_recup_arbo_dossier.js'></script>
 	<script language='javascript' src='/{NOM_APPLICATION}/include/script/action_accueil.js'></script>
+	<script language='javascript' src='/NGSYSTEST/include/script/testNum.js'></script>
 
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
     <link href="https://raw.githack.com/ttskch/select2-bootstrap4-theme/master/dist/select2-bootstrap4.css" rel="stylesheet"/>
@@ -40,6 +41,16 @@
 	<!-- END JQUERY UI -->
 	
 	<style>
+
+		.col_list{
+			width: 22%;
+			float: right;
+			font-family: 'Times New Roman';
+			font-size: 14px;
+			background-color: transparent;
+			font-weight: lighter; 
+		}
+
 		.col1_partie{
 			width: 100%;
 			font-family: 'Times New Roman';
@@ -66,17 +77,6 @@
 			padding: 5px;
 		}
 		
-		.col_list{
-			width: 50%;
-			margin-top: -3%;
-			margin-right: 5%;
-			font-family: 'Times New Roman';
-			font-size: 17px;
-			background-color: transparent;
-			font-weight: lighter; 
-			float: right;
-		}
-		
 		.header-const{
 			margin-bottom: 3%;
 		}
@@ -85,18 +85,11 @@
 			 border-style: solid;
   			border-color: red;
 		}
-	.col_list{
-	/*width: 50%;*/
-	margin-top: 1%;
-	margin-right: 5%;
-	margin-bottom: 0px;
-	font-family: 'Times New Roman';
-	font-size: 15px;
-	background-color: transparent;
-	font-weight: lighter; 
-	float: right;
-}
 
+		label{
+			font-size: 15px;
+			font-weight: 100;
+		}
 		
 	</style>
 </head>
@@ -115,21 +108,20 @@
 
 		<input type='hidden' class='appName' value="{NOM_APPLICATION}">
 
-			<!-- données de l'utilisateur connecté -->
-					<input type="hidden" name='POS_VAL_RUB_NOM' class="viewnom" value="{POS_VAL_RUB_NOM}" >
-					<input type="hidden" name='POS_VAL_RUB_PRE' class="viewprenom" value="{POS_VAL_RUB_PRE}" >
-					<input type="hidden" name='POS_VAL_RUB_FON' class="viewfonction" value="{POS_VAL_RUB_FON}" >
-					<input type="hidden" name='POS_VAL_RUB_AVA' class="viewanciennete" value="{POS_VAL_RUB_AVA}" >
-				<!--fin données de l'utilisateur connecté -->	
+		<input type="hidden" name="URL_ATTENTE" value="{URL_ATTENTE}"><!--  -->
+		<input type="hidden" name="URL_RESULTAT" value="{URL_RESULTAT}">
+		<input type="hidden" name="URL_OBTENIR_NB_REP" value="{URL_OBTENIR_NB_REP}">
+		<input type="hidden" name="URL_CHANGER_PROFIL" value="{URL_CHANGER_PROFIL}">
+		<input type="hidden" id="nb-profils" value="{NB_PROFILS_UTIL}">
 
 		
-		<!-- Liste -->
-<div class="col_list">
-	<i class="fa fa-eye fa-1x" style="color:#4a67b3;"></i>
-	<a href="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/LIC/liste/liste_LIC_1.php?APPLI={NOM_APPLICATION}">
-		<span style="color:#4a67b3;">Cliquez pour consulter la liste</span>
-	</a>
-</div>
+		<div class="col_list">
+			<i class="fa fa-eye fa-1x" style="color:#4a67b3;"></i>
+			<a href="javascript:void lanceBibBal('/{NOM_APPLICATION}/interface/session/principal/resultat/rechercher_db.php&TYPE_RECHERCHE=RECHERCHE_BAL&POS_QUEST_NOM=Bal_LIC_nv&POS_QUEST_PUBLIC=1', 'QUESTION_BAL');">
+				<span style="color:#4a67b3;">Cliquez pour consulter la liste</span>
+			</a>
+		</div>
+
 		<header class="header-const">
 			<div id="actions-container" class="ui-widget-content titre-boutons" style="padding-left: 3%; text-align: center; background: transparent; border: none">
 				 {ENTETE}
@@ -171,15 +163,22 @@
 												</select>
 												<input type="hidden" name='POS_VAL_CTRL_INT' id='POS_VAL_CTRL_INT' value='{POS_VAL_RUB_INT}'>
 											</div>
-											 
+											<div class="col-sm-4" style="display: none;">
+												<label>Fonction :</label>
+												<input type="text" name='POS_VAL_RUB_FON' class="form-control" value="{POS_VAL_RUB_FON}" placeholder="Fonction" style="width: 100%;">
+											</div>
+											<div class="col-sm-4" style="display: none;">
+												<label>Anciennet&eacute; :</label>
+												<input type="text" name='POS_VAL_RUB_AVA' value="{POS_VAL_RUB_AVA}" placeholder="Ancienn&eacute;t&eacute;" class="form-control" style="width: 100%;">
+											</div>
 										
 											<div class="col-sm-4">
 												<label>Date prise de decision :</label>
 												<input type="text" name='POS_VAL_RUB_DEI'  value="{POS_VAL_RUB_DEI}" placeholder="jj/mm/aaaa" class="form-control dateDepot"  id="date1" style="width: 100%;">
 											</div>
 											<div class="col-sm-4">
-												<label>Dur&#233;e pr&eacute;avis</label>
-												<input type="text" name='POS_VAL_RUB_CAT' value="{POS_VAL_RUB_CAT}"  placeholder="Dur&#233;e pr&eacute;avis" class="form-control dureePreavis" style="width: 100%;">
+												<label>Dur&#233;e pr&eacute;avis (en mois) :</label>
+												<input type="text" onkeypress="return testNum(event, this,2);" name='POS_VAL_RUB_CAT' value="{POS_VAL_RUB_CAT}"  placeholder="Dur&#233;e pr&eacute;avis" class="form-control dureePreavis" style="width: 100%;">
 											</div>
 											<div class="col-sm-4" style="margin-top: 13px">
 												<label>Date de fin :</label>

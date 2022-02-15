@@ -88,7 +88,7 @@ function ajaxSearchPRS(date_deb, date_fin) {
             for (let i = 0; i < responseNew.length; i++) {
                 t.row.add(
                     [
-                        j++,
+                       /// j++,
                         responseNew[i][0],
                         responseNew[i][1],
                         "<a href='javascript:void(0)' style='margin-left:40%;border: 1px solid black;padding:3px' class='modifier' data-num=" + responseNew[i][2] + " style='padding: 3px;border: 1px solid black;cursor: pointer'><i class='fa fa-eye'></i></a> &nbsp;" +

@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consultation du contrat</title>
-	<link href="/{NOM_APPLICATION}/include/style_nouveau/style_accueil.css" rel="stylesheet">
     <link href="/{NOM_APPLICATION}/include/bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href='https://use.fontawesome.com/releases/v5.0.8/css/all.css' type='text/css' rel='STYLESHEET' />
 	<script type='text/javascript' src='/{NOM_APPLICATION}/include/script/association.js'></script> 
@@ -110,7 +109,7 @@
 		}
 		.progres1 .bar1 {
 			position: relative;
-			width: 90px;
+			width: 100px;
 			height: 8px;
 			top: -30px;
 			margin-left: -5px;
@@ -190,17 +189,20 @@
 			background: #8097d3;
 		}
 				/*FIN Barre de progression  1  */
+
 		.col_list{
-		/*width: 50%;*/
-		/*margin-top: -1%;*/
-		margin-right: 5%;
-		margin-bottom: 0px;
-		font-family: 'Times New Roman';
-		font-size: 15px;
-		background-color: transparent;
-		font-weight: lighter; 
-		float: right;
-	}
+			width: 22%;
+			float: right;
+			font-family: 'Times New Roman';
+			font-size: 14px;
+			background-color: transparent;
+			font-weight: lighter; 
+		}
+
+		label{
+			font-size: 15px;
+			font-weight: 100;
+		}
 
 	</style>
 </head>
@@ -237,12 +239,12 @@
 			<!-- Liste -->
 
 			
-<div class="col_list">
-	<i class="fa fa-eye fa-1x" style="color:#4a67b3;"></i>
-	<a href="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/COT/liste/liste_COT_1.php?APPLI={NOM_APPLICATION}&PROFIL={PROFIL_UTILISATEUR}&USER={NOM_UTILISATEUR}">
-		<span style="color:#4a67b3;">Cliquez pour consulter la liste</span>
-	</a>
-</div>
+		<div class="col_list">
+			<i class="fa fa-eye fa-1x" style="color:#4a67b3;"></i>
+			<a href="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/COT/liste/liste_COT_1.php?APPLI={NOM_APPLICATION}&PROFIL={PROFIL_UTILISATEUR}&USER={NOM_UTILISATEUR}">
+				<span style="color:#4a67b3;">Cliquez pour consulter la liste</span>
+			</a>
+		</div>
 
 		<header class="header-const">
 		<div id="actions-container" class="ui-widget-content titre-boutons" style="padding-left: 3%; text-align: center; background: transparent; border: none">
@@ -413,20 +415,20 @@
 
 												<div class="col-sm-4" style="margin-top: 13px;display: none;" id="volumeHoraiares">
 													<label>Volume horaire</label>
-													<input type="text" name="POS_VAL_RUB_VHE" value="{POS_VAL_RUB_VHE}"   class="form-control horaire" min="1" placeholder="Volume horaire" style="width: 100%;">
+													<input type="text" name="POS_VAL_RUB_VHE" value="{POS_VAL_RUB_VHE}"  onkeypress="return testNum(event, this, 2);" class="form-control horaire" min="1" placeholder="Volume horaire" style="width: 100%;">
 
 													<input type="hidden" class="horaire_lettre" name="POS_VAL_RUB_A1" value="{POS_VAL_RUB_A1}">
 												</div>
 
 												<div class="col-sm-4" style="margin-top: 13px;display: none;" id="nombreJours">
 													<label>Nombre de jours</label>
-													<input type="text" name="POS_VAL_RUB_NBR" value="{POS_VAL_RUB_NBR}" class="form-control nbrejrs"  placeholder="Nombre de jours" style="width: 100%;">
+													<input type="text" name="POS_VAL_RUB_NBR" value="{POS_VAL_RUB_NBR}" onkeypress="return testNum(event, this, 2);" class="form-control nbrejrs"  placeholder="Nombre de jours" style="width: 100%;">
 													<input type="hidden" class="nbrejrs_lettre" name="POS_VAL_RUB_A2" value="{POS_VAL_RUB_A2}">
 												</div>
 
 												<div class="col-sm-4" style="margin-top: 13px;display: none;" id="periodeEssai">
 													<label>Dur&#233;e d&#146;essai (en mois) :</label>
-													<input type="text" name="POS_VAL_RUB_DRU" value="{POS_VAL_RUB_DRU}" class="form-control duree_essai"  placeholder="Dur&#233;e d&#146;essai (en mois)" style="width: 100%;">
+													<input type="text" name="POS_VAL_RUB_DRU" value="{POS_VAL_RUB_DRU}" onkeypress="return testNum(event, this, 2);" class="form-control duree_essai"  placeholder="Dur&#233;e d&#146;essai (en mois)" style="width: 100%;">
 													<input type="hidden" name="POS_VAL_RUB_DLA" value="{POS_VAL_RUB_DLA}" class="mois_lettre_essai" />
 												</div>
 
@@ -442,7 +444,7 @@
 
 												<div class="col-sm-4" style="margin-top: 13px;display: none;" id="dureeContrats">
 													<label>Dur&#233;e du contrat (en mois)</label>
-													<input type="text" name="POS_VAL_RUB_MOI" value="{POS_VAL_RUB_MOI}"  class="form-control ecole_duree" min="1" placeholder="Dur&#233;e du contrat (en mois)" style="width: 100%;">
+													<input type="text" name="POS_VAL_RUB_MOI" value="{POS_VAL_RUB_MOI}" onkeypress="return testNum(event, this, 2);" class="form-control ecole_duree" min="1" placeholder="Dur&#233;e du contrat (en mois)" style="width: 100%;">
      
 													<!-- Mois en lettre -->
 									<input type="hidden"  name="POS_VAL_RUB_M1" value="{POS_VAL_RUB_M1}"     class="mois_lettre" />
@@ -552,6 +554,7 @@
 									<strong class="pt-1_pl-5" style="font-size: 13px;">{POS_VAL_RUB_DCR}</strong>
 								</span>
 							</div>
+							<input type="hidden" class="rh_wk" name="POS_VAL_RUB_CRE"   value="{POS_VAL_RUB_CRE}" />
 						</div>
 						<span class="bar1"></span>
 
@@ -565,6 +568,7 @@
 									<span class="pr-3" style="font-size: 13px; font-family: Times;">Login :</span>
 									<strong class="pt-1_pl-5" style="font-size: 13px;">{POS_VAL_RUB_NOM} {POS_VAL_RUB_PRE} </strong>
 								</p>
+								<input type="hidden" class="emp_wk" name="POS_VAL_RUB_A4A"  value="{POS_VAL_RUB_A4A}" style="color: black;" />
 								<!-- Affichage du visa -->
 								<span class="d-flex">
 									<span class="pr-4" style="font-size: 13px; font-family: Times;">Visa :</span>
@@ -595,6 +599,7 @@
 									<span class="pr-3" style="font-size: 13px; font-family: Times;">Login :</span>
 									<strong class="pt-1_pl-5" style="font-size: 13px;">{POS_VAL_RUB_A4B}</strong>
 								</p>
+								<input type="hidden" class="mngadm_wk" name="POS_VAL_RUB_A4B"  value="{POS_VAL_RUB_A4B}" style="color: black;" />
 								<!-- Affichage du visa -->
 								<span class="d-flex">
 									<span class="pr-4" style="font-size: 13px; font-family: Times;">Visa :</span>
@@ -625,6 +630,7 @@
 									<span class="pr-3" style="font-size: 13px; font-family: Times;">Login :</span>
 									<strong class="pt-1_pl-5" style="font-size: 13px;">{POS_VAL_RUB_A4C}</strong>
 								</p>
+								<input type="hidden" class="dga_wk" name="POS_VAL_RUB_A4C"  value="{POS_VAL_RUB_A4C}" style="color: black;" />
 								<!-- Affichage du visa -->
 								<span class="d-flex">
 									<span class="pr-4" style="font-size: 13px; font-family: Times;">Visa :</span>
@@ -655,6 +661,7 @@
 									<span class="pr-3" style="font-size: 13px; font-family: Times;">Login :</span>
 									<strong class="pt-1_pl-5" style="font-size: 13px;">{POS_VAL_RUB_A4D}</strong>
 								</p>
+								<input type="hidden" class="dg_wk" name="POS_VAL_RUB_A4D"  value="{POS_VAL_RUB_A4D}"  style="color: black;"/>
 								<!-- Affichage du visa -->
 								<span class="d-flex">
 									<span class="pr-4" style="font-size: 13px; font-family: Times;">Visa :</span>
@@ -1170,6 +1177,7 @@ if($('.get_mode').val()=='CONSULTATION'){
 		 
 	</script>
 		<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/COT/workflowCOT.js"></script>
+			<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/COT/valideurs/validateur.js"></script>
 
 	
 </html>

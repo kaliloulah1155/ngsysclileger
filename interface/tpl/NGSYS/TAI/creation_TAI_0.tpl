@@ -67,20 +67,16 @@
 
 	    }
 
-	    /*#table_salarie thead th,#table_salarie tbody td{
-	    	border: 1px solid;
-	    	padding: 8px 10px;
+	    label{
+				font-size: 15px;
+				font-weight: 100;
+			}
+
+			th{
+	        font-weight: 100;
+	        font-size: 12px;
 	    }
 
-	    #table_consultant thead th,#table_consultant tbody td{
-	    	border: 1px solid;
-	    	padding: 8px 10px;
-	    }
-
-	    #table_stagiaire thead th,#table_stagiaire tbody td{
-	    	border: 1px solid;
-	    	padding: 8px 10px;
-	    }*/
 	</style>
 </head>
 <body  class='tpl_creation tpl_creation_tai' onLoad='initTplCreation();' style="background-color: transparent;font-family: 'Times New Roman';">
@@ -184,12 +180,12 @@
 				        	<thead class="table-sm text-white" style="background: #4a67b3;">
 								 <tr>
 					                <th style="min-width: 30px;text-align: center;border-top-left-radius: 5px;">MATRICULE</th>
-									<th>ENTREPRISE</th>
-									<th>NOM & PR&#201;NOMS</th>
-									<th>SALARIE NET</th>
-									<th>ASSURANCE</th>
-									<th>SALARIE NET PAY&#201;</th>
-									<th>RIB</th>
+													<th>ENTREPRISE</th>
+													<th>NOM & PR&#201;NOMS</th>
+													<th>SALARIE NET</th>
+													<th>ASSURANCE</th>
+													<th>SALARIE NET PAY&#201;</th>
+													<th>RIB</th>
 					                <th style="min-width: 100px;text-align: center;border-top-right-radius: 5px;">BANQUE</th>
 					            </tr>
 					        </thead>
