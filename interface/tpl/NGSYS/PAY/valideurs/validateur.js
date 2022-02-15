@@ -57,12 +57,26 @@ loadvalideurs()
 })
 .catch(error=>console.log(error));
 
- 
+// Appel du lien du site ngser
+let link_ngser="../../../LinkSiteWeb.php";
+function getLink(){
+    
+       $.ajax({
+           url: link_ngser, 
+           type: "POST",
+           success: function(output) {
+                  console.log(output);
+               }, 
+           error: function (error) {
+                console.log(error);
+           },
+       });
+}
+
+//Appel
+getLink()  
 
  //Envoi de mail via workflow
-
- 
-
 class WorkflowMailer{
    
    constructor(email,titre,contenu,app){
@@ -145,6 +159,7 @@ $(document).on('click','.bouton_sub',function(){
                        TYPE : PAIE <br/>
                        INFOS : VOUS AVEZ RECU LA FICHE DE PAIE POUR VALIDATION <br/>
                        INITIATEUR :  ${initiateur_wk}
+                       `/getLink()`
                     `
                  ,appN);
              return  valid.sender();
@@ -155,7 +170,8 @@ $(document).on('click','.bouton_sub',function(){
              var initiateur = new WorkflowMailer(initiator,"DOCUMENT n\u00b0"+numdmd,
                     `
                        TYPE : FICHE DE PAIE N&deg; ${numdmd} <br/>
-                       INFOS : LA FICHE DE PAIE EST CHEZ LE MANAGER ADMIN POUR VALIDATION 
+                       INFOS : LA FICHE DE PAIE EST CHEZ LE MANAGER ADMIN POUR VALIDATION
+                       `/getLink()` 
                     `
                 ,appN);
              initiateur.sender();
@@ -170,6 +186,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : FICHE DE PAIE N&deg; ${numdmd} <br/>
                        INFOS : LA FICHE DE PAIE A ETE VALIDEE PAR LE MANAGER ADMIN
+                       `/getLink()`
                     `
                 ,appN);
              initiateur.sender();
@@ -182,7 +199,8 @@ $(document).on('click','.bouton_sub',function(){
              var initiateur = new WorkflowMailer(initiator,"DOCUMENT n\u00b0"+numdmd,
                     `
                        TYPE : FICHE DE PAIE N&deg; ${numdmd} <br/>
-                       INFOS : LA FICHE DE PAIE A ETE VALIDEE PAR LE CONTROLEUR DE GESTION 
+                       INFOS : LA FICHE DE PAIE A ETE VALIDEE PAR LE CONTROLEUR DE GESTION
+                       `/getLink()` 
                     `
                 ,appN);
              initiateur.sender();
@@ -194,6 +212,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : FICHE DE PAIE N&deg; ${numdmd} <br/>
                        INFOS : LA FICHE DE PAIE A ETE VALIDEE PAR LA FINANCE
+                       `/getLink()`
                     `
                 ,appN);
              initiateur.sender();
@@ -205,6 +224,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : FICHE DE PAIE N&deg; ${numdmd} <br/>
                        INFOS : LA FICHE DE PAIE A ETE VALIDEE PAR LE DGA
+                       `/getLink()`
                     `
                 ,appN);
              initiateur.sender();
@@ -217,7 +237,8 @@ $(document).on('click','.bouton_sub',function(){
              var initiateur = new WorkflowMailer(initiator,"DOCUMENT n\u00b0"+numdmd,
                     `
                        TYPE : FICHE DE PAIE N&deg; ${numdmd} <br/>
-                       INFOS : LA FICHE DE PAIE A ETE VALIDEE 
+                       INFOS : LA FICHE DE PAIE A ETE VALIDEE
+                       `/getLink()` 
                     `
                 ,appN);
              initiateur.sender();
@@ -239,6 +260,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : FICHE DE PAIE N&deg; ${numdmd} <br/>
                        INFOS : LA FICHE DE PAIE A ETE REFUSEE
+                       `/getLink()`
                     `
                 ,appN);
              initiateur.sender();

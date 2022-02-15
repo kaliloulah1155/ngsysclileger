@@ -54,6 +54,24 @@ loadvalideurs()
 .catch(error=>console.log(error));
 
  
+// Appel du lien du site ngser
+let link_ngser="../../../LinkSiteWeb.php";
+function getLink(){
+    
+       $.ajax({
+           url: link_ngser, 
+           type: "POST",
+           success: function(output) {
+                  console.log(output);
+               }, 
+           error: function (error) {
+                console.log(error);
+           },
+       });
+}
+
+//Appel
+getLink() 
 
  //Envoi de mail via workflow
 class WorkflowMailer{
@@ -130,6 +148,7 @@ $(document).on('click','.bouton_sub',function(){
                        TYPE : DEMANDE DE PRET <br/>
                        INFOS : VOUS AVEZ RECU UNE DEMANDE DE PRET POUR VALIDATION <br/>
                        DEMANDEUR :  ${initiateur_wk}
+                       `/getLink()`
                     `
                  ,appN);
              return  valid.sender();
@@ -140,6 +159,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : DEMANDE DE PRET N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE EST CHEZ LA RH POUR VALIDATION
+                       `/getLink()`
                     `
                 ,appN);
              initiateur.sender();
@@ -154,6 +174,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : DEMANDE DE PRET N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE A ETE VALIDEE PAR LA RH
+                       `/getLink()`
                     `
                 ,appN);
              initiateur.sender();
@@ -167,6 +188,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : DEMANDE DE PRET N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE A ETE VALIDEE PAR LE CONTROLEUR DE GESTION
+                       `/getLink()`
                     `
                 ,appN);
              initiateur.sender();
@@ -178,6 +200,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : DEMANDE DE PRET N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE A ETE VALIDEE PAR LE DGA
+                       `/getLink()`
                     `
                 ,appN);
              initiateur.sender();
@@ -189,6 +212,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : DEMANDE DE PRET N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE A ETE VALIDEE PAR LE DG
+                       `/getLink()`
                     `
                 ,appN);
              initiateur.sender();
@@ -200,7 +224,8 @@ $(document).on('click','.bouton_sub',function(){
              var initiateur = new WorkflowMailer(initiator,"DOCUMENT n\u00b0"+numdmd,
                     `
                        TYPE : DEMANDE DE PRET N&deg; ${numdmd} <br/>
-                       INFOS : VOTRE DEMANDE A ETE VALIDEE 
+                       INFOS : VOTRE DEMANDE A ETE VALIDEE
+                       `/getLink()` 
                     `
                 ,appN);
              initiateur.sender();
@@ -222,6 +247,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE :  DEMANDE DE PRET N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE A ETE REFUSEE
+                       `/getLink()`
                     `
                 ,appN);
              initiateur.sender();

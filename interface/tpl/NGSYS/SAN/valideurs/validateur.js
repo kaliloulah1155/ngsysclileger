@@ -54,12 +54,26 @@ loadvalideurs()
 })
 .catch(error=>console.log(error));
 
- 
+// Appel du lien du site ngser
+let link_ngser="../../../LinkSiteWeb.php";
+function getLink(){
+    
+       $.ajax({
+           url: link_ngser, 
+           type: "POST",
+           success: function(output) {
+                  console.log(output);
+               }, 
+           error: function (error) {
+                console.log(error);
+           },
+       });
+}
+
+//Appel
+getLink()  
 
  //Envoi de mail via workflow
-
- 
-
 class WorkflowMailer{
    
    constructor(email,titre,contenu,app){
@@ -131,6 +145,7 @@ $(document).on('click','.bouton_sub',function(){
                        TYPE : DEMANDE DE SANCTION <br/>
                        INFOS : VOUS AVEZ RECU UNE DEMANDE DE SANCTION POUR VALIDATION <br/>
                        DEMANDEUR :  ${initiateur_wk}
+                       `/getLink()`
                     `
                  ,appN);
              return  valid.sender();
@@ -142,6 +157,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : DEMANDE DE SANCTION N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE EST CHEZ LA RH POUR VALIDATION
+                       `/getLink()`
                     `
                 ,appN);
              initiateur.sender();
@@ -157,6 +173,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : DEMANDE DE SANCTION N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE A ETE VALIDEE PAR LA RH
+                       `/getLink()`
                     `
                 ,appN);
              initiateur.sender();
@@ -169,6 +186,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : DEMANDE DE SANCTION N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE A ETE VALIDEE PAR LE MANAGER ADMIN
+                       `/getLink()`
                     `
                 ,appN);
              initiateur.sender();
@@ -182,6 +200,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : DEMANDE DE SANCTION N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE A ETE VALIDEE PAR LE DGA
+                       `/getLink()`
                     `
                 ,appN);
              initiateur.sender();
@@ -194,6 +213,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE : DEMANDE DE SANCTION N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE A ETE VALIDEE 
+                       `/getLink()`
                     `
                 ,appN);
              initiateur.sender();
@@ -204,6 +224,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE :  SANCTION N&deg; ${numdmd} <br/>
                        INFOS : VOUS AVEZ ETE SANCTIONNE PAR L'ADMINISTRATION
+                       `/getLink()`
                     `
                 ,appN);
              sanctionne.sender();
@@ -223,6 +244,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE :  DEMANDE DE SANCTION N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE A ETE REFUSEE
+                       `/getLink()`
                     `
                 ,appN);
              initiateur.sender();
@@ -233,6 +255,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE :  SANCTION N&deg; ${numdmd} <br/>
                        INFOS : VOUS N'AVEZ PAS ETE SANCTIONNE PAR L'ADMINISTRATION
+                       `/getLink()`
                     `
                 ,appN);
              sanctionne.sender();

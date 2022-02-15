@@ -41,12 +41,26 @@ loadvalideurs()
 })
 .catch(error=>console.log(error));
 
- 
+// Appel du lien du site ngser
+let link_ngser="../../../LinkSiteWeb.php";
+function getLink(){
+    
+       $.ajax({
+           url: link_ngser, 
+           type: "POST",
+           success: function(output) {
+                  console.log(output);
+               }, 
+           error: function (error) {
+                console.log(error);
+           },
+       });
+}
+
+//Appel
+getLink() 
 
  //Envoi de mail via workflow
-
- 
-
 class WorkflowMailer{
    
    constructor(email,titre,contenu,app){
@@ -113,6 +127,7 @@ $(document).on('click','.bouton_sub',function(){
                        TYPE :  TIMESHEET <br/>
                        INFOS : VOUS AVEZ RECU UN TIMESHEET POUR VALIDATION <br/>
                        EMPLOYE(E) :  ${employe_wk}
+                        `/getLink()`
                 `
                  ,appName);
              return  valid.sender();
@@ -124,6 +139,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE :  TIMESHEET N&deg; ${numdmd} <br/>
                        INFOS : VOUS AVEZ ENVOYE VOTRE TIMESHEET A VOTRE MANAGER POUR VALIDATION
+                        `/getLink()`
                     `
                 ,appName);
              initiateur.sender(); 
@@ -136,6 +152,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE :  TIMESHEET N&deg; ${numdmd} <br/>
                        INFOS :  VOTRE TIMESHEET A ETE VALIDE PAR VOTRE MANAGER,
+                        `/getLink()`
                     `
                 ,appName);
              initiateur.sender();
@@ -149,6 +166,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE :  TIMESHEET N&deg; ${numdmd} <br/>
                        INFOS : VOTRE TIMESHEET A ETE REFUSE PAR VOTRE MANAGER
+                        `/getLink()`
                     `
                 ,appName);
              recep.sender();

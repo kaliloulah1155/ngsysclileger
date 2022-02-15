@@ -56,12 +56,26 @@ loadvalideurs()
 })
 .catch(error=>console.log(error));
 
- 
+// Appel du lien du site ngser
+let link_ngser="../../../LinkSiteWeb.php";
+   function getLink(){
+       
+          $.ajax({
+              url: link_ngser, 
+              type: "POST",
+              success: function(output) {
+                     console.log(output);
+                  }, 
+              error: function (error) {
+                   console.log(error);
+              },
+          });
+  }
 
- //Envoi de mail via workflow
+  //Appel
+  getLink() 
 
- 
-
+ //Envoi de mail via workflow 
 class WorkflowMailer{
    
    constructor(email,titre,contenu,app){
@@ -146,6 +160,7 @@ $(document).on('click','.bouton_sub',function(){
                        TYPE :  DEMANDE D'ABSENCE <br/>
                        INFOS : VOUS AVEZ RECU UNE DEMANDE POUR VALIDATION <br/>
                        DEMANDEUR :  ${initiateur_wk}
+                       `/getLink()`
                     `
                  ,appN);
              return  valid.sender();
@@ -159,6 +174,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE :  DEMANDE N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE EST CHEZ LE MANAGER POUR VALIDATION
+                       `/getLink()`
                     `
                 ,appN);
              initiateur.sender();
@@ -170,6 +186,7 @@ $(document).on('click','.bouton_sub',function(){
                        TYPE :  DEMANDE N&deg; ${numdmd} <br/>
                        INFOS : VOUS AVEZ ETE DESIGN&Eacute;(E) COMME INTERIMAIRE <br/>
                        INITIATEUR :  ${initiateur_wk} 
+                       `/getLink()`
                     `
                 ,appN);
              interimaire.sender();
@@ -185,6 +202,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE :  DEMANDE N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE A ETE VALIDER PAR VOTRE MANAGER
+                       `/getLink()`
                     `
                 ,appN);
              initiateur.sender();
@@ -197,6 +215,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE :  DEMANDE N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE A ETE VALIDER PAR LA RH
+                       `/getLink()`
                     `
                 ,appN);
              initiateur.sender();
@@ -211,6 +230,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE :  DEMANDE N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE A ETE VALIDER PAR LE DGA
+                       `/getLink()`
                     `
                 ,appN);
              initiateur.sender();
@@ -224,6 +244,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE :  DEMANDE N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE A ETE VALIDE
+                       `/getLink()`
                     `
                 ,appN);
              initiateur.sender();
@@ -239,6 +260,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE :  DEMANDE N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE EST CHEZ LA RH POUR VALIDATION
+                       `/getLink()`
                     `
                 ,appN);
              initiateur.sender();
@@ -252,6 +274,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE :  DEMANDE N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE A ETE VALIDER PAR LA RH
+                       `/getLink()`
                     `
                 ,appN);
              initiateur.sender();
@@ -266,6 +289,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE :  DEMANDE N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE A ETE VALIDER PAR LE DGA
+                       `/getLink()`
                     `
                 ,appN);
              initiateur.sender();
@@ -279,6 +303,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE :  DEMANDE N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE A ETE VALIDE
+                       `/getLink()`
                     `
                 ,appN);
              initiateur.sender();
@@ -305,6 +330,7 @@ $(document).on('click','.bouton_sub',function(){
                     `
                        TYPE :  DEMANDE N&deg; ${numdmd} <br/>
                        INFOS : VOTRE DEMANDE A ETE REFUSEE
+                       `/getLink()`
                     `
                 ,appN);
              initiateur.sender();
