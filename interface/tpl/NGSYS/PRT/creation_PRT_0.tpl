@@ -71,12 +71,18 @@
 		}
 
 		.parsley-error{
-			 border-style: solid;
+			border-style: solid;
   			border-color: red;
 		}
+
 		span.text:after {
-		content: "*";
-		color: red;
+			content: "*";
+			color: red;
+		}
+
+		label{
+			font-size: 15px;
+			font-weight: 100;
 		}
 		
 	</style>

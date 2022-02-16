@@ -57,6 +57,11 @@
 			background:transparent
 		}
 
+		label{
+			font-size: 15px;
+			font-weight: 100;
+		}
+
 		.parsley-error{
 			 border-style: solid;
   			border-color: red;

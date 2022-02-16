@@ -65,6 +65,12 @@
 			 border-style: solid;
   			border-color: red;
 		}
+
+		label{
+			font-size: 15px;
+			font-weight: 100;
+		}
+
 		span.text:after {
 		content: "*";
 		color: red;
@@ -124,8 +130,13 @@
 					<div class="col1_partie text-center">
 						<span class="title text-while">DESCRIPTIFS</span>
 					</div>
-					<div class="col2_partie" style="padding-top: 2%;">
+					<div class="col2_partie" style="padding-top: 1%;">
 						<div class="row">
+
+							<div class="col-sm-12 text-center" style="margin-bottom: 10px">
+								<label>Les champs avec (<span class='text'></span>) sont obligatoires</label>
+							</div>
+
 							<div class="col-sm-4">
 								<label for="bio">Nom & pr&#233;noms <span class='text'></span> :</label>
 								<select id="interimaire" class="form-control select2 personnel" name='POS_VAL_RUB_INT' style="width: 100%;" required="true">

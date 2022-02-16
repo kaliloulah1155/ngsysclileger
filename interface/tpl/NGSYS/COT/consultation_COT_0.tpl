@@ -190,16 +190,13 @@
 		}
 				/*FIN Barre de progression  1  */
 		.col_list{
-		/*width: 50%;*/
-		/*margin-top: -1%;*/
-		margin-right: 5%;
-		margin-bottom: 0px;
-		font-family: 'Times New Roman';
-		font-size: 15px;
-		background-color: transparent;
-		font-weight: lighter; 
-		float: right;
-	}
+			width: 22%;
+			float: right;
+			font-family: 'Times New Roman';
+			font-size: 14px;
+			background-color: transparent;
+			font-weight: lighter; 
+		}
 
 	</style>
 </head>

@@ -82,6 +82,7 @@
 			 border-style: solid;
   			border-color: red;
 		}
+		
 		span.text:after {
 		content: "*";
 		color: red;

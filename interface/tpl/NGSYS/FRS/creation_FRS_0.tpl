@@ -74,6 +74,11 @@
 			content: "*";
 			color: red;
 		}
+
+		label{
+			font-size: 15px;
+			font-weight: 100;
+		}
 		
 	</style>
 </head>
@@ -118,7 +123,7 @@
 						<span class="title text-while">DESCRIPTIF</span>
 					</div>
 
-					<div class="col2_partie" style="padding: 2%;">
+					<div class="col2_partie" style="padding: 1%;">
 						<div class="col-sm-12 text-center" style="margin-bottom: 10px">
 							<label>Les champs avec (<span class='text'></span>) sont obligatoires</label>
 						</div>

@@ -63,13 +63,19 @@
 		}
 
 		.parsley-error{
-			 border-style: solid;
+			border-style: solid;
   			border-color: red;
 		}
+
+		label{
+			font-size: 15px;
+			font-weight: 100;
+		}
+
 		span.text:after {
-				content: "*";
-				color: red;
-				}
+			content: "*";
+			color: red;
+		}
 
 	</style>
 </head>
@@ -116,7 +122,7 @@
 					<div class="col1_partie text-center">
 						<span class="title text-while">DESCRIPTIFS</span>
 					</div>
-					<div class="col2_partie" style="padding-top: 2%;">
+					<div class="col2_partie" style="padding-top: 1%;">
 						<div class="row">
 							<div class="col-sm-12 text-center" style="margin-bottom: 13px">
 								<label>Les champs avec (<span class='text'></span>) sont obligatoires</label>

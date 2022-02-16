@@ -64,6 +64,11 @@
 			 border-style: solid;
   			border-color: red;
 		}
+
+		label{
+			font-size: 15px;
+			font-weight: 100;
+		}
 	</style>
 </head>   
 <body  class='tpl_creation tpl_creation_fpo' onLoad='initTplCreation();' style="background-color: transparent;font-family: 'Times New Roman';">

@@ -30,6 +30,7 @@
 </head>
 
 <style type="text/css">
+	
 	.col_list{
 		width: 27%;
 		margin-left: 68%;
@@ -56,8 +57,12 @@
 	span.text:after {
 		content: "*";
 		color: red;
-		}
+	}
 
+	label{
+		font-size: 15px;
+		font-weight: 100;
+	}
 
 </style>
 

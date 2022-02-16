@@ -47,6 +47,16 @@
 	
 
 	<style>
+
+		.col_list{
+			width: 22%;
+			float: right;
+			font-family: 'Times New Roman';
+			font-size: 14px;
+			background-color: transparent;
+			font-weight: lighter; 
+		}
+
 		.col1_partie{
 			width: 100%;
 			font-family: 'Times New Roman';
@@ -82,17 +92,6 @@
 			margin: 0%; 
 			padding-left: 27px;
 			padding-top: 5px;
-		}
-		
-		.col_list{
-			width: 50%;
-			margin-top: -3%;
-			margin-right: 5%;
-			font-family: 'Times New Roman';
-			font-size: 17px;
-			background-color: transparent;
-			font-weight: lighter; 
-			float: right;
 		}
 		
 		.header-const{
@@ -330,6 +329,20 @@
 					 <!--fin données de l'utilisateur connecté -->  
 					 <!-- Appel du lien ngser -->
 					<input type="hidden" class="user_url" />
+		
+					<input type="hidden" name="URL_ATTENTE" value="{URL_ATTENTE}"><!--  -->
+					<input type="hidden" name="URL_RESULTAT" value="{URL_RESULTAT}">
+					<input type="hidden" name="URL_OBTENIR_NB_REP" value="{URL_OBTENIR_NB_REP}">
+					<input type="hidden" name="URL_CHANGER_PROFIL" value="{URL_CHANGER_PROFIL}">
+					<input type="hidden" id="nb-profils" value="{NB_PROFILS_UTIL}">
+			
+	
+				<div class="col_list">
+					<i class="fa fa-eye fa-1x" style="color:#4a67b3;"></i>
+					<a href="javascript:void lanceBibBal('/{NOM_APPLICATION}/interface/session/principal/resultat/rechercher_db.php&TYPE_RECHERCHE=RECHERCHE_BAL&POS_QUEST_NOM=Bal_ABS_lnv&POS_QUEST_PUBLIC=1', 'QUESTION_BAL');">
+						<span style="color:#4a67b3;">Cliquez pour consulter la liste</span>
+					</a>
+				</div>
 		
 		<header class="header-const">
 			<div id="actions-container" class="ui-widget-content titre-boutons" style="padding-left: 3%; text-align: center; background: transparent; border: none">

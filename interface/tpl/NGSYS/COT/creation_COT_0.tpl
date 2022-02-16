@@ -80,6 +80,12 @@
 			 border-style: solid;
   			border-color: red;
 		}
+
+		label{
+			font-size: 15px;
+			font-weight: 100;
+		}
+
 		span.text:after {
 		content: "*";
 		color: red;
@@ -132,7 +138,7 @@
 					<div class="col1_partie text-center">
 						<span class="title text-while">GENERALITE</span>
 					</div>
-					<div class="col2_partie" style="padding-top: 3%;">
+					<div class="col2_partie" style="padding-top: 1%;">
 						<div class="container-fluid">
 							<div class="row">
 								 <input type="hidden" name="POS_VAL_RUB_CIV" value="{POS_VAL_RUB_CIV}" class="civilite_pers" />
