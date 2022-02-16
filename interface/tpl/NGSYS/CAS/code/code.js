@@ -23,8 +23,6 @@ ajaxcode()
    }
 
     
-   
-
 
 	let newOrder = ++order;
 	$('.numero').val(parseInt(newOrder));
