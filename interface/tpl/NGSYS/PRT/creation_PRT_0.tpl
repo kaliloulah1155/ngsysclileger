@@ -194,8 +194,10 @@
 				</div>
 				<!-- 12_ 2 infos -->
 				<div class="col1_partie text-center">
-					<span class="title text-while">NOUVELLE DEMANDE DE PRET</span>
+					<span class="title text-while">NOUVELLE DEMANDE DE PRET </span>
+					<input type="text" name='POS_VAL_RUB_COD' value="{POS_VAL_RUB_COD}"   class="numero" >
 				</div>
+				
 				<div class="col2_partie">
 					<div class="alert alert-danger flashalert" role="alert" style="display:none">
 				       Votre montant prelevable est sup&eacute;rieur &agrave; votre quotit&eacute; cessible!! Veuillez changer le nombre de mois(Dur&eacute;e) et le Montante emprunt&acute;

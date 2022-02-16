@@ -305,7 +305,7 @@
 								</div>
 								<!-- 12_ 2 infos -->
 								<div class="col1_partie text-center">
-									<span class="title text-while">NOUVELLE DEMANDE DE PRET</span>
+									<span class="title text-while">NOUVELLE DEMANDE DE PRET </span>
 								</div>
 								<div class="col2_partie">
 									<div class="alert alert-danger flashalert" role="alert" style="display:none">
@@ -316,7 +316,7 @@
 										   <label for="bio">Montant emprunt :</label>
 											<input type="number" min="0" name='POS_VAL_RUB_VEM' value="{POS_VAL_RUB_VEM}" class="form-control sommeEmprunt" id="bio" style="width: 100%;"  data-parsley-pattern="^[0-9]+$" data-parsley-trigger="keyup">
 											
-					<input type="hidden" name="POS_VAL_RUB_MDT" value="{POS_VAL_RUB_MDT}" class="emprunt_lettre" />
+											<input type="hidden" name="POS_VAL_RUB_MDT" value="{POS_VAL_RUB_MDT}" class="emprunt_lettre" />
 										</div>
 										<div class="col-sm-6 form-group">
 										   	<label for="bio">Dur&eacute;e (en mois) :</label>

@@ -9,7 +9,7 @@ let link_urlC =
     "/CAS/code/code.php";
 
 
-//Debut phase 1-Traitement des departements
+    //Debut phase 1-Traitement des departements
 ajaxcode()
 .then((results) => {
     
