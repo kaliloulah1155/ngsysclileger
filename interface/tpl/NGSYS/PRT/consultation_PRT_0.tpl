@@ -327,7 +327,10 @@
 								</div>
 								<!-- 12_ 2 infos -->
 								<div class="col1_partie text-center">
-									<span class="title text-while">NOUVELLE DEMANDE DE PRET </span>
+									<span class="title text-while"> 
+										DEMANDE DE PRET N&deg; <span class="tnum">{POS_VAL_RUB_COD}</span> 
+								</span>  
+								<input type="hidden" name='POS_VAL_RUB_COD' value="{POS_VAL_RUB_COD}" style="color:black;" class="numero" >
 								</div>
 								<div class="col2_partie">
 									<div class="alert alert-danger flashalert" role="alert" style="display:none">
