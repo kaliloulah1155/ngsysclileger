@@ -194,8 +194,10 @@
 				</div>
 				<!-- 12_ 2 infos -->
 				<div class="col1_partie text-center">
-					<span class="title text-while">NOUVELLE DEMANDE DE PRET </span>
-					<input type="text" name='POS_VAL_RUB_COD' value="{POS_VAL_RUB_COD}"   class="numero" >
+					<span class="title text-while"> 
+						    DEMANDE DE PRET N&deg; <span class="tnum"></span> 
+					</span>  
+					<input type="hidden" name='POS_VAL_RUB_COD' style="color:black;" class="numero" >
 				</div>
 				
 				<div class="col2_partie">
@@ -251,7 +253,8 @@
 	    <script language='javascript' src='/{NOM_APPLICATION}/include/jQuery/parseley.js'></script>
 	    <script language='javascript' src='/{NOM_APPLICATION}/include/jQuery/parseleyfr.js'></script>
 		<script language='javascript' src="/{NOM_APPLICATION}/include/jQuery/jquery-ui.js"></script>
-		<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PRT/calcpret/calc_prt.js"></script>  
+		<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PRT/calcpret/calc_prt.js"></script>
+		<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PRT/code/code.js"></script>  
 	<!-- END JQUERY  -->
 
 	 <script>

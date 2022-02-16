@@ -14,8 +14,6 @@ ajaxcode()
 .then((results) => {
     
    $('.numero').val(order);
-
-
    if(isNaN(results[0])) {
          order = 0 ;
    }else{
