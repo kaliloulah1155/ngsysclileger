@@ -61,6 +61,12 @@
 			margin: 2.5%;
 			background:transparent
 		}
+
+		label{
+			font-size: 15px;
+			font-weight: 100;
+		}
+
 		span.text:after {
 		content: "*";
 		color: red;
@@ -121,7 +127,7 @@
 					<div class="col1_partie text-center">
 						<span class="title text-while">OBJET DE LA DEMANDE</span>
 					</div>
-					<div class="col2_partie container-fluid" style="padding-top: 2%; padding-bottom: 1%">
+					<div class="col2_partie container-fluid" style="padding-top: 1%; padding-bottom: 1%">
 						<div class="row">
 
 							<div class="col-sm-12 text-center" style="margin-bottom: 10px">

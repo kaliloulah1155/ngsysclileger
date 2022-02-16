@@ -66,20 +66,6 @@
 
 	    }
 
-	    /*#table_salarie thead th,#table_salarie tbody td{
-	    	border: 1px solid;
-	    	padding: 8px 10px;
-	    }
-
-	    #table_consultant thead th,#table_consultant tbody td{
-	    	border: 1px solid;
-	    	padding: 8px 10px;
-	    }
-
-	    #table_stagiaire thead th,#table_stagiaire tbody td{
-	    	border: 1px solid;
-	    	padding: 8px 10px;
-	    }*/
 	</style>
 </head>
 <body  class='tpl_creation tpl_creation_dis' onLoad='initTplCreation();' style="background-color: transparent;font-family: 'Times New Roman';">
@@ -118,71 +104,29 @@
 		  <div class="card mb-1" >
 		        <div class="card-header">
 		            <div class="row">
-										<div class="col-sm-4">
-											<label></label>
-										</div>
-										<div class="col-sm-6 jumbotron text-center">
-											<span>FICHIER E-DISA</strong></span>
-										</div>
+						<div class="col-sm-4">
+							<label></label>
 						</div>
-		      
- <!--	
-		        <div class="card-body">
-		        	<div class="row" style="margin-bottom: 3%">
-
-		        		<div class="col-sm-2" style="margin-top: 13px;"> </div>
-
-		        	<div class="col-sm-3" style="margin-top: 13px;">
-							<label>Type de contrat :</label>
-							<select class="form-control select contrat" name='POS_VAL_RUB_C2' style="width: 100%;">
-								<option value="">Veuillez s&#233;lectionner</option>
-								<option value="Stage-ecole">Stage-&#233;cole</option>
-								<option value="Stage professionnel">Stage professionnel</option>
-								<option value="CDD avec essai">CDD avec essai</option>
-								<option value="CDD lie au projet">CDD li&#233; au projet</option>
-								<option value="CDD standard">CDD standard</option>
-								<option value="CDI avec essai">CDI avec essai</option>
-								<option value="CDI standard">CDI standard</option>
-								<option value="Consultant interne">Consultant interne</option>
-								<option value="Consultant externe">Consultant externe</option>
-							</select>
-						<input type="hidden"  class="interselectcontrat" name='POS_VAL_CTRL_C2' id='POS_VAL_CTRL_C2' value='{POS_VAL_RUB_C2}' required="true">
-
-						</div>
-
-						<div class="col-sm-1" style="margin-top: 13px;"> </div>
-
-						<div class="col-sm-3" style="margin-top: 13px;">
-							<label for="bio">Mois & Ann&#233;e :</label>
-							<input type="text" name='POS_VAL_RUB_A1' placeholder="MM/AAAA" class="form-control datefin1" style="width: 100%;" required="true">
-
-								<input type="hidden"  name='POS_VAL_RUB_DAE' class="date_edit" />
-							
-						</div>-->
-
-						<!-- <div class="col-sm-1" style="margin-top: 13px;"> </div> -->
-
-						<!-- 	<div class="col-sm-1" style="margin-top: 17px;">
-							<label for="bio" style="visibility: hidden;">Recherche</label>
-							<button class="btn bg-primary reg_btn" title="Faire des recherches sur le champ date"><i class="fa fa-search"></i></button>
+						<div class="col-sm-6 jumbotron text-center">
+							<span>FICHIER E-DISA</strong></span>
 						</div>
 					</div>
-		        </div>-->
+				</div>
 		    </div>
 
-		 <p>
-		   <div class="row mb-3 col-md-offset-10">
-        <div class="col-md-2 mt-2 ">
-            <select class="form-control typeDemande choice" style="width: 100% ;display: none;">
-                <option value="Xls" selected>Xls</option>
-            </select>
-        </div>
-        <div class="col-md-2 mt-2">
-            <button class="btn btn_format" title="cliquez pour exporter vos documents en format s&#233;lectionner" >Exporter</button>
-        </div>
-    </div>
-  </p>
-  <br/>  
+		 	<p>
+				<div class="row mb-3 col-md-offset-10">
+					<div class="col-md-2 mt-2 ">
+						<select class="form-control typeDemande choice" style="width: 100% ;display: none;">
+							<option value="Xls" selected>Xls</option>
+						</select>
+					</div>
+					<div class="col-md-2 mt-2">
+						<button class="btn btn_format" title="cliquez pour exporter vos documents en format s&#233;lectionner" >Exporter</button>
+					</div>
+				</div>
+			</p>
+			<br/>  
 
 			<!-- table -->
 			<div class="row">
@@ -193,15 +137,15 @@
 			        	<table id="min-data" class="table table_1">
 
 				        	<thead class="table-sm text-white" style="background: #4a67b3;">
-									 <tr>
-					                <th style="min-width: 30px;text-align: center;border-top-left-radius: 5px;">CNPS</th>
-													<th>NOM</th>
-													<th>PR&#201;NOMS</th>
-													<th>DATE DE NAISSANCE</th>
-													<th>DATE D'EMBAUCHE</th>
-													<th>DATE DE D&#201;PART</th>
-													<th>P&#201;RIODICIT&#201; DE PAIE</th>
-					                <th style="min-width: 100px;text-align: center;border-top-right-radius: 5px;">SALAIRE BRUTE</th>
+								<tr>
+					                <th style="font-size: 10px; font-weight: 100;min-width: 30px;text-align: center;border-top-left-radius: 5px;color: #fff;">CNPS</th>
+									<th style="font-size: 10px; font-weight: 100;color: #fff;">NOM</th>
+									<th style="font-size: 10px; font-weight: 100;color: #fff;">PR&#201;NOMS</th>
+									<th style="font-size: 10px; font-weight: 100;color: #fff;">DATE DE NAISSANCE</th>
+									<th style="font-size: 10px; font-weight: 100;color: #fff;">DATE D'EMBAUCHE</th>
+									<th style="font-size: 10px; font-weight: 100;color: #fff;">DATE DE D&#201;PART</th>
+									<th style="font-size: 10px; font-weight: 100;color: #fff;">P&#201;RIODICIT&#201; DE PAIE</th>
+					                <th style="font-size: 10px; font-weight: 100;min-width: 100px;text-align: center;border-top-right-radius: 5px;color: #fff;">SALAIRE BRUTE</th>
 					            </tr>
 					        </thead>
 					        <tbody class="tr_disa">
@@ -210,8 +154,6 @@
 					    </table>
 			        </div>
 			    </div>
-
-			    
 			</div>
 			
 

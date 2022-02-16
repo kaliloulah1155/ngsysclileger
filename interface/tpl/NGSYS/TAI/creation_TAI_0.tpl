@@ -67,20 +67,10 @@
 
 	    }
 
-	    /*#table_salarie thead th,#table_salarie tbody td{
-	    	border: 1px solid;
-	    	padding: 8px 10px;
-	    }
-
-	    #table_consultant thead th,#table_consultant tbody td{
-	    	border: 1px solid;
-	    	padding: 8px 10px;
-	    }
-
-	    #table_stagiaire thead th,#table_stagiaire tbody td{
-	    	border: 1px solid;
-	    	padding: 8px 10px;
-	    }*/
+		label{
+			font-size: 15px;
+			font-weight: 100;
+		}
 	</style>
 </head>
 <body  class='tpl_creation tpl_creation_tai' onLoad='initTplCreation();' style="background-color: transparent;font-family: 'Times New Roman';">

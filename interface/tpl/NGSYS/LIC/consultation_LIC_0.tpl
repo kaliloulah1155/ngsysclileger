@@ -40,6 +40,15 @@
 	<!-- END JQUERY UI -->
 	 
 	<style>
+		.col_list{
+			width: 22%;
+			float: right;
+			font-family: 'Times New Roman';
+			font-size: 14px;
+			background-color: transparent;
+			font-weight: lighter; 
+		}
+		
 		.col1_partie{
 			width: 100%;
 			font-family: 'Times New Roman';
@@ -66,17 +75,6 @@
 			padding: 5px;
 		}
 		
-		.col_list{
-			width: 50%;
-			margin-top: -3%;
-			margin-right: 5%;
-			font-family: 'Times New Roman';
-			font-size: 17px;
-			background-color: transparent;
-			font-weight: lighter; 
-			float: right;
-		}
-		
 		.header-const{
 			margin-bottom: 3%;
 		}
@@ -85,18 +83,6 @@
 			 border-style: solid;
   			border-color: red;
 		}
-	.col_list{
-	/*width: 50%;*/
-	margin-top: 1%;
-	margin-right: 5%;
-	margin-bottom: 0px;
-	font-family: 'Times New Roman';
-	font-size: 15px;
-	background-color: transparent;
-	font-weight: lighter; 
-	float: right;
-}
-
 		
 	</style>
 </head>

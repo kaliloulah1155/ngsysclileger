@@ -72,10 +72,10 @@
 		color: red;
 		}
 
-.select2-selection{
-	height: 200px;
-	background: red;
-}
+		label{
+			font-size: 15px;
+			font-weight: 100;
+		}
 
 	</style>
 </head>
@@ -121,7 +121,7 @@
 					<div class="col1_partie text-center">
 						<span class="title text-while">DESCRIPTIF</span>
 					</div>
-					<div class="col2_partie" style="padding-top: 2%;">
+					<div class="col2_partie" style="padding-top: 1%;">
 						<div class="row">
 						
 							<!-- données de l'utilisateur connecté -->

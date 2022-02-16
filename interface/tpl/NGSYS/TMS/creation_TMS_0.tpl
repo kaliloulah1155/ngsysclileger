@@ -105,6 +105,11 @@
 			background: red;
 		}
 
+		label{
+			font-size: 15px;
+			font-weight: 100;
+		}
+
 
 .select2-selection--single {
   overflow: hidden;
@@ -230,7 +235,7 @@
 			<!--fin table  -->
 
 				<!-- Les boutons de supression et ajout de nouvelle ligne -->
-				<div class="col-sm" style="float: right;padding-right:84px">
+				<div class="col-sm" style="float: right;">
 					<span class="btn button_plus Suprim" title="Suprimer la derni&#232;re ligne" style="margin-right: 5px; display: none;">Suprimer</span>
 					<span class="button_plus addRow btn">Ajouter une ligne</i></span>
 				</div>

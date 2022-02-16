@@ -35,6 +35,15 @@
 	
 	<style>
 
+		.col_list{
+			width: 22%;
+			float: right;
+			font-family: 'Times New Roman';
+			font-size: 14px;
+			background-color: transparent;
+			font-weight: lighter; 
+		}
+
 		.fa-archive{
 			color: #fff;
 			font-size: 10px;
@@ -227,8 +236,22 @@
 
 		<input type="hidden" class="loadcode" name="POS_VAL_RUB_COD" value="{POS_VAL_RUB_COD}"  style="width: 100%;">
 
-			<input type="hidden" class="vsalaire_base" name="POS_VAL_RUB_SAB" value="{POS_VAL_RUB_SAB}"  style="width: 100%;">
+		<input type="hidden" class="vsalaire_base" name="POS_VAL_RUB_SAB" value="{POS_VAL_RUB_SAB}"  style="width: 100%;">
 		
+		<input type="hidden" name="URL_ATTENTE" value="{URL_ATTENTE}"><!--  -->
+		<input type="hidden" name="URL_RESULTAT" value="{URL_RESULTAT}">
+		<input type="hidden" name="URL_OBTENIR_NB_REP" value="{URL_OBTENIR_NB_REP}">
+		<input type="hidden" name="URL_CHANGER_PROFIL" value="{URL_CHANGER_PROFIL}">
+		<input type="hidden" id="nb-profils" value="{NB_PROFILS_UTIL}">
+
+		<div class="col_list text-center px-3">
+			<i class="fa fa-eye fa-1x" style="color:#4a67b3;"></i>
+			<a href="javascript:void lanceBibBal('/{NOM_APPLICATION}/interface/session/principal/resultat/rechercher_db.php&TYPE_RECHERCHE=RECHERCHE_BAL&POS_QUEST_NOM=Bal_HSU_lnv&POS_QUEST_PUBLIC=1', 'QUESTION_BAL');">
+				<span style="color:#4a67b3;">Cliquez pour consulter la liste</span>
+			</a>
+		</div>
+
+
 		<header class="header-const">
 			<div id="actions-container" class="ui-widget-content titre-boutons" style="padding-left: 3%; text-align: center; background: transparent; border: none">
 				 {ENTETE}

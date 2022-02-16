@@ -48,6 +48,11 @@
 		button:hover{
 		   background: rgb(245, 232, 207); 
 		}
+
+        label{
+			font-size: 15px;
+			font-weight: 100;
+		}
 		
 	</style>
 </head>

@@ -68,6 +68,11 @@
 			color: red;
 		}
 
+		label{
+			font-size: 15px;
+			font-weight: 100;
+		}
+
 	</style>
 </head>
 <body  class='tpl_creation tpl_creation_pay' onLoad='initTplCreation();' style="background-color: transparent;font-family: 'Times New Roman';">
@@ -117,7 +122,7 @@
  				<input  class="form-control prenoms" type="hidden" name='POS_VAL_RUB_PRE' value="{POS_VAL_RUB_PRE}" placeholder="prenoms"  >
  				<input  class="form-control matricule" placeholder="matricule" type="hidden" name='POS_VAL_RUB_MAT'  value="{POS_VAL_RUB_MAT}"  >
 
-							<div class="col-sm-12 text-center" style="margin-bottom: 13px">
+							<div class="col-sm-12 text-center" style="margin-bottom: 13px;margin-top: 8px;">
 								<label>Les champs avec (<span class='text'></span>) sont obligatoires</label>
 							</div>
  				

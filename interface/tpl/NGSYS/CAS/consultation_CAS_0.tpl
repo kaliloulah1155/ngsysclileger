@@ -38,6 +38,16 @@
  
 	
 	<style>
+
+		.col_list{
+			width: 22%;
+			float: right;
+			font-family: 'Times New Roman';
+			font-size: 14px;
+			background-color: transparent;
+			font-weight: lighter; 
+		}
+
 		.col1_partie{
 			width: 100%;
 			font-family: 'Times New Roman';
@@ -62,20 +72,10 @@
 			margin: 0%; 
 		}
 		
-		.col_list{
-			width: 50%;
-			margin-top: -3%;
-			margin-right: 5%;
-			font-family: 'Times New Roman';
-			font-size: 17px;
-			background-color: transparent;
-			font-weight: lighter; 
-			float: right;
-		}
-		
 		.header-const{
 			margin-bottom: 3%;
 		}
+		
 		.parsley-error{
 			 border-style: solid;
   			border-color: red;
@@ -94,6 +94,13 @@
 		<!-- BEGIN BLOC_OLD_VALUE -->
 		<input type='hidden' name='{NAME_OLD_RUB}' value="{VALUE_OLD_RUB}">
 		<!-- END BLOC_OLD_VALUE -->
+
+		<div class="col_list">
+			<i class="fa fa-eye fa-1x" style="color:#4a67b3;"></i>
+			<a href="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/CAS/liste/liste_CAS_1.php?APPLI={NOM_APPLICATION}">
+				<span style="color:#4a67b3;">Cliquez pour consulter la liste</span>
+			</a>
+		</div>
 		
 		<header class="header-const">
 			<div id="actions-container" class="ui-widget-content titre-boutons" style="padding-left: 3%; text-align: center; background: transparent; border: none">

@@ -22,7 +22,6 @@
 	<link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="Stylesheet" type="text/css" />
 	<script language='javascript' src='/NGSYS/include/script/action_accueil.js'></script>
 	<style>
-
 		
 		.col_list{
 			height: 7vh;
@@ -67,8 +66,10 @@
   			border-color: red;
 		}
 		
-		
-		
+		label{
+			font-size: 15px;
+			font-weight: 100;
+		}
 	</style>      
 </head>
 <body  class='tpl_creation tpl_creation_prs' onLoad='initTplCreation();' style="background-color: transparent;font-family: 'Times New Roman';">
