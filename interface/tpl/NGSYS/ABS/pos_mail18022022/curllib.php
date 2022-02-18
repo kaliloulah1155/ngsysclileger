@@ -20,20 +20,20 @@ class LibCurl{
         curl_setopt($curl,CURLOPT_HTTPHEADER,[
             'cache-control: no-cache',
             'Content-Type: application/json'
-         ]);
-        
-         curl_setopt($curl, CURLOPT_POST,1);
-         curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($dataString));
-         curl_setopt($curl, CURLINFO_HEADER_OUT, true);
-         curl_setopt($curl, CURLOPT_VERBOSE, 1);
+        ]);
+
+        curl_setopt($curl, CURLOPT_POST,1);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($dataString));
+        curl_setopt($curl, CURLINFO_HEADER_OUT, true);
+        curl_setopt($curl, CURLOPT_VERBOSE, 1);
         $data=curl_exec($curl);
         $result=[];
 
         if($data==false){
             var_dump(curl_error($curl));
         }else{
-                $data=json_decode($data,true);
-                $result=$data;
+            $data=json_decode($data,true);
+            $result=$data;
         }
         curl_close($curl);
        return  $result;
