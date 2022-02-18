@@ -6,24 +6,28 @@ let link_urlC =
     appNameC +
     "/interface/tpl/" +
     appNameC +
-    "/CAS/code/code.php";
+    "/PRT/code/code.php";
 
 
 //Debut phase 1-Traitement des departements
 ajaxcode()
 .then((results) => {
     
+
    $('.numero').val(order);
-   if(isNaN(results[0])) {
+   if(isNaN(results[0]) || results[0] =='' ) {
          order = 0 ;
    }else{
       order = results[0];
    }
 
-    
+   
 
+   
 	let newOrder = ++order;
-	$('.numero').val(parseInt(newOrder));
+   // console.log("test = "+newOrder) ;
+	$('.numero').val(newOrder);
+    $('.tnum').text(newOrder);
     
 })
 
