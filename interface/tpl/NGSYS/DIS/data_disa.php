@@ -25,7 +25,7 @@ try{
    $mois='';
 
      
-
+    
      $counter=1;
     
     	$demission=false;
@@ -72,26 +72,25 @@ try{
 
 
           	 ////PERIODE TRAVAILLE 
-
-          	 $dtemb = explode("/", $date_embauche);
-    		 $dtftemb=$dtemb[2].'-'.$dtemb[1].'-'.$dtemb[0] ;
-    		 $annee_emb=$dtemb[2];
-    		 $d1 = new DateTime($dtftemb);
-			 $d2 = new DateTime();
-			 $interval_curr = $d1->diff($d2);
-    		 $annee_curr = ($d2)->format('Y');
-
-
-    		 $dtdep = explode("/", $date_depart);
-    		 $dtftdep=  $dtdep[2].'-'.$dtdep[1].'-'.$dtdep[0] ;
-    		 $annee_dep=$dtdep[2];
-
-    		 if($annee_dep !=''){
-    		 		 $d3 = new DateTime($dtftdep);
-    		 		$interval_dep = $d1->diff($d3);
-    		 }
+			   if($date_embauche !=''){
+					$dtemb = explode("/", $date_embauche);
+					$dtftemb=$dtemb[2].'-'.$dtemb[1].'-'.$dtemb[0] ;
+					$annee_emb=$dtemb[2];
+					$d1 = new DateTime($dtftemb);
+					$d2 = new DateTime();
+					$interval_curr = $d1->diff($d2);
+					$annee_curr = ($d2)->format('Y');
+			   }
+             
+			 if($date_depart !=''){
+				$dtdep = explode("/", $date_depart);
+				$dtftdep=  $dtdep[2].'-'.$dtdep[1].'-'.$dtdep[0] ;
+				$annee_dep=$dtdep[2];
+				$d3 = new DateTime($dtftdep);
+				$interval_dep = $d1->diff($d3);
+			 
+	        } 
     		  
- 
 
     		 if(!$demission){
     		 	if($annee_emb==$annee_curr){

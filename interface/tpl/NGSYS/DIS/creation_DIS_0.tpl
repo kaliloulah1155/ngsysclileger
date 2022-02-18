@@ -23,7 +23,10 @@
 	<script language='javascript' src='/{NOM_APPLICATION}/include/script/action_accueil.js'></script>
 	<link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="Stylesheet" type="text/css" />
 	<script language='javascript' src='/NGSYS/include/script/action_accueil.js'></script>
-
+	<!-- script -->
+    <script type='text/javascript' src='../../../../../include/script/script_data/jquery-3.5.1.js'></script>
+    <script type='text/javascript' src='../../../../../include/data_tableau/scripts/jquery.dataTables.min.js'></script>
+    <script type='text/javascript' src='../../../../../include/script/data_tables/datatable_language.js'></script>
 	
 	<style>
 		.jumbotron{
@@ -115,16 +118,42 @@
 		    </div>
 
 		 	<p>
-				<div class="row mb-3 col-md-offset-10">
-					<div class="col-md-2 mt-2 ">
+				 <!-- debut nouveau -->
+				<div class="col-md-2 mt-2 offset-6">
+					<select class="form-control typeDemande choice" style="width: 100%">
+						<option value="Xls">Xls</option>
+						<option value="Xlsx">Xlsx</option>
+						<option value="Csv">Csv</option>
+						<!-- <option value="*txt">Txt</option>  -->
+					</select>
+				</div>
+				<div class="col-md-2 mt-2">
+					<button class="btn btn_export" title="cliquez pour exporter vos documents en format s&#233;lectionner" >Exporter</button>
+				</div>
+				<!-- <div class="col-md-2 mt-2"></div>
+					<button class="btn btn_format_txt" title="cliquez pour t&#233;l&#233;charger vos document en format txt">Format txt</button>
+				</div>
+				<div class="col-md-2 mt-2">
+					<button class="btn btn_format" title="cliquez pour t&#233;l&#233;charger vos document en format pdf">Format pdf</button> 
+				</div> -->
+				<!-- fin nouveau -->
+				
+				<!-- DEBUT ANCIEN -->
+				<div class="row mb-3 col-md-offset-9 mr-2">
+					<!-- <div class="col-md-2 mt-2 ">
 						<select class="form-control typeDemande choice" style="width: 100% ;display: none;">
 							<option value="Xls" selected>Xls</option>
 						</select>
-					</div>
-					<div class="col-md-2 mt-2">
-						<button class="btn btn_format" title="cliquez pour exporter vos documents en format s&#233;lectionner" >Exporter</button>
-					</div>
+					</div>-->
+					<!-- <div class="col-md-6 mt-2">
+						<button class="btn btn_format_txt" title="cliquez pour t&#233;l&#233;charger vos document en format txt">Format txt</button>
+					</div> -->
+					<!-- <div class="col-md-6 mt-2">
+						<button class="btn btn_pdf_disa" title="cliquez pour t&#233;l&#233;charger vos document en format pdf">Format pdf</button> 
+					</div>   -->
 				</div>
+				<!-- fin ancien -->
+
 			</p>
 			<br/>  
 
@@ -168,7 +197,9 @@
 	    <script language='javascript' src="../../../../include/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
 		<script language='javascript' src="/{NOM_APPLICATION}/include/jQuery/jquery-ui.js"></script>
 		<script type='text/javascript' src='../../../../include/data_tableau/scripts/jquery.dataTables.min.js'></script>
-    	<script type='text/javascript' src='../../../../include/script/data_tables/datatable_language.js'></script>
+    	<script type='text/javascript' src='../../../../include/script/data_tables/datatable_language.js'></script> 
+		<!-- <script language='javascript' src="../../NGSYS/DIS/exceldisa/personneexcel.js"></script>  -->
+ 
 	<!-- END JQUERY  -->
 	 <script>
 
@@ -194,7 +225,17 @@
 						{CODE_ACTION_FERMER}
 			}
 		});
+		// Le bouton de formatage de d'impresion
+        	// $('.btn_format').prop("active",true);
+        	// $("select.format").change(function(){
+		   	// 	var frms = $(this).children("option:selected").val();
 
+		 	// 	if (frms == "Xls") {$('.btn_format').prop("active",false);}
+		 	// 	if (frms == "Xlsx") {$('.btn_format').prop("active",false);}
+		 	// 	if (frms == "Csv") {$('.btn_format').prop("active",false);} 
+			// 	if (frms == "Txt") {$('.btn_format').prop("active",false);}
+			// 	if (frms == "Pdf") {$('.btn_format').prop("active",false);} 
+		 	// });
 
 	 	//initialisation du calendrier datepicker
 			//initialisation du calendrier datepicker
@@ -264,5 +305,8 @@
 		 	}); */
 	</script>
 	 <script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/DIS/load_liste_edisa.js"></script>  
+	 <script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/DIS/load_txt.js"></script>  
+	 <script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/DIS/exceldisa/personneexcel.js"></script>  
+
 	
 </html>

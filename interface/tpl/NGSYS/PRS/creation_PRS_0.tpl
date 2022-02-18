@@ -122,7 +122,7 @@
 			<div class="row" style="margin-top: 7%">
 				<div class="col-sm-12 mt-5" style="margin-top: -5.6%;">
 					<div class="col1_partie text-center">
-						<span class="title text-while">FICHE D&#145;IDENTIFICATION</span>
+						<span class="title text-while">FICHE D&#145;IDENTIFICATION </span>
 					</div>
 					<div class="col12_partie" style="padding-top: 3%;">
 						<div class="row" style="margin: 0.5% 0%">
