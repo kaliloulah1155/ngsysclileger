@@ -4,8 +4,9 @@ var profil_util = str.substring(0, 7);
 
 var etat_type=$(".etat_type").val();
     $('.managerconnex,.rhconnex,.dgconnex,.dgaconnex').hide();
-    $('.rhmngconnex,.dgmngconnex,.dgamngconnex').hide();
-
+    $('.rhmngconnex,.dgmngconnex,.dgamngconnex,.cmmt_interim').hide();
+	$('.cmmt_interim').show();
+  
 
 
  
@@ -31,31 +32,35 @@ if(etat_type=="EMPLOYE" && profil_util=="MANAGER" ){
 	if( profil_util=="RH" && etat_type=="EMPLOYE" ){
 		
 			$('.rhconnex').show();	
+			$('.cmmt_interim').hide();
 	   }
     if(  profil_util=="MANAGER" && etat_type=="EMPLOYE" ){
         $('.managerconnex').show();
-
+		$('.cmmt_interim').hide();
     }
 
 	if( profil_util=="DGA" && etat_type=="EMPLOYE"  ){
 			$('.dgaconnex').show();
-
+            $('.cmmt_interim').hide();
 		}
 		
 	if(profil_util=="DIRECTE" && etat_type=="EMPLOYE"  ){
 			$('.dgconnex').show();
-
+			$('.cmmt_interim').hide();
 		}
 	if(profil_util=="RH" && etat_type=="MANAGER"  ){
 			$('.rhmngconnex').show();
+			$('.cmmt_interim').hide();
 
 		}
 	if(profil_util=="DGA" && etat_type=="MANAGER"  ){
 			$('.dgamngconnex').show();
+			$('.cmmt_interim').hide();
 
 		}
 	if(profil_util=="DIRECTE" && etat_type=="MANAGER"  ){
 			$('.dgmngconnex').show();
+			$('.cmmt_interim').hide();
 
 		}
 

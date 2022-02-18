@@ -212,6 +212,8 @@
 		<input type="hidden"  name='POS_VAL_RUB_ANN' value="{POS_VAL_RUB_ANN}" class="annee" placeholder="annee"  />
 		<input type="hidden" name='POS_VAL_RUB_J1' value="{POS_VAL_RUB_J1}" class="increment" placeholder="increment"  />
 
+		<textarea   class="form-control avu_text" name='POS_VAL_RUB_AVU'  rows="2" style="width: 90%;resize: none;margin-top: -1%; display:none"></textarea>
+
 		<script>
 				//return  year 
 			 var d = new Date();
@@ -785,8 +787,32 @@ if( $('.typeDemande').val() !=null ){
 
      //Recuperation du mail de l'interimaire
 	$('.personnel').change(function() {
-     		p_interimaire=$(this).find(':selected').data('interim');
+     		var p_interimaire=$(this).find(':selected').data('interim');
             $('.interim').val(p_interimaire);
+
+          /*  
+			var avu_text ='';
+
+			var  viewdepartement = $('.viewdepartement').val();
+			var author = $('.createur').val();
+
+
+		//	console.log(viewdepartement ,'/',author.toUpperCase(),'/', p_interimaire.toUpperCase() ) ;
+
+			avu_text=`
+				${author.toUpperCase()}
+				${p_interimaire.toUpperCase()}
+				ORG-UNIT:${viewdepartement}:MANAGER
+				ORGANISATION:DIRECTEUR GENERAL
+				PROFIL:DGA
+				PROFIL:RH
+				PROFIL:ADMIN
+			`;
+
+			$('.avu_text').val(avu_text);
+            
+			*/
+			  
      		 
 	});
   
