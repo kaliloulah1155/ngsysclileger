@@ -308,9 +308,8 @@
 				onSelect: function() {
 				 
 					var tab_date= ($(this).val()).split(' ');
-				    var mois= tab_date[0];  // mois
-				    var year= tab_date[1]; // année 
-
+				  	var mois= tab_date[0];  // mois
+				  	var year= tab_date[1]; // année 
 					var map_date = new Map();
 					map_date.set('Janvier', '01'); 
 					map_date.set('Fevrier', '02');
@@ -327,7 +326,6 @@
 					
 					//var dt_edit=`01/${map_date.get(mois)}/${year}`;
 					//console.log(`01/${map_date.get(mois)}/${year}`);
-
 					
 				}
 			});

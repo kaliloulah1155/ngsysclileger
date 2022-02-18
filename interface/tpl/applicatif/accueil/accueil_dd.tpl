@@ -1567,10 +1567,10 @@ function containerState(action){
                             </span>
                             <ul class="nav-link" id="nav-linkRcrs1" style="display: none; left: 0;">
 								<li style="margin: 1% -13%;font-weigth: lighter; display: none;">
-                                    <a style="font-size: 15px;color: rgb(42, 138, 247);font-family: Times New Roman;color: #4a67b3;" <a href="javascript:void(0);" onClick="javascript:return affichePageToolbar(this, 'lien_1','/{NOM_APPLICATION}/interface/session/principal/creation/afficher_creation.php?POS_TYPEDOC=ADH');">Adh&#233;rent</a>
+                                    <a style="font-size: 15px;color: rgb(42, 138, 247);font-family: Times New Roman;color: #4a67b3;" href="javascript:void(0);" onClick="javascript:return affichePageToolbar(this, 'lien_1','/{NOM_APPLICATION}/interface/session/principal/creation/afficher_creation.php?POS_TYPEDOC=ADH');">Adh&#233;rent</a>
                                 </li>
 								<li style="margin: 1% -13%;font-weigth: lighter;">
-                                    <a style="font-size: 15px;color: rgb(42, 138, 247);font-family: Times New Roman;color: #4a67b3;" <a href="javascript:void(0);" onClick="javascript:return affichePageToolbar(this, 'lien_1','/{NOM_APPLICATION}/interface/session/principal/creation/afficher_creation.php?POS_TYPEDOC=CAS');">Consommation assur&#233;e</a>
+                                    <a style="font-size: 15px;color: rgb(42, 138, 247);font-family: Times New Roman;color: #4a67b3;" href="javascript:void(0);" onClick="javascript:return affichePageToolbar(this, 'lien_1','/{NOM_APPLICATION}/interface/session/principal/creation/afficher_creation.php?POS_TYPEDOC=CAS');">Consommation assur&#233;e</a>
                                 </li>
                                 <li style="margin: 1% -13%;font-weigth: lighter;">
                                     <a style="font-size: 15px;color: rgb(42, 138, 247);font-family: 'Times New Roman';color: #4a67b3;" href="javascript:void(0)" onClick="javascript:return affichePageToolbar(this, 'lien_1','/{NOM_APPLICATION}/interface/session/principal/creation/afficher_creation.php?POS_TYPEDOC=COT');">Contrat</a>
@@ -1608,7 +1608,7 @@ function containerState(action){
                             </span>
                             <ul class="nav-link" id="nav-linkRcrs2" style="display: none; left: 0;">
                                 <li style="margin: 1% -13%;font-weigth: lighter;">
-                                    <a style="font-size: 15px;color: rgb(42, 138, 247);font-family: Times New Roman;color: #4a67b3;" <a href="javascript:void(0);" onClick="javascript:return affichePageToolbar(this, 'lien_1','/{NOM_APPLICATION}/interface/session/principal/creation/afficher_creation.php?POS_TYPEDOC=ABS');">Absence</a>
+                                    <a style="font-size: 15px;color: rgb(42, 138, 247);font-family: Times New Roman;color: #4a67b3;" href="javascript:void(0);" onClick="javascript:return affichePageToolbar(this, 'lien_1','/{NOM_APPLICATION}/interface/session/principal/creation/afficher_creation.php?POS_TYPEDOC=ABS');">Absence</a>
                                 </li>
                                 <li style="margin: 1% -13%;font-weigth: lighter;">
                                     <a style="font-size: 15px;color: rgb(42, 138, 247);font-family: 'Times New Roman';color: #4a67b3;" href="javascript:void(0)" onClick="javascript:return affichePageToolbar(this, 'lien_1','/{NOM_APPLICATION}/interface/session/principal/creation/afficher_creation.php?POS_TYPEDOC=DEM');">D&#233;mission</a>

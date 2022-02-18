@@ -165,7 +165,7 @@ $(document).on('click', '.reg_btn', function (e) {
 
 //  });
 
- function get_contrat( idcontrat){
+function get_contrat( idcontrat){
     var dmde = $(idcontrat).children("option:selected").val();
 
     if(dmde == "Consultant interne" || dmde == "Consultant externe" ){

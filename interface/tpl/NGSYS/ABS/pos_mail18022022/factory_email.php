@@ -8,6 +8,7 @@
 class FactoryMail{
 	function factmail(string $emailput,string $contentTitre,string $output):?string{
 		$resp=new LibCurl; 
+
 		$data_array =array(
 		    'email'=>explode(" ",$emailput),
 		    'subject'=>$contentTitre,

@@ -263,26 +263,26 @@
 		<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PRT/code/code.js"></script>  
 	<!-- END JQUERY  -->
 
-	 <script>
+	<script>
 
-//Le nombre d'emprunt ne doit pas depasser 2
-$('form').submit(function () {
+		//Le nombre d'emprunt ne doit pas depasser 2
+		$('form').submit(function () {
 
-     var nbreEmprunt=$('.vnbreemprunt').val();
-    if (nbreEmprunt==2) {
-        alert("Le nombre d'emprunt est atteint.");
-        return false;
-    }
+			var nbreEmprunt=$('.vnbreemprunt').val();
+			if (nbreEmprunt==2) {
+				alert("Le nombre d'emprunt est atteint.");
+				return false;
+			}
 
-});
+		});
 
  
-//Fin Traitement des creances 
+		//Fin Traitement des creances 
 
-	 //données de l'utilisateur connecté
+	 	//données de l'utilisateur connecté
 
 
-	var prof_util = "{PROFIL_UTILISATEUR}";	 
+		var prof_util = "{PROFIL_UTILISATEUR}";	 
 	 
 			switch (prof_util) {
 			 case "ADMIN" :
@@ -300,16 +300,18 @@ $('form').submit(function () {
 			
 		}
 
-	var nom=$('.nom').val();
-	var prenom=$('.prenom').val();
-	var fonction=$('.fonction').val();
-	var departement=$('.departement').val();
+		var nom=$('.nom').val();
+		var prenom=$('.prenom').val();
+		var fonction=$('.fonction').val();
+		var departement=$('.departement').val();
 
-	  $('.viewnom').val(nom);
-	  $('.viewprenom').val(prenom);
-	  $('.viewfonction').val(fonction);
-	  $('.viewdepartement').val(departement);
-	 //fin données de l'utilisateur connecté
+		// alert(nom);
+
+		$('.viewnom').val(nom);
+		$('.viewprenom').val(prenom);
+		$('.viewfonction').val(fonction);
+		$('.viewdepartement').val(departement);
+		//fin données de l'utilisateur connecté
 
 		$(document).ready(function () {
 
@@ -354,6 +356,7 @@ $('form').submit(function () {
 		function addMonths(date, months) {
 			var d = date.getDate();
 			date.setMonth(date.getMonth() + +months);
+
 			if (date.getDate() != d) {
 			date.setDate(0);
 			}
@@ -375,7 +378,7 @@ $('form').submit(function () {
 			var m =  result_date_mois.getMonth();
 			m += 1;  // JavaScript months are 0-11
 			var y = result_date_mois.getFullYear();
-
+			
 			d1 = d > 9 ? d : '0'+d;
 			m1 = m > 9 ? m : '0'+m;
 
@@ -385,21 +388,38 @@ $('form').submit(function () {
 			m1 = m > 9 ? m : '0'+m;
 
 			date1= d1 + "/" + m1 + "/" + y;
-
             //date1=y+"-" +m1+"-"+ d1;  
 
 			//timestpdeb=new Date(date1);
 			//tamp1=parseInt( parseInt(timestpdeb.getTime())/1000 );
 
+			var tab_date = ($('.dateFin').val()).split(' ');
+			var mois = tab_date[0];  // mois
+			var year = tab_date[1]; // année 
+
+			var map_date = new Map();
+			map_date.set('Janvier', '01');
+			map_date.set('Fevrier', '02');
+			map_date.set('Mars', '03');
+			map_date.set('Avril', '04');
+			map_date.set('Mai', '05');
+			map_date.set('Juin', '06');
+			map_date.set('Juillet', '07');
+			map_date.set('Ao\u00fbt', '08');
+			map_date.set('Septembre', '09');
+			map_date.set('Octobre', '10');
+			map_date.set('Novembre', '11');
+			map_date.set('D\u00e9cembre', '12');
 			
+			var dt_edit=`${map_date.get(mois)}/${year}`;
+			alert(dt_edit);
 
 			 if (!isNaN( y)) {
 			   $('.dateFin').val(date1);
-		}
+			}
 
 			
-		//	console.log(date1); //Date de fin contrat format: 2019-10-02
-
+			//	console.log(date1); //Date de fin contrat format: 2019-10-02
 		});
 
 	 </script>
