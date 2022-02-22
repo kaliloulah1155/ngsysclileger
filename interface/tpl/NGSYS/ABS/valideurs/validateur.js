@@ -28,6 +28,12 @@
     });
 }
 
+// Nom & Prenom
+var nom_inti = $('.viewnom').val().toLowerCase();
+var pre_inti = $('.viewprenom').val().toLowerCase();
+
+
+
 var initiateur_wk =$('.createur').val().toLowerCase();
 var manager_wk =$('.manager_wk').val().toLowerCase();
 var rh_wk =$('.rh_wk').val().toLowerCase();
@@ -46,7 +52,7 @@ loadvalideurs()
 	 rh_wk=results['rh']['email'].toLowerCase();
 	 dga_wk =results['dga']['email'].toLowerCase();
 	 dg_wk=results['dg']['email'].toLowerCase();
-
+      
      $('.manager_wk').val(manager_wk);
      $('.rh_wk').val(rh_wk);
      $('.dga_wk').val(dga_wk);
@@ -86,6 +92,8 @@ class WorkflowMailer{
        this.email=email;
        this.titre=titre;
        this.contenu=contenu;
+
+        // alert(this.email);
 
        this.link2="/" +
 		    app +
@@ -156,16 +164,21 @@ $(document).on('click','.bouton_sub',function(){
 
  
     var numdmd = $('#numposeidon').val();
+    var typeDemande = $('.typeDemande').val();
+    var nomInterimaire = $('.personnel').val();
+    var nomInitiateur= $('.viewnom').val();
+    var  prenomInitiateur= $('.viewprenom').val();
 
-
+    // alert(typeDemande);
          //Message vers les valideurs
         var valideur =(validator,initiateur_wk,app)=> { 
              const valid= new WorkflowMailer(validator,"DEMANDE n\u00b0"+numdmd,
                  `
-                       TYPE :  DEMANDE D'ABSENCE <br/>
-                       INFOS : VOUS AVEZ RECU UNE DEMANDE POUR VALIDATION <br/>
-                       DEMANDEUR :  ${initiateur_wk}
-                       ${lk_t}
+                       TYPE :  DEMANDE ${typeDemande} <br/>
+                       BONJOUR ${nomInterimaire}, <br/>
+                       VOUS AVEZ RECU UNE DEMANDE POUR VALIDATION DE ${typeDemande} DE LA PART DE ${nomInitiateur} ${prenomInitiateur}.<br/>
+                       PRIERES DE LA TRAITER SUR L'APPLICATION ${lk_t} <br/>
+                       CORDIALEMENT
                     `
                  ,appN);
              return  valid.sender();
@@ -177,21 +190,24 @@ $(document).on('click','.bouton_sub',function(){
             //console.log('ok trs manager');
              var initiateur = new WorkflowMailer(initiator,"DEMANDE n\u00b0"+numdmd,
                     `
-                       TYPE :  DEMANDE N&deg; ${numdmd} <br/>
-                       INFOS : VOTRE DEMANDE EST CHEZ LE MANAGER POUR VALIDATION <br/>
-                        ${lk_t}
+                    TYPE :  DEMANDE ${typeDemande} <br/>
+                    BONJOUR ${nomInterimaire}, <br/>
+                    VOUS AVEZ RECU UNE DEMANDE POUR VALIDATION DE ${typeDemande} DE LA PART DE ${nomInitiateur} ${prenomInitiateur}.<br/>
+                    PRIERES DE LA TRAITER SUR L'APPLICATION ${lk_t} <br/>
+                    CORDIALEMENT
                     `
                 ,appN);
              initiateur.sender();
              valideur(manager_wk,initiateur_wk,appN);
 
              //ENVOI DE MAIL A L'INTERIMAIRE 
-             var interimaire = new WorkflowMailer(p_interimaire,"DEMANDE n\u00b0"+numdmd,
+             var interimaire = new WorkflowMailer(p_interimaire,"DEMANDE {absence} n\u00b0"+numdmd,
                     `
-                       TYPE :  DEMANDE N&deg; ${numdmd} <br/>
-                       INFOS : VOUS AVEZ ETE DESIGN&Eacute;(E) COMME INTERIMAIRE <br/>
-                       INITIATEUR :  ${initiateur_wk} 
-                       ${lk_t}
+                    TYPE :  DEMANDE ${typeDemande} <br/>
+                    BONJOUR ${nomInterimaire}, <br/>
+                    VOUS AVEZ RECU UNE DEMANDE POUR VALIDATION DE ${typeDemande} DE LA PART DE ${nomInitiateur} ${prenomInitiateur}.<br/>
+                    PRIERES DE LA TRAITER SUR L'APPLICATION ${lk_t} <br/>
+                    CORDIALEMENT
                     `
                 ,appN);
              interimaire.sender();
@@ -205,9 +221,11 @@ $(document).on('click','.bouton_sub',function(){
 
              var initiateur = new WorkflowMailer(initiator,"DEMANDE n\u00b0"+numdmd,
                     `
-                       TYPE :  DEMANDE N&deg; ${numdmd} <br/>
-                       INFOS : VOTRE DEMANDE A ETE VALIDER PAR VOTRE MANAGER <br/>
-                       ${lk_t}
+                    TYPE :  DEMANDE ${typeDemande} <br/>
+                    BONJOUR ${nomInterimaire}, <br/>
+                    VOUS AVEZ RECU UNE DEMANDE POUR VALIDATION DE ${typeDemande} DE LA PART DE ${nomInitiateur} ${prenomInitiateur}.<br/>
+                    PRIERES DE LA TRAITER SUR L'APPLICATION ${lk_t} <br/>
+                    CORDIALEMENT
                     `
                 ,appN);
              initiateur.sender();
@@ -218,9 +236,11 @@ $(document).on('click','.bouton_sub',function(){
              //console.log('ok trs dga');
               var initiateur = new WorkflowMailer(initiator,"DEMANDE n\u00b0"+numdmd,
                     `
-                       TYPE :  DEMANDE N&deg; ${numdmd} <br/>
-                       INFOS : VOTRE DEMANDE A ETE VALIDER PAR LA RH <br/>
-                        ${lk_t}
+                    TYPE :  DEMANDE ${typeDemande} <br/>
+                    BONJOUR ${nomInterimaire}, <br/>
+                    VOUS AVEZ RECU UNE DEMANDE POUR VALIDATION DE ${typeDemande} DE LA PART DE ${nomInitiateur} ${prenomInitiateur}.<br/>
+                    PRIERES DE LA TRAITER SUR L'APPLICATION ${lk_t} <br/>
+                    CORDIALEMENT
                     `
                 ,appN);
              initiateur.sender();
@@ -233,9 +253,11 @@ $(document).on('click','.bouton_sub',function(){
              //console.log('ok trs dg');
               var initiateur = new WorkflowMailer(initiator,"DEMANDE n\u00b0"+numdmd,
                     `
-                       TYPE :  DEMANDE N&deg; ${numdmd} <br/>
-                       INFOS : VOTRE DEMANDE A ETE VALIDER PAR LE DGA <br/>
-                        ${lk_t}
+                    TYPE :  DEMANDE ${typeDemande} <br/>
+                    BONJOUR ${nomInterimaire}, <br/>
+                    VOUS AVEZ RECU UNE DEMANDE POUR VALIDATION DE ${typeDemande} DE LA PART DE ${nomInitiateur} ${prenomInitiateur}.<br/>
+                    PRIERES DE LA TRAITER SUR L'APPLICATION ${lk_t} <br/>
+                    CORDIALEMENT
                     `
                 ,appN);
              initiateur.sender();
@@ -247,9 +269,11 @@ $(document).on('click','.bouton_sub',function(){
              //console.log('valider');
              var initiateur = new WorkflowMailer(initiator,"DEMANDE n\u00b0"+numdmd,
                     `
-                       TYPE :  DEMANDE N&deg; ${numdmd} <br/>
-                       INFOS : VOTRE DEMANDE A ETE VALIDE <br/>
-                          ${lk_t}
+                    TYPE :  DEMANDE ${typeDemande} <br/>
+                    BONJOUR ${nomInterimaire}, <br/>
+                    VOUS AVEZ RECU UNE DEMANDE POUR VALIDATION DE ${typeDemande} DE LA PART DE ${nomInitiateur} ${prenomInitiateur}.<br/>
+                    PRIERES DE LA TRAITER SUR L'APPLICATION ${lk_t} <br/>
+                    CORDIALEMENT
                     `
                 ,appN);
              initiateur.sender();
@@ -263,9 +287,11 @@ $(document).on('click','.bouton_sub',function(){
             //console.log('ok trs rh');
              var initiateur = new WorkflowMailer(initiator,"DEMANDE n\u00b0"+numdmd,
                     `
-                       TYPE :  DEMANDE N&deg; ${numdmd} <br/> 
-                       INFOS : VOTRE DEMANDE EST CHEZ LA RH POUR VALIDATION <br/>
-                          ${lk_t}
+                    TYPE :  DEMANDE ${typeDemande} <br/>
+                    BONJOUR ${nomInterimaire}, <br/>
+                    VOUS AVEZ RECU UNE DEMANDE POUR VALIDATION DE ${typeDemande} DE LA PART DE ${nomInitiateur} ${prenomInitiateur}.<br/>
+                    PRIERES DE LA TRAITER SUR L'APPLICATION ${lk_t} <br/>
+                    CORDIALEMENT
                     `
                 ,appN);
              initiateur.sender();
@@ -277,9 +303,11 @@ $(document).on('click','.bouton_sub',function(){
              //console.log('ok trs dga');
               var initiateur = new WorkflowMailer(initiator,"DEMANDE n\u00b0"+numdmd,
                     `
-                       TYPE :  DEMANDE N&deg; ${numdmd} <br/>
-                       INFOS : VOTRE DEMANDE A ETE VALIDER PAR LA RH <br/>
-                          ${lk_t}
+                    TYPE :  DEMANDE ${typeDemande} <br/>
+                    BONJOUR ${nomInterimaire}, <br/>
+                    VOUS AVEZ RECU UNE DEMANDE POUR VALIDATION DE ${typeDemande} DE LA PART DE ${nomInitiateur} ${prenomInitiateur}.<br/>
+                    PRIERES DE LA TRAITER SUR L'APPLICATION ${lk_t} <br/>
+                    CORDIALEMENT
                     `
                 ,appN);
              initiateur.sender();
@@ -292,9 +320,11 @@ $(document).on('click','.bouton_sub',function(){
              //console.log('ok trs dg');
               var initiateur = new WorkflowMailer(initiator,"DEMANDE n\u00b0"+numdmd,
                     `
-                       TYPE :  DEMANDE N&deg; ${numdmd} <br/>
-                       INFOS : VOTRE DEMANDE A ETE VALIDER PAR LE DGA <br/>
-                          ${lk_t}
+                    TYPE :  DEMANDE ${typeDemande} <br/>
+                    BONJOUR ${nomInterimaire}, <br/>
+                    VOUS AVEZ RECU UNE DEMANDE POUR VALIDATION DE ${typeDemande} DE LA PART DE ${nomInitiateur} ${prenomInitiateur}.<br/>
+                    PRIERES DE LA TRAITER SUR L'APPLICATION ${lk_t} <br/>
+                    CORDIALEMENT
                     `
                 ,appN);
              initiateur.sender();
@@ -306,9 +336,11 @@ $(document).on('click','.bouton_sub',function(){
              //console.log('valider');
              var initiateur = new WorkflowMailer(initiator,"DEMANDE n\u00b0"+numdmd,
                     `
-                       TYPE :  DEMANDE N&deg; ${numdmd} <br/>
-                       INFOS : VOTRE DEMANDE A ETE VALIDE <br/>
-                          ${lk_t}
+                    TYPE :  DEMANDE ${typeDemande} <br/>
+                    BONJOUR ${nomInterimaire}, <br/>
+                    VOUS AVEZ RECU UNE DEMANDE POUR VALIDATION DE ${typeDemande} DE LA PART DE ${nomInitiateur} ${prenomInitiateur}.<br/>
+                    PRIERES DE LA TRAITER SUR L'APPLICATION ${lk_t} <br/>
+                    CORDIALEMENT
                     `
                 ,appN);
              initiateur.sender();
@@ -333,9 +365,11 @@ $(document).on('click','.bouton_sub',function(){
 
             var initiateur = new WorkflowMailer(initiator,"DEMANDE n\u00b0"+numdmd,
                     `
-                       TYPE :  DEMANDE N&deg; ${numdmd} <br/>
-                       INFOS : VOTRE DEMANDE A ETE REFUSEE <br/>
-                        ${lk_t}
+                    TYPE :  DEMANDE ${typeDemande} <br/>
+                    BONJOUR ${nomInterimaire}, <br/>
+                    VOUS AVEZ RECU UNE DEMANDE POUR VALIDATION de ${typeDemande} DE LA PART DE ${nomInitiateur} ${prenomInitiateur}.<br/>
+                    PRIERES DE LA TRAITER SUR L'APPLICATION ${lk_t} <br/>
+                    CORDIALEMENT
                     `
                 ,appN);
              initiateur.sender();
