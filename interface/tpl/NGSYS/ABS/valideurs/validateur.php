@@ -12,6 +12,7 @@ include ('../../../../../configuration_w/mabd.php');
  	$data["workflow"]='ABS';
 
  	$initiateur=$_POST['employe'];  //erik.ore@ngser.com   //elisabeth.nounou@ngser.com
+ 	$fullname_initiator='';
  	$manager='';
  	$fullname_mngr='';
  	$rh='';
@@ -22,7 +23,22 @@ include ('../../../../../configuration_w/mabd.php');
  	$fullname_dg='';
  	$poste='';
  	$departement='';
- 	
+
+ 	// get initiator firstname & lastname 
+ 	$contests_init =pg_query(" 
+    		SELECT
+			    \"NOM\",
+			    \"PRE\"
+			FROM 
+			   public.pos_tab_index_prs
+			WHERE \"MEL\"='${initiateur}'
+			ORDER BY \"NUD\" DESC LIMIT 1
+    	");
+    while ($row_init = pg_fetch_row($contests_init)) {
+    		$fullname_initiator=$row_init[0].' '.$row_init[1];
+    }
+
+ 	/////////////////////////////////////////////////////////
 
  	//recuperation poste
     $contests_poste =pg_query(" 
@@ -131,6 +147,7 @@ include ('../../../../../configuration_w/mabd.php');
   	  		   'email'=>$initiateur ?? '',
   	  		   'departement'=>$departement ?? '',
   	  		   'poste'=>$poste ?? '',
+  	  		    'fullname'=> $fullname_initiator ?? '',
   	  		],
   	  		'manager'=>[
   	  		   'email'=>$manager ?? '',

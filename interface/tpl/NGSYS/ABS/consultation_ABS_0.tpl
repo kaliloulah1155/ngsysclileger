@@ -1447,7 +1447,7 @@ $('.dureedebselect').val( $('.dureedeb').val()); //vue de modification
             $('#motif').val('');
 			var selectDemande=$.trim($(this).val());
 			 
-
+   
 
 	//Debut Durée en fonction du choix
 			$('.duree').val('');
