@@ -143,7 +143,7 @@
 				<!-- 12_ 1 infos -->
 				<div class="hearder_card jumbotron">
 					<div class="h-5 text-primary" style="font-weight: bold">ETAT DE CREANCES</div>
-					
+				
 				<!-- etat creance -->
 				    <!-- nombre d'emprunt en cours -->
 					<input type="hidden"  name='POS_VAL_RUB_A2A' value="{POS_VAL_RUB_A2A}" class="vnbreemprunt"  />
@@ -161,6 +161,8 @@
 					<input type="hidden"  name='POS_VAL_RUB_DGR' value="{POS_VAL_RUB_DGR}" class="vdatefinprelev"  />
 					 <!-- Quotité prelevable-->
 					<input type="hidden"  name='POS_VAL_RUB_RDT' value="{POS_VAL_RUB_RDT}" class="vqutotiteprelev"  />
+
+					<input type="hidden" class="L7" name='POS_VAL_RUB_L7'>
 				<!--fin etat creance -->
 
 					<div class="row" style="margin: 2%">
@@ -198,6 +200,7 @@
 					</div>
 
 				</div>
+
 				<!-- 12_ 2 infos -->
 				<div class="col1_partie text-center">
 					<span class="title text-while"> 
@@ -222,6 +225,11 @@
 					<input type="hidden" name="POS_VAL_RUB_MDT" value="{POS_VAL_RUB_MDT}" class="emprunt_lettre" />
 						
 						</div>
+
+						<div class="col-sm-6 form-group">
+							<label for="bio">Date d&eacute;but de pr&eacute;l&egrave;vement<span class='text'></span> :</label>
+							<input type="text" name='POS_VAL_RUB_DIN' value="{POS_VAL_RUB_DIN}" class="form-control datedebut" placeholder="jj/mm/aaaa" id="date1" style="width: 100%;" required="true">
+						 </div>
 						
 						<div class="col-sm-6 form-group">
 						   <label for="bio">Dur&eacute;e (en mois)<span class='text'></span> :</label>
@@ -229,10 +237,7 @@
 							<input type="hidden" name="POS_VAL_RUB_DLA" value="{POS_VAL_RUB_DLA}" class="mois_lettre" />
 
 						</div>
-						<div class="col-sm-6 form-group">
-						   <label for="bio">Date d&eacute;but de pr&eacute;l&egrave;vement<span class='text'></span> :</label>
-						   <input type="text" name='POS_VAL_RUB_DIN' value="{POS_VAL_RUB_DIN}" class="form-control datedebut" placeholder="jj/mm/aaaa" id="date1" style="width: 100%;" required="true">
-						</div>
+						
 						<div class="col-sm-6 form-group">
 						   <label for="bio">Date fin de pr&eacute;l&egrave;vement :</label>
 						   <input type="text" name='POS_VAL_RUB_DFI' readonly= "true" value="{POS_VAL_RUB_DFI}" placeholder="jj/mm/aaaa" class="form-control dateFin " style="width: 100%;" required="true">
@@ -347,7 +352,7 @@
 				dayNamesShort: ['Dim.', 'Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.'],
 				dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
 				weekHeader: 'Sem.',
-				dateFormat: 'dd/mm/yy'
+				dateFormat: 'dd/mm/yy',
 			});
 			$('#formpret').parsley();
 		});
@@ -393,28 +398,40 @@
 			//timestpdeb=new Date(date1);
 			//tamp1=parseInt( parseInt(timestpdeb.getTime())/1000 );
 
-			var tab_date = ($('.dateFin').val()).split(' ');
-			var mois = tab_date[0];  // mois
-			var year = tab_date[1]; // année 
+			var tab_date = ($('.dateFin').val()).split('/');
+			var mois = tab_date[1];  // mois
+			var year = tab_date[2]; // année 
 
+			// console.log("fdf ",tab_date);
+			
 			var map_date = new Map();
-			map_date.set('Janvier', '01');
-			map_date.set('Fevrier', '02');
-			map_date.set('Mars', '03');
-			map_date.set('Avril', '04');
-			map_date.set('Mai', '05');
-			map_date.set('Juin', '06');
-			map_date.set('Juillet', '07');
-			map_date.set('Ao\u00fbt', '08');
-			map_date.set('Septembre', '09');
-			map_date.set('Octobre', '10');
-			map_date.set('Novembre', '11');
-			map_date.set('D\u00e9cembre', '12');
+			map_date.set('01', 'Janvier');
+			map_date.set('02', 'Fevrier');
+			map_date.set('03', 'Mars');
+			map_date.set('04', 'Avril');
+			map_date.set('05', 'Mai');
+			map_date.set('06', 'Juin');
+			map_date.set('07', 'Juillet');
+			map_date.set('08', 'Ao\u00fbt');
+			map_date.set('09', 'Septembre');
+			map_date.set('10', 'Octobre');
+			map_date.set('11', 'Novembre');
+			map_date.set('12', 'D\u00e9cembre');
 			
 			var dt_edit=`${map_date.get(mois)}/${year}`;
-			alert(dt_edit);
+			// alert(dt_edit);
+            //   console.log(dt_edit);
 
-			 if (!isNaN( y)) {
+			  var end = dt_edit.replace('/', ' ');
+			  $('.L7').val(end);
+			// if($('.datedebut').val() && $('.mois').val()){
+			// 	$('.L7').val(end);
+				
+			// }else{
+				
+			// }
+			
+			if (!isNaN( y)) {
 			   $('.dateFin').val(date1);
 			}
 

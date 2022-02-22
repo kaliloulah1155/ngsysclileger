@@ -28,6 +28,12 @@
     });
 }
 
+// Nom & Prenom
+var nom_inti = $('.viewnom').val().toLowerCase();
+var pre_inti = $('.viewprenom').val().toLowerCase();
+
+
+
 var initiateur_wk =$('.createur').val().toLowerCase();
 var manager_wk =$('.manager_wk').val().toLowerCase();
 var rh_wk =$('.rh_wk').val().toLowerCase();
@@ -186,12 +192,13 @@ $(document).on('click','.bouton_sub',function(){
              valideur(manager_wk,initiateur_wk,appN);
 
              //ENVOI DE MAIL A L'INTERIMAIRE 
-             var interimaire = new WorkflowMailer(p_interimaire,"DEMANDE n\u00b0"+numdmd,
+             var interimaire = new WorkflowMailer(p_interimaire,"DEMANDE {absence} n\u00b0"+numdmd,
                     `
-                       TYPE :  DEMANDE N&deg; ${numdmd} <br/>
-                       INFOS : VOUS AVEZ ETE DESIGN&Eacute;(E) COMME INTERIMAIRE <br/>
-                       INITIATEUR :  ${initiateur_wk} 
-                       ${lk_t}
+                        <b><u>Objet</u></b>: DEMANDE {absence} N&deg; ${numdmd} <br/><br/>
+                        BONJOUR {AKRAN JAMES}, <br/>
+                        VOUS AVEZ RECU UNE DEMANDE POUR VALIDATION POUR UNE DEMANDE {absence} DE LA PART DE ${nom_inti} ${pre_inti}.
+                        <br/>
+                        PRIERES DE LA TRAITER SUR L'APPLICATION : ${lk_t}
                     `
                 ,appN);
              interimaire.sender();

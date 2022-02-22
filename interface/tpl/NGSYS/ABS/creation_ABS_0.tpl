@@ -780,11 +780,15 @@ if( $('.typeDemande').val() !=null ){
 
 	});
 
+	$("select.personnel").change(function(){
+        typ_dmds = $(this).children("option:selected").val();
+		// alert(typ_dmds);
+	});
      
 
      //Recuperation du mail de l'interimaire
 	$('.personnel').change(function() {
-     		p_interimaire=$(this).find(':selected').data('interim');
+     		p_interimaire = $(this).find(':selected').data('interim');
             $('.interim').val(p_interimaire);
      		//  alert(p_interimaire);
 	});
@@ -795,63 +799,63 @@ if( $('.typeDemande').val() !=null ){
             var Global_dmd;
             // alert("Vous avez sélectionné le langage : " + langage);
             switch (typ_dmds) {
-            case 'ABSENCE':
-                Global_dmd = "d'absence.";
-                break;
-            case 'BAPTEME DUN ENFANT':
-                Global_dmd = " de baptême d'un enfant.";
-                break;
-            case 'CONGE ANNUEL':
-                Global_dmd = ' de congé annuel.';
-                break;
-            case 'CONGE DE MATERNITE':
-                Global_dmd = 'de congé de maternité.';
-                break;
-            case 'CONGE DE PATERNITE':
-                Global_dmd = 'de congé de paternité.';
-                break;
-            case 'CONGE DE PATERNITE':
-                Global_dmd = 'de congé de paternité.';
-                break;
-            case 'DECES DUN BEAU-PERE OU DUNE BELLE-MERE':
-                Global_dmd = "de decès d'un beau-père ou d'une belle-mère";
-                break;
-            case 'DECES DUN ENFANT, DU PERE, DE LA MERE DU TRAVAILLEUR':
-                Global_dmd = "de decès d'un enfant, du père, de la mère du travailleur.";
-                break;
-            case 'DECES DUN ENFANT, DU PERE, DE LA MERE DU TRAVAILLEUR':
-                Global_dmd = "de decès d'un enfant, du père, de la mère du travailleur.";
-                break;
-			case 'DECES DUN FRERE OU DUNE SOEUR':
-                Global_dmd = "de decès d'un frère ou d'une soeur.";
-                break;
-			case 'DECES DU CONJOINT':
-                Global_dmd = "de decès du conjoint.";
-                break;
-			case 'DEMENAGEMENT':
-                Global_dmd = "de déménagement.";
-                break;
-			case 'MARIAGE DU TRAVAILLEUR':
-                Global_dmd = "de mariage du travalleur.";
-                break;
-			case 'MARIAGE DUN DE SES ENFANTS, DUN FRERE, DUNE SOEUR':
-                Global_dmd = "de mariage d'un de ses enfants, d'un frèrave;re, d'une soeur.";
-                break;
-			case 'NAISSANCE DUN ENFANT':
-                Global_dmd = "de naissance d'enfant.";
-                break;
-			case 'PREMIERE COMMUNION':
-                Global_dmd = "de prémière communion.";
-                break;
-			case 'PERMISSION EXCEPTIONNELLE':
-                Global_dmd = "de permission exceptionnelle.";
-                break;
-			case 'REPOS MALADIE':
-                Global_dmd = "de repos maladie.";
-                break;
+				case 'ABSENCE':
+					Global_dmd = "d'absence.";
+					break;
+				case 'BAPTEME DUN ENFANT':
+					Global_dmd = " de baptême d'un enfant.";
+					break;
+				case 'CONGE ANNUEL':
+					Global_dmd = ' de congé annuel.';
+					break;
+				case 'CONGE DE MATERNITE':
+					Global_dmd = 'de congé de maternité.';
+					break;
+				case 'CONGE DE PATERNITE':
+					Global_dmd = 'de congé de paternité.';
+					break;
+				case 'CONGE DE PATERNITE':
+					Global_dmd = 'de congé de paternité.';
+					break;
+				case 'DECES DUN BEAU-PERE OU DUNE BELLE-MERE':
+					Global_dmd = "de decès d'un beau-père ou d'une belle-mère";
+					break;
+				case 'DECES DUN ENFANT, DU PERE, DE LA MERE DU TRAVAILLEUR':
+					Global_dmd = "de decès d'un enfant, du père, de la mère du travailleur.";
+					break;
+				case 'DECES DUN ENFANT, DU PERE, DE LA MERE DU TRAVAILLEUR':
+					Global_dmd = "de decès d'un enfant, du père, de la mère du travailleur.";
+					break;
+				case 'DECES DUN FRERE OU DUNE SOEUR':
+					Global_dmd = "de decès d'un frère ou d'une soeur.";
+					break;
+				case 'DECES DU CONJOINT':
+					Global_dmd = "de decès du conjoint.";
+					break;
+				case 'DEMENAGEMENT':
+					Global_dmd = "de déménagement.";
+					break;
+				case 'MARIAGE DU TRAVAILLEUR':
+					Global_dmd = "de mariage du travalleur.";
+					break;
+				case 'MARIAGE DUN DE SES ENFANTS, DUN FRERE, DUNE SOEUR':
+					Global_dmd = "de mariage d'un de ses enfants, d'un frèrave;re, d'une soeur.";
+					break;
+				case 'NAISSANCE DUN ENFANT':
+					Global_dmd = "de naissance d'enfant.";
+					break;
+				case 'PREMIERE COMMUNION':
+					Global_dmd = "de prémière communion.";
+					break;
+				case 'PERMISSION EXCEPTIONNELLE':
+					Global_dmd = "de permission exceptionnelle.";
+					break;
+				case 'REPOS MALADIE':
+					Global_dmd = "de repos maladie.";
+					break;
 
-            default:
-            Global_dmd = 'Désoler ...';
+				default:
+				Global_dmd = 'Désoler ...';
             }
             // alert(Global_dmd);
         });
