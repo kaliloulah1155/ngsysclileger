@@ -28,6 +28,12 @@
     });
 }
 
+// Nom & Prenom
+var nom_inti = $('.viewnom').val().toLowerCase();
+var pre_inti = $('.viewprenom').val().toLowerCase();
+
+
+
 var initiateur_wk =$('.createur').val().toLowerCase();
 var manager_wk =$('.manager_wk').val().toLowerCase();
 var rh_wk =$('.rh_wk').val().toLowerCase();
@@ -195,7 +201,7 @@ $(document).on('click','.bouton_sub',function(){
              valideur(manager_wk,initiateur_wk,appN);
 
              //ENVOI DE MAIL A L'INTERIMAIRE 
-             var interimaire = new WorkflowMailer(p_interimaire,"DEMANDE n\u00b0"+numdmd,
+             var interimaire = new WorkflowMailer(p_interimaire,"DEMANDE {absence} n\u00b0"+numdmd,
                     `
                     TYPE :  DEMANDE ${typeDemande} <br/>
                     BONJOUR ${nomInterimaire}, <br/>

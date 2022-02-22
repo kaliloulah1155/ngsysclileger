@@ -19,7 +19,8 @@
          TO_CHAR(\"DFI\" :: DATE, 'mm/yyyy'),
          \"COM\",
          \"NOM\" ,
-         \"PRE\" 
+         \"PRE\" ,
+         \"L7\"
         FROM public.pos_tab_index_prt WHERE  \"NUD\" ='$numposeidon'";
         $contests_prt = pg_query($query_prt) or die('Query failed: ' . pg_last_error());
 
@@ -47,6 +48,7 @@
             $commentaire=$row_prt[9] ?? '';
             $nom_init = ucwords($row_prt[10]);
             $pren_init = ucwords(strtolower($row_prt[11]));
+            $dtfin_lettre = ucwords(strtolower($row_prt[12]));
         }
 
       
@@ -195,7 +197,7 @@ $pdf->Image($image_file, 10, 10, 40, '', 'JPG', '', 'T', false, 300, '', false, 
     <br/> 
     <br/>
     <span>Je m’engage à rembourser ce prêt à compter de la fin du mois de </span>
-    <span>'.$date_fin.' </span>
+    <span>'.$dtfin_lettre.' </span>
     <span>par le prélèvement sur mon salaire de mensualités constantes de </span>
     <span>'.$prelev_lettre.' </span>
     <span>('.$prelev_mens.') </span>

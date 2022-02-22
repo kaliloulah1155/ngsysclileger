@@ -211,6 +211,8 @@
 		<input type='hidden' name='{NAME_OLD_RUB}' value="{VALUE_OLD_RUB}">
 		<!-- END BLOC_OLD_VALUE -->
 		<input type='hidden' class='appName' value="{NOM_APPLICATION}">
+
+		<input type="hidden" class="L7" name='POS_VAL_RUB_L7' value="{POS_VAL_RUB_L7}">
 		
 		<!-- Appel du lien ngser -->
 		<input type="hidden" class="user_url" />
@@ -344,14 +346,15 @@
 											<input type="hidden" name="POS_VAL_RUB_MDT" value="{POS_VAL_RUB_MDT}" class="emprunt_lettre" />
 										</div>
 										<div class="col-sm-6 form-group">
+											<label for="bio">Date d&eacute;but de pr&eacute;l&egrave;vement :</label>
+												<input type="text" name='POS_VAL_RUB_DIN' value="{POS_VAL_RUB_DIN}"  placeholder="jj/mm/aaaa" class="form-control datedebut" id="date1" style="width: 100%;">
+										 </div>
+										<div class="col-sm-6 form-group">
 										   	<label for="bio">Dur&eacute;e (en mois) :</label>
 						  					<input type="Number" name='POS_VAL_RUB_DUM' min="0" value="{POS_VAL_RUB_DUM}" class="form-control mois" id="bio"  style="width: 100%;" data-parsley-trigger="keyup" data-parsley-pattern="[0-9][0-9]?">
 											  <input type="hidden" name="POS_VAL_RUB_DLA" value="{POS_VAL_RUB_DLA}" class="mois_lettre" />
 										</div>
-										<div class="col-sm-6 form-group">
-										   <label for="bio">Date d&eacute;but de pr&eacute;l&egrave;vement :</label>
-						   					<input type="text" name='POS_VAL_RUB_DIN' value="{POS_VAL_RUB_DIN}"  placeholder="jj/mm/aaaa" class="form-control datedebut" id="date1" style="width: 100%;">
-										</div>
+										
 										<div class="col-sm-6 form-group">
 										   <label for="bio">Date fin de pr&eacute;l&egrave;vement :</label>
 						   					<input type="text" name='POS_VAL_RUB_DFI' value="{POS_VAL_RUB_DFI}" placeholder="jj/mm/aaaa" class="form-control dateFin" readonly="true" style="width: 100%;">
@@ -1060,6 +1063,34 @@ $(document).ready(function () {
 
 			//timestpdeb=new Date(date1);
 			//tamp1=parseInt( parseInt(timestpdeb.getTime())/1000 );
+			var tab_date = ($('.dateFin').val()).split('/');
+			var mois = tab_date[1];  // mois
+			var year = tab_date[2]; // année 
+
+			// console.log("fdf ",tab_date);
+			
+			var map_date = new Map();
+			map_date.set('01', 'Janvier');
+			map_date.set('02', 'Fevrier');
+			map_date.set('03', 'Mars');
+			map_date.set('04', 'Avril');
+			map_date.set('05', 'Mai');
+			map_date.set('06', 'Juin');
+			map_date.set('07', 'Juillet');
+			map_date.set('08', 'Ao\u00fbt');
+			map_date.set('09', 'Septembre');
+			map_date.set('10', 'Octobre');
+			map_date.set('11', 'Novembre');
+			map_date.set('12', 'D\u00e9cembre');
+			
+			var dt_edit=`${map_date.get(mois)}/${year}`;
+			// alert(dt_edit);
+            //   console.log(dt_edit);
+
+			  var end = dt_edit.replace('/', ' ');
+			  $('.L7').val(end);
+
+
 
 			 if (!isNaN( y)) {
 			   $('.dateFin').val(date1);
