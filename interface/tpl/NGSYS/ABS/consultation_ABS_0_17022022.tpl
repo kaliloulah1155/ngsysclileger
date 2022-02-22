@@ -526,21 +526,19 @@
 						<table class="table" align="center" id="tblMain">
 							<tr>
 								<td style="font-size: 15px; font-family: 'Times New Roman';">
-								    <!-- prise en compte des status pour faire evoluer les lignes -->
-									<span name="current" class="label1 label-success" data-value="{POS_VAL_RUB_EAC}"><b>{POS_VAL_RUB_EAC}</b></span> 
-									<!--<span name="current" class="label1 label-success" data-value="INTERIMAIRE"><b>INTERIMAIRE</b></span>-->
+									<span name="current" class="label1 label-success" data-value="{POS_VAL_RUB_EAC}"><b>{POS_VAL_RUB_EAC}</b></span>
 								</td>
 							</tr>
 						</table>
 					</div>
 					<div class="progres1">
 
-					  
-					<div class="circle1" style="display: none;">
+					   <div class="circle1" style="display: none;">
 							<span class="label1">0</span>
 							<span class="title1">User1</span>
 						</div>
 						<span class="bar1" style="display: none;"></span>
+
 
 						<div class="circle1">
 							<span class="label1">1</span>
@@ -561,17 +559,8 @@
 						</div>
 						<span class="bar1"></span>
 
-					  <!--Debut ligne de vie de l'interimaire -employe-->
-						<div class="circle1" >
-							<span class="label1">2</span>
-							<span class="title1">INTERIMAIRE</span>
-							
-						</div>
-						<span class="bar1"></span>
-						 <!--Fin ligne de vie de l'interimaire -employe -->
-
 						<div class="circle1">
-							<span class="label1">3</span>
+							<span class="label1">2</span>
 							<span class="title1">MANAGER</span>
 							<!-- zone d'affichage -->
 							<div class="jumbotron pt-1" style="width: 30%; padding-top: 1%;padding-bottom: 3%;background: #4a67b3;color:#fff;border-radius:5px;z-index:999">
@@ -603,7 +592,7 @@
 						
 						<span class="bar1"></span>
 						<div class="circle1">
-							<span class="label1">4</span>
+							<span class="label1">3</span>
 							<span class="title1">RH</span>
 							<!-- zone d'affichage -->
 							<div class="jumbotron pt-1" style="width: 30%; padding-top: 1%;padding-bottom: 3%;background: #4a67b3;color:#fff;border-radius:5px;z-index:999">
@@ -634,7 +623,7 @@
 						
 						<span class="bar1"></span>
 						<div class="circle1">
-							<span class="label1">5</span>
+							<span class="label1">4</span>
 							<span class="title1">DGA</span>
 							<!-- zone d'affichage -->
 							<div class="jumbotron pt-1" style="width: 30%; padding-top: 1%;padding-bottom: 3%;background: #4a67b3;color:#fff;border-radius:5px;z-index:999">
@@ -665,7 +654,7 @@
 
 						<span class="bar1"></span>
 						<div class="circle1">
-							<span class="label1">6</span>
+							<span class="label1">5</span>
 							<span class="title1">DG</span>
 							<!-- zone d'affichage -->
 							<div class="jumbotron pt-1" style="width: 30%; padding-top: 1%;padding-bottom: 3%;background: #4a67b3;color:#fff;border-radius:5px;z-index:999">
@@ -696,7 +685,7 @@
 						
 						<span class="bar1"></span>
 						<div class="circle1">
-							<span class="label1">7</span>
+							<span class="label1">6</span>
 							<span class="title1">CLOS</span>
 							
 						</div>
@@ -771,9 +760,6 @@
 						<table class="table" align="center" id="tblMain">
 							<tr>
 								<td style="font-size: 15px; font-family: 'Times New Roman';">
-								<!-- prise en compte des status pour faire evoluer les lignes -->
-								<!-- 	<span name="current" class="label2 label-success" data-value="{POS_VAL_RUB_EAD}"><b>{POS_VAL_RUB_EAD}</b></span> -->
-
 									<span name="current" class="label2 label-success" data-value="{POS_VAL_RUB_EAD}"><b>{POS_VAL_RUB_EAD}</b></span>
 								</td>
 							</tr>
@@ -803,21 +789,10 @@
 								</p>
 							</div>
 						</div>
-						<span class="bar2"></span>
-
-						<!--Debut ligne de vie de l'interimaire -employe-->
-						<div class="circle2" >
-							<span class="label2">2</span>
-							<span class="title2">INTERIMAIRE</span>
-							<div class="jumbotron pt-1" style="width: 30%; padding-top: 1%;padding-bottom: 3%;background: #4a67b3;color:#fff;border-radius:5px;z-index:999">
-							</div>
-						</div>
-						<span class="bar2"></span>
-						 <!--Fin ligne de vie de l'interimaire -employe -->
 						
-						
+						<span class="bar2"></span>
 						<div class="circle2">
-							<span class="label2">3</span>
+							<span class="label2">2</span>
 							<span class="title2">RH</span>
 							<!-- zone d'affichage -->
 							<div class="jumbotron pt-1" style="width: 30%; padding-top: 1%;padding-bottom: 3%;background: #4a67b3;color:#fff;border-radius:5px;z-index:999">
@@ -846,7 +821,7 @@
 						
 						<span class="bar2"></span>
 						<div class="circle2">
-							<span class="label2">4</span>
+							<span class="label2">3</span>
 							<span class="title2">DGA</span>
 							<!-- zone d'affichage -->
 							<div class="jumbotron pt-1" style="width: 30%; padding-top: 1%;padding-bottom: 3%;background: #4a67b3;color:#fff;border-radius:5px;z-index:999">
@@ -875,7 +850,7 @@
 						
 						<span class="bar2"></span>
 						<div class="circle2">
-							<span class="label2">5</span>
+							<span class="label2">4</span>
 							<span class="title2">DG</span>
 							<!-- zone d'affichage -->
 							<div class="jumbotron pt-1" style="width: 30%; padding-top: 1%;padding-bottom: 3%;background: #4a67b3;color:#fff;border-radius:5px;z-index:999">
@@ -904,7 +879,7 @@
 						
 						<span class="bar2"></span>
 						<div class="circle2">
-							<span class="label2">6</span>
+							<span class="label2">5</span>
 							<span class="title2">Fin</span>
 						</div>
 					</div>
@@ -1000,12 +975,6 @@
 				</div>
 				<!-- Fin du commentaire de la ligne de vie du parcours du manager -->
 
-                <!-- commentaire de l'interimaire -->
-				<div class="col-sm-5 cmmt_interim" style="padding-bottom: 3%">
-					<label for="bio" style="text-transform: uppercase; text-align:center">Commentaire de l'interimaire</label>
-					<textarea class="form-control" id="bio" name='POS_VAL_RUB_CT8' rows="5" style="width: 250%;resize: none">{POS_VAL_RUB_CT8}</textarea>
-				</div>
-
 					 
 			
 				<!-- fin de la ligne de vie du parcours du manager -->
@@ -1086,7 +1055,7 @@
 								<!-- Consultation -->
 								<div class="form-group">
 								   <label for="bio">Consultation :</label>
-								  <textarea  class="form-control avu_text" name='POS_VAL_RUB_AVU' id="bio" rows="2" style="width: 90%;resize: none;margin-top: -1%">{POS_VAL_RUB_AVU}</textarea>
+								  <textarea  class="form-control" name='POS_VAL_RUB_AVU' id="bio" rows="2" style="width: 90%;resize: none;margin-top: -1%">{POS_VAL_RUB_AVU}</textarea>
 								</div>
 								<!-- Modification -->
 								<div class="form-group">
@@ -1602,11 +1571,6 @@ $('.dureedebselect').val( $('.dureedeb').val()); //vue de modification
 	$('.personnel').change(function() {
      		p_interimaire=$(this).find(':selected').data('interim');
             $('.interim').val(p_interimaire);
-
- 
-
-
-
      		 
 	});
 	</script>

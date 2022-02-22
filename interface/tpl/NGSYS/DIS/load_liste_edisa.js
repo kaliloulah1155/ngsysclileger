@@ -31,6 +31,7 @@
 }
 
 loadliste_edisa()
+
 .then(data => {
 
      let donnees=data.resultats;
@@ -65,7 +66,7 @@ loadliste_edisa()
 
 
 /////////////// BOUTON D'EXPORTATION DE LA LISTE ///////////////////////////
-let link_urlexcel =
+let link_urlexcel=
     "/" +
     appli +
     "/interface/tpl/" +
@@ -73,12 +74,54 @@ let link_urlexcel =
     "/DIS/download_exc_disa.php";
 
 
-$(document).on('click', '.btn_format', function (e) {
+$(document).on('click', '.btn_export', function (e) {
 
-		 
-		 window.open(link_urlexcel,"_blank ");
-
+        var btnexport = $(this).val();
+        var choice = $('.choice').val();
+		//window.open(link_urlexcel, "_blank ");
+        window.open(link_urlexcel + '?export=' + btnexport + '&choice=' + choice, "_blank ");
 	   e.preventDefault();
 });
 
+//  pdf e-disa
+let link_urlpdf=
+    "/" +
+    appli +
+    "/interface/tpl/" +
+    appli +
+    "/DIS/download_pdf_disa.php";
+
+
+$(document).on('click', '.btn_pdf_disa', function(e) {
+
+    // date_deb = $('.date_deb').val();
+    // date_fin = $('.date_fin').val();
+    // email = $('.personnel').val();
+
+    window.open(link_urlpdf , "_blank ");
+
+    e.preventDefault();
+});
+
+
+// $(document).on('click', '.btn_export', function(e) {
+
+
+//     date_deb = $('.date_deb').val();
+//     date_fin = $('.date_fin').val();
+//     email = $('.personnel').val();
+
+    
+//     var btnexport = $(this).val();
+//     var choice = $('.choice').val();
+//     window.open(downloadexcel + '?export=' + btnexport + '&choice=' + choice + '&date_deb=' + date_deb + '&date_fin=' + date_fin + '&email=' + email, "_blank ");
+
+//     e.preventDefault();
+// });
+
+ 
+
+
+
+ 
 
