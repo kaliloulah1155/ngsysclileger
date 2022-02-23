@@ -27,7 +27,7 @@ $output ="
 <div style='font-size:20px'>
    Bonjour  $destinataire ,<br/>
 
-   Vous avez recu $motif pour validation de la part de $destinateur .<br/>
+   Vous avez reçu $objet  pour validation de la part de $destinateur avec pour motif : $motif .<br/>
    Prières de la traiter sur l'application $lien .<br/>
 
  </div>
