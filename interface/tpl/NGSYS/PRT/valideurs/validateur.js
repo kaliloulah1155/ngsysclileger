@@ -27,6 +27,26 @@
     });    
 }
 
+// Appel du lien du site ngser
+let link_ngser="../../../LinkSiteWeb.php";
+   function getLink(){
+       
+          $.ajax({
+              url: link_ngser, 
+              type: "GET",
+              success: function(output) {
+                      
+                     $('.user_url').val(output);
+                  }, 
+              error: function (error) {
+                   console.log(error);
+              },
+          });
+  }
+
+  //Appel
+  getLink(); 
+//console.log(getLink());
 var initiateur_wk =$('.createur').val().toLowerCase();
 var rh_wk =$('.rh_wk').val().toLowerCase();
 var controleur_wk =$('.controleur_wk').val().toLowerCase();
@@ -53,26 +73,12 @@ loadvalideurs()
 })
 .catch(error=>console.log(error));
 
-// Appel du lien du site ngser
-let link_ngser="../../../LinkSiteWeb.php";
-function getLink(){
-    
-       $.ajax({
-           url: link_ngser, 
-           type: "POST",
-           success: function(output) {
-                  console.log(output);
-               }, 
-           error: function (error) {
-                console.log(error);
-           },
-       });
-}
 
-//Appel
-getLink()  
 //Appel du lien 
 var lk_t =$('.user_url').val();
+
+//alert(lk_t);
+
  //Envoi de mail via workflow
 class WorkflowMailer{
    
