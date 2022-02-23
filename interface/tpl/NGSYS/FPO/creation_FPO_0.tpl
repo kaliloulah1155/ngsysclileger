@@ -5,22 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Creation de fiche de poste</title>
-	<link href="/NGSYS/include/style_nouveau/style_accueil.css" rel="stylesheet">
-    <link href="/NGSYS/include/bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/{NOM_APPLICATION}/include/style_nouveau/style_accueil.css" rel="stylesheet">
+    <link href="/{NOM_APPLICATION}/include/bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href='https://use.fontawesome.com/releases/v5.0.8/css/all.css' type='text/css' rel='STYLESHEET' />
-	<script type='text/javascript' src='/NGSYS/include/script/association.js'></script> 
-	<script type='text/javascript' src='/NGSYS/include/script/vocabulaire.js'></script>
-	<script type='text/javascript' src='/NGSYS/include/script/fermeture.js'></script>
-	<script type='text/javascript' src='/NGSYS/include/script/saisie.js'></script>
-	<script type='text/javascript' src='/NGSYS/include/script/calendrier.js'></script>
-	<script type='text/javascript' src='/NGSYS/include/script/attente_fichier.js'></script>
-	<script type='text/javascript' src='/NGSYS/include/script/recupcontrolsaisie.js'></script>
-	<script type='text/javascript' src='/NGSYS/include/script/navigation.js'></script>
-	<script type='text/javascript' src='/NGSYS/include/script/action_tableau.js'></script>
-	<script type='text/javascript' src='/NGSYS/include/script/ajax_search.js'></script>
-	<script language='javascript' src='/NGSYS/include/script/ajax_recup_listhier.js'></script>
-	<script language='javascript' src='/NGSYS/include/script/ajax_recup_arbo_dossier.js'></script>
-	<script language='javascript' src='/NGSYS/include/script/action_accueil.js'></script>
+	<script type='text/javascript' src='/{NOM_APPLICATION}/include/script/association.js'></script> 
+	<script type='text/javascript' src='/{NOM_APPLICATION}/include/script/vocabulaire.js'></script>
+	<script type='text/javascript' src='/{NOM_APPLICATION}/include/script/fermeture.js'></script>
+	<script type='text/javascript' src='/{NOM_APPLICATION}/include/script/saisie.js'></script>
+	<script type='text/javascript' src='/{NOM_APPLICATION}/include/script/calendrier.js'></script>
+	<script type='text/javascript' src='/{NOM_APPLICATION}/include/script/attente_fichier.js'></script>
+	<script type='text/javascript' src='/{NOM_APPLICATION}/include/script/recupcontrolsaisie.js'></script>
+	<script type='text/javascript' src='/{NOM_APPLICATION}/include/script/navigation.js'></script>
+	<script type='text/javascript' src='/{NOM_APPLICATION}/include/script/action_tableau.js'></script>
+	<script type='text/javascript' src='/{NOM_APPLICATION}/include/script/ajax_search.js'></script>
+	<script language='javascript' src='/{NOM_APPLICATION}/include/script/ajax_recup_listhier.js'></script>
+	<script language='javascript' src='/{NOM_APPLICATION}/include/script/ajax_recup_arbo_dossier.js'></script>
+	<script language='javascript' src='/{NOM_APPLICATION}/include/script/action_accueil.js'></script>
 
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
     <link href="https://raw.githack.com/ttskch/select2-bootstrap4-theme/master/dist/select2-bootstrap4.css" rel="stylesheet"/>
@@ -72,7 +72,7 @@
 	</style>
 </head>   
 <body  class='tpl_creation tpl_creation_fpo' onLoad='initTplCreation();' style="background-color: transparent;font-family: 'Times New Roman';">
-	<form name='principal'  id="formposte" ACTION='/NGSYS/interface/session/principal/attente/attente.php' method='POST' onSubmit='return validerCreation();'  data-parsley-validate>	
+	<form name='principal'  id="formposte" ACTION='/{NOM_APPLICATION}/interface/session/principal/attente/attente.php' method='POST' onSubmit='return validerCreation();'  data-parsley-validate>	
 			    <input type='hidden' name='URL' value='{CODE_ACTION}'>
 				<input type='hidden' name='POS_NUM_DOC' value='{POS_NUM_DOC}'>
 				<input type='hidden' name='POS_TYPEDOC' value='FPO'>

@@ -5,14 +5,15 @@ header("Access-Control-Allow-Headers: Authorization,Origin, X-Requested-With, Co
 header('Content-Type:application/json');
 
 $retour=array();
-
+  ini_set('display_errors', 1);
 try {
 
     $destination=$_POST['destination'] ;
     $profil=$_POST['profil'];
-    $qte=$_POST['qte'];
+    $qte=$_POST['qte'] ?? 0;
 
 
+   
 
     $id_rq=0;
      //retrouvez les données à partir de l'id
@@ -26,6 +27,7 @@ try {
         }
 
         $retour["code"]=$id_rq;
+         
 
         $k=1;
         $somme=0;
@@ -34,6 +36,8 @@ try {
         $find = pg_num_rows($result);
 
         if ($find!=0){
+
+
 
             $rq = pg_query("SELECT id, id_besoins, pu,code_key FROM public.mis_tab_besoins WHERE code_key='".$id_rq."' ");
 
@@ -48,6 +52,9 @@ try {
                    ");
 
                    while ($rowtitle = pg_fetch_row($rqtitle)) {
+
+
+
                         
 
                     $rqcontent = pg_query($conn,"
@@ -59,7 +66,7 @@ try {
                                 
                                     $retour['data'][]=[
                                         'id'=> intval($rowcontent[0]),
-                                        'lib'=> ucwords($rowcontent[1]),
+                                        'lib'=> ucwords(utf8_encode($rowcontent[1])),
                                         'pu'=>intval($row[2]),
                                         'qte'=>1,
                                         'xof'=>intval($row[2])*1
@@ -70,11 +77,15 @@ try {
                                 }
 
 
+
+
                 }
 
-
+                
 
             }
+
+          
 
             /////FIN AUTRES BESOIN /////////
 
@@ -86,6 +97,7 @@ try {
             FROM 
             public.pos_tab_index_frs WHERE  \"COD\"='".$id_rq."'   ");
         
+
         while ($rowobg = pg_fetch_row($frs_obl)) {
             $hotel= intval($rowobg[0]);
             $nourriture= intval($rowobg[1]);
@@ -95,6 +107,8 @@ try {
 
             $tot_pu= intval($rowobg[5]);
         }
+
+
 
             $retour['data'][]=[
                 'id'=> $k,

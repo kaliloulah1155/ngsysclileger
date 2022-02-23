@@ -22,7 +22,7 @@
 	<script language='javascript' src='/{NOM_APPLICATION}/include/script/ajax_recup_arbo_dossier.js'></script>
 	<script language='javascript' src='/{NOM_APPLICATION}/include/script/action_accueil.js'></script>
 	<link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="Stylesheet" type="text/css" />
-	<script language='javascript' src='/NGSYS/include/script/action_accueil.js'></script>
+	<script language='javascript' src='/{NOM_APPLICATION}/include/script/action_accueil.js'></script>
 
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
     <link href="https://raw.githack.com/ttskch/select2-bootstrap4-theme/master/dist/select2-bootstrap4.css" rel="stylesheet"/>
