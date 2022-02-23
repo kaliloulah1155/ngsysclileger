@@ -193,11 +193,8 @@ $(document).on('click','.bouton_sub',function(){
 
 
           if(etat_type=='EMPLOYE'){
-         if (val_modif.slice(0,14) =='AB_INTEMPL_ABS') {
-
-             
-              workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN) ;
-             
+         if (val_modif.slice(0,14) =='AB_INTEMPL_ABS') { 
+              workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN); 
         }
         if (val_modif.slice(0,20) =='AA_TRSEMPLOYEMNG_ABS') {
 
