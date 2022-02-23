@@ -117,7 +117,7 @@ $(document).on('click','.bouton_sub',function(){
      
 	 
 	
-       var val_modif = $('.action_hermes').val();
+    var val_modif = $('.action_hermes').val();
 
     
     var initiator =$('.createur').val().toLowerCase();
@@ -138,18 +138,21 @@ $(document).on('click','.bouton_sub',function(){
    //Appel du lien 
     var lk_t =$('.user_url').val();
 
- 
+    ////////////// DEBUT LES VARIABLES DU CORPS DU MAIL ///////////
+
     var numdmd = $('#numposeidon').val();
-    var typeDemande = $('.typeDemande').val();
+    var typeDemande = $('.typeDemande').val().toLowerCase();
     var typedmd ='';
     var nomInterimaire = $('.personnel').val();
     var nomInitiateur= $('.viewnom').val();
     var  prenomInitiateur= $('.viewprenom').val();
-    var objet ="DEMANDE D\'ABSENCE";
+    var objet ="demande d\'abscence";
     //nom et prenom de l'initateur
     var nomPrenomInitiateur= nomInitiateur+' '+prenomInitiateur;
-     //  get value of the mail object //
 
+     ////////////// FIN LES VARIABLES DU CORPS DU MAIL ///////////
+
+    //RECUPERATION DES MOTIF
       switch (typeDemande) {
             case "ABSENCE" : 
                   typedmd="DEMANDE D' ABSENCE";
@@ -194,62 +197,51 @@ $(document).on('click','.bouton_sub',function(){
 
           if(etat_type=='EMPLOYE'){
          if (val_modif.slice(0,14) =='AB_INTEMPL_ABS') { 
-              workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN); 
+            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN); 
         }
         if (val_modif.slice(0,20) =='AA_TRSEMPLOYEMNG_ABS') {
-
-            
-             
+            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
         }
 
         if (val_modif.slice(0,15) =='AA_TRSMNGRH_ABS') {
-            
+            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
         }
         
         if (val_modif.slice(0,15) =='AA_TRSRHADM_ABS') {
-             
+            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
         }
 
         
         if (val_modif.slice(0,13) =='AZ_CLOSRA_ABS') {
-             
-
+            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
         }
 
        if (val_modif.slice(0,13) =='AZ_CLOSDG_ABS') {
-             
- 
+        workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
         } 
     }
 
     if(etat_type=='MANAGER'){
 
         if (val_modif.slice(0,19) =='AA_TRSMANAGERRH_ABS') {
-            
-
+            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
         }
 
           if (val_modif.slice(0,15) =='AA_TRSRHDGA_ABS') {
-              
-
+            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
         }
 
         
         if (val_modif.slice(0,13) =='AA_TRSDGADG_ABS') {
-              
-
+            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
         }
 
-       if (val_modif.slice(0,13) =='AA_CLOSDG_ABS') {
-             
- 
+       if (val_modif.slice(0,13) =='AA_CLOSDG_ABS') {   
+            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
         } 
 
     }
-    
-
     // REFUS 
-
         if(
              val_modif.slice(0,14) == 'AZ_REFUSDG_ABS' ||
              val_modif.slice(0,14) == 'AB_REFUSRH_ABS'  ||
@@ -259,8 +251,7 @@ $(document).on('click','.bouton_sub',function(){
              val_modif.slice(0,17) == 'AB_REFUSRHEMP_ABS' ||
              val_modif.slice(0,14) == 'AB_REFUSRA_ABS'
             ){
-          
- 
+                workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
         } 
 	
 });

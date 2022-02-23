@@ -74,51 +74,33 @@ loadvalideurs()
  getLink() 
 //Appel du lien 
 var lk_t =$('.user_url').val();
- //Envoi de mail via workflow
-class WorkflowMailer{
-   
-   constructor(email,titre,contenu,app){
 
-       this.email=email;
-       this.titre=titre;
-       this.contenu=contenu;
-
-       this.link2="/" +
-		    app +
-		    "/interface/tpl/" +
-		    app +
-		    "/DFM/pos_mail/pos_mailer.php";
-
-       this.sender=()=>{   
- 
-        $.ajax({
-              url: this.link2,
+//Envoi de mail via workflow 
+let workflowmailing=(sendemail,destinataire,destinateur,lien,objet,motif,numero,app)=>{
+    $.ajax({
+              url: "/"+app+"/configuration_w/pos_mail/pos_mailer.php",
               type: "POST",
                data:{
-                  sendemail:this.email,
-                  titre:this.titre,
-                  contenu:this.contenu,
+                  sendemail:sendemail,
+                  destinataire:destinataire,
+                  destinateur:destinateur,
+                  lien:lien,
+                  objet:objet,
+                  motif:motif,
+                  numero:numero
               },
               success: function(data) {
                    if(data['status']="success"){
-                     	console.log("Mail envoi avec success");
+                        console.log("Mail envoi avec success");
                    }else{
-                    	console.log("Echec d'envoi de mail");
+                        console.log("Echec d'envoi de mail");
                    }
-                  
               },
               error: function(error) {
                   console.log(error);   
               },
-          });  
-
-
-
-        }
-
-   }
+          });
 }
-
  
 $(document).on('click','.bouton_sub',function(){
 
@@ -135,88 +117,85 @@ $(document).on('click','.bouton_sub',function(){
     var dg_wk =$('.dg_wk').val().toLowerCase();
     //var dg_wk="ibrahim.konate@ngser.com";
 
-    var numdmd = $('.numposeidon').val();
+     ///////////// DEBUT LES VARIABLES DU CORPS DU MAIL ///////////
+    
+     var numdmd = $('#numposeidon').val();
+     var typeDemande = $('.typeDemande').val().toLowerCase();
+     var typedmd ='';
+     var nomInterimaire = $('.personnel').val();
+     var nomInitiateur= $('.viewnom').val();
+     var  prenomInitiateur= $('.viewprenom').val();
+     var objet ="demande d\'abscence";
+     //nom et prenom de l'initateur
+     var nomPrenomInitiateur= nomInitiateur+' '+prenomInitiateur;
+         
+     ////////////// FIN LES VARIABLES DU CORPS DU MAIL ///////////
 
+      //RECUPERATION DES MOTIF
+      switch (typeDemande) {
+        case "ABSENCE" : 
+              typedmd="DEMANDE D' ABSENCE";
+            break;
+        case "MARIAGE DU TRAVAILLEUR" :
+            typedmd="MARIAGE DU TRAVAILLEUR"; 
+            break;
+        case "MARIAGE DUN DE SES ENFANTS, DUN FRERE, DUNE SOEUR":
+            typedmd="MARIAGE D'UN DE SES ENFANTS, D'UN FRERE, D'UNE SOEUR"; 
+            break;
+        case "DECES DU CONJOINT":
+             typedmd="DECES DU CONJOINT"; 
+            break;
+        case "DECES DUN ENFANT, DU PERE, DE LA MERE DU TRAVAILLEUR":
+             typedmd="DECES D'UN ENFANT, DU PERE, DE LA MERE DU TRAVAILLEUR";
+            break;
+        case "DECES DUN FRERE OU DUNE SOEUR":
+            typedmd="DECES D'UN FRERE OU D'UNE SOEUR";
+            break;
+        case "DECES DUN BEAU-PERE OU DUNE BELLE-MERE":
+            typedmd="DECES D'UN BEAU-PERE OU D'UNE BELLE-MERE";
+             break;
+        case "NAISSANCE DUN ENFANT":
+              typedmd="NAISSANCE D'UN ENFANT";
+            break;
+        case "BAPTEME DUN ENFANT":
+              typedmd="BAPTEME D'UN ENFANT";
+            break;
+        case "PREMIERE COMMUNION":
+             typedmd="PREMIERE COMMUNION";
+            break;
+        case "DEMENAGEMENT":
+             typedmd="DEMENAGEMENT";
+            break;
+    default:
+            typedmd="DEMANDE D' ABSENCE";
+    }
 
          //Message vers les valideurs
         var valideur =(validator,initiateur_wk,app)=> { 
-             const valid= new WorkflowMailer(validator,"DOCUMENT n\u00b0"+numdmd,
-                 `
-                       TYPE : DEMANDE DE FORMATION <br/>
-                       INFOS : VOUS AVEZ RECU UNE DEMANDE DE FORMATION POUR VALIDATION <br/>
-                       DEMANDEUR :  ${initiateur_wk}
-                        ${lk_t}
-                    `
-                 ,appName);
-             return  valid.sender();
+             workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
         }
 
         if (val_modif.slice(0,15) =='AA_TRSMNGRH_DFM') {
-            //console.log('ok trs rh');
-             var initiateur = new WorkflowMailer(initiator,"DOCUMENT n\u00b0"+numdmd,
-                    `
-                       TYPE : DEMANDE DE FORMATION N&deg; ${numdmd} <br/>
-                       INFOS : VOTRE DEMANDE EST CHEZ LA RH POUR VALIDATION
-                        ${lk_t}
-                    `
-                ,appName);
-             initiateur.sender();
-             valideur(rh_wk,initiateur_wk,appName);
+            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
 
         }
 
      
         if (val_modif.slice(0,14) =='AA_TRSRHRA_DFM') {
-             //console.log('ok trs adm');
-
-             var initiateur = new WorkflowMailer(initiator,"DOCUMENT n\u00b0"+numdmd,
-                    `
-                       TYPE :  DEMANDE DE FORMATION N&deg; ${numdmd} <br/>
-                       INFOS : VOTRE DEMANDE A ETE VALIDEE PAR LA RH
-                        ${lk_t}
-                    `
-                ,appName);
-             initiateur.sender();
-               valideur(manager_wk,initiateur_wk,appName);
+            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);;
         }
       
         if (val_modif.slice(0,15) =='AA_TRSRADGA_DFM') {
-             //console.log('ok trs dga');
-             var initiateur = new WorkflowMailer(initiator,"DOCUMENT n\u00b0"+numdmd,
-                    `
-                       TYPE :  DEMANDE DE FORMATION N&deg; ${numdmd} <br/>
-                       INFOS : VOTRE DEMANDE A ETE VALIDE PAR LE MANAGER ADMIN
-                        ${lk_t}
-                    `
-                ,appName);
-             initiateur.sender();
-               valideur(dga_wk,initiateur_wk,appName);
+            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
         }
 
        
         if (val_modif.slice(0,15) =='AA_TRSDGADG_DFM') {
-             //console.log('ok trs dg');
-             var initiateur = new WorkflowMailer(initiator,"DOCUMENT n\u00b0"+numdmd,
-                    `
-                       TYPE :  DEMANDE DE FORMATION N&deg; ${numdmd} <br/>
-                       INFOS : VOTRE DEMANDE A ETE VALIDEE PAR LE DGA
-                        ${lk_t}
-                    `
-                ,appName);
-             initiateur.sender();
-               valideur(dg_wk,initiateur_wk,appName);
+            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
         }
   
        if (val_modif.slice(0,13) =='AA_CLOSDG_DFM') {
-             //console.log('valider');
-             var initiateur = new WorkflowMailer(initiator,"DOCUMENT n\u00b0"+numdmd,
-                    `
-                       TYPE :  DEMANDE DE FORMATION N&deg; ${numdmd} <br/>
-                       INFOS : VOTRE DEMANDE A ETE VALIDEE 
-                        ${lk_t}
-                    `
-                ,appName);
-             initiateur.sender();
+            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
  
         } 
   
@@ -226,16 +205,8 @@ $(document).on('click','.bouton_sub',function(){
              val_modif.slice(0,14) == 'AB_REFUSRA_DFM' ||
              val_modif.slice(0,15) == 'AB_REFUSDGA_DFM'  ||
              val_modif.slice(0,14) == 'AB_REFUSDG_DFM'  
-            ){
-          
-            var initiateur = new WorkflowMailer(initiator,"DOCUMENT n\u00b0"+numdmd,
-                    `
-                       TYPE :  DEMANDE DE FORMATION N&deg; ${numdmd} <br/>
-                       INFOS : VOTRE DEMANDE A ETE REFUSEE
-                        ${lk_t}
-                    `
-                ,appName);
-             initiateur.sender();
+            ){ 
+            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
         } 
 
   

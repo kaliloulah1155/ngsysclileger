@@ -75,50 +75,32 @@ let link_ngser="../../../LinkSiteWeb.php";
   //Appel
   getLink()  
 //Appel du lien 
-var lk_t =$('.user_url').val();
- //Envoi de mail via workflow
-class WorkflowMailer{
-   
-   constructor(email,titre,contenu,app){
-
-       this.email=email;
-       this.titre=titre;
-       this.contenu=contenu;
-
-       this.link2="/" +
-		    app +
-		    "/interface/tpl/" +
-		    app +
-		    "/COT/pos_mail/pos_mailer.php";
-
-       this.sender=()=>{   
- 
-        $.ajax({
-              url: this.link2,
+var lk_t =$('.user_url').val(); 
+ //Envoi de mail via workflow 
+ let workflowmailing=(sendemail,destinataire,destinateur,lien,objet,motif,numero,app)=>{
+    $.ajax({
+              url: "/"+app+"/configuration_w/pos_mail/pos_mailer.php",
               type: "POST",
                data:{
-                  sendemail:this.email,
-                  titre:this.titre,
-                  contenu:this.contenu,
+                  sendemail:sendemail,
+                  destinataire:destinataire,
+                  destinateur:destinateur,
+                  lien:lien,
+                  objet:objet,
+                  motif:motif,
+                  numero:numero
               },
               success: function(data) {
                    if(data['status']="success"){
-                     	console.log("Mail envoi avec success");
+                        console.log("Mail envoi avec success");
                    }else{
-                    	console.log("Echec d'envoi de mail");
+                        console.log("Echec d'envoi de mail");
                    }
-                  
               },
               error: function(error) {
                   console.log(error);   
               },
-          });  
-
-
-
-        }
-
-   }
+          });
 }
 
 
@@ -143,148 +125,107 @@ $(document).on('click','.bouton_sub',function(){
    var dg_wk =$('.dg_wk').val().toLowerCase();
    //var dg_wk ="ibrahim.konate@ngser.com";
 
+    ///////////// DEBUT LES VARIABLES DU CORPS DU MAIL ///////////
+    
     var numdmd = $('#numposeidon').val();
+    var typeDemande = $('.typeDemande').val().toLowerCase();
+    var typedmd ='';
+    var nomInterimaire = $('.personnel').val();
+    var nomInitiateur= $('.viewnom').val();
+    var  prenomInitiateur= $('.viewprenom').val();
+    var objet ="demande d\'abscence";
+    //nom et prenom de l'initateur
+    var nomPrenomInitiateur= nomInitiateur+' '+prenomInitiateur;
+    
+    ////////////// FIN LES VARIABLES DU CORPS DU MAIL ///////////
 
+    //RECUPERATION DES MOTIF
+    switch (typeDemande) {
+        case "ABSENCE" : 
+              typedmd="DEMANDE D' ABSENCE";
+            break;
+        case "MARIAGE DU TRAVAILLEUR" :
+            typedmd="MARIAGE DU TRAVAILLEUR";
+            
+            break;
+        case "MARIAGE DUN DE SES ENFANTS, DUN FRERE, DUNE SOEUR":
+            typedmd="MARIAGE D'UN DE SES ENFANTS, D'UN FRERE, D'UNE SOEUR";
+            
+            break;
+        case "DECES DU CONJOINT":
+             typedmd="DECES DU CONJOINT";
+            
+            break;
+        case "DECES DUN ENFANT, DU PERE, DE LA MERE DU TRAVAILLEUR":
+             typedmd="DECES D'UN ENFANT, DU PERE, DE LA MERE DU TRAVAILLEUR";
+            break;
+        case "DECES DUN FRERE OU DUNE SOEUR":
+            typedmd="DECES D'UN FRERE OU D'UNE SOEUR";
+            break;
+        case "DECES DUN BEAU-PERE OU DUNE BELLE-MERE":
+            typedmd="DECES D'UN BEAU-PERE OU D'UNE BELLE-MERE";
+             break;
+        case "NAISSANCE DUN ENFANT":
+              typedmd="NAISSANCE D'UN ENFANT";
+            break;
+        case "BAPTEME DUN ENFANT":
+              typedmd="BAPTEME D'UN ENFANT";
+            break;
+        case "PREMIERE COMMUNION":
+             typedmd="PREMIERE COMMUNION";
+            break;
+        case "DEMENAGEMENT":
+             typedmd="DEMENAGEMENT";
+            break;
+    default:
+            typedmd="DEMANDE D' ABSENCE";
+    }
 
          //Message vers les valideurs
         var valideur =(validator,employe_wk,app)=> { 
-             const valid= new WorkflowMailer(validator,"DOCUMENT n\u00b0"+numdmd,
-                 `
-                       TYPE :  CONTRAT <br/>
-                       INFOS : VOUS AVEZ RECU UN CONTRAT POUR VALIDATION <br/>
-                       EMPLOYE(E) :  ${employe_wk}
-                        ${lk_t}
-                `
-                 ,appN);
-             return  valid.sender();
-        }
+              workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
+        } 
 
-
-      if (val_modif.slice(0,17) =='AF_ENVEMPLOYE_COT') {
-            //console.log('ok trs employer');
-             var initiateur = new WorkflowMailer(employe_wk,"DOCUMENT n\u00b0"+numdmd,
-                    `
-                       TYPE :  CONTRAT N&deg; ${numdmd} <br/>
-                       INFOS : VOUS AVEZ RECU UN CONTRAT POUR VALIDATION
-                        ${lk_t}
-                    `
-                ,appN);
-             initiateur.sender(); 
-            // valideur(manager_wk,initiateur_wk,appN);
+        if (val_modif.slice(0,17) =='AF_ENVEMPLOYE_COT') {
+             workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN); 
         }
 
         if (val_modif.slice(0,22) =='AB_TRSEMPLOYJURIST_COT') {
-             //console.log('ok trs rh');
-             var initiateur = new WorkflowMailer(employe_wk,"DOCUMENT n\u00b0"+numdmd,
-                    `
-                       TYPE :  CONTRAT N&deg; ${numdmd} <br/>
-                       INFOS :  VOUS AVEZ VALIDE VOTRE CONTRAT,
-                        ${lk_t}
-                    `
-                ,appN);
-             initiateur.sender();
-               valideur(manager_wk,employe_wk,appN);
+             workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);  
         }
 
          if (val_modif.slice(0,19) =='AB_TRSJURISTDGA_COT') {
-             //console.log('ok trs dga');
-             var initiateur = new WorkflowMailer(employe_wk,"DOCUMENT n\u00b0"+numdmd,
-                    `
-                       TYPE :  CONTRAT N&deg; ${numdmd} <br/>
-                       INFOS :  VOTRE CONTRAT A ATE VALIDE PAR LE MANAGER ADMIN,
-                        ${lk_t}
-                    `
-                ,appN);
-             initiateur.sender();
-               valideur(dga_wk,employe_wk,appN);
+             workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);  
         }
          if (val_modif.slice(0,15) =='AB_TRSDGADG_COT') {
-             //console.log('ok trs dga');
-             var initiateur = new WorkflowMailer(employe_wk,"DOCUMENT n\u00b0"+numdmd,
-                    `
-                       TYPE :  CONTRAT N&deg; ${numdmd} <br/>
-                       INFOS :  VOTRE CONTRAT A ATE VALIDE PAR LE DGA,
-                        ${lk_t}
-                    `
-                ,appN);
-             initiateur.sender();
-               valideur(dg_wk,employe_wk,appN);
+             workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);  
         }
 
         if (val_modif.slice(0,13) =='AB_CLOSDG_COT') {
-             //console.log('ok trs dg');
-             var initiateur = new WorkflowMailer(employe_wk,"DOCUMENT n\u00b0"+numdmd,
-                    `
-                       TYPE :  CONTRAT N&deg; ${numdmd} <br/>
-                       INFOS :  VOTRE CONTRAT A ATE VALIDE PAR LE DG ET CLOS,
-                        ${lk_t}
-                    `
-                ,appN);
-             initiateur.sender();
-             //  valideur(dg_wk,employe_wk,appN);
+             workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);  
         }
 
-
  
-
     // REFUS 
 
         if( val_modif.slice(0,19) == 'AB_TRSEMPLOYERH_COT'){
-            var recep = new WorkflowMailer(employe_wk,"DOCUMENT n\u00b0"+numdmd,
-                    `
-                       TYPE :  CONTRAT N&deg; ${numdmd} <br/>
-                       INFOS : LE CONTRAT A ETE REFUSE PAR L'EMPLOYE
-                        ${lk_t}
-                    `
-                ,appN);
-             recep.sender();
+             workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
         }  
 
         if( val_modif.slice(0,18) == 'AB_TRSJURISTRH_COT'){
-            var recep = new WorkflowMailer(employe_wk,"DOCUMENT n\u00b0"+numdmd,
-                    `
-                       TYPE :  CONTRAT N&deg; ${numdmd} <br/>
-                       INFOS : VOTRE CONTRAT A ETE REFUSE PAR LE MANAGER ADMIN
-                        ${lk_t}
-                    `
-                ,appN);
-             recep.sender();
+             workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
         }
         if( val_modif.slice(0,15) == 'AB_TRSDGARH_COT'){
-            var recep = new WorkflowMailer(employe_wk,"DOCUMENT n\u00b0"+numdmd,
-                    `
-                       TYPE :  CONTRAT N&deg; ${numdmd} <br/>
-                       INFOS : VOTRE CONTRAT A ETE REFUSE PAR LE DGA
-                        ${lk_t}
-                    `
-                ,appN);
-             recep.sender();
+             workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN); 
         }
 
         if( val_modif.slice(0,15) == 'AB_TRSDGARH_COT'){
-            var recep = new WorkflowMailer(employe_wk,"DOCUMENT n\u00b0"+numdmd,
-                    `
-                       TYPE :  CONTRAT N&deg; ${numdmd} <br/>
-                       INFOS : VOTRE CONTRAT A ETE REFUSE PAR LE DGA
-                        ${lk_t}
-                    `
-                ,appN);
-             recep.sender();
+             workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN); 
         }
 
         if( val_modif.slice(0,14) == 'AB_TRSDGRH_COT'){
-            var recep = new WorkflowMailer(employe_wk,"DOCUMENT n\u00b0"+numdmd,
-                    `
-                       TYPE :  CONTRAT N&deg; ${numdmd} <br/>
-                       INFOS : VOTRE CONTRAT A ETE REFUSE PAR LE DGA
-                        ${lk_t}
-                    `
-                ,appN);
-             recep.sender();
-        }
-
-
-
+             workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN); 
+        } 
 
     /*
 	var val_modif = $('.action_hermes').val();
