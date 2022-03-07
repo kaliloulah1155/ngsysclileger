@@ -319,13 +319,6 @@
 		<!-- END BLOC_OLD_VALUE -->
 		
 			<input type='hidden' class='appName' value="{NOM_APPLICATION}">
-
-		<!-- debut Recuperation des fullName à partir du  dom -->
-		<input type="hidden" class="managerFullName" >
-		<input type="hidden" class="rhFullname">
-		<input type="hidden" class="dgaFullName">
-		<input type="hidden" class="dgFullName">
-		 <!-- fin Recuperation des fullName à partir du  dom -->
 			       
 
 		 <!-- données de l'utilisateur connecté -->

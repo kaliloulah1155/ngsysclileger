@@ -2245,7 +2245,49 @@ function containerState(action){
                             </ul>
                         </li>
                      </ul>
-
+                     <!-- TECHNIQUE TELECOM -->
+                      <!-- NGSYS -->
+                    <main class="btn btnNgsys" style="width: 100%;height: 6vh;text-align: center; padding: 6%;border-radius: 5px;line-height: 5px;font-weight:lighter;background: #4a67b3;margin-bottom: 15px;">
+                        <span class="hamburgerIcon">
+                            <i class="fa fa-folder toggleNgsys"></i>
+                            <!-- <i class="fa fa-folder-open toggleNgsys"></i> -->
+                        </span>
+                        <span class="h5" style="color: #FFF;font-weight: 1;">PROFIL NGSYS</span>
+                    </main>
+                    <ul class="nav-list" id="nav-listNgsys" style="display:none; margin-top: -2%;">
+                       <li style="padding-top: 3%">
+                            <span style="color: rgb(0, 2, 5)">
+                                <span class="hamburger-menu">
+                                   <i class="fa fa-bars toggleNgsys"></i>
+                                    <i class="fa fa-times toggleNgsys"></i>
+                                </span>
+                                <span class="h6">GESTION DES VOYAGES</span>
+                            </span>
+                            <ul class="nav-link" id="nav-linkNgsys1" style="display: none; left: 0;">
+                                <li style="margin: 1% -13%;font-weigth: lighter;">
+                                    <a style="font-size: 15px;color: rgb(42, 138, 247);font-family: Times New Roman;color: #4a67b3;" href="javascript:void(0);" onClick="javascript:return affichePageToolbar(this, 'lien_1','/{NOM_APPLICATION}/interface/session/principal/creation/afficher_creation.php?POS_TYPEDOC=VYG');">Demande de voyage</a>
+                                    <!-- <a style="font-size: 13px;color: rgb(42, 138, 247);" href="javascript:void(0)" onClick="javascript:affichePage('lien_param','/NGSYS/interface/session/principal/sidebarmenu/creation_dmdabsence.php')">Demande de voyage</a> -->
+                                </li>
+                                <li style="margin: 1% -13%;font-weigth: lighter;">
+                                    <a style="font-size: 13px;color: rgb(42, 138, 247);" href="/NGSYS/interface/session/principal/sidebarmenu/creation_dmdabsence.php">Demande d'attestation</a>
+                                </li>
+                                <li style="margin: 1% -13%;font-weigth: lighter;">
+                                    <a style="font-size: 13px;color: rgb(42, 138, 247);" href="#">Demande de pret</a>
+                                </li>
+                                <li style="margin: 1% -13%;font-weigth: lighter;">
+                                    <a style="font-size: 13px;color: rgb(42, 138, 247);" href="#">Domiciliation bancaiare</a>
+                                </li>
+                                <li style="margin: 1% -13%;font-weigth: lighter;">
+                                    <a style="font-size: 13px;color: rgb(42, 138, 247);" href="#">Enregistrement justificatifs</a>
+                                </li>
+                                <li style="margin: 1% -13%;font-weigth: lighter;">
+                                    <a style="font-size: 13px;color: rgb(42, 138, 247);" href="#">Timesheet</a>
+                                </li> 
+                            </ul>
+                        </li>  
+                        
+                    </ul>
+                    <!-- NGSYS -->
                 </section>
             <div>
             <!--debut corbeille de taches  -->
@@ -2962,6 +3004,19 @@ function containerState(action){
 			   $('#nav-linkTelecs1').hide();
 			   $('#nav-linkTelecs2').hide();
              });
+
+              //TECHNIQUE NGSYS
+            $('.btnNgsys').click(function() {
+                $('.toggleNgsys').toggleClass("slow");
+               $('#nav-listNgsys').toggle("slow" -5000);
+			   $('#nav-listAdmins').hide();
+			   $('#nav-linkNgsys1').show();
+			   $('#nav-listFncs').hide();
+			   $('#nav-listMarks').hide();
+			   $('#nav-listComls').hide();
+			   $('#nav-listGests').hide();
+			   $('#nav-listInfors').hide();
+            });       
         });
         </script>
         <iframe src='' allowTransparency="false" style='height: 80%;width: 100%;margin-left:10px;display:none;' frameborder='1' id='ifr_centerbal' name='centerbal'></iframe><!--frame ajouter 15/01/2021-->

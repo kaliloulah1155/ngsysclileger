@@ -319,13 +319,6 @@
 		<!-- END BLOC_OLD_VALUE -->
 		
 			<input type='hidden' class='appName' value="{NOM_APPLICATION}">
-
-		<!-- debut Recuperation des fullName à partir du  dom -->
-		<input type="hidden" class="managerFullName" >
-		<input type="hidden" class="rhFullname">
-		<input type="hidden" class="dgaFullName">
-		<input type="hidden" class="dgFullName">
-		 <!-- fin Recuperation des fullName à partir du  dom -->
 			       
 
 		 <!-- données de l'utilisateur connecté -->
@@ -390,77 +383,27 @@
 									</div>
 									<div class="col2_partie container-fluid" style="padding-top: 2%; padding-bottom: 1%">
 										<div class="row">
-											<div class="col-sm-6">
-												<label for="selection">Type de demande</label>
-											   	<select class="form-control typeDemande" style="width: 100%" name='POS_VAL_RUB_AUN' id='id_rub_AUN'>
-										<option disabled='true' selected='true'>S&eacute;lectionner votre demande</option>
-										<option value="ABSENCE">Absence</option>
-										<option value="BAPTEME DUN ENFANT">Bapt&egrave;me d'un enfant</option>
-										<option value="CONGE ANNUEL">Cong&eacute; annuel</option>
-										<option value="CONGE DE MATERNITE">Cong&eacute; de maternit&eacute;</option>
-										<option value="CONGE DE PATERNITE">Cong&eacute; de paternit&eacute;</option>
-										<option value="DECES DUN BEAU-PERE OU DUNE BELLE-MERE">D&eacute;c&egrave;s d'un beau-p&egrave;re ou d'une belle-m&egrave;re</option>
-										<option value="DECES DUN ENFANT, DU PERE, DE LA MERE DU TRAVAILLEUR">D&eacute;c&egrave;s d'un enfant, du p&egrave;re, de la m&egrave;re du travailleur</option>
-										<option value="DECES DUN FRERE OU DUNE SOEUR">D&eacute;c&egrave;s d'un fr&egrave;re ou d'une soeur</option>
-										<option value="DECES DU CONJOINT">D&eacute;c&egrave;s du conjoint</option>
-										<option value="DEMENAGEMENT">D&eacute;m&eacute;nagement</option>
-										<option value="MARIAGE DU TRAVAILLEUR">Mariage du travailleur</option>
-										<option value="MARIAGE DUN DE SES ENFANTS, DUN FRERE, DUNE SOEUR">Mariage d'un de ses enfants, d'un fr&egrave;re, d'une s&oelig;ur</option>
-										<option value="NAISSANCE DUN ENFANT">Naissance d'un enfant</option>
-										<option value="PREMIERE COMMUNION">Premi&eacute;re communion</option>
-										<option value="PERMISSION EXCEPTIONNELLE">Permission exceptionnelle</option>
-										<option value="REPOS MALADIE">Repos maladie</option>
-													</select>
-													<input type="hidden" name='POS_VAL_CTRL_AUN' id='POS_VAL_CTRL_AUN' value='{POS_VAL_RUB_AUN}'>
-												</div>
+											<div class="col-sm-6"> 
+												<label for="selection">Pays de destination<span class='text'></span></label>
+												<select name="POS_VAL_RUB_PAY"  class="form-control selectPas pays" style="width: 100%;" required="true">
+												</select>
+											   <input type="hidden" class="init_pays" name='POS_VAL_CTRL_PAY' id='POS_VAL_CTRL_PAY' required="true">
 												<div class="col-sm-6">
-													 <label for="bio">Date de d&eacute;part :</label>
-													 <input type="text" class="form-control datedeb" name="POS_VAL_RUB_DT4"  id="d1" required="true"  value="{POS_VAL_RUB_DT4}" style="width: 100%">
+													<label for="bio">Photo <span class='text' ></span> :</label>
+						   							<input type="text"  name='POS_VAL_RUB_PHT' class="form-control"   id="bio" placeholder="photo" style="width: 100%;" required="true" data-parsley-trigger="keyup">
 												</div>
 											</div>
 										
 											<div class="row" style="margin-top: 2%">
 												<div class="col-sm-6">
-												   <label for="bio">Motif :</label>
-													<textarea  name='POS_VAL_RUB_COM'class="form-control" id="motif"   data-parsley-required="true" data-parsley-trigger="keyup" rows="2"  style="width: 100%;resize: none">{POS_VAL_RUB_COM} </textarea>
+													<label for="bio">Date de d&eacute;part <span class='text' ></span> :</label>
+													<input type="text" class="form-control date" name="POS_VAL_RUB_DIN"   required="true" style="width: 100%; text-transform: uppercase;"  value="{POS_VAL_RUB_DIN}">
 												</div>
 												<div class="col-sm-6">
-													<label for="bio">Heure de d&eacute;part :</label>
-												  	<input type="time" class="form-control timedeb" name="POS_VAL_RUB_HRD" data-theme="a" data-clear-btn="true"  id="t1" value="{POS_VAL_RUB_HRD}" style="width: 100%">
+													<label for="bio"> Date d'arrivé <span class='text' ></span> :</label>
+													<input type="text" class="form-control date" name="POS_VAL_RUB_DF1"  required="true" style="width: 100%; text-transform: uppercase;" data-parsley-trigger="keyup" value="{POS_VAL_RUB_DF1}">
 												</div>
-											</div>
-
-										<div class="row" style="margin-top: 2%">
-											<div class="col-sm-6">
-											   	<label for="bio">Interimaire :</label>
-												<select id="interimaire" style="width: 100%" name='POS_VAL_RUB_INT' class="form-control select2 personnel" rows="1" data-parsley-required="true" >
-								     <option value="{POS_VAL_RUB_INT}" selected>{POS_VAL_RUB_INT}</option>
-								</select>      
-										<input type="hidden" name='POS_VAL_CTRL_INT' class="interselect" id='POS_VAL_CTRL_INT' value='{POS_VAL_RUB_INT}'>
-										<input type="hidden" name='POS_VAL_RUB_INF' class="interim"  value='{POS_VAL_RUB_INF}'>
-											</div>
-											<div class="col-sm-3">
-												<label for="bio">Dur&eacute;e (en jour) :</label>
-												<input type="number" class="form-control duree" placeholder="Nombre de jours" min="0" name='POS_VAL_RUB_NBR' data-parsley-required="true" data-parsley-trigger="keyup"  value="{POS_VAL_RUB_NBR}"  id="d1" style="width: 100%">
-											</div>
-											<div class="col-sm-3">
-												<label for="bio">Dur&eacute;e (en heure) :</label>
-												<input type="number" class="form-control dureedebselect" min="0" max="7" placeholder="Nombre d'heure"      style="width: 100%;">
-												<input type="hidden" class="dureedeb" name='POS_VAL_RUB_HRA' value='{POS_VAL_RUB_HRA}'>
-											</div>
-										</div>
-
-										<div class="row" style="margin-top: 2%">
-											<div class="col-sm-6">
-											   <label for="bio">Dossier en cours :</label>
-											   <input type="text" name='POS_VAL_RUB_DOS' class="form-control" value="{POS_VAL_RUB_DOS}" id="bio"  style="width: 100%;resize: none" data-parsley-required="true" data-parsley-trigger="keyup">
-											</div>
-											<div class="col-sm-6">
-												<label for="bio">Date de retour :</label>
-											  	<input type="type" class="form-control res6" readonly="true"  name='POS_VAL_RUB_DRU'  value="{POS_VAL_RUB_DRU}" data-parsley-required="true" data-parsley-trigger="keyup" style="width: 100%">
-											  	<input type="hidden" class="datefin" name='POS_VAL_RUB_DFI'  value='{POS_VAL_RUB_DFI}'>
-											</div>
-										</div>
+											</div> 
 									</div>
 								</div>
 										<!-- 12_ 2 infos -->

@@ -1,7 +1,7 @@
 <?php
 /******************************************************************************
 * DESCRIPTION : Connexion a la base + lancement de l'application
-* AUTEUR: FLEURY Sébastien
+* AUTEUR: FLEURY Sï¿½bastien
 * DATE DE CREATION:
 * LISTE DE FONCTIONS: aucune
 *
@@ -19,8 +19,8 @@
 * variables inutiles arg_ref, szMsg1, szMsg2 
 * 05.11.2002 GG changement des noms du champ du formulaire
 * 19.07.2007 PL les variables issues de GET et POST sont recuperees par $_REQUEST
-* 28.07.2007 PL ajout des droits de gestion des domaines fermés
-* 25.01.2008 PL ajout des droits de gestion des listes hiérarchiques
+* 28.07.2007 PL ajout des droits de gestion des domaines fermï¿½s
+* 25.01.2008 PL ajout des droits de gestion des listes hiï¿½rarchiques
 *********************************************************************************/ 
 // ---------------------------------------
 // enregistrement des variables de session
@@ -46,10 +46,13 @@ $_SESSION["sess_serveur"] = strtoupper($_REQUEST['POS_SERVEUR']);
 $_SESSION["sess_port"] = $_REQUEST['POS_PORT'];
 // si on veut securiser le fichier de session,
 // on stocke le mot de passe securise dans le fichier de session et
-// on décripte à chaque nouvelle action ( = connexion)
+// on dï¿½cripte ï¿½ chaque nouvelle action ( = connexion)
 $_SESSION["sess_session_securise"] = 1;
 $_SESSION["sess_passwd"] = $_REQUEST['POS_PASSWD'];
 $_SESSION["sess_langue"] = CST_LANG;
+
+ 
+
 if (isset($_REQUEST['POS_CONNEXION_AUTO']) && strcmp($_REQUEST['POS_CONNEXION_AUTO'], "1") == 0)
 {
     $retour = connexion($jeton);

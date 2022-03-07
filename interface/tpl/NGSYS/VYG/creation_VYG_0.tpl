@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Permissions-cong&#232;s</title>
+    <title>Demande de voyage</title>
 	<link href="/{NOM_APPLICATION}/include/style_nouveau/style_accueil.css" rel="stylesheet">
 	<link href="/{NOM_APPLICATION}/include/alert/sweetalert.css" rel="stylesheet">
     <link href="/{NOM_APPLICATION}/include/bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -73,13 +73,13 @@
 		}
 	</style>
 </head>
-<body  class='tpl_creation tpl_creation_abs' onLoad='initTplCreation();' style="background-color: transparent;font-family: 'Times New Roman';">
+<body  class='tpl_creation tpl_creation_vyg' onLoad='initTplCreation();' style="background-color: transparent;font-family: 'Times New Roman';">
 	<form name='principal' id="formabsence" ACTION='{URL_ATTENTE}' class="cform" method='POST' onSubmit='return validerCreation();' data-parsley-validate>
         <div style="display: flex; flex-direction: row; justify-content: space-around; padding-top: 1%;">
 			    
 				<input type='hidden' name='URL' value='{CODE_ACTION}'>
 				<input type='hidden' name='POS_NUM_DOC' value='{POS_NUM_DOC}'>
-				<input type='hidden' name='POS_TYPEDOC' value='ABS'>
+				<input type='hidden' name='POS_TYPEDOC' value='VYG'>
 				<input type='hidden' name='MODE' value='{MODE}'>
 				<input type='hidden' name='NB_ONGLETS' value='2'>
 				
@@ -98,41 +98,34 @@
 					</div> -->
 			       
 					 <!-- données de l'utilisateur connecté -->
-					<input type="hidden" name='POS_VAL_RUB_NOM' class="viewnom" value="{POS_VAL_RUB_NOM}" >
-					<input type="hidden" name='POS_VAL_RUB_PRE' class="viewprenom" value="{POS_VAL_RUB_PRE}" >
-					<input type="hidden" name='POS_VAL_RUB_FON' class="viewfonction" value="{POS_VAL_RUB_FON}" >
-					<input type="hidden" name='POS_VAL_RUB_DPT' class="viewdepartement" value="{POS_VAL_RUB_DPT}" >
-					 <!--fin données de l'utilisateur connecté -->
-
-					 <!-- debut Recuperation des fullName à partir du  dom -->
-					<input type="hidden" class="managerFullName">
-					<input type="hidden" class="rhFullname">
-					<input type="hidden" class="dgaFullName">
-					<input type="hidden" class="dgFullName">
-					 <!-- fin Recuperation des fullName à partir du  dom -->
+					<input type="hidden" name='POS_VAL_RUB_LIB' class="viewlib"  value="POS_VAL_RUB_LIB"> 
+					<input type="hidden" name='POS_VAL_RUB_SEX' class="viewsex"  value="POS_VAL_RUB_SEX">
+					<input type="hidden" name='POS_VAL_RUB_FON' class="viewfonct"  value="POS_VAL_RUB_FON">
+					<!-- <input type="hidden" name='POS_VAL_RUB_DPT' class="viewdepartement" value="{POS_VAL_RUB_DPT}" > -->
+					<!--fin données de l'utilisateur connecté -->
         </div>
 		
 		<div class="col_list">
 			<i class="fa fa-eye fa-1x" style="color:#4a67b3;"></i>
-			<a href="javascript:void lanceBibBal('/{NOM_APPLICATION}/interface/session/principal/resultat/rechercher_db.php&TYPE_RECHERCHE=RECHERCHE_BAL&POS_QUEST_NOM=Bal_ABS_lnv&POS_QUEST_PUBLIC=1', 'QUESTION_BAL');">
+			<a href="javascript:void lanceBibBal('/{NOM_APPLICATION}/interface/session/principal/resultat/rechercher_db.php&TYPE_RECHERCHE=RECHERCHE_BAL&POS_QUEST_NOM=Bal_VYG_np&POS_QUEST_PUBLIC=1', 'QUESTION_BAL');">
 				<span style="color:#4a67b3;">Cliquez pour consulter la liste</span>
 			</a>
 			<!-- <a href="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/ABS/liste/liste_ABS_1.php?APPLI={NOM_APPLICATION}&USER={NOM_UTILISATEUR}&PROFIL={PROFIL_UTILISATEUR}">
 				<span style="color:#4a67b3;">Cliquez pour consulter la liste</span>
 			</a> -->
 		</div>
-		<input type="hidden" class="loadcode" name="POS_VAL_RUB_COD" value='{POS_VAL_RUB_COD}'>
+		<!-- <input type="hidden" class="loadcode" name="POS_VAL_RUB_COD" value='{POS_VAL_RUB_COD}'> -->
 
 
 
-			<input type="hidden" class="date_creation" name="POS_VAL_RUB_DCR" value='{POS_VAL_RUB_DCR}'>
+			<!-- <input type="hidden" class="date_creation" name="POS_VAL_RUB_DCR" value='{POS_VAL_RUB_DCR}'> -->
 			<input type="hidden" class="createur" name="POS_VAL_RUB_CRE" value='{POS_VAL_RUB_CRE}'>
 		
 		<nav class="container-fluid">
 			<div class="row" style="margin-top: 2%">
 				<div class="col-sm-12 mt-5" style="margin-top: 1%;">
 					<div class="col1_partie text-center">
-						<span class="title text-while">OBJET DE LA DEMANDE</span>
+						<span class="title text-while">OBJET DE VOYAGE</span>
 					</div>
 					<div class="col2_partie container-fluid" style="padding-top: 1%; padding-bottom: 1%">
 						<div class="row">
@@ -142,84 +135,38 @@
 							</div>
 
 							<div class="col-sm-6">
-								<label for="selection">Type de demande <span class='text'></span></label>
-							   	<select class="form-control typeDemande" style="width: 100%" name='POS_VAL_RUB_AUN' id='id_rub_AUN' required="true">
-										<option value="" disabled selected>S&eacute;lectionner votre demande</option>
-										<option value="ABSENCE">Absence</option>
-										<option value="BAPTEME DUN ENFANT">Bapt&egrave;me d'un enfant</option>
-										<option value="CONGE ANNUEL">Cong&eacute; annuel</option>
-										<option value="CONGE DE MATERNITE">Cong&eacute; de maternit&eacute;</option>
-										<option value="CONGE DE PATERNITE">Cong&eacute; de paternit&eacute;</option>
-										<option value="DECES DUN BEAU-PERE OU DUNE BELLE-MERE">D&eacute;c&egrave;s d'un beau-p&egrave;re ou d'une belle-m&egrave;re</option>
-										<option value="DECES DUN ENFANT, DU PERE, DE LA MERE DU TRAVAILLEUR">D&eacute;c&egrave;s d'un enfant, du p&egrave;re, de la m&egrave;re du travailleur</option>
-										<option value="DECES DUN FRERE OU DUNE SOEUR">D&eacute;c&egrave;s d'un fr&egrave;re ou d'une soeur</option>
-										<option value="DECES DU CONJOINT">D&eacute;c&egrave;s du conjoint</option>
-										<option value="DEMENAGEMENT">D&eacute;m&eacute;nagement</option>
-										<option value="MARIAGE DU TRAVAILLEUR">Mariage du travailleur</option>
-										<option value="MARIAGE DUN DE SES ENFANTS, DUN FRERE, DUNE SOEUR">Mariage d'un de ses enfants, d'un fr&egrave;re, d'une s&oelig;ur</option>
-										<option value="NAISSANCE DUN ENFANT">Naissance d'un enfant</option>
-										<option value="PREMIERE COMMUNION">Premi&eacute;re communion</option>
-										<option value="PERMISSION EXCEPTIONNELLE">Permission exceptionnelle</option>
-										<option value="REPOS MALADIE">Repos maladie</option>
+								<label for="selection">Pays de destination<span class='text'></span></label>
+								<select name="POS_VAL_RUB_PAY"  class="form-control selectPas pays" style="width: 100%;" required="true">
 								</select>
-									<input type="hidden" class="typ_dmd" name='POS_VAL_CTRL_AUN' id='POS_VAL_CTRL_AUN' data-parsley-required="true" data-parsley-trigger="keyup" value='{POS_VAL_RUB_AUN}'>
+							   <input type="hidden" class="init_pays" name='POS_VAL_CTRL_PAY' id='POS_VAL_CTRL_PAY' required="true">
 							</div>
+							<div class="col-sm-6">
+								<label for="bio">Photo <span class='text' ></span> :</label>
+						   		<input type="text"  name='POS_VAL_RUB_PHT' class="form-control"   id="bio" placeholder="photo" style="width: 100%;" required="true" data-parsley-trigger="keyup">
+							</div>
+							
+						</div>
+
+						<div class="row" style="margin-top: 2%">
 							<div class="col-sm-6">
 								<label for="bio">Date de d&eacute;part <span class='text' ></span> :</label>
-								<input type="text" class="form-control datedeb" name="POS_VAL_RUB_DT4"  id="d1" required="true" style="width: 100%; text-transform: uppercase;" data-parsley-trigger="keyup" value="{POS_VAL_RUB_DT4}">
+								<input type="text" class="form-control date" name="POS_VAL_RUB_DIN"   required="true" style="width: 100%; text-transform: uppercase;"  value="{POS_VAL_RUB_DIN}">
+							</div>
+							<div class="col-sm-6">
+								<label for="bio"> Date d'arrivé <span class='text' ></span> :</label>
+								<input type="text" class="form-control date" name="POS_VAL_RUB_DF1"  required="true" style="width: 100%; text-transform: uppercase;" data-parsley-trigger="keyup" value="{POS_VAL_RUB_DF1}">
 							</div>
 						</div>
 
-						<div class="row" style="margin-top: 2%">
-							<div class="col-sm-6">
-								<label for="bio">Motif <span class='text' ></span> :</label>
-								<textarea  name='POS_VAL_RUB_COM'class="form-control" id="motif"  style="width: 100%;resize: none"  rows="2" required="true"  data-parsley-trigger="keyup">{POS_VAL_RUB_COM}</textarea>
-							</div>
-							<div class="col-sm-6">
-								<label for="bio">Heure de d&eacute;part <span class='text' ></span> :</label>
-								<input type="time" class="form-control timedeb" placeholder="Heure de d&eacute;part" name="POS_VAL_RUB_HRD" data-theme="a" data-clear-btn="true" id="t1" required="true" data-parsley-trigger="keyup" value="{POS_VAL_RUB_HRD}">
-							</div>
-						</div>
+			
 
-						<div class="row" style="margin-top: 2%">   
-							<div class="col-sm-6">
-								<label for="bio">Interimaire <span class='text' ></span> :</label>
-								 <select id="interimaire" style="width: 100%" name='POS_VAL_RUB_INT' class="form-control select2 personnel" rows="1" data-parsley-required="true" >
-								     <option value="" >Selectionner</option>
-								</select>   
-								   
-								<input type="hidden" name='POS_VAL_CTRL_INT' id='POS_VAL_CTRL_INT' value='{POS_VAL_RUB_INT}'>
-								<input type="hidden" name='POS_VAL_RUB_INF' class="interim"  value='{POS_VAL_RUB_INF}'>
-							</div>
-							<div class="col-sm-3">
-								<label for="bio">Dur&eacute;e (en jour) <span class='text' ></span> :</label>
-								<input type="number" class="form-control duree" min="0" placeholder="Nombre de jours" name='POS_VAL_RUB_NBR'  required="true" data-parsley-pattern="[0-9][0-9]?" data-parsley-trigger="keyup" value="{POS_VAL_RUB_NBR}"  id="d1">
-							</div>
-							<div class="col-sm-3">
-								<label for="bio">Dur&eacute;e (en heure) :</label>
-								<input type="number" class="form-control dureedebselect"   min="0" max="7" placeholder="Nombre d'heure"    >
-								<input type="hidden" class="dureedeb" name='POS_VAL_RUB_HRA' value='{POS_VAL_RUB_HRA}'>
-							</div>
-						</div>
-
-						<div class="row" style="margin-top: 2%">
-							<div class="col-sm-6">
-								<label for="bio">Dossier en cours <span class='text' ></span> :</label>
-						   		<input type="text"  name='POS_VAL_RUB_DOS' class="form-control" value="{POS_VAL_RUB_DOS}" id="bio" placeholder="Dossier en cours" style="width: 100%;" required="true" data-parsley-trigger="keyup">
-							</div>
-							<div class="col-sm-6">
-								<label for="bio">Date de retour :</label>
-								<input type="type" class="form-control res6" readonly="true"  name='POS_VAL_RUB_DRU' value="{POS_VAL_RUB_DRU}">
-
-							   <input type="hidden" class="datefin" name='POS_VAL_RUB_DFI'  value='{POS_VAL_RUB_DFI}'>
-							</div>
-						</div>
+						
 
 						<!-- Debut traitement annee-increment absence -->
-		<input type="hidden"  name='POS_VAL_RUB_ANN' value="{POS_VAL_RUB_ANN}" class="annee" placeholder="annee"  />
-		<input type="hidden" name='POS_VAL_RUB_J1' value="{POS_VAL_RUB_J1}" class="increment" placeholder="increment"  />
+			<!-- <input type="hidden"  name='POS_VAL_RUB_ANN' value="{POS_VAL_RUB_ANN}" class="annee" placeholder="annee"  /> -->
+			<!-- <input type="hidden" name='POS_VAL_RUB_J1' value="{POS_VAL_RUB_J1}" class="increment" placeholder="increment"  /> -->
 
-		<textarea   class="form-control avu_text" name='POS_VAL_RUB_AVU'  rows="2" style="width: 90%;resize: none;margin-top: -1%; display:none"></textarea>
+		<!-- <textarea   class="form-control avu_text" name='POS_VAL_RUB_AVU'  rows="2" style="width: 90%;resize: none;margin-top: -1%; display:none"></textarea> -->
 
 		<script>
 				//return  year 
@@ -236,7 +183,7 @@
 
 
 			<!-- ETD etat type -->
-		<input type="hidden" placeholder="Etat type" name='POS_VAL_RUB_ETD' value="{POS_VAL_RUB_ETD}"   class="form-control etat_type" style="width: 100%">
+		<!-- <input type="hidden" placeholder="Etat type" name='POS_VAL_RUB_ETD' value="{POS_VAL_RUB_ETD}"   class="form-control etat_type" style="width: 100%"> -->
 
 		
 		<!-- Fin traitement annee-increment absence type="submit" id="app" value="ENREGISTRER" -->
@@ -262,6 +209,8 @@
 
 	 <script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/ABS/compteur/compt.js"></script>
 	  <script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/ABS/absreg/absreg_init.js"></script>
+	  <script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/VYG/packs/packages.js"></script>
+	  <script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/VYG/valideurs/validateur.js"></script>
 <script>
 	//UUID CODE   ::creation d'un code unique pour chaque document :poste idem à ID
      function generateUUID() { // Public Domain/MIT
@@ -354,7 +303,24 @@ if( profil_util=="MANAGER"){
 			    }
 	        });
 			
-
+			// Date de teste de la classe voyage
+			$('.date').datepicker({
+				language: "fr",
+				altField: "#datepicker",
+				closeText: 'Fermer',
+				prevText: 'Précédent',
+				nextText: 'Suivant',
+				currentText: 'Aujourd\'hui',
+				monthNames: ['Janvier', 'F&#233;vrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Ao&#251;t', 'Septembre', 'Octobre', 'Novembre', 'D&#233;cembre'],
+				monthNamesShort: ['Janv.', 'Févr.', 'Mars', 'Avril', 'Mai', 'Juin', 'Juil.', 'Ao&#251;t', 'Sept.', 'Oct.', 'Nov.', 'Déc.'],
+				dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+				dayNamesShort: ['Dim.', 'Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.'],
+				dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+				weekHeader: 'Sem.',
+				dateFormat: 'dd-mm-yy',
+				minDate: 0,
+			});
+		
 
 			$('#d1').datepicker({
 				language: "fr",
