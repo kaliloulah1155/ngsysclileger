@@ -20,18 +20,23 @@ $motif= strtolower($motif1); // une demande d'absence
 $numero=$_POST['numero']; //numero de la demande
 $dateDebut = $_POST['dateDebut']; // date de debut de l'interim
 $dateFin = $_POST['dateFin']; // date de fin de l'interim
- // email du receveur
-$contentTitre=$objet.' de '.$destinateur; // Objet du mail
 $interimaire = $_POST['interimaire']; // 'interimaire
+$typeContrat = $_POST['typeContrat']; // 'interimaire
+$nomPrenomRessource = $_POST['nomPrenomRessource']; // 'interimaire
+ // email du receveur
+$contentTitre=$objet.' de '.$nomPrenomRessource; // Objet du mail
+
 
 $output ="
  
 <div style='font-size:20px'>
-   Bonjour <b> $destinateur </b> ,<br/>
-   <b> $interimaire </b> ne pourra donner suite à votre  demande parce que  <b> $motif </b> .
-   Merci de faire une autre proposition d'intérimaire sur <b> $lien </b> afin votre demande soit acheminée pour validation <br/> 
-   Numero demande : $numero <br/>
+   Bonjour <b> $destinateur </b> ,<br/> <br/>
+
+   Vous avez reçu de la (DRH) le contrat de <b> $typeContrat </b> de
+   <b> $nomPrenomRessource </b> pour validation sur $lien <br/>
+   Numéro demande : $numero <br/>
    Cordialement.
+
 </div>
 ";
 

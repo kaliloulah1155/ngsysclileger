@@ -113,6 +113,13 @@
 				<input type="hidden" id="nb-profils" value="{NB_PROFILS_UTIL}">
 				<!-- end important pour lancer la boite aux lettres  -->
 
+				 <!-- debut Recuperation des fullName à partir du  dom -->
+				 <input type="hidden" class="managerFullName">
+				 <input type="hidden" class="rhFullname">
+				 <input type="hidden" class="dgaFullName">
+				 <input type="hidden" class="dgFullName">
+				  <!-- fin Recuperation des fullName à partir du  dom -->
+				  
 				<input  class="form-control get_fonction" type="hidden" name='POS_VAL_RUB_FON'  value="{POS_VAL_RUB_FON}" id='input_fon' >
 		
         </div>
@@ -153,10 +160,11 @@
 
 								<div class="col-sm-6">
 									<label for="bio">Nom & Pr&#233;noms <span class='text' ></span> :</label>
-									<select id="interimaire" style="width: 100%;" name='POS_VAL_RUB_MEL' class="form-control selectPers personnel" data-parsley-trigger="keyup" required="true">
+									<select id="interimaire" style="width: 100%;" name='POS_VAL_RUB_MEL' class="form-control selectPers personnel fullname" data-parsley-trigger="keyup" required="true">
 									    <option value="0">Veuillez s&#233;lectionner</option>
 									</select>
 									<input type="hidden"  class="interselectperso" name='POS_VAL_CTRL_MEL' id='POS_VAL_CTRL_MEL' value='{POS_VAL_RUB_MEL}' required="true">
+									<input type="hidden" value='{POS_VAL_RUB_INF}' id='POS_VAL_RUB_INF'  name='POS_VAL_RUB_INF' class="fullNamep">
 								</div>
 								<div class="col-sm-6">
 									<label for="bio">Type de contrat <span class='text' ></span> :</label>
@@ -394,14 +402,13 @@
     	<script language='javascript' src="/{NOM_APPLICATION}/include/alert/sweetalert.js"></script>
 
     	<script language='javascript' src="../../../../include/script/testNum.js"></script>
-
+		<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/COT/valideurs/validateur.js"></script>
 	<!-- END JQUERY  -->
 
 
 <!--Traitement des fonctions et variables globales js (en premier) -->
      <script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/COT/package_function.js"></script>
-
-
+ 
 
 
 
@@ -413,6 +420,14 @@
 -->
 
 	<script>
+		  //Recuperation du  fullName de l'employe
+		$(document).on('change','.fullname',function() {
+				p_interimaire = $(this).find(':selected').data('fullname');
+			 $('.fullNamep').val(p_interimaire);
+
+			console.log(p_interimaire);
+		});
+
 	 //données de l'utilisateur connecté
 	 var matricule=$('.matricule').val();
 	  $('.viewmatricule').val(matricule);
@@ -608,6 +623,9 @@
 		$('.dureedebselect').on('change',function(){
 			console.log($(this).val());
 		});
+
+
+ 
 		 
 	</script>
 

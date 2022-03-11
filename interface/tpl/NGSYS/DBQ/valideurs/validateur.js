@@ -99,7 +99,8 @@ var lk_t =$('.user_url').val();
  
  
 $(document).on('click','.bouton_sub',function(){
-
+    
+    ///////////// DEBUT LES VARIABLES DU CORPS DU MAIL ///////////
  
 	var val_modif = $('.action_hermes').val();
     //var initiator="ibrahim.konate@ngser.com";
@@ -111,7 +112,7 @@ $(document).on('click','.bouton_sub',function(){
     var dg_wk =$('.dg_wk').val().toLowerCase();
     //var dg_wk="ibrahim.konate@ngser.com";
 
-    ///////////// DEBUT LES VARIABLES DU CORPS DU MAIL ///////////
+    
     
     var numdmd = $('#numposeidon').val();
     var typeDemande = $('.typeDemande').val().toLowerCase();
@@ -125,68 +126,28 @@ $(document).on('click','.bouton_sub',function(){
         
     ////////////// FIN LES VARIABLES DU CORPS DU MAIL ///////////
 
-     //RECUPERATION DES MOTIF
-     switch (typeDemande) {
-        case "ABSENCE" : 
-              typedmd="DEMANDE D' ABSENCE";
-            break;
-        case "MARIAGE DU TRAVAILLEUR" :
-            typedmd="MARIAGE DU TRAVAILLEUR";
-            
-            break;
-        case "MARIAGE DUN DE SES ENFANTS, DUN FRERE, DUNE SOEUR":
-            typedmd="MARIAGE D'UN DE SES ENFANTS, D'UN FRERE, D'UNE SOEUR";
-            
-            break;
-        case "DECES DU CONJOINT":
-             typedmd="DECES DU CONJOINT";
-            
-            break;
-        case "DECES DUN ENFANT, DU PERE, DE LA MERE DU TRAVAILLEUR":
-             typedmd="DECES D'UN ENFANT, DU PERE, DE LA MERE DU TRAVAILLEUR";
-            break;
-        case "DECES DUN FRERE OU DUNE SOEUR":
-            typedmd="DECES D'UN FRERE OU D'UNE SOEUR";
-            break;
-        case "DECES DUN BEAU-PERE OU DUNE BELLE-MERE":
-            typedmd="DECES D'UN BEAU-PERE OU D'UNE BELLE-MERE";
-             break;
-        case "NAISSANCE DUN ENFANT":
-              typedmd="NAISSANCE D'UN ENFANT";
-            break;
-        case "BAPTEME DUN ENFANT":
-              typedmd="BAPTEME D'UN ENFANT";
-            break;
-        case "PREMIERE COMMUNION":
-             typedmd="PREMIERE COMMUNION";
-            break;
-        case "DEMENAGEMENT":
-             typedmd="DEMENAGEMENT";
-            break;
-    default:
-            typedmd="DEMANDE D' ABSENCE";
-    }
+      
          //Message vers les valideurs
         var valideur =(validator,initiateur_wk,app)=> { 
-            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
+            
         }
 
         if (val_modif.slice(0,18) =='AA_TRSEMPLOYRH_DBQ') {
-            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
+             
         }
 
       
         if (val_modif.slice(0,15) =='AA_TRSRHDGA_DBQ') {
-            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
+             
         }
 
        
         if (val_modif.slice(0,15) =='AA_TRSDGADG_DBQ') {
-            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
+             
         }
   
        if (val_modif.slice(0,13) =='AA_CLOSDG_DBQ') {
-            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);  
+              
  
         } 
   

@@ -272,7 +272,7 @@ $(document).on('click','.bouton_sub',function(){
     var dgaFullName=$('.dgaFullName').val();
     var dgFullName=$('.dgFullName').val();
     
-    console.log(managerFullName);
+    // console.log(managerFullName);
      ////////////// FIN LES VARIABLES DU CORPS DU MAIL ///////////
 
     //  workflowMailClotureDemande(initiator,nomPrenomInitiateur,typedmd,lk_t,numdmd,appN);

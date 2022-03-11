@@ -15,7 +15,7 @@
 
 
         
-    	  echo '<option value="'.$row[3].'"   '.($row[3]==$init_email ? 'selected': '').'      >'.$row[0].' '.$row[1].'</option>';
+    	  echo '<option  data-fullname="'.$row[0].' '.$row[1].'"  value="'.$row[3].'"   '.($row[3]==$init_email ? 'selected': '').'      >'.$row[0].' '.$row[1].'</option>';
     }
 
 ?>

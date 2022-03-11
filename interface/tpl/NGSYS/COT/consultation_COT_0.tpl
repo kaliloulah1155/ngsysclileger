@@ -220,10 +220,17 @@
 				<input type="hidden" id="nb-profils" value="{NB_PROFILS_UTIL}">
 				<!-- end important pour lancer la boite aux lettres  -->
 
-				<!-- Appel du lien ngser -->
-				<input type="hidden" class="user_url" />
+				 <!-- debut Recuperation des fullName à partir du  dom -->
+				 <input type="hidden" class="managerFullName">
+				 <input type="hidden" class="rhFullname">
+				 <input type="hidden" class="dgaFullName">
+				 <input type="hidden" class="dgFullName">
+				  <!-- fin Recuperation des fullName à partir du  dom -->
 
-					  <!-- nom de l'utilisateur-->
+				<!-- Debut Appel du lien ngser -->
+				<input type="hidden" class="user_url" />
+				<!-- Fin Appel du lien ngser -->
+				<!-- nom de l'utilisateur-->
 				<input  class="form-control" type="hidden" name='POS_VAL_RUB_NOM'  value="{USER_PRS_NOM}" id='input_nom' >
 				<!--prénom de l'utilisateur-->
 				<input  class="form-control" type="hidden" name='POS_VAL_RUB_PRE'  value="{USER_PRS_PRE}" id='input_pre'>
@@ -295,6 +302,7 @@
 													    <option value="0">Veuillez s&#233;lectionner</option>
 													</select>
 													<input type="hidden"  class="interselectperso" name='POS_VAL_CTRL_MEL' id='POS_VAL_CTRL_MEL' value='{POS_VAL_RUB_MEL}'>
+													<input type="hidden" value='{POS_VAL_RUB_INF}' id='POS_VAL_RUB_INF'  name='POS_VAL_RUB_INF' class="fullNamep">
 												</div>
 												<div class="col-sm-6">
 													<label for="bio">Type de contrat :</label>
@@ -597,6 +605,7 @@
 									<strong class="pt-1_pl-5" style="font-size: 13px;">{POS_VAL_RUB_A4B}</strong>
 								</p>
 								<input type="hidden" class="mngadm_wk" name="POS_VAL_RUB_A4B"  value="{POS_VAL_RUB_A4B}" style="color: black;" />
+								 
 								<!-- Affichage du visa -->
 								<span class="d-flex">
 									<span class="pr-4" style="font-size: 13px; font-family: Times;">Visa :</span>
@@ -916,6 +925,18 @@
       <script src="../../../../disable_fields.js"></script>
 	<script>
 
+		  //Recuperation du  fullName de l'employe
+		  $(document).on('change','.fullname',function() {
+				p_interimaire = $(this).find(':selected').data('fullname');
+			 $('.fullNamep').val(p_interimaire);
+
+			console.log(p_interimaire);
+		});
+
+	
+
+
+
 	var bouton_initial = $('.bouton_sub').val();
 	var caractere_hermes = "LIBELLE_ACTION_HERMES";
 	var  comp =bouton_initial.indexOf(caractere_hermes) !== -1;
@@ -1174,7 +1195,7 @@ if($('.get_mode').val()=='CONSULTATION'){
 		 
 	</script>
 		<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/COT/workflowCOT.js"></script>
-			<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/COT/valideurs/validateur.js"></script>
+		<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/COT/valideurs/validateur.js"></script>
 
 	
 </html>
