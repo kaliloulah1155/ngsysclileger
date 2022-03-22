@@ -436,7 +436,7 @@ $(document).on('click','.bouton_sub',function(){
             workflowDgEmpl(personnel,objet,fullNamep,interselectcontrat,lk_t,numdmd,appN); 
         }
  
-    // REFUS 
+        // REFUS 
 
         if( val_modif.slice(0,19) == 'AB_TRSEMPLOYERH_COT'){
             workflowRefusEmpRh(rh_wk,objet,rhFullname,interselectcontrat,fullNamep,lk_t,numdmd,appN);

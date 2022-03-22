@@ -109,15 +109,21 @@
 						{TITRE_BOUTONS} 
 					</div> -->
 			</div>
-
-			 		 <!-- données de l'utilisateur connecté -->
-					<input type="hidden" name='POS_VAL_RUB_NOM' class="viewnom" value="{POS_VAL_RUB_NOM}" >
-					<input type="hidden" name='POS_VAL_RUB_PRE' class="viewprenom" value="{POS_VAL_RUB_PRE}" >
-					<input type="hidden" name='POS_VAL_RUB_FON' class="viewfonction" value="{POS_VAL_RUB_FON}" >
-					<input type="hidden" name='POS_VAL_RUB_DPT' class="viewdepartement" value="{POS_VAL_RUB_DPT}" >
-					 <!--fin données de l'utilisateur connecté -->
-
-					 <input type='hidden' class='appName' value="{NOM_APPLICATION}">
+				
+			 	<!-- données de l'utilisateur connecté -->
+				<input type="hidden" name='POS_VAL_RUB_NOM' class="viewnom" value="{POS_VAL_RUB_NOM}" >
+				<input type="hidden" name='POS_VAL_RUB_PRE' class="viewprenom" value="{POS_VAL_RUB_PRE}" >
+				<input type="hidden" name='POS_VAL_RUB_FON' class="viewfonction" value="{POS_VAL_RUB_FON}" >
+				<input type="hidden" name='POS_VAL_RUB_DPT' class="viewdepartement" value="{POS_VAL_RUB_DPT}" >
+				<!--fin données de l'utilisateur connecté --> 
+				<input type='hidden' class='appName' value="{NOM_APPLICATION}">
+				<!-- debut Recuperation des fullName à partir du  dom --> 
+				<input type="hidden" class="rhFullname">
+				<input type="hidden" class="dgaFullName">
+				<input type="hidden" class="dgFullName">
+				<input type="hidden" class="controleurFullname">
+				<input type="hidden" class="financeFullName">
+				<!-- fin Recuperation des fullName à partir du  dom -->
 
 		<!-- <div class= "row">
 			<div class="col_list_01 text-center jumbotron">
@@ -265,7 +271,9 @@
 	    <script language='javascript' src='/{NOM_APPLICATION}/include/jQuery/parseleyfr.js'></script>
 		<script language='javascript' src="/{NOM_APPLICATION}/include/jQuery/jquery-ui.js"></script>
 		<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PRT/calcpret/calc_prt.js"></script>
-		<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PRT/code/code.js"></script>  
+		<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PRT/code/code.js"></script> 
+		<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PRT/valideurs/validateur.js"></script>
+ 
 	<!-- END JQUERY  -->
 
 	<script>

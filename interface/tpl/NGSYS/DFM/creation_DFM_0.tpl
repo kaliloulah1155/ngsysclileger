@@ -97,13 +97,21 @@
 
 			<input type='hidden' class='appName' value="{NOM_APPLICATION}">
 			<!-- end important pour lancer la boite aux lettres  -->
+			
 			<!-- données de l'utilisateur connecté -->
-			<input type="hidden" name='POS_VAL_RUB_NOM' class="viewnom" value="{POS_VAL_RUB_NOM}" >
-			<input type="hidden" name='POS_VAL_RUB_PRE' class="viewprenom" value="{POS_VAL_RUB_PRE}" >
+			<input type="hidden" name='POS_VAL_RUB_NOM' class="viewnomc nom" value="{POS_VAL_RUB_NOM}" >
+			<input type="hidden" name='POS_VAL_RUB_PRE' class="viewprenom prenom" value="{POS_VAL_RUB_PRE}" >
 			<input type="hidden" name='POS_VAL_RUB_FON' class="viewfonction" value="{POS_VAL_RUB_FON}" >
-			<input type="hidden" name='POS_VAL_RUB_DPT' class="viewdepartement" value="{POS_VAL_RUB_DPT}" >
-		<!--fin données de l'utilisateur connecté -->
-		
+			<input type="hidden" name='POS_VAL_RUB_DPT' class="viewdepartement departement" value="{POS_VAL_RUB_DPT}" > 
+			<!--fin données de l'utilisateur connecté -->
+
+			<!-- debut Recuperation des fullName à partir du  dom -->
+			<input type="hidden" class="managerFullName">
+			<input type="hidden" class="rhFullname">
+			<input type="hidden" class="dgaFullName">
+			<input type="hidden" class="dgFullName">
+			<!-- fin Recuperation des fullName à partir du  dom --> 
+			
 
 		<div class="col_list">
 			<i class="fa fa-eye fa-1x" style="color:#4a67b3;"></i>

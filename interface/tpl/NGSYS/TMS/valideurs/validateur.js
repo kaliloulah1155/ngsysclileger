@@ -1,11 +1,12 @@
-
+ //alert($('.etat_type').val());
+ let appN = $(".appName").val(); 
 ///////////CHARGEMENT DES VALIDATEURS ///////////////////
  let link_url =
     "/" +
-    appName +
+    appN +
     "/interface/tpl/" +
-    appName +
-    "/TMS/valideurs/validateur.php";
+    appN +
+    "/DBQ/valideurs/validateur.php";
 
 
    const loadvalideurs = () => {
@@ -14,7 +15,7 @@
             url: link_url,
             type: "POST",
             data:{
-                  employe:$('.emp_wk').val().toLowerCase(),
+                  employe:$('.emp_wk').val(),
             },
             success: function (data) {
                 resolve(data);
@@ -25,56 +26,67 @@
         });
     });
 }
+
+// Appel du lien du site ngser
+let link_ngser="../../../LinkSiteWeb.php";
+   function getLink(){
+       
+          $.ajax({
+              url: link_ngser, 
+              type: "GET",
+              success: function(output) {
+                      
+                     $('.user_url').val(output);
+                  }, 
+              error: function (error) {
+                   console.log(error);
+              },
+          });
+  }
+
+  //Appel
+  getLink();
+
+
 //initiateur_wk
-var emp_wk =$('.emp_wk').val().toLowerCase();
-var manager_wk =$('.mng_wk').val().toLowerCase();
- 
+var emp_wk =$('.emp_wk').val();
+var manager_wk =$('.mng_wk').val();
+  
+var managerFullName=$('.managerFullName').val();
+var rhFullname=$('.rhFullname').val();
+var dgaFullName=$('.dgaFullName').val();
+var dgFullName=$('.dgFullName').val(); 
 loadvalideurs()
-.then(data => {
 
-
-	let results=data.data[0]; 
-	 
+.then(data => { 
+	let results=data.data[0];  
 	 manager_wk=results['manager']['email'].toLowerCase();
      $('.mng_wk').val(manager_wk);
+
+     $('.managerFullName').val(results['manager']['fullname']);
+     $('.rhFullname').val(results['rh']['fullname']);
+     $('.dgaFullName').val(results['dga']['fullname']);
+     $('.dgFullName').val(results['dg']['fullname']);
  
 })
 .catch(error=>console.log(error));
 
-// Appel du lien du site ngser
-let link_ngser="../../../LinkSiteWeb.php";
-function getLink(){
-    
-       $.ajax({
-           url: link_ngser, 
-           type: "POST",
-           success: function(output) {
-                  console.log(output);
-               }, 
-           error: function (error) {
-                console.log(error);
-           },
-       });
-}
 
-//Appel
-getLink() 
 //Appel du lien 
 var lk_t =$('.user_url').val(); 
 
-//Envoi de mail via workflow 
-let workflowmailing=(sendemail,destinataire,destinateur,lien,objet,motif,numero,app)=>{
+//Envoie du timesheet au manager par l'employe
+let workflowEmployeManager=(sendemail,objet,destinateur,nomPrenomEmploye,lien,numero,app)=>{
     $.ajax({
-              url: "/"+app+"/configuration_w/pos_mail/pos_mailer.php",
+              url: "/"+app+"/configuration_w/pos_mail/tms_employe_manager.php",
               type: "POST",
                data:{
-                  sendemail:sendemail,
-                  destinataire:destinataire,
-                  destinateur:destinateur,
-                  lien:lien,
-                  objet:objet,
-                  motif:motif,
-                  numero:numero
+                    sendemail:sendemail,
+                    objet:objet, 
+                    destinateur:destinateur,  
+                    nomPrenomEmploye:nomPrenomEmploye,
+                    lien:lien, 
+                    numero:numero
               },
               success: function(data) {
                    if(data['status']="success"){
@@ -89,89 +101,102 @@ let workflowmailing=(sendemail,destinataire,destinateur,lien,objet,motif,numero,
           });
 }
 
+//Envoie du timesheet cconfirmation de l'envoie à l'employé
+let workflowManagerEmploye=(sendemail,objet,destinateur,lien,numero,app)=>{
+    $.ajax({
+              url: "/"+app+"/configuration_w/pos_mail/tms_manager_employe.php",
+              type: "POST",
+               data:{
+                    sendemail:sendemail,
+                    objet:objet, 
+                    destinateur:destinateur,   
+                    lien:lien, 
+                    numero:numero
+              },
+              success: function(data) {
+                   if(data['status']="success"){
+                        console.log("Mail envoi avec success");
+                   }else{
+                        console.log("Echec d'envoi de mail");
+                   }
+              },
+              error: function(error) {
+                  console.log(error);   
+              },
+          });
+}
  
+//Rejet du timesheet de l'employé
+let workflowRefus=(sendemail,objet,destinateur,lien,numero,app)=>{
+    $.ajax({
+              url: "/"+app+"/configuration_w/pos_mail/tms_manager_employe.php",
+              type: "POST",
+               data:{
+                    sendemail:sendemail,
+                    objet:objet, 
+                    destinateur:destinateur,   
+                    lien:lien, 
+                    numero:numero
+              },
+              success: function(data) {
+                   if(data['status']="success"){
+                        console.log("Mail envoi avec success");
+                   }else{
+                        console.log("Echec d'envoi de mail");
+                   }
+              },
+              error: function(error) {
+                  console.log(error);   
+              },
+          });
+}
 
 $(document).on('click','.bouton_sub',function(){
 
 
- 
+  ///////////// DEBUT LES VARIABLES DU CORPS DU MAIL ///////////
 	var val_modif = $('.action_hermes').val();
-    var employe_wk =$('.emp_wk').val().toLowerCase();
-    //var employe_wk="ibrahim.konate@ngser.com";
-    var manager_wk =$('.mng_wk').val().toLowerCase();
-    //var manager_wk="ibrahim.konate@ngser.com";
-    
-   ///////////// DEBUT LES VARIABLES DU CORPS DU MAIL ///////////
-    
-   var numdmd = $('#numposeidon').val();
-   var typeDemande = $('.typeDemande').val().toLowerCase();
-   var typedmd ='';
-   var nomInterimaire = $('.personnel').val();
-   var nomInitiateur= $('.viewnom').val();
-   var  prenomInitiateur= $('.viewprenom').val();
-   var objet ="demande d\'abscence";
-   //nom et prenom de l'initateur
-   var nomPrenomInitiateur= nomInitiateur+' '+prenomInitiateur;
-       
+    var employe_wk =$('.emp_wk').val().toLowerCase(); 
+    var manager_wk =$('.mng_wk').val().toLowerCase(); 
+    var lk_t =$('.user_url').val();  
+    var numdmd = $('#numposeidon').val(); 
+    var nomInterimaire = $('.personnel').val();
+    var nomEmploye= $('.nom').val();
+    var  prenomEmploye= $('.prenom').val();
+    var objet ="Timesheet";
+    var monMail ="daouda.diarra@ngser.com";
+    var nomPrenomEmploye= nomEmploye+' '+prenomEmploye;
+    var managerFullName=$('.managerFullName').val();
+    var rhFullname=$('.rhFullname').val();
+    var dgaFullName=$('.dgaFullName').val();
+    var dgFullName=$('.dgFullName').val();
+    var departement =  $('.viewdepartement').val();   
+    var app="NGSYS";
    ////////////// FIN LES VARIABLES DU CORPS DU MAIL ///////////
 
-    //RECUPERATION DES MOTIF
-    switch (typeDemande) {
-      case "ABSENCE" : 
-            typedmd="DEMANDE D' ABSENCE";
-          break;
-      case "MARIAGE DU TRAVAILLEUR" :
-          typedmd="MARIAGE DU TRAVAILLEUR"; 
-          break;
-      case "MARIAGE DUN DE SES ENFANTS, DUN FRERE, DUNE SOEUR":
-          typedmd="MARIAGE D'UN DE SES ENFANTS, D'UN FRERE, D'UNE SOEUR"; 
-          break;
-      case "DECES DU CONJOINT":
-           typedmd="DECES DU CONJOINT"; 
-          break;
-      case "DECES DUN ENFANT, DU PERE, DE LA MERE DU TRAVAILLEUR":
-           typedmd="DECES D'UN ENFANT, DU PERE, DE LA MERE DU TRAVAILLEUR";
-          break;
-      case "DECES DUN FRERE OU DUNE SOEUR":
-          typedmd="DECES D'UN FRERE OU D'UNE SOEUR";
-          break;
-      case "DECES DUN BEAU-PERE OU DUNE BELLE-MERE":
-          typedmd="DECES D'UN BEAU-PERE OU D'UNE BELLE-MERE";
-           break;
-      case "NAISSANCE DUN ENFANT":
-            typedmd="NAISSANCE D'UN ENFANT";
-          break;
-      case "BAPTEME DUN ENFANT":
-            typedmd="BAPTEME D'UN ENFANT";
-          break;
-      case "PREMIERE COMMUNION":
-           typedmd="PREMIERE COMMUNION";
-          break;
-      case "DEMENAGEMENT":
-           typedmd="DEMENAGEMENT";
-          break;
-  default:
-          typedmd="DEMANDE D' ABSENCE";
-  }
-
+        // workflowRefus(emp_wk,objet,nomPrenomEmploye,lk_t,numdmd,app);
+        // workflowManagerEmploye(emp_wk,objet,nomPrenomEmploye,lk_t,numdmd,app);
+        // workflowEmployeManager(monMail,objet,managerFullName,nomPrenomEmploye,lk_t,numdmd,app);
     
          //Message vers les valideurs
         var valideur =(validator,employe_wk,app)=> { 
-            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
+             
         }
 
-      if (val_modif.slice(0,18) =='AA_TRANSDEVMNG_TMS') {
-            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
+        if (val_modif.slice(0,18) =='AA_TRANSDEVMNG_TMS') {
+            //  Envoyé à son manager
+            workflowEmployeManager(manager_wk,objet,managerFullName,nomPrenomEmploye,lk_t,numdmd,app);    
         }
 
-          if (val_modif.slice(0,18) =='AA_CLOSNODEVRH_TMS') {
-            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
+        if (val_modif.slice(0,18) =='AA_CLOSNODEVRH_TMS') {
+            // Confirmation de l'envoie retourné à l'employé
+            workflowManagerEmploye(emp_wk,objet,nomPrenomEmploye,lk_t,numdmd,app);
         }
        
-    // REFUS 
-
+        // REFUS  
         if( val_modif.slice(0,18) == 'AB_REFUSDEVMNG_TMS'){
-            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
+            // Refus du timesheet envoyé à l'employe
+            workflowRefus(emp_wk,objet,nomPrenomEmploye,lk_t,numdmd,app); 
         }  
  
 

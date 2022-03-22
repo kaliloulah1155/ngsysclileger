@@ -1,5 +1,5 @@
- //alert($('.etat_type').val());
- //let appN = $(".appName").val();
+//alert($('.etat_type').val());
+
 ///////////CHARGEMENT DES VALIDATEURS ///////////////////
  let link_url =
     "/" +
@@ -27,18 +27,58 @@
     });
 }
 
-var initiateur_wk =$('.createur').val().toLowerCase();
-var manager_wk =$('.manager_wk').val().toLowerCase();
-var controleur_wk =$('.controleur_wk').val().toLowerCase();
-var finance_wk =$('.finance_wk').val().toLowerCase();
-var rh_wk =$('.rh_wk').val().toLowerCase();
-var dga_wk =$('.dga_wk').val().toLowerCase();
-var dg_wk =$('.dg_wk').val().toLowerCase();
+// Appel du lien du site ngser
+let link_ngser="../../../LinkSiteWeb.php";
+   function getLink(){
+       
+          $.ajax({
+              url: link_ngser, 
+              type: "GET",
+              success: function(output) {
+                      
+                     $('.user_url').val(output);
+                  }, 
+              error: function (error) {
+                   console.log(error);
+              },
+          });
+  }
 
+  //Appel
+  getLink();
+
+    var initiateur_wk =$('.createur').val().toLowerCase();
+    var manager_wk =$('.manager_wk').val().toLowerCase();
+    var controleur_wk =$('.controleur_wk').val().toLowerCase();
+    var finance_wk =$('.finance_wk').val().toLowerCase();
+    var rh_wk =$('.rh_wk').val().toLowerCase();
+    var dga_wk =$('.dga_wk').val().toLowerCase();
+    var dg_wk =$('.dg_wk').val().toLowerCase();
+    var val_modif = $('.action_hermes').val();
+ 
+    var initiator =$('.createur').val().toLowerCase();
+    //var initiator="ibrahim.konate@ngser.com"; 
+     var manager_wk =$('.manager_wk').val().toLowerCase();
+    //var manager_wk="ibrahim.konate@ngser.com"; 
+     var controleur_wk =$('.controleur_wk').val().toLowerCase();
+     //var controleur_wk="ibrahim.konate@ngser.com"; 
+    var rh_wk =$('.rh_wk').val().toLowerCase();
+    //var rh_wk="ibrahim.konate@ngser.com"; 
+    var dga_wk =$('.dga_wk').val().toLowerCase();
+    //var dga_wk="ibrahim.konate@ngser.com"; 
+    var dg_wk =$('.dg_wk').val().toLowerCase();
+    //var dg_wk="ibrahim.konate@ngser.com"; 
+    var finance_wk =$('.finance_wk').val().toLowerCase();
+
+    var managerFullName=$('.managerFullName').val();
+    var rhFullname=$('.rhFullname').val();
+    var dgaFullName=$('.dgaFullName').val();
+    var dgFullName=$('.dgFullName').val(); 
+    var controleurFullname=$('.controleurFullname').val();
+    var financeFullName=$('.financeFullName').val();
 
 loadvalideurs()
 .then(data => {
-
 
 	let results=data.data[0]; 
 	 
@@ -48,187 +88,359 @@ loadvalideurs()
      finance_wk=results['finance']['email'].toLowerCase();
 	 dga_wk =results['dga']['email'].toLowerCase();
 	 dg_wk=results['dg']['email'].toLowerCase();
+
      $('.rh_wk').val(rh_wk);
      $('.manager_wk').val(manager_wk);
      $('.dga_wk').val(dga_wk);
      $('.dg_wk').val(dg_wk);
      $('.controleur_wk').val(controleur_wk);
      $('.finance_wk').val(finance_wk);
+
+     $('.managerFullName').val(results['manager']['fullname']);
+     $('.rhFullname').val(results['rh']['fullname']);
+     $('.dgaFullName').val(results['dga']['fullname']);
+     $('.dgFullName').val(results['dg']['fullname']);
+     $('.controleurFullname').val(results['controleur']['fullname']);
+     $('.financeFullName').val(results['finance']['fullname']);
+
 })
 .catch(error=>console.log(error));
 
-// Appel du lien du site ngser
-let link_ngser="../../../LinkSiteWeb.php";
-function getLink(){
+//Appel du lien 
+var lk_t =$('.user_url').val();  
+
+//Mail de demande de mission d'un collaborateur envoyé son manager 
+let workflowMISEmployeManager=(sendemail,objet,nomPrenomDemandeur,destinateur,lien,numero,app)=>{
+    $.ajax({
+        url: "/"+app+"/configuration_w/pos_mail/mis_empl_manager.php",
+        type: "POST",
+         data:{
+                    sendemail:sendemail,
+                    objet:objet,
+                    nomPrenomDemandeur:nomPrenomDemandeur,
+                    destinateur:destinateur,
+                    lien:lien,  
+                    numero:numero
+            },
+            success: function(data) {
+             if(data['status']="success"){
+                  console.log("Mail envoi avec success");
+             }else{
+                  console.log("Echec d'envoi de mail");
+             }
+        },
+        error: function(error) {
+            console.log(error);   
+        },
+    });
     
-       $.ajax({
-           url: link_ngser, 
-           type: "POST",
-           success: function(output) {
-                  console.log(output);
-               }, 
-           error: function (error) {
-                console.log(error);
-           },
-       });
 }
 
-//Appel
-getLink()  
-//Appel du lien 
-var lk_t =$('.user_url').val();
- //Envoi de mail via workflow
- let workflowmailing=(sendemail,destinataire,destinateur,lien,objet,motif,numero,app)=>{
+// Mail de demande de mission du collaborateur envoyé au Controle de Gestion par le Manager
+let workflowMISManagerCG=(sendemail,objet,NomPrenomManager,nomPrenomDemandeur,destinateur,lien,numero,app)=>{
     $.ajax({
-              url: "/"+app+"/configuration_w/pos_mail/pos_mailer.php",
-              type: "POST",
-               data:{
-                  sendemail:sendemail,
-                  destinataire:destinataire,
-                  destinateur:destinateur,
-                  lien:lien,
-                  objet:objet,
-                  motif:motif,
-                  numero:numero
-              },
-              success: function(data) {
-                   if(data['status']="success"){
-                        console.log("Mail envoi avec success");
-                   }else{
-                        console.log("Echec d'envoi de mail");
-                   }
-              },
-              error: function(error) {
-                  console.log(error);   
-              },
-          });
+        url: "/"+app+"/configuration_w/pos_mail/mis_manager_cg.php",
+        type: "POST",
+         data:{
+                sendemail:sendemail,
+                objet:objet,
+                NomPrenomManager:NomPrenomManager,
+                nomPrenomDemandeur:nomPrenomDemandeur,
+                destinateur:destinateur,
+                lien:lien,  
+                numero:numero
+            },
+            success: function(data) {
+             if(data['status']="success"){
+                  console.log("Mail envoi avec success");
+             }else{
+                  console.log("Echec d'envoi de mail");
+             }
+        },
+        error: function(error) {
+            console.log(error);   
+        },
+    });
+    
+}
+// Mail de demande de misson du collaborateur envoyé à la RH par le Controle de Gestion
+let workflowMISCGRh=(sendemail,objet,nomPrenomDemandeur,destinateur,lien,numero,app)=>{
+    $.ajax({
+        url: "/"+app+"/configuration_w/pos_mail/mis_cg_rh.php",
+        type: "POST",
+         data:{
+                sendemail:sendemail,
+                objet:objet, 
+                nomPrenomDemandeur:nomPrenomDemandeur,
+                destinateur:destinateur,
+                lien:lien,  
+                numero:numero
+            },
+            success: function(data) {
+             if(data['status']="success"){
+                  console.log("Mail envoi avec success");
+             }else{
+                  console.log("Echec d'envoi de mail");
+             }
+        },
+        error: function(error) {
+            console.log(error);   
+        },
+    });
+    
+}
+// Mail de demande de misson du collaborateur envoyé au DGA par la RH 
+let workflowMISRhDga=(sendemail,objet,nomPrenomDemandeur,destinateur,lien,numero,app)=>{
+    $.ajax({
+        url: "/"+app+"/configuration_w/pos_mail/mis_rh_dga.php",
+        type: "POST",
+         data:{
+                sendemail:sendemail,
+                objet:objet, 
+                nomPrenomDemandeur:nomPrenomDemandeur,
+                destinateur:destinateur,
+                lien:lien,  
+                numero:numero
+            },
+            success: function(data) {
+             if(data['status']="success"){
+                  console.log("Mail envoi avec success");
+             }else{
+                  console.log("Echec d'envoi de mail");
+             }
+        },
+        error: function(error) {
+            console.log(error);   
+        },
+    });
+    
+}
+// Mail de demande de misson du collaborateur envoyé au DG par le DGA 
+let workflowMISDgaDg=(sendemail,objet,nomPrenomDemandeur,destinateur,lien,numero,app)=>{
+    $.ajax({
+        url: "/"+app+"/configuration_w/pos_mail/mis_dga_dg.php",
+        type: "POST",
+         data:{
+                sendemail:sendemail,
+                objet:objet, 
+                nomPrenomDemandeur:nomPrenomDemandeur,
+                destinateur:destinateur,
+                lien:lien,  
+                numero:numero
+            },
+            success: function(data) {
+             if(data['status']="success"){
+                  console.log("Mail envoi avec success");
+             }else{
+                  console.log("Echec d'envoi de mail");
+             }
+        },
+        error: function(error) {
+            console.log(error);   
+        },
+    });
+    
+}
+
+// Mail de demande de misson du collaborateur envoyé à la finance par le DG
+let workflowMISDgFinance=(sendemail,objet,nomPrenomDemandeur,destinateur,lien,numero,app)=>{
+    $.ajax({
+        url: "/"+app+"/configuration_w/pos_mail/mis_dga_dg.php",
+        type: "POST",
+         data:{
+                sendemail:sendemail,
+                objet:objet, 
+                nomPrenomDemandeur:nomPrenomDemandeur,
+                destinateur:destinateur,
+                lien:lien,  
+                numero:numero
+            },
+            success: function(data) {
+             if(data['status']="success"){
+                  console.log("Mail envoi avec success");
+             }else{
+                  console.log("Echec d'envoi de mail");
+             }
+        },
+        error: function(error) {
+            console.log(error);   
+        },
+    });
+    
 }
  
-  
+// Mail de validation de la direction envoyé à l'employé
+let workflowMISFinanceEmploye=(sendemail,objet,destinateur,lien,numero,app)=>{
+    $.ajax({
+        url: "/"+app+"/configuration_w/pos_mail/mis_finance_employe.php",
+        type: "POST",
+         data:{
+                sendemail:sendemail,
+                objet:objet,  
+                destinateur:destinateur,
+                lien:lien,  
+                numero:numero
+            },
+            success: function(data) {
+             if(data['status']="success"){
+                  console.log("Mail envoi avec success");
+             }else{
+                  console.log("Echec d'envoi de mail");
+             }
+        },
+        error: function(error) {
+            console.log(error);   
+        },
+    });
+    
+}
+
+// Mail de validation de la direction envoyé à l'employé
+let workflowMISRefusDmdEmploye=(sendemail,objet,destinateur,lien,numero,app)=>{
+    $.ajax({
+        url: "/"+app+"/configuration_w/pos_mail/mis_refus_dmd_employe.php",
+        type: "POST",
+         data:{
+                sendemail:sendemail,
+                objet:objet,  
+                destinateur:destinateur,
+                lien:lien,  
+                numero:numero
+            },
+            success: function(data) {
+             if(data['status']="success"){
+                  console.log("Mail envoi avec success");
+             }else{
+                  console.log("Echec d'envoi de mail");
+             }
+        },
+        error: function(error) {
+            console.log(error);   
+        },
+    });
+    
+}
+
+// Mail de demande de mission d'un Manager envoyé à  la RH
+let workflowMISManagerRh=(sendemail,objet,nomPrenomDemandeur,destinateur,lien,numero,app)=>{
+    $.ajax({
+        url: "/"+app+"/configuration_w/pos_mail/mis_manager_rh.php",
+        type: "POST",
+         data:{
+                    sendemail:sendemail,
+                    objet:objet,
+                    nomPrenomDemandeur:nomPrenomDemandeur,
+                    destinateur:destinateur,
+                    lien:lien,  
+                    numero:numero
+            },
+            success: function(data) {
+             if(data['status']="success"){
+                  console.log("Mail envoi avec success");
+             }else{
+                  console.log("Echec d'envoi de mail");
+             }
+        },
+        error: function(error) {
+            console.log(error);   
+        },
+    });
+    
+}
+
+
+//workflowMISManagerRh("daouda.diarra@ngser.com","objet","nomPrenomDemandeur","rh","lk_t","numdmd","NGSYS");
  
 $(document).on('click','.bouton_sub',function(){
+  
 
- 
-	var val_modif = $('.action_hermes').val();
-
-   
-    var initiator =$('.createur').val().toLowerCase();
-    //var initiator="ibrahim.konate@ngser.com";
-
-     var manager_wk =$('.manager_wk').val().toLowerCase();
-    //var manager_wk="ibrahim.konate@ngser.com";
-
-     var controleur_wk =$('.controleur_wk').val().toLowerCase();
-     //var controleur_wk="ibrahim.konate@ngser.com";
-
-    var rh_wk =$('.rh_wk').val().toLowerCase();
-    //var rh_wk="ibrahim.konate@ngser.com";
-
-    var dga_wk =$('.dga_wk').val().toLowerCase();
-    //var dga_wk="ibrahim.konate@ngser.com";
-
-    var dg_wk =$('.dg_wk').val().toLowerCase();
-    //var dg_wk="ibrahim.konate@ngser.com";
-
+    ///////////// DEBUT LES VARIABLES DU CORPS DU MAIL ///////////
+    var lk_t =$('.user_url').val();
+    var monMail="daouda.diarra@ngser.com"; 
+    var nomDemandeur= $('.viewnom').val();
+    var prenomDemandeur= $('.viewprenom').val();
+    var objet ="demande de mission"; 
+    var nomPrenomDemandeur = nomDemandeur+' '+prenomDemandeur; 
+    var numdmd = $('#numposeidon').val();  
+    var app ="NGSYS";
+    var managerFullName=$('.managerFullName').val();
+    var rhFullname=$('.rhFullname').val();
+    var dgaFullName=$('.dgaFullName').val();
+    var dgFullName=$('.dgFullName').val(); 
+    var controleurFullname=$('.controleurFullname').val();
+    var financeFullName=$('.financeFullName').val();
+    var initiateur_wk =$('.createur').val().toLowerCase();
+    var manager_wk =$('.manager_wk').val().toLowerCase();
+    var controleur_wk =$('.controleur_wk').val().toLowerCase();
     var finance_wk =$('.finance_wk').val().toLowerCase();
-    //var finance_wk="ibrahim.konate@ngser.com";
-
-     ///////////// DEBUT LES VARIABLES DU CORPS DU MAIL ///////////
+    var rh_wk =$('.rh_wk').val().toLowerCase();
+    var dga_wk =$('.dga_wk').val().toLowerCase();
+    var dg_wk =$('.dg_wk').val().toLowerCase();
+    var val_modif = $('.action_hermes').val();
     
-     var numdmd = $('#numposeidon').val();
-     var typeDemande = $('.typeDemande').val().toLowerCase();
-     var typedmd ='';
-     var nomInterimaire = $('.personnel').val();
-     var nomInitiateur= $('.viewnom').val();
-     var  prenomInitiateur= $('.viewprenom').val();
-     var objet ="demande d\'abscence";
-     //nom et prenom de l'initateur
-     var nomPrenomInitiateur= nomInitiateur+' '+prenomInitiateur;
-         
+    //  workflowMISManagerRh("daouda.diarra@ngser.com","objet","nomPrenomDemandeur","rh","lk_t","numdmd","NGSYS"); 
      ////////////// FIN LES VARIABLES DU CORPS DU MAIL ///////////
 
-      //RECUPERATION DES MOTIF
-      switch (typeDemande) {
-        case "ABSENCE" : 
-              typedmd="DEMANDE D' ABSENCE";
-            break;
-        case "MARIAGE DU TRAVAILLEUR" :
-            typedmd="MARIAGE DU TRAVAILLEUR"; 
-            break;
-        case "MARIAGE DUN DE SES ENFANTS, DUN FRERE, DUNE SOEUR":
-            typedmd="MARIAGE D'UN DE SES ENFANTS, D'UN FRERE, D'UNE SOEUR"; 
-            break;
-        case "DECES DU CONJOINT":
-             typedmd="DECES DU CONJOINT"; 
-            break;
-        case "DECES DUN ENFANT, DU PERE, DE LA MERE DU TRAVAILLEUR":
-             typedmd="DECES D'UN ENFANT, DU PERE, DE LA MERE DU TRAVAILLEUR";
-            break;
-        case "DECES DUN FRERE OU DUNE SOEUR":
-            typedmd="DECES D'UN FRERE OU D'UNE SOEUR";
-            break;
-        case "DECES DUN BEAU-PERE OU DUNE BELLE-MERE":
-            typedmd="DECES D'UN BEAU-PERE OU D'UNE BELLE-MERE";
-             break;
-        case "NAISSANCE DUN ENFANT":
-              typedmd="NAISSANCE D'UN ENFANT";
-            break;
-        case "BAPTEME DUN ENFANT":
-              typedmd="BAPTEME D'UN ENFANT";
-            break;
-        case "PREMIERE COMMUNION":
-             typedmd="PREMIERE COMMUNION";
-            break;
-        case "DEMENAGEMENT":
-             typedmd="DEMENAGEMENT";
-            break;
-    default:
-            typedmd="DEMANDE D' ABSENCE";
-    }
-
+    //  workflowMISRefusDmdEmploye(monMail,objet,nomPrenomDemandeur,lk_t,numdmd,app); ok
+    //  workflowMISFinanceEmploye(monMail,objet,nomPrenomDemandeur,lk_t,numdmd,app);ok
+    //  workflowMISDgFinance(monMail,objet,nomPrenomDemandeur,financeFullName,lk_t,numdmd,app); OK
+    //  workflowMISDgaDg(monMail,objet,nomPrenomDemandeur,dgFullName,lk_t,numdmd,app); ok
+    //  workflowMISRhDga(monMail,objet,nomPrenomDemandeur,dgaFullName,lk_t,numdmd,app); ok
+    //  workflowMISCGRh(monMail,objet,nomPrenomDemandeur,rhFullname,lk_t,numdmd,app); ok
+    //  workflowMISManagerCG(monMail,objet,managerFullName,nomPrenomDemandeur,controleurFullname,lk_t,numdmd,app); ok
+    //  workflowMISEmployeManager(monMail,objet,nomPrenomDemandeur,managerFullName,lk_t,numdmd,app); ok
+    //  workflowMISManagerRh(monMail,objet,nomPrenomDemandeur,rhFullname,lk_t,numdmd,app); cas de la demande fait par un manager ok
 
          //Message vers les valideurs
         var valideur =(validator,initiateur_wk,app)=> { 
-            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
+            
         }
 
         if (val_modif.slice(0,16) =='AA_TRSEMPMNG_MIS') {
-            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
+            // Envoyé au manager
+            workflowMISEmployeManager(manager_wk,objet,nomPrenomDemandeur,managerFullName,lk_t,numdmd,app);
         }
 
   
         if (val_modif.slice(0,18) =='AA_TRSMNGCONTR_MIS') {
-            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
+            // Envoyé au controle de gestion
+            workflowMISManagerCG(controleur_wk,objet,managerFullName,nomPrenomDemandeur,controleurFullname,lk_t,numdmd,app);
         }
     
        
         if (val_modif.slice(0,16) =='AA_TRSGESTRH_MIS') {
-            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
+            // Envoyé à la rh  cas employé et manager
+            workflowMISCGRh(rh_wk,objet,nomPrenomDemandeur,rhFullname,lk_t,numdmd,app)
+            workflowMISManagerRh(rh_wk,objet,nomPrenomDemandeur,rhFullname,lk_t,numdmd,app);
         }
         if (val_modif.slice(0,15) =='AA_TRSRHMNG_MIS') {
-            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
+             
         }
         if (val_modif.slice(0,19) =='AA_TRSMNGCONTROL_MIS') {
-            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
+             
         }
          if (val_modif.slice(0,20) =='AA_TRSCONTROLDGA_MIS') {
-            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
+            //  Envoie au DGA 
+            workflowMISRhDga(dga_wk,objet,nomPrenomDemandeur,dgaFullName,lk_t,numdmd,app);
         }
 
         if (val_modif.slice(0,15) =='AA_TRSDGADG_MIS') {
-            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
+            // Envoie au DG 
+            workflowMISDgaDg(dg_wk,objet,nomPrenomDemandeur,dgFullName,lk_t,numdmd,app);
         }
 
         if (val_modif.slice(0,14) =='AA_TRSDGRH_MIS') {
-            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
+              
         }
 
         if (val_modif.slice(0,19) =='AA_TRSRHFINANCE_MIS') {
-            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
+            // Envoie à la finance  
+            workflowMISDgFinance(finance_wk,objet,nomPrenomDemandeur,financeFullName,lk_t,numdmd,app);
         }
   
        if (val_modif.slice(0,19) =='AA_TRSFINANCEMP_MIS') {
-            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
+            //  Retour de validation envoyé à l'initiateur 
+            workflowMISFinanceEmploye(initiateur_wk,objet,nomPrenomDemandeur,lk_t,numdmd,app);
  
         }  
   
@@ -240,7 +452,8 @@ $(document).on('click','.bouton_sub',function(){
              val_modif.slice(0,15) == 'AA_REFUSDGA_MIS' 
                
         ){ 
-            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
+            // Mail envoyé à l'initiateur en cas de refus
+            workflowMISRefusDmdEmploye(initiateur_wk,objet,nomPrenomDemandeur,lk_t,numdmd,app);
         } 
     
  

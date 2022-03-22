@@ -250,7 +250,13 @@
 		<!-- END BLOC_OLD_VALUE -->
 
 		<input type='hidden' class='appName' value="{NOM_APPLICATION}">
-
+		<!-- données de l'utilisateur connecté -->
+		<input type="hidden" name='POS_VAL_RUB_NOM' class="viewnom nom" value="{POS_VAL_RUB_NOM}" >
+		<input type="hidden" name='POS_VAL_RUB_PRE' class="viewprenom prenom" value="{POS_VAL_RUB_PRE}" >
+		<input type="hidden" name='POS_VAL_RUB_FON' class="viewfonction" value="{POS_VAL_RUB_FON}" >
+		<input type="hidden" name='POS_VAL_RUB_DPT' class="viewdepartement" value="{POS_VAL_RUB_DPT}" >
+		<input type="hidden" name='POS_VAL_RUB_SER' class="viewservice" value="{POS_VAL_RUB_SER}" >
+		<!--fin données de l'utilisateur connecté -->
 
 		<input type="hidden" name='POS_VAL_RUB_FON' class="viewfonction" value="{POS_VAL_RUB_FON}" >
 		<input type="hidden" name='POS_VAL_RUB_DPT' class="viewdepartement" value="{POS_VAL_RUB_DPT}" >
@@ -258,7 +264,13 @@
 		
 		<!-- Appel du lien ngser -->
 		<input type="hidden" class="user_url" />
-		
+		<!-- debut Recuperation des fullName à partir du  dom -->
+		<input type="hidden" class="managerFullName">
+		<input type="hidden" class="rhFullname">
+		<input type="hidden" class="dgaFullName">
+		<input type="hidden" class="dgFullName"> 
+		<!-- fin Recuperation des fullName à partir du  dom -->
+			
 		<div class="col_list">
 			<i class="fa fa-eye fa-1x" style="color:#4a67b3;"></i>
 			<a href="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/TMS/liste/liste_TMS_1.php?APPLI={NOM_APPLICATION}&USER={NOM_UTILISATEUR}&PROFIL={PROFIL_UTILISATEUR}&DEPARTEMENT={DEPARTEMENT_UTILISATEUR}&FONCTION={FONCTION_UTILISATEUR}">

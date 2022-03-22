@@ -27,6 +27,22 @@
     });
 }
 
+// Appel du lien du site ngser
+let link_ngser="../../../LinkSiteWeb.php";
+function getLink(){
+    
+       $.ajax({
+           url: link_ngser, 
+           type: "POST",
+           success: function(output) {
+                  console.log(output);
+               }, 
+           error: function (error) {
+                console.log(error);
+           },
+       });
+}
+
 var initiateur_wk =$('.createur').val().toLowerCase();
 var manager_wk =$('.mngadm_wk').val().toLowerCase();
 var controleur_wk =$('.controleur_wk').val().toLowerCase();
@@ -57,53 +73,13 @@ loadvalideurs()
 })
 .catch(error=>console.log(error));
 
-// Appel du lien du site ngser
-let link_ngser="../../../LinkSiteWeb.php";
-function getLink(){
-    
-       $.ajax({
-           url: link_ngser, 
-           type: "POST",
-           success: function(output) {
-                  console.log(output);
-               }, 
-           error: function (error) {
-                console.log(error);
-           },
-       });
-}
 
 //Appel
 getLink()  
 //Appel du lien 
 var lk_t =$('.user_url').val();
 
-//Envoi de mail via workflow 
-let workflowmailing=(sendemail,destinataire,destinateur,lien,objet,motif,numero,app)=>{
-    $.ajax({
-              url: "/"+app+"/configuration_w/pos_mail/pos_mailer.php",
-              type: "POST",
-               data:{
-                  sendemail:sendemail,
-                  destinataire:destinataire,
-                  destinateur:destinateur,
-                  lien:lien,
-                  objet:objet,
-                  motif:motif,
-                  numero:numero
-              },
-              success: function(data) {
-                   if(data['status']="success"){
-                        console.log("Mail envoi avec success");
-                   }else{
-                        console.log("Echec d'envoi de mail");
-                   }
-              },
-              error: function(error) {
-                  console.log(error);   
-              },
-          });
-}
+ 
  
 
 $(document).on('click','.bouton_sub',function(){
@@ -147,76 +123,37 @@ $(document).on('click','.bouton_sub',function(){
          
      ////////////// FIN LES VARIABLES DU CORPS DU MAIL ///////////
 
-      //RECUPERATION DES MOTIF
-      switch (typeDemande) {
-        case "ABSENCE" : 
-              typedmd="DEMANDE D' ABSENCE";
-            break;
-        case "MARIAGE DU TRAVAILLEUR" :
-            typedmd="MARIAGE DU TRAVAILLEUR"; 
-            break;
-        case "MARIAGE DUN DE SES ENFANTS, DUN FRERE, DUNE SOEUR":
-            typedmd="MARIAGE D'UN DE SES ENFANTS, D'UN FRERE, D'UNE SOEUR"; 
-            break;
-        case "DECES DU CONJOINT":
-             typedmd="DECES DU CONJOINT"; 
-            break;
-        case "DECES DUN ENFANT, DU PERE, DE LA MERE DU TRAVAILLEUR":
-             typedmd="DECES D'UN ENFANT, DU PERE, DE LA MERE DU TRAVAILLEUR";
-            break;
-        case "DECES DUN FRERE OU DUNE SOEUR":
-            typedmd="DECES D'UN FRERE OU D'UNE SOEUR";
-            break;
-        case "DECES DUN BEAU-PERE OU DUNE BELLE-MERE":
-            typedmd="DECES D'UN BEAU-PERE OU D'UNE BELLE-MERE";
-             break;
-        case "NAISSANCE DUN ENFANT":
-              typedmd="NAISSANCE D'UN ENFANT";
-            break;
-        case "BAPTEME DUN ENFANT":
-              typedmd="BAPTEME D'UN ENFANT";
-            break;
-        case "PREMIERE COMMUNION":
-             typedmd="PREMIERE COMMUNION";
-            break;
-        case "DEMENAGEMENT":
-             typedmd="DEMENAGEMENT";
-            break;
-    default:
-            typedmd="DEMANDE D' ABSENCE";
-    }
-
+      
 
 
          //Message vers les valideurs
         var valideur =(validator,initiateur_wk,app)=> { 
-            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN); 
+            
         }
 
-        if (val_modif.slice(0,16) =='AA_TRSMNGADM_PAY') {
-            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN); 
+        if (val_modif.slice(0,16) =='AA_TRSMNGADM_PAY') {   
 
         }
 
   
         if (val_modif.slice(0,20) =='AA_TRSCONTROLEUR_PAY') {
-            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN); 
+            
         }
     
        
         if (val_modif.slice(0,17) =='AA_TRSFINANCE_PAY') {
-            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN); 
+            
         }
         if (val_modif.slice(0,20) =='AA_TRSFINANCEDGA_PAY') {
-            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN); 
+            
         }
         if (val_modif.slice(0,15) =='AA_TRSDGADG_PAY') {
-            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN); 
+            
         }
         
         
        if (val_modif.slice(0,12) =='AA_CLOSDG_PAY') {
-            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN); 
+            ; 
  
         }  
   
@@ -231,7 +168,6 @@ $(document).on('click','.bouton_sub',function(){
                
         ){
 
-            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN); 
         } 
 	
 });

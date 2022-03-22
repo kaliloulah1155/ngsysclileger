@@ -97,6 +97,22 @@
 				<input type="hidden" name="URL_CHANGER_PROFIL" value="{URL_CHANGER_PROFIL}">
 				<input type="hidden" id="nb-profils" value="{NB_PROFILS_UTIL}">
 				
+				<!-- données de l'utilisateur connecté -->
+				<input type="hidden" name='POS_VAL_RUB_NOM' class="viewnom nom" value="{POS_VAL_RUB_NOM}" >
+				<input type="hidden" name='POS_VAL_RUB_PRE' class="viewprenom prenom" value="{POS_VAL_RUB_PRE}" >
+				<input type="hidden" name='POS_VAL_RUB_FON' class="viewfonction" value="{POS_VAL_RUB_FON}" >
+				<input type="hidden" name='POS_VAL_RUB_DPT' class="viewdepartement departement" value="{POS_VAL_RUB_DPT}" >
+				<input type="hidden" name='POS_VAL_RUB_CRE' value="{POS_VAL_RUB_CRE}" class="createur" style="color: black;"  />
+				<!--fin données de l'utilisateur connecté -->
+
+				<!-- debut Recuperation des fullName à partir du  dom -->
+				<input type="hidden" class="managerFullName">
+				<input type="hidden" class="rhFullname">
+				<input type="hidden" class="dgaFullName">
+				<input type="hidden" class="dgFullName">
+				<input type="hidden" class="controleurFullname">
+				<input type="hidden" class="financeFullName">
+				<!-- fin Recuperation des fullName à partir du  dom -->
 				
         </div>
 
@@ -358,12 +374,12 @@
 	</form>
 </body>
 	<!-- JQUERY  -->
-		<script language='javascript' src="../../../../include/jQuery/jquery.3.3.1.js" charset="utf-8"></script>
-	    <script language='javascript' src="../../../../include/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
-		<script language='javascript' src='/{NOM_APPLICATION}/include/jQuery/parseley.js'></script>
-	    <script language='javascript' src='/{NOM_APPLICATION}/include/jQuery/parseleyfr.js'></script>
-		<script language='javascript' src="/{NOM_APPLICATION}/include/jQuery/jquery-ui.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+	<script language='javascript' src="../../../../include/jQuery/jquery.3.3.1.js" charset="utf-8"></script>
+	<script language='javascript' src="../../../../include/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+	<script language='javascript' src='/{NOM_APPLICATION}/include/jQuery/parseley.js'></script>
+	<script language='javascript' src='/{NOM_APPLICATION}/include/jQuery/parseleyfr.js'></script>
+	<script language='javascript' src="/{NOM_APPLICATION}/include/jQuery/jquery-ui.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 	<!-- END JQUERY  -->
 	<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/MIS/personnel/personnel.js"></script>
 	<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/MIS/packs/packages.js"></script>

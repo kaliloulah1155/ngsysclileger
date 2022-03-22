@@ -308,7 +308,13 @@
 		<!-- Appel du lien ngser -->
 		<input type="hidden" class="user_url" />
 
-
+		<!-- debut Recuperation des fullName à partir du  dom -->
+		<input type="hidden" class="managerFullName">
+		<input type="hidden" class="rhFullname">
+		<input type="hidden" class="dgaFullName">
+		<input type="hidden" class="dgFullName">
+		 <!-- fin Recuperation des fullName à partir du  dom -->
+		 
 		<!-- BEGIN BLOC_OLD_VALUE -->
 		<input type='hidden' name='{NAME_OLD_RUB}' value="{VALUE_OLD_RUB}">
 		<!-- END BLOC_OLD_VALUE -->
@@ -319,6 +325,13 @@
 		<input type="hidden" name="URL_OBTENIR_NB_REP" value="{URL_OBTENIR_NB_REP}">
 		<input type="hidden" name="URL_CHANGER_PROFIL" value="{URL_CHANGER_PROFIL}">
 		<input type="hidden" id="nb-profils" value="{NB_PROFILS_UTIL}">
+
+		<!-- données de l'utilisateur connecté -->
+		<input type="hidden" name='POS_VAL_RUB_NOM' class="viewnom" value="{POS_VAL_RUB_NOM}" >
+		<input type="hidden" name='POS_VAL_RUB_PRE' class="viewprenom" value="{POS_VAL_RUB_PRE}" >
+		<input type="hidden" name='POS_VAL_RUB_FON' class="viewfonction" value="{POS_VAL_RUB_FON}" >
+		<input type="hidden" name='POS_VAL_RUB_DPT' class="viewdepartement"  value="{DEPARTEMENT_UTILISATEUR}"   >
+		<!--fin données de l'utilisateur connecté -->
 
 		<div class="col_list">
 			<i class="fa fa-eye fa-1x" style="color:#4a67b3;"></i>
@@ -438,10 +451,11 @@
 															<option value="UBA">UBA</option>
 															<option value="Versus Bank">Versus Bank</option>
 														</select>
-														<input type="hidden" name='POS_VAL_CTRL_NBQ' id='POS_VAL_CTRL_NBQ' value="{POS_VAL_RUB_NBQ}" placeholder="Banque" />
+														<input type="hidden" name='POS_VAL_CTRL_NBQ' class="nomBanque" id='POS_VAL_CTRL_NBQ' value="{POS_VAL_RUB_NBQ}" placeholder="Banque" />
 										</div>
 										<div class="form-group">
-						  				 	<input type="text"class="form-control" id="nveau_rib" name='POS_VAL_RUB_NRI' value="{POS_VAL_RUB_NRI}" data-parsley-required="true" data-parsley-trigger="keyup" readonly="true" style="width: 100%;">
+						  				 	<input type="text"class="form-control nouveauRib" id="nveau_rib" name='POS_VAL_RUB_NRI' value="{POS_VAL_RUB_NRI}" data-parsley-required="true" data-parsley-trigger="keyup" readonly="true" style="width: 100%;">
+											
 										</div>
 										<div class="form-group" style="color: transparent;">
 											<!-- <input class="form-check-input" type="checkbox" id="input_radio" required> -->

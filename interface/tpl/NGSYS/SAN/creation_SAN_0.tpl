@@ -98,15 +98,19 @@
 				<!-- end important pour lancer la boite aux lettres  -->
 				<input type='hidden' class='appName' value="{NOM_APPLICATION}">
 				<input type='hidden' class='appName1' value="{NOM_APPLICATION}">
-
-
-					<!-- données de l'utilisateur connecté -->
-						<input type="hidden" name='POS_VAL_RUB_NOM' class="viewnom" value="{POS_VAL_RUB_NOM}" >
-						<input type="hidden" name='POS_VAL_RUB_PRE' class="viewprenom" value="{POS_VAL_RUB_PRE}" >
-						<input type="hidden" name='POS_VAL_RUB_FON' class="viewfonction" value="{POS_VAL_RUB_FON}" >
-						<input type="hidden" name='POS_VAL_RUB_DPT' class="viewdepartement" value="{POS_VAL_RUB_DPT}" >
-					<!--fin données de l'utilisateur connecté -->
-
+				<!-- données de l'utilisateur connecté -->
+				<input type="hidden" name='POS_VAL_RUB_NOM' class="viewnom nom" value="{POS_VAL_RUB_NOM}" >
+				<input type="hidden" name='POS_VAL_RUB_PRE' class="viewprenom prenom" value="{POS_VAL_RUB_PRE}" >
+				<input type="hidden" name='POS_VAL_RUB_FON' class="viewfonction fonction" value="{POS_VAL_RUB_FON}" >
+				<input type="hidden" name='POS_VAL_RUB_DPT' class="viewdepartement departement" value="{POS_VAL_RUB_DPT}" >
+				<!--fin données de l'utilisateur connecté -->
+				<!-- debut Recuperation des fullName à partir du  dom -->
+				<input type="hidden" class="managerFullName">
+				<input type="hidden" class="rhFullname">
+				<input type="hidden" class="dgaFullName">
+				<input type="hidden" class="dgFullName"> 
+				<!-- fin Recuperation des fullName à partir du  dom -->
+			 
         </div>
 
 
@@ -142,9 +146,10 @@
 							</div>
 							<div class="col-sm-4">
 								<label for="bio">Nom & pr&#233;noms <span class='text'></span> :</label>
-								<select id="interimaire" class="form-control select2 personnel" name='POS_VAL_RUB_INT' style="width: 100%;" required="true">
+								<select id="interimaire" class="form-control select2 personnel " name='POS_VAL_RUB_INT' style="width: 100%;" required="true">
 									<option value="{POS_VAL_RUB_INT}" selected>{POS_VAL_RUB_INT}</option>
 								</select>
+								<input type="hidden" class="init_personnel" name='POS_VAL_CTRL_INT' id='POS_VAL_CTRL_INT' required="true" value='{POS_VAL_RUB_INT}'>
 								<input type="hidden" class="init_personnel" name='POS_VAL_CTRL_INT' id='POS_VAL_CTRL_INT' required="true" value='{POS_VAL_RUB_INT}'>
 							</div>
 							<div class="col-sm-4">
@@ -210,7 +215,7 @@
 		<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/SAN/select2/select2tr.js"></script>
 		<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/SAN/packs_fpo.js"></script>
 		<!-- <script language='javascript' src="/{NOM_APPLICATION}/include/alert/sweetalert.js"></script> -->
-
+		<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/SAN/valideurs/validateur.js"></script>
 
 
 	<!-- END JQUERY  -->

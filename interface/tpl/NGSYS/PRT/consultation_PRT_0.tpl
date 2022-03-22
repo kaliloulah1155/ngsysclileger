@@ -222,7 +222,19 @@
 		<input type="hidden" name="URL_OBTENIR_NB_REP" value="{URL_OBTENIR_NB_REP}">
 		<input type="hidden" name="URL_CHANGER_PROFIL" value="{URL_CHANGER_PROFIL}">
 		<input type="hidden" id="nb-profils" value="{NB_PROFILS_UTIL}">
-
+		<!-- données de l'utilisateur connecté -->
+		<input type="hidden" name='POS_VAL_RUB_NOM' class="viewnom" value="{POS_VAL_RUB_NOM}" >
+		<input type="hidden" name='POS_VAL_RUB_PRE' class="viewprenom" value="{POS_VAL_RUB_PRE}" >
+		<input type="hidden" name='POS_VAL_RUB_FON' class="viewfonction" value="{POS_VAL_RUB_FON}" >
+		<input type="hidden" name='POS_VAL_RUB_DPT' class="viewdepartement" value="{POS_VAL_RUB_DPT}" >
+		<!--fin données de l'utilisateur connecté -->  
+		<!-- debut Recuperation des fullName à partir du  dom --> 
+		<input type="hidden" class="rhFullname">
+		<input type="hidden" class="dgaFullName">
+		<input type="hidden" class="dgFullName">
+		<input type="hidden" class="controleurFullname">
+		<input type="hidden" class="financeFullName">
+		<!-- fin Recuperation des fullName à partir du  dom -->
 
 		<div class="col_list">
 			<i class="fa fa-eye fa-1x" style="color:#4a67b3;"></i>
@@ -744,7 +756,8 @@
 	    <script language='javascript' src='/{NOM_APPLICATION}/include/jQuery/parseleyfr.js'></script>
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 		<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PRT/prtpdf/pdfpret.js"></script>
-		<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PRT/calcpret/calc_prt.js"></script>  
+		<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PRT/calcpret/calc_prt.js"></script>
+		<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/PRT/valideurs/validateur.js"></script>
 	<!-- endjquery  -->
 
 		<!-- imporation du fichier de desactivation des champs -->

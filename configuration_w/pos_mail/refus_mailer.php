@@ -27,7 +27,7 @@ $interimaire = $_POST['interimaire']; // 'interimaire
 $output ="
  
 <div style='font-size:20px'>
-   Bonjour <b> $destinateur </b> ,<br/>
+   Bonjour <b> $destinateur </b> ,<br/><br/>
    <b> $interimaire </b> ne pourra donner suite à votre  demande parce que  <b> $motif </b> .
    Merci de faire une autre proposition d'intérimaire sur <b> $lien </b> afin votre demande soit acheminée pour validation <br/> 
    Numero demande : $numero <br/>

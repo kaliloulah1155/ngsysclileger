@@ -213,16 +213,23 @@
 		<!-- END BLOC_OLD_VALUE -->
 
 		<!-- données de l'utilisateur connecté -->
-					<input type="hidden" name='POS_VAL_RUB_NOM' class="viewnom" value="{POS_VAL_RUB_NOM}" >
-					<input type="hidden" name='POS_VAL_RUB_PRE' class="viewprenom" value="{POS_VAL_RUB_PRE}" >
-					<input type="hidden" name='POS_VAL_RUB_FON' class="viewfonction" value="{POS_VAL_RUB_FON}" >
-					<input type="hidden" name='POS_VAL_RUB_DPT'  value="{POS_VAL_RUB_DPT}" >
+		<input type="hidden" name='POS_VAL_RUB_NOM' class="viewnom nom" value="{POS_VAL_RUB_NOM}" >
+		<input type="hidden" name='POS_VAL_RUB_PRE' class="viewprenom prenom" value="{POS_VAL_RUB_PRE}" >
+		<input type="hidden" name='POS_VAL_RUB_FON' class="viewfonction" value="{POS_VAL_RUB_FON}" >
+		<input type="hidden" name='POS_VAL_RUB_DPT' class="viewdepartement departement" value="{POS_VAL_RUB_DPT}" >
 		<!--fin données de l'utilisateur connecté -->
+
+		<!-- debut Recuperation des fullName à partir du  dom -->
+		<input type="hidden" class="managerFullName">
+		<input type="hidden" class="rhFullname">
+		<input type="hidden" class="dgaFullName">
+		<input type="hidden" class="dgFullName">
+		<!-- fin Recuperation des fullName à partir du  dom --> 
 		
 		<input type="hidden" name="URL_ATTENTE" value="{URL_ATTENTE}"> 
-			<input type="hidden" name="URL_RESULTAT" value="{URL_RESULTAT}">
-			<input type="hidden" name="URL_OBTENIR_NB_REP" value="{URL_OBTENIR_NB_REP}">
-			<input type="hidden" name="URL_CHANGER_PROFIL" value="{URL_CHANGER_PROFIL}">
+		<input type="hidden" name="URL_RESULTAT" value="{URL_RESULTAT}">
+		<input type="hidden" name="URL_OBTENIR_NB_REP" value="{URL_OBTENIR_NB_REP}">
+		<input type="hidden" name="URL_CHANGER_PROFIL" value="{URL_CHANGER_PROFIL}">
 		
 
 		<div class="col_list">
@@ -282,7 +289,7 @@
 							</div>
 							<div class="col-sm-4">
 								<label>Intitul&#233; de l&#145;action de formation :</label>
-								<input type="text" name="POS_VAL_RUB_IAF" value="{POS_VAL_RUB_IAF}" class="form-control" placeholder="Intitul&#233; de l&#145;action de formation" style="width: 100%">
+								<input type="text" name="POS_VAL_RUB_IAF" value="{POS_VAL_RUB_IAF}" class="form-control intitule" placeholder="Intitul&#233; de l&#145;action de formation" style="width: 100%">
 							</div>
 											<div class="col-sm-4" style="margin-top: 13px;padding-left: 5%">
 												<label>Intitul&#233; de l&#145;action de formation :</label><br>

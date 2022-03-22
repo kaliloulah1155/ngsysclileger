@@ -1,14 +1,14 @@
  //alert($('.etat_type').val());
- 
+ let appN = $(".appName").val();
 ///////////CHARGEMENT DES VALIDATEURS ///////////////////
  let link_url =
     "/" +
-    appName +
+    appN +
     "/interface/tpl/" +
-    appName +
+    appN +
     "/DFM/valideurs/validateur.php";
 
-
+  
    const loadvalideurs = () => {
     return new Promise((resolve, reject) => {
         $.ajax({
@@ -27,6 +27,26 @@
     });
 }
 
+// Appel du lien du site ngser
+let link_ngser="../../../LinkSiteWeb.php";
+   function getLink(){
+       
+          $.ajax({
+              url: link_ngser, 
+              type: "GET",
+              success: function(output) {
+                      
+                     $('.user_url').val(output);
+                  }, 
+              error: function (error) {
+                   console.log(error);
+              },
+          });
+  }
+
+  //Appel
+  getLink();
+
 var initiateur_wk =$('.createur').val().toLowerCase();
 var rh_wk =$('.rh_wk').val().toLowerCase();
 var manager_wk =$('.manager_wk').val().toLowerCase();
@@ -34,10 +54,13 @@ var dga_wk =$('.dga_wk').val().toLowerCase();
 var dg_wk =$('.dg_wk').val().toLowerCase();
 
 
+var managerFullName=$('.managerFullName').val();
+var rhFullname=$('.rhFullname').val();
+var dgaFullName=$('.dgaFullName').val();
+var dgFullName=$('.dgFullName').val();
+
 loadvalideurs()
-.then(data => {
-
-
+.then(data => { 
 	let results=data.data[0]; 
 	 
 	 rh_wk=results['rh']['email'].toLowerCase();
@@ -50,43 +73,30 @@ loadvalideurs()
      $('.dga_wk').val(dga_wk);
      $('.dg_wk').val(dg_wk);
 
+     $('.managerFullName').val(results['manager']['fullname']);
+     $('.rhFullname').val(results['rh']['fullname']);
+     $('.dgaFullName').val(results['dga']['fullname']);
+     $('.dgFullName').val(results['dg']['fullname']);
+    
 	// console.log(results['initiateur']['email']);
 })
 .catch(error=>console.log(error));
 
- // Appel du lien du site ngser
- let link_ngser="../../../LinkSiteWeb.php";
- function getLink(){
-     
-        $.ajax({
-            url: link_ngser, 
-            type: "POST",
-            success: function(output) {
-                   console.log(output);
-                }, 
-            error: function (error) {
-                 console.log(error);
-            },
-        });
- }
- 
- //Appel
- getLink() 
 //Appel du lien 
 var lk_t =$('.user_url').val();
 
-//Envoi de mail via workflow 
-let workflowmailing=(sendemail,destinataire,destinateur,lien,objet,motif,numero,app)=>{
+//Mail de demande de formation du manager envoyé à la RH  
+let workflowManagerRh=(sendemail,objet,destinateur,intinule,departement,lien,numero,appN)=>{
     $.ajax({
-              url: "/"+app+"/configuration_w/pos_mail/pos_mailer.php",
-              type: "POST",
-               data:{
+            url: "/"+appN+"/configuration_w/pos_mail/dfm_manager_rh.php", 
+            type: "POST",
+            data:{
                   sendemail:sendemail,
-                  destinataire:destinataire,
-                  destinateur:destinateur,
-                  lien:lien,
                   objet:objet,
-                  motif:motif,
+                  destinateur:destinateur,
+                  intinule:intinule,
+                  departement:departement,
+                  lien:lien, 
                   numero:numero
               },
               success: function(data) {
@@ -100,103 +110,202 @@ let workflowmailing=(sendemail,destinataire,destinateur,lien,objet,motif,numero,
                   console.log(error);   
               },
           });
-}
- 
-$(document).on('click','.bouton_sub',function(){
+};
 
+
+//Mail de la RH au Directeur Administratif et Juridique 
+let workflowRhDaj=(sendemail,objet,destinateur,intinule,departement,lien,numero,appN)=>{
+    $.ajax({
+            url: "/"+appN+"/configuration_w/pos_mail/dfm_rh_daj.php", 
+            type: "POST",
+            data:{
+                  sendemail:sendemail,
+                  objet:objet,
+                  destinateur:destinateur,
+                  intinule:intinule,
+                  departement:departement,
+                  lien:lien, 
+                  numero:numero
+              },
+              success: function(data) {
+                   if(data['status']="success"){
+                        console.log("Mail envoi avec success");
+                   }else{
+                        console.log("Echec d'envoi de mail");
+                   }
+              },
+              error: function(error) {
+                  console.log(error);   
+              },
+          });
+};
+
+//Mail Département Administratif et Juridique au Directeur Général Adjoint
+let workflowDajDga=(sendemail,objet,destinateur,intinule,departement,lien,numero,appN)=>{
+    $.ajax({
+            url: "/"+appN+"/configuration_w/pos_mail/dfm_daj_dga.php", 
+            type: "POST",
+            data:{
+                  sendemail:sendemail,
+                  objet:objet,
+                  destinateur:destinateur,
+                  intinule:intinule,
+                  departement:departement,
+                  lien:lien, 
+                  numero:numero
+              },
+              success: function(data) {
+                   if(data['status']="success"){
+                        console.log("Mail envoi avec success");
+                   }else{
+                        console.log("Echec d'envoi de mail");
+                   }
+              },
+              error: function(error) {
+                  console.log(error);   
+              },
+          });
+}; 
+
+//Mail du Directeur Général Adjoint au Directeur Général
+let workflowDgaDg=(sendemail,objet,destinateur,intinule,departement,lien,numero,appN)=>{
+    $.ajax({
+            url: "/"+appN+"/configuration_w/pos_mail/dfm_dga_dg.php", 
+            type: "POST",
+            data:{
+                  sendemail:sendemail,
+                  objet:objet,
+                  destinateur:destinateur,
+                  intinule:intinule,
+                  departement:departement,
+                  lien:lien, 
+                  numero:numero
+              },
+              success: function(data) {
+                   if(data['status']="success"){
+                        console.log("Mail envoi avec success");
+                   }else{
+                        console.log("Echec d'envoi de mail");
+                   }
+              },
+              error: function(error) {
+                  console.log(error);   
+              },
+          });
+}; 
+
+//Mail du Directeur Général au Manager du departement qui à fait la demande
+let workflowDgManager=(sendemail,objet,destinateur,intinule,lien,numero,appN)=>{
+    $.ajax({
+            url: "/"+appN+"/configuration_w/pos_mail/dfm_dg_manager.php", 
+            type: "POST",
+            data:{
+                  sendemail:sendemail,
+                  objet:objet,
+                  destinateur:destinateur,
+                  intinule:intinule, 
+                  lien:lien, 
+                  numero:numero
+              },
+              success: function(data) {
+                   if(data['status']="success"){
+                        console.log("Mail envoi avec success");
+                   }else{
+                        console.log("Echec d'envoi de mail");
+                   }
+              },
+              error: function(error) {
+                  console.log(error);   
+              },
+          });
+}; 
+// Mail de refus de la demande de la direction au Manager qui à fait la demande
+let workflowRefusManager=(sendemail,objet,destinateur,intinule,lien,numero,appN)=>{
+    $.ajax({
+            url: "/"+appN+"/configuration_w/pos_mail/dfm_refus_manager.php", 
+            type: "POST",
+            data:{
+                  sendemail:sendemail,
+                  objet:objet,
+                  destinateur:destinateur,
+                  intinule:intinule, 
+                  lien:lien, 
+                  numero:numero
+              },
+              success: function(data) {
+                   if(data['status']="success"){
+                        console.log("Mail envoi avec success");
+                   }else{
+                        console.log("Echec d'envoi de mail");
+                   }
+              },
+              error: function(error) {
+                  console.log(error);   
+              },
+          });
+};
+
+// workflowManagerRh("daouda.diarra@ngser.com","Demande de formation","FABIENNE KOFFI","Poseidon","JAMES AKRAN","www.ngys.ngser","6543","NGYS");
  
-	var val_modif = $('.action_hermes').val();
-    //var initiator="ibrahim.konate@ngser.com";
-    var initiator =$('.createur').val().toLowerCase();
-    var manager_wk =$('.manager_wk').val().toLowerCase();
-   // var manager_wk="ibrahim.konate@ngser.com";
-    var rh_wk =$('.rh_wk').val().toLowerCase();
-    //var rh_wk="ibrahim.konate@ngser.com";
-    var dga_wk =$('.dga_wk').val().toLowerCase();
-    //var dga_wk="ibrahim.konate@ngser.com";
-    var dg_wk =$('.dg_wk').val().toLowerCase();
-    //var dg_wk="ibrahim.konate@ngser.com";
+$(document).on('click','.bouton_sub',function(){ 
 
      ///////////// DEBUT LES VARIABLES DU CORPS DU MAIL ///////////
+    var  managerFullName=$('.managerFullName').val();
+    var lk_t =$('.user_url').val();
+    var  rhFullname=$('.rhFullname').val();
+    var  dgaFullName=$('.dgaFullName').val();
+    var  dgFullName=$('.dgFullName').val();
+    var  numdmd = $('.numposeidon').val();   
+    var nomManager= $('.nom').val();
+    var prenomManager= $('.prenom').val();
+    var objet ="Demande de formation";
+    var departement = $('.departement').val();
+    console.log(departement);
+    var intinule= $('.intitule').val();
+    //nom et prenom de l'initateur
+    var monMail="daouda.diarra@ngser.com";
+    var nomPrenomManager= nomManager+' '+prenomManager;
+    var initiateur_wk =$('.createur').val().toLowerCase();
+    var rh_wk =$('.rh_wk').val().toLowerCase();
+    var manager_wk =$('.manager_wk').val().toLowerCase();
+    var dga_wk =$('.dga_wk').val().toLowerCase();
+    var dg_wk =$('.dg_wk').val().toLowerCase(); 
     
-     var numdmd = $('#numposeidon').val();
-     var typeDemande = $('.typeDemande').val().toLowerCase();
-     var typedmd ='';
-     var nomInterimaire = $('.personnel').val();
-     var nomInitiateur= $('.viewnom').val();
-     var  prenomInitiateur= $('.viewprenom').val();
-     var objet ="demande d\'abscence";
-     //nom et prenom de l'initateur
-     var nomPrenomInitiateur= nomInitiateur+' '+prenomInitiateur;
-         
      ////////////// FIN LES VARIABLES DU CORPS DU MAIL ///////////
 
-      //RECUPERATION DES MOTIF
-      switch (typeDemande) {
-        case "ABSENCE" : 
-              typedmd="DEMANDE D' ABSENCE";
-            break;
-        case "MARIAGE DU TRAVAILLEUR" :
-            typedmd="MARIAGE DU TRAVAILLEUR"; 
-            break;
-        case "MARIAGE DUN DE SES ENFANTS, DUN FRERE, DUNE SOEUR":
-            typedmd="MARIAGE D'UN DE SES ENFANTS, D'UN FRERE, D'UNE SOEUR"; 
-            break;
-        case "DECES DU CONJOINT":
-             typedmd="DECES DU CONJOINT"; 
-            break;
-        case "DECES DUN ENFANT, DU PERE, DE LA MERE DU TRAVAILLEUR":
-             typedmd="DECES D'UN ENFANT, DU PERE, DE LA MERE DU TRAVAILLEUR";
-            break;
-        case "DECES DUN FRERE OU DUNE SOEUR":
-            typedmd="DECES D'UN FRERE OU D'UNE SOEUR";
-            break;
-        case "DECES DUN BEAU-PERE OU DUNE BELLE-MERE":
-            typedmd="DECES D'UN BEAU-PERE OU D'UNE BELLE-MERE";
-             break;
-        case "NAISSANCE DUN ENFANT":
-              typedmd="NAISSANCE D'UN ENFANT";
-            break;
-        case "BAPTEME DUN ENFANT":
-              typedmd="BAPTEME D'UN ENFANT";
-            break;
-        case "PREMIERE COMMUNION":
-             typedmd="PREMIERE COMMUNION";
-            break;
-        case "DEMENAGEMENT":
-             typedmd="DEMENAGEMENT";
-            break;
-    default:
-            typedmd="DEMANDE D' ABSENCE";
-    }
+    
+    //  workflowManagerRh(monMail,objet,rhFullname,intinule,departement,lk_t,numdmd,appN);
+    //  workflowRhDaj(monMail,objet,managerFullName,intinule,departement,lk_t,numdmd,appN);
+    //  workflowDajDga(monMail,objet,dgaFullName,intinule,departement,lk_t,numdmd,appN);
+    //  workflowDgaDg(monMail,objet,dgFullName,intinule,departement,lk_t,numdmd,appN);
+    //  workflowDgManager(initiateur_wk,objet,nomPrenomManager,intinule,lk_t,numdmd,appN);
+    //  workflowRefusManager(monMail,objet,nomPrenomManager,intinule,lk_t,numdmd,appN);
 
          //Message vers les valideurs
         var valideur =(validator,initiateur_wk,app)=> { 
-             workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
+              
         }
 
-        if (val_modif.slice(0,15) =='AA_TRSMNGRH_DFM') {
-            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
-
+        if (val_modif.slice(0,15) =='AA_TRSMNGRH_DFM') { 
+            workflowManagerRh(rh_wk,objet,rhFullname,intinule,departement,lk_t,numdmd,appN);
         }
 
      
         if (val_modif.slice(0,14) =='AA_TRSRHRA_DFM') {
-            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);;
+            workflowRhDaj(manager_wk,objet,managerFullName,intinule,departement,lk_t,numdmd,appN)
         }
       
         if (val_modif.slice(0,15) =='AA_TRSRADGA_DFM') {
-            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
+            workflowDajDga(dga_wk,objet,dgaFullName,intinule,departement,lk_t,numdmd,appN);
         }
 
        
         if (val_modif.slice(0,15) =='AA_TRSDGADG_DFM') {
-            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
+            workflowDgaDg(dg_wk,objet,dgFullName,intinule,departement,lk_t,numdmd,appN);
         }
   
        if (val_modif.slice(0,13) =='AA_CLOSDG_DFM') {
-            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
- 
+            workflowDgManager(initiateur_wk,objet,nomPrenomManager,intinule,lk_t,numdmd,appN);    
         } 
   
     // REFUS 
@@ -206,7 +315,7 @@ $(document).on('click','.bouton_sub',function(){
              val_modif.slice(0,15) == 'AB_REFUSDGA_DFM'  ||
              val_modif.slice(0,14) == 'AB_REFUSDG_DFM'  
             ){ 
-            workflowmailing(p_interimaire,nomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,appN);
+            workflowRefusManager(initiateur_wk,objet,nomPrenomManager,intinule,lk_t,numdmd,appN);
         } 
 
   

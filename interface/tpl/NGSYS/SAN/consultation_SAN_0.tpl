@@ -186,15 +186,19 @@
 		<!-- BEGIN BLOC_OLD_VALUE -->
 		<input type='hidden' name='{NAME_OLD_RUB}' value="{VALUE_OLD_RUB}">
 		<!-- END BLOC_OLD_VALUE -->
-				<input type='hidden' class='appName' value="{NOM_APPLICATION}">
-				<input type='hidden' class='appName1' value="{NOM_APPLICATION}">
-
-				<!-- données de l'utilisateur connecté -->
-				<input type="hidden" name="POS_VAL_RUB_NOM" value="{POS_VAL_RUB_NOM}" class="nom_pers" />
-				<input type="hidden" name="POS_VAL_RUB_PRE" value="{POS_VAL_RUB_PRE}" class="prenoms_pers" />
-						
-				<!--fin données de l'utilisateur connecté -->
-
+		<input type='hidden' class='appName' value="{NOM_APPLICATION}">
+		<input type='hidden' class='appName1' value="{NOM_APPLICATION}">
+		 
+		<!-- données de l'utilisateur connecté -->
+		<input type="hidden" name="POS_VAL_RUB_NOM" value="{POS_VAL_RUB_NOM}" class="nom_pers" />
+		<input type="hidden" name="POS_VAL_RUB_PRE" value="{POS_VAL_RUB_PRE}" class="prenoms_pers" /> 
+		<!--fin données de l'utilisateur connecté -->
+		<!-- debut Recuperation des fullName à partir du  dom -->
+		<input type="hidden" class="managerFullName">
+		<input type="hidden" class="rhFullname">
+		<input type="hidden" class="dgaFullName">
+		<input type="hidden" class="dgFullName"> 
+		<!-- fin Recuperation des fullName à partir du  dom -->
 		<!-- Appel du lien ngser -->
 		<input type="hidden" class="user_url" />
 
@@ -682,16 +686,16 @@
 		</div>
 	</form>
 
-	    <script language='javascript' src="../../../../include/jQuery/jquery.3.3.1.js" charset="utf-8"></script>
-		<script language='javascript' src="../../../../include/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
- 		<script language='javascript' src='/{NOM_APPLICATION}/include/jQuery/parseley.js'></script>
-	    <script language='javascript' src='/{NOM_APPLICATION}/include/jQuery/parseleyfr.js'></script>
-		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-		<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/SAN/select2/select2tr.js"></script>
-		<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/SAN/packs_fpo.js"></script>
-
+	<script language='javascript' src="../../../../include/jQuery/jquery.3.3.1.js" charset="utf-8"></script>
+	<script language='javascript' src="../../../../include/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
+ 	<script language='javascript' src='/{NOM_APPLICATION}/include/jQuery/parseley.js'></script>
+	<script language='javascript' src='/{NOM_APPLICATION}/include/jQuery/parseleyfr.js'></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+	<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/SAN/select2/select2tr.js"></script>
+	<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/SAN/packs_fpo.js"></script>
+	<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/SAN/valideurs/validateur.js"></script>	
 <!-- imporation du fichier de desactivation des champs -->
 		<script src="../../../../disable_fields.js"></script>
 	
@@ -802,13 +806,12 @@
 					clearInterval(timer);
 				}
 			}
-			//  Fin Barre de progression 1
- 
+			//  Fin Barre de progression 1 
    
 	</script>
 	<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/SAN/workflowSAN.js"></script>
 	<script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/SAN/notification.js"></script>
-  <script language='javascript' src="/{NOM_APPLICATION}/interface/tpl/{NOM_APPLICATION}/SAN/valideurs/validateur.js"></script>
+   
 </body>
 </html>
 

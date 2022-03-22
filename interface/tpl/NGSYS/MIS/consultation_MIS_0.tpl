@@ -317,6 +317,21 @@
 		<input type="hidden" name="URL_CHANGER_PROFIL" value="{URL_CHANGER_PROFIL}">
 		<input type="hidden" id="nb-profils" value="{NB_PROFILS_UTIL}">
 
+		<!-- données de l'utilisateur connecté -->
+		<input type="hidden" name='POS_VAL_RUB_NOM' class="viewnom nom" value="{POS_VAL_RUB_NOM}" >
+		<input type="hidden" name='POS_VAL_RUB_PRE' class="viewprenom prenom" value="{POS_VAL_RUB_PRE}" >
+		<input type="hidden" name='POS_VAL_RUB_FON' class="viewfonction" value="{POS_VAL_RUB_FON}" >
+		<input type="hidden" name='POS_VAL_RUB_DPT' class="viewdepartement departement" value="{POS_VAL_RUB_DPT}" >
+		<!--fin données de l'utilisateur connecté -->
+
+		<!-- debut Recuperation des fullName à partir du  dom -->
+		<input type="hidden" class="managerFullName">
+		<input type="hidden" class="rhFullname">
+		<input type="hidden" class="dgaFullName">
+		<input type="hidden" class="dgFullName">
+		<input type="hidden" class="controleurFullname">
+		<input type="hidden" class="financeFullName">
+		<!-- fin Recuperation des fullName à partir du  dom -->
 
 		<div class="col_list">
 			<i class="fa fa-eye fa-1x" style="color:#4a67b3;"></i>
@@ -618,7 +633,7 @@
 							<!-- zone d'affichage -->
 							<div class="jumbotron pt-1" style="width: 20%; padding-top: 1%;padding-bottom: 3%;background: #4a67b3;color:#fff;border-radius:5px;z-index:999">
 								<input type="hidden" name='POS_VAL_RUB_CRE' value="{POS_VAL_RUB_CRE}" class="createur" style="color: black;"  />
-															<!-- Affichage du login  -->
+								<!-- Affichage du login  -->
 								<p class="d-flex">
 									<span class="pr-3" style="font-size: 13px; font-family: Times;">Nom et Prenom(s) :</span>
 									<strong class="pt-1_pl-5" style="font-size: 13px;">{POS_VAL_RUB_NOM}  {POS_VAL_RUB_PRE}</strong>

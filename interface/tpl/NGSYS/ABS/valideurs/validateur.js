@@ -2,30 +2,30 @@
  
 
 ///////////CHARGEMENT DES VALIDATEURS ///////////////////
- let link_url =
-    "/" +
-    appN +
-    "/interface/tpl/" +
-    appN +
-    "/ABS/valideurs/validateur.php";
+let link_url =
+"/" +
+appN +
+"/interface/tpl/" +
+appN +
+"/ABS/valideurs/validateur.php";
 
 
-   const loadvalideurs = () => {
-    return new Promise((resolve, reject) => {
-        $.ajax({
-            url: link_url,
-            data:{
-                  employe:$('.createur').val().toLowerCase(),
-            },
-            type: "POST",
-            success: function (data) {
-                resolve(data);
-            },
-            error: function (error) {
-                reject(error);
-            },
-        });
+const loadvalideurs = () => {
+return new Promise((resolve, reject) => {
+    $.ajax({
+        url: link_url,
+        data:{
+              employe:$('.createur').val().toLowerCase(),
+        },
+        type: "POST",
+        success: function (data) {
+            resolve(data);
+        },
+        error: function (error) {
+            reject(error);
+        },
     });
+});
 }
 
 // Nom & Prenoms
@@ -219,7 +219,37 @@ let workflowInformManager=(sendemail,objet,demandeur,destinateur,lien,interimair
 }
 
 
+// Mail de refus d'un interimaire 
+let workflowRefus=(sendemail,objet,destinateur,demandeur,interimaire,motif,lien,numero,app)=>{
+    $.ajax({
+            //   url: "/"+app+"/configuration_w/pos_mail/manager_validation_mailer.php",
+              url: "/"+app+"/configuration_w/pos_mail/refus_mailer.php",
+              type: "POST",
+               data:{
+                    sendemail:sendemail,
+                    objet:objet,
+                    destinateur:destinateur,
+                    demandeur:demandeur,
+                    interimaire:interimaire,
+                    motif:motif, 
+                    lien:lien, 
+                    numero:numero
+              },
+              success: function(data) {
+                   if(data['status']="success"){
+                        console.log("Mail envoi avec success");
+                   }else{
+                        console.log("Echec d'envoi de mail");
+                   }
+              },
+              error: function(error) {
+                  console.log(error);   
+              },
+          });
+}
+ 
 
+// workflowRefus("daouda.diarra@ngser.com","DEMANDE D'ABSCENCE","DIARRA DAOUDA","IBSON","Conge","www.ngsys.ngser","5412","NGSYS");
 $(document).on('click','.bouton_sub',function(){
 
 	
@@ -274,11 +304,11 @@ $(document).on('click','.bouton_sub',function(){
     
     // console.log(managerFullName);
      ////////////// FIN LES VARIABLES DU CORPS DU MAIL ///////////
-
+     workflowRefus(initiator,objet,nomPrenomInitiateur,nomPrenomInterimaire,motif,lk_t,numdmd,appN);
     //  workflowMailClotureDemande(initiator,nomPrenomInitiateur,typedmd,lk_t,numdmd,appN);
     //  workflowInformManager(monMail,typedmd,lk_t,nomManager,nomPrenomInitiateur,nomPrenomInterimaire,dateDebut,dateFin,numdmd,autre,appN);
     //  workflowInformManager(monMail,typedmd,lk_t,nomManager,nomPrenomInitiateur,nomPrenomInterimaire,dateDebut,dateFin,numdmd,autre,appN);
-    // workflowmailingValidateManager(nomManager,lk_t,typedmd,monMail,nomPrenomInitiateur,nomPrenomInterimaire,dateDebut,dateFin,numdmd,appN);
+    //  workflowmailingValidateManager(nomManager,lk_t,typedmd,monMail,nomPrenomInitiateur,nomPrenomInterimaire,dateDebut,dateFin,numdmd,appN);
     //  workflowmailingInfo(initiator,nomPrenomInitiateur,lk_t,objet,numdmd,appN);
     //  workflowmailing(mail_interimaire,nomPrenomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,dateDebut,dateFin,appN);
     //RECUPERATION DES MOTIF
@@ -329,25 +359,26 @@ $(document).on('click','.bouton_sub',function(){
             workflowmailing(mail_interimaire,nomPrenomInterimaire,nomPrenomInitiateur,lk_t,objet,typedmd,numdmd,dateDebut,dateFin,appN); 
             workflowmailingInfo(initiator,nomPrenomInitiateur,lk_t,objet,numdmd,appN); 
         }
-        if (val_modif.slice(0,20) =='AA_TRSEMPLOYEMNG_ABS') { 
-            // nomManager=fullNameManage ok
+
+        if (val_modif.slice(0,22) =='AC_TRSEMPLOYEINTER_ABS') {
+            // Cas du refus de la demande d'interim A tester
+            workflowRefus(initiator,objet,nomPrenomInitiateur,nomPrenomInterimaire,motif,lk_t,numdmd,appN);
+        }
+        if (val_modif.slice(0,20) =='AA_TRSEMPLOYEMNG_ABS') {  
             workflowInformManager(manager_mail,typedmd,nomPrenomInitiateur,managerFullName,lk_t,nomPrenomInterimaire,dateDebut,dateFin,numdmd,autre,appN);
 
         }
 
-        if (val_modif.slice(0,15) =='AA_TRSMNGRH_ABS') {
-            // nomManager=fullNameRH ok
+        if (val_modif.slice(0,15) =='AA_TRSMNGRH_ABS') { 
             workflowInformManager(rh_wk,typedmd,nomPrenomInitiateur,rhFullname,lk_t,nomPrenomInterimaire,dateDebut,dateFin,numdmd,autre,appN);
         }
         
-        if (val_modif.slice(0,15) =='AA_TRSRHADM_ABS') {
-            // nomManager=fullNameDGA ok
+        if (val_modif.slice(0,15) =='AA_TRSRHADM_ABS') { 
             workflowInformManager(dga_wk,typedmd,nomPrenomInitiateur,dgaFullName,lk_t,nomPrenomInterimaire,dateDebut,dateFin,numdmd,autre,appN);
         }
 
         
-        if (val_modif.slice(0,13) =='AZ_CLOSRA_ABS') {
-            // nomManager=fullNameDG ok
+        if (val_modif.slice(0,13) =='AZ_CLOSRA_ABS') { 
             workflowInformManager(dg_wk,typedmd,nomPrenomInitiateur,dgFullName,lk_t,nomPrenomInterimaire,dateDebut,dateFin,numdmd,autre,appN);
         }
 
@@ -358,25 +389,21 @@ $(document).on('click','.bouton_sub',function(){
 
     if(etat_type=='MANAGER'){
 
-        if (val_modif.slice(0,19) =='AA_TRSMANAGERRH_ABS') {
-            // nomPrenomInterimaire= fullNameManager ok
+        if (val_modif.slice(0,19) =='AA_TRSMANAGERRH_ABS') { 
             workflowmailing(mail_interimaire,nomPrenomInterimaire,managerFullName,lk_t,objet,typedmd,numdmd,dateDebut,dateFin,appN);
 
         }
 
-          if (val_modif.slice(0,15) =='AA_TRSRHDGA_ABS') {
-            //nomManager = fullNameDGA ok
+          if (val_modif.slice(0,15) =='AA_TRSRHDGA_ABS') { 
             workflowInformManager(dga_wk,typedmd,nomPrenomInitiateur,dgaFullName,lk_t,nomPrenomInterimaire,dateDebut,dateFin,numdmd,autre,appN);
         }
 
         
-        if (val_modif.slice(0,13) =='AA_TRSDGADG_ABS') {
-            //nomManager = fullNameDG ok
+        if (val_modif.slice(0,13) =='AA_TRSDGADG_ABS') { 
             workflowInformManager(dg_wk,typedmd,nomPrenomInitiateur,dgFullName,lk_t,nomPrenomInterimaire,dateDebut,dateFin,numdmd,autre,appN);
         }
 
-       if (val_modif.slice(0,13) =='AA_CLOSDG_ABS') {   
-            // nomPrenomInterimaire= fullNameManager
+       if (val_modif.slice(0,13) =='AA_CLOSDG_ABS') {    
             workflowMailClotureDemande(manager_mail,nomPrenomInitiateur,typedmd,lk_t,numdmd,appN);
         } 
 

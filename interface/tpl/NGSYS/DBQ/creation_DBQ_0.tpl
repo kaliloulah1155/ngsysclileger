@@ -93,17 +93,21 @@
 				<input type="hidden" id="nb-profils" value="{NB_PROFILS_UTIL}">
 				<!-- end important pour lancer la boite aux lettres  -->
 
+				<!-- debut Recuperation des fullName à partir du  dom -->
+				<input type="hidden" class="managerFullName">
+				<input type="hidden" class="rhFullname">
+				<input type="hidden" class="dgaFullName">
+				<input type="hidden" class="dgFullName">
+				 <!-- fin Recuperation des fullName à partir du  dom --> 
 				<!--<div style="z-index:0;">
 						{TITRE_BOUTONS} 
-					</div> -->
-
-
-					 <!-- données de l'utilisateur connecté -->
-					<input type="hidden" name='POS_VAL_RUB_NOM' class="viewnom" value="{POS_VAL_RUB_NOM}" >
-					<input type="hidden" name='POS_VAL_RUB_PRE' class="viewprenom" value="{POS_VAL_RUB_PRE}" >
-					<input type="hidden" name='POS_VAL_RUB_FON' class="viewfonction" value="{POS_VAL_RUB_FON}" >
-					<input type="hidden" name='POS_VAL_RUB_DPT' class="viewdepartement"  value="{DEPARTEMENT_UTILISATEUR}"   >
-					 <!--fin données de l'utilisateur connecté -->
+				</div> -->  
+				<!-- données de l'utilisateur connecté -->
+				<input type="hidden" name='POS_VAL_RUB_NOM' class="viewnom" value="{POS_VAL_RUB_NOM}" >
+				<input type="hidden" name='POS_VAL_RUB_PRE' class="viewprenom" value="{POS_VAL_RUB_PRE}" >
+				<input type="hidden" name='POS_VAL_RUB_FON' class="viewfonction" value="{POS_VAL_RUB_FON}" >
+				<input type="hidden" name='POS_VAL_RUB_DPT' class="viewdepartement"  value="{DEPARTEMENT_UTILISATEUR}"   >
+				<!--fin données de l'utilisateur connecté -->
 				
 			</div>
 		<div class="col_list">
@@ -199,11 +203,12 @@
 									<option value="UBA">UBA</option>
 									<option value="Versus Bank">Versus Bank</option>
 								</select>
-								<input type="hidden" name='POS_VAL_CTRL_NBQ' id='POS_VAL_CTRL_NBQ' value="{POS_VAL_RUB_NBQ}" placeholder="Banque" />
+								<input type="hidden" name='POS_VAL_CTRL_NBQ' class="nomBanque" id='POS_VAL_CTRL_NBQ' value="{POS_VAL_RUB_NBQ}" placeholder="Banque" />
 						</div>
 						<div class="form-group">
 						   <label for="bio">Nouveau RIB <span class='text' ></span> :</label>
-						   <input type="text"class="form-control" id="nveau_rib" name='POS_VAL_RUB_NRI' data-parsley-trigger="keyup" readonly='true' style="width: 100%;" >
+						   <input type="text"class="form-control nouveauRib" id="nveau_rib" name='POS_VAL_RUB_NRI' value="{POS_VAL_RUB_NRI}"  data-parsley-trigger="keyup" readonly='true' style="width: 100%;" >
+						    
 						</div>
 						<!-- unitile de le toucher  -->
 						<div class="form-group" style="color: transparent;">
